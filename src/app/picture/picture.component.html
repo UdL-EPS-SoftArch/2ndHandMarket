@@ -1,0 +1,28 @@
+<section class="picture">
+  <header class="header">
+    <h2>Pictures</h2>
+    <h3>Add Picture</h3>
+    <div><input type="file" autofocus="" (change)="addPicture(file)" #file /></div>
+    <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+  </header>
+  <h3>Existing Pictures</h3>
+
+  <p *ngIf="pictures.length > 0">
+    <span class="picture-count"><strong>{{pictures.length}}</strong> {{pictures.length == 1 ? 'picture' : 'pictures'}}</span>
+  </p>
+
+  <p *ngIf="pictures.length == 0">
+    <span class="picture-count">No pictures</span>
+  </p>
+
+  <ul class="list-group" *ngIf="pictures.length > 0">
+      <li class="list-group-item" *ngFor="let picture of pictures">
+        <div class="picture">
+          <img src="{{picture.content}}" />
+          <h4>{{picture.filename}}</h4>
+          <button class="alert-danger" (click)="removePicture(picture)">Delete</button>
+        </div>
+      </li>
+  </ul>
+
+</section>

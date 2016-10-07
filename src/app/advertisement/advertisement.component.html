@@ -1,0 +1,12 @@
+<section class="advertisement">
+  <header>
+    <h2>Advertisements</h2>
+  </header>
+  <div *ngIf="!advertisements">
+    No advertisements were found! <a href="#">Create one</a>
+  </div>
+  <div *ngFor="let advertisement of advertisements">
+    <p class="title">{{advertisement.title}}</p>
+    <span class="description">{{advertisement.description}}</span>
+  </div>
+</section>

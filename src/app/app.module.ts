@@ -10,6 +10,7 @@ import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -24,11 +25,13 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
     NavbarComponent,
     IntroComponent,
     AdvertisementComponent
+    IntroComponent,
+    FooterComponent
   ],
   providers: [
     appRoutingProviders,
     { provide: APP_BASE_HREF, useValue : '/' }
   ],
-  bootstrap: [AppComponent, NavbarComponent]
+  bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })
 export class AppModule { }

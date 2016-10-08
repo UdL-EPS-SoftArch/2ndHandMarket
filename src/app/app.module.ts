@@ -10,6 +10,7 @@ import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { MessageComponent } from './message/message.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MessageComponent } from './message/message.component';
     PictureComponent,
     NavbarComponent,
     IntroComponent,
+    FooterComponent,
     MessageComponent
   ],
   providers: [

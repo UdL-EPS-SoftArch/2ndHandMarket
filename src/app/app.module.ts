@@ -9,6 +9,7 @@ import { PictureComponent } from './picture/picture.component';
 import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { IntroComponent } from './intro/intro.component';
     AppComponent,
     PictureComponent,
     NavbarComponent,
-    IntroComponent
+    IntroComponent,
+    MessageComponent
   ],
   providers: [
     appRoutingProviders,

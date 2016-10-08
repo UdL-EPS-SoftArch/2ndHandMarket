@@ -49,6 +49,6 @@ import { MessageComponent } from './message/message.component';
     appRoutingProviders,
     { provide: APP_BASE_HREF, useValue : '/' }
   ],
-  bootstrap: [AppComponent, NavbarComponent]
+  bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })
 export class AppModule { }

@@ -9,7 +9,7 @@ import { GetAdvertisementComponent } from './advertisement/getAdvertisement.comp
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
-import { MessageComponent } from "./message/message.component";
+import { MessageComponent } from './message/message.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },

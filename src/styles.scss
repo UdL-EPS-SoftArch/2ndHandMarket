@@ -12,6 +12,24 @@ html, body {
   font-weight: 400;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+app-root {
+  flex: 1;
+}
+
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+}
+
 a.no-decorate {
   &, &:link, &:hover, &:active {
     color: $color;

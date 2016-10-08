@@ -24,7 +24,7 @@ import { FooterComponent } from './footer/footer.component';
     PictureComponent,
     NavbarComponent,
     IntroComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
     IntroComponent,
     FooterComponent
   ],

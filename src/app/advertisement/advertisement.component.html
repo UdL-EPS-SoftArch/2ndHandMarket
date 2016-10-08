@@ -5,8 +5,18 @@
   <div *ngIf="!advertisements">
     No advertisements were found! <a href="#">Create one</a>
   </div>
-  <div *ngFor="let advertisement of advertisements">
-    <p class="title">{{advertisement.title}}</p>
-    <span class="description">{{advertisement.description}}</span>
+  <div class="card" *ngFor="let advertisement of advertisements">
+    <div class="picture"></div>
+    <div class="title">
+      <a href="#" class="no-decorate">
+        {{advertisement.title}}
+      </a>
+    </div>
+    <div class="info">
+      By <a href="#">user</a> on date
+    </div>
+    <div class="info-special">
+      <a href="#" class="buy">{{advertisement.price | currency:'USD':true}}</a>
+    </div>
   </div>
 </section>

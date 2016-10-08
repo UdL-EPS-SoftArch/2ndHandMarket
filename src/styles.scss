@@ -3,7 +3,17 @@
 
 $color: #333;
 $bgColor: #fcfcfc;
+$highlightColor: #1a99aa;
+$highlightActiveColor: #1fb3c6;
 $pageComponentsMargin: 20px;
+
+@mixin perfectBackground {
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 html, body {
   background-color: $bgColor;
@@ -34,5 +44,58 @@ a.no-decorate {
   &, &:link, &:hover, &:active {
     color: $color;
     text-decoration: none;
+  }
+}
+
+a.highlightButton {
+  @extend a.no-decorate;
+
+  border-radius: 2px;
+  background-color: $highlightColor;
+  color: #fff;
+  display: block;
+  padding: 7px 5px;
+  text-align: center;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $highlightActiveColor;
+    color: #fff;
+  }
+}
+
+a.buy {
+  @extend .highlightButton;
+
+  &::before {
+    content: 'BUY ';
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  height: 400px;
+  margin: 0 15px 15px 0;
+
+
+  .picture {
+    @include perfectBackground;
+    background-color: #fff;
+    flex: 1;
+    width: 270px;
+  }
+
+  .title, .info-special {
+    padding: 10px;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .info {
+    padding: 10px 5px;
   }
 }

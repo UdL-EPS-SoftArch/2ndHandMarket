@@ -12,6 +12,7 @@ describe('Advertisement', () => {
   it('should accept values in the constructor', () => {
     const title = 'sample';
     const description = 'sample description';
+    const owner = 'user';
     const now = new Date().getTime();
     const price = 80.80;
     const tags = [ 'angular', 'javascript' ];
@@ -24,6 +25,7 @@ describe('Advertisement', () => {
       id: 1,
       title: title,
       description: description,
+      owner: 'user',
       createdAt: now,
       modifiedAt: now,
       price: price,
@@ -37,6 +39,7 @@ describe('Advertisement', () => {
     });
     expect(advertisement.title).toEqual(title);
     expect(advertisement.description).toEqual(description);
+    expect(advertisement.owner).toEqual(owner);
     expect(advertisement.createdAt).toEqual(now);
     expect(advertisement.modifiedAt).toEqual(now);
     expect(advertisement.price).toEqual(price);

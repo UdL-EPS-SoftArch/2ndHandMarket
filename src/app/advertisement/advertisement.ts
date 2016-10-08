@@ -2,6 +2,7 @@ export class Advertisement {
   id: number;
   title: string = '';
   description: string = '';
+  owner: string = '';
   createdAt = Date;
   modifiedAt = Date;
   price: number = 0.0;

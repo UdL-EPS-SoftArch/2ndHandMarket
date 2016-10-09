@@ -10,6 +10,7 @@ import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
+import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     IntroComponent,
     AdvertisementComponent,
+    PostAdvertisementComponent,
     IntroComponent,
     FooterComponent
   ],

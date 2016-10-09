@@ -16,4 +16,16 @@ export class AdvertisementService {
       .map((res: Response) => res.json()._embedded.advertisements)
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  // POST /advertisements
+  addAdvertisement(advertisement: Advertisement): Observable<Advertisement> {
+    let body = JSON.stringify(advertisement);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(`${environment.API}/advertisements`, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 }

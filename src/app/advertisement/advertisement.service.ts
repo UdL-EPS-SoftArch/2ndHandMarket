@@ -12,7 +12,7 @@ export class AdvertisementService {
 
   // GET /advertisements
   getAllAdvertisements(): Observable<Advertisement[]> {
-    return this.http.get(`${environment.API}/advertisements`)
+    return this.http.get(`${environment.API}/advertisements?sort=createdAt,desc`)
       .map((res: Response) => res.json()._embedded.advertisements)
       .catch((error: any) => Observable.throw(error.json()));
   }

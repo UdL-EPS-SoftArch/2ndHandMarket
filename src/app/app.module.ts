@@ -12,6 +12,7 @@ import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { FooterComponent } from './footer/footer.component';
+import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     AdvertisementComponent,
     PostAdvertisementComponent,
     IntroComponent,
-    FooterComponent
+    FooterComponent,
+    SearchAdvertisementComponent
   ],
   providers: [
     appRoutingProviders,

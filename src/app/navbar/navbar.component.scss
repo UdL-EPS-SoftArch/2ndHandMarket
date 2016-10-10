@@ -1,0 +1,80 @@
+$navBgColor: #f2f1ef;
+$navBgBorderColor: #e2e2e2;
+$navHeight: 70px;
+$highlightColor: #1A99AA;
+$highlightActiveColor: #1fb3c6;
+
+.navbar-container {
+  background-color: $navBgColor;
+  height: $navHeight;
+  border-bottom: 1px solid $navBgBorderColor;
+
+  .logo {
+    font-size: 30px;
+    display: block;
+    line-height: $navHeight;
+    margin-left: 20px;
+    text-transform: uppercase;
+
+    .highlight {
+      color: $highlightColor;
+    }
+  }
+
+  nav {
+    float: right;
+    position: absolute;
+    right: 0;
+  }
+
+  nav ul {
+    display: block;
+
+    li {
+      display: inline;
+      line-height: $navHeight;
+      list-style-type: none;
+      padding: 0 15px 0 15px;
+      text-transform: uppercase;
+
+      &.highlight {
+        background-color: $highlightColor;
+        transition: background-color 300ms ease-out;
+
+        &:hover {
+          background-color: $highlightActiveColor;
+          transition: background-color 300ms ease-out;
+        }
+
+        a {
+          color: #fff;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+
+      a {
+        color: #555;
+        font-weight: 200;
+        text-decoration: none;
+
+        &:hover {
+          color: #333;
+        }
+
+        &.active {
+          color: #333;
+          font-weight: bold;
+        }
+      }
+    }
+
+    li + li {
+      border-left: 1px solid $navBgBorderColor;
+      display: inline-block;
+      height: $navHeight;
+    }
+  }
+}

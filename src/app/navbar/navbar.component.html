@@ -1,20 +1,17 @@
-<nav class="navbar navbar-inverse">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="/">SoftArch'16-17 - {{appTitle}}</a>
+<header class="navbar-container">
+  <nav>
+    <ul>
+      <li class="active"><a routerLink="/" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+      <li><a routerLink="/advertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Advertisements</a></li>
+      <li><a routerLink="/pictures" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Pictures</a></li>
+      <!-- <li><a href="#contact">Contact</a></li> // move to footer -->
+      <li><a href="#">Sign In / Sign Up</a></li>
+      <li class="highlight"><a href="#">Post Your Advertisement</a></li>
+    </ul>
+  </nav>
+  <a class="no-decorate" routerLink="/">
+    <div class="logo">
+      Soft<span class="highlight">Arch</span> <i class="highlight fa fa-shopping-bag fa-4"></i>
     </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a routerLink="/">Home</a></li>
-        <li><a routerLink="/pictures" routerLinkActive="active">Pictures</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
+  </a>
+</header>

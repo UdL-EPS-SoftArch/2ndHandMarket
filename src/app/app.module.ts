@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
+import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { FooterComponent } from './footer/footer.component';
     IntroComponent,
     AdvertisementComponent,
     PostAdvertisementComponent,
+    GetAdvertisementComponent,
     IntroComponent,
     FooterComponent
   ],

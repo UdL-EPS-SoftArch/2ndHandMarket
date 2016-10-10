@@ -1,0 +1,52 @@
+<section class="getAdvertisement">
+  <div class="row">
+    <div class="col-md-6 photo">
+      <!-- todo: replace with image real src -->
+      <img class="photo" src="https://images-na.ssl-images-amazon.com/images/I/71h1yrWYc7L._UY500_.jpg" />
+    </div>
+    <div class="product-basics col-md-6">
+      <h2 class="title">{{advertisement.title}}</h2>
+      <span class="category">{{advertisement.category}}</span>
+      <div class="product-dates">
+        <span>Created at: {{advertisement.createdAt}}</span>
+        <span>Modified at: {{advertisement.modifiedAt}}</span>
+      </div>
+      <div class="price">{{advertisement.price | currency:'USD':true }}</div>
+      <div class="price-details row">
+        <div class="col-md-6">
+          <input type="checkbox" id="paidShipping" onclick="return false" [attr.checked]="advertisement.paidShipping ? true : null" />
+          <label for="paidShipping">Paid Shipping</label>
+        </div>
+        <div class="col-md-6">
+          <input type="checkbox" id="negotiablePrice" onclick="return false" [attr.checked]="advertisement.negotiablePrice ? true : null"  />
+          <label for="negotiablePrice">Negotiable Price</label>
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button class="highlightButton">Buy</button>
+        <button class="blankButton">Add to Wishlist</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Description</h3>
+      {{advertisement.description}}
+    </div>
+    <div class="col-md-6">
+      <h3>Owner Info</h3>
+      Published by <a href="#">{{advertisement.owner}}</a>
+    </div>
+  </div>
+
+  <div class="product-details row">
+    <div class="col-md-12">
+      <h3>Product details</h3>
+      <span>Brand: {{advertisement.brand}}</span>
+      <span>Color: {{advertisement.color}}</span>
+      <span>Weight: {{advertisement.weight | number: '1.1-2'}}</span>
+      <span>Tags: {{advertisement.tags}}</span>
+    </div>
+  </div>
+</section>

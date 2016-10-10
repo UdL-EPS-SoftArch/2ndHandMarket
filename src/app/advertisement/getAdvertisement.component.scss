@@ -1,0 +1,55 @@
+.getAdvertisement {
+
+  .product-basics {
+    .photo {
+      margin-top: 5px;
+      max-height: 500px;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .category {
+      font-size: 20px;
+      font-weight: 200;
+      color: #9c9c9c;
+      text-transform: capitalize;
+    }
+
+    .product-dates {
+      margin-top: 20px;
+
+      span {
+        color: #505050;
+        display: block;
+      }
+    }
+
+    .price {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    .price-details {
+      margin-top: 5px;
+    }
+
+    .action-buttons {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      button + button {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .product-details {
+    span {
+      display: block;
+    }
+  }
+}

@@ -68,6 +68,32 @@ a.no-decorate {
   }
 }
 
+.highlightButton.big {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.blankButton {
+  @extend a.no-decorate;
+
+  border: 2px solid $highlightColor;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow:none;
+  color: $color;
+  display: block;
+  padding: 7px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+
+  &:hover {
+    background-color: $highlightColor;
+    color: #fff;
+  }
+}
+
 a.buy {
   @extend .highlightButton;
 

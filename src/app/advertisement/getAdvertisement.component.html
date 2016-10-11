@@ -8,8 +8,8 @@
       <h2 class="title">{{advertisement.title}}</h2>
       <span class="category">{{advertisement.category}}</span>
       <div class="product-dates">
-        <span>Created at: {{advertisement.createdAt}}</span>
-        <span>Modified at: {{advertisement.modifiedAt}}</span>
+        <span>Created at: {{advertisement.createdAt | amDateFormat:'YYYY-MM-DD HH:mm'}}</span>
+        <span>Modified at: {{advertisement.modifiedAt | amDateFormat:'YYYY-MM-DD HH:mm'}}</span>
       </div>
       <div class="price">{{advertisement.price | currency:'USD':true }}</div>
       <div class="price-details row">

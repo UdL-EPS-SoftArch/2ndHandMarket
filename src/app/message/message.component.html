@@ -1,3 +1,29 @@
-<p>
-  message works!
-</p>
+<section class="message">
+  <header class="header">
+    <h2>Messages</h2>
+    <h3>Write new message</h3>
+
+
+    <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+  </header>
+  <h3>Message board</h3>
+
+  <p *ngIf="messages.length > 0">
+    <span class="message-count"><strong>{{messages.length}}</strong> {{messages.length == 1 ? 'message' : 'messages'}}</span>
+  </p>
+
+  <p *ngIf="messages.length == 0">
+    <span class="message-count">No messages</span>
+  </p>
+
+  <ul class="list-group" *ngIf="messages.length > 0">
+    <li class="list-group-item" *ngFor="let message of messages">
+      <div class="message">
+        <img src="{{message.content}}" />
+        <h4>{{message.filename}}</h4>
+        <button class="alert-danger" (click)="removemessage(message)">Delete</button>
+      </div>
+    </li>
+  </ul>
+
+</section>

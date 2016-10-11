@@ -13,6 +13,7 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { SearchAdvertisementComponent } from './search-advertisement/search-adve
     PostAdvertisementComponent,
     IntroComponent,
     FooterComponent,
-    SearchAdvertisementComponent
+    SearchAdvertisementComponent,
+    ContactComponent
   ],
   providers: [
     appRoutingProviders,

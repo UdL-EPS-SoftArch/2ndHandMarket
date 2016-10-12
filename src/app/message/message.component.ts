@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {Message} from "./message";
 import {MessageService} from "./message.service";
 
@@ -12,10 +12,11 @@ export class MessageComponent implements OnInit {
 
   messages: Message[] = [];
   errorMessage: string;
+  newMessage: Message = new Message();
 
   constructor(private messageService: MessageService) { }
 
-  ngOnInit() { this.getMessages(); }
+  ngOnInit() { this.getMessages(); this.addMessage("a") }
 
   getMessages() {
     return this.messageService.getAllMessages()
@@ -23,5 +24,17 @@ export class MessageComponent implements OnInit {
         messages => this.messages = messages,
         error =>  this.errorMessage = <any>error.message);
   }
+
+  addMessage(input) {
+
+      this.newMessage.title = "aa";
+      this.newMessage.body = "bb";
+      this.messageService.addMessage(this.newMessage)
+        .subscribe(
+          message  => this.messages.push(message),
+          error =>  this.errorMessage = <any>error.message);
+      this.newMessage = new Message();
+  }
+
 
 }

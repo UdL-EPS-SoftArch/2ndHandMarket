@@ -4,7 +4,7 @@ import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
 
 @Component({
-  selector: 'app-postAdvertisement',
+  selector: 'app-post-advertisement',
   templateUrl: './postAdvertisement.component.html',
   styleUrls: ['postAdvertisement.component.scss'],
   providers: [AdvertisementService]

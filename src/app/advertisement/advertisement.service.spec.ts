@@ -15,29 +15,29 @@ class ResponseError extends Error {
 
 describe('Service: Advertisement', () => {
   const firstAdvertisement = {
-    "title": "first",
-    "description": "",
-    "price": 1.0,
-    "negotiablePrice": false,
-    "paidShipping": false,
-    "tags": [],
-    "category": "",
-    "brand": "",
-    "color": "",
-    "weight": 0.0,
+    'title': 'first',
+    'description': '',
+    'price': 1.0,
+    'negotiablePrice': false,
+    'paidShipping': false,
+    'tags': [],
+    'category': '',
+    'brand': '',
+    'color': '',
+    'weight': 0.0,
   };
 
   const secondAdvertisement = {
-    "title": "second",
-    "description": "",
-    "price": 2.0,
-    "negotiablePrice": false,
-    "paidShipping": false,
-    "tags": [],
-    "category": "",
-    "brand": "",
-    "color": "",
-    "weight": 0.0,
+    'title': 'second',
+    'description': '',
+    'price': 2.0,
+    'negotiablePrice': false,
+    'paidShipping': false,
+    'tags': [],
+    'category': '',
+    'brand': '',
+    'color': '',
+    'weight': 0.0,
   };
 
   beforeEach(async(() => {
@@ -79,7 +79,7 @@ describe('Service: Advertisement', () => {
           expect(data[1].title).toEqual(secondAdvertisement.title);
           expect(data[0].description).toEqual(firstAdvertisement.description);
           expect(data[1].description).toEqual(secondAdvertisement.description);
-        })
+        });
       })));
   });
 
@@ -101,5 +101,5 @@ describe('Service: Advertisement', () => {
           expect(data.price).toEqual(firstAdvertisement.price);
         });
       })));
-  })
+  });
 });

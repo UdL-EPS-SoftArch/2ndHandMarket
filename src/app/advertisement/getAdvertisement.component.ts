@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-getAdvertisement',
+  selector: 'app-get-advertisement',
   templateUrl: './getAdvertisement.component.html',
   styleUrls: ['getAdvertisement.component.scss'],
   providers: [AdvertisementService]

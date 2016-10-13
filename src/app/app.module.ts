@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { FooterComponent } from './footer/footer.component';
+import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
     IntroComponent,
     AdvertisementComponent,
     IntroComponent,
-    FooterComponent
+    FooterComponent,
+    MyNewComponentComponent
   ],
   providers: [
     appRoutingProviders,

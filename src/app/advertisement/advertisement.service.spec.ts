@@ -60,7 +60,7 @@ describe('Service: Advertisement', () => {
 
   describe('#getAllAdvertisements()', () => {
     it('should return all pictures',
-      async(inject([MockBackend, AdvertisementService], (mockBackend, service) => {
+      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const apiResponse = new ResponseOptions({
           body: {
             '_embedded': {
@@ -82,4 +82,24 @@ describe('Service: Advertisement', () => {
         })
       })));
   });
+
+  describe('#addAdvertisement(advertisement)', () => {
+    it ('should save a new advertisement',
+      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
+        const apiResponse = new ResponseOptions({
+          status: 201,
+          body: firstAdvertisement
+        });
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+          connection.mockRespond(new Response(apiResponse));
+        });
+
+        service.addAdvertisement().subscribe((data) => {
+          expect(data.title).toEqual(firstAdvertisement.title);
+          expect(data.description).toEqual(firstAdvertisement.description);
+          expect(data.price).toEqual(firstAdvertisement.price);
+        });
+      })));
+  })
 });

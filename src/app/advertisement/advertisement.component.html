@@ -2,21 +2,23 @@
   <header>
     <h2>Advertisements</h2>
   </header>
-  <div *ngIf="!advertisements">
+  <div *ngIf="advertisements.length === 0">
     No advertisements were found! <a href="#">Create one</a>
   </div>
-  <div class="card" *ngFor="let advertisement of advertisements">
-    <div class="picture"></div>
-    <div class="title">
-      <a href="#" class="no-decorate">
-        {{advertisement.title}}
-      </a>
-    </div>
-    <div class="info">
-      By <a href="#">user</a> on date
-    </div>
-    <div class="info-special">
-      <a href="#" class="buy">{{advertisement.price | currency:'USD':true}}</a>
+  <div class="card-container" *ngFor="let advertisement of advertisements">
+    <div class="card">
+      <div class="picture"></div>
+      <div class="title">
+        <a href="#" class="no-decorate">
+          {{advertisement.title}}
+        </a>
+      </div>
+      <div class="info">
+        By <a href="#">{{advertisement.owner}}</a> on {{advertisement.createdAt | date}}
+      </div>
+      <div class="info-special">
+        <a routerLink="/advertisements-1" class="buy">{{advertisement.price | currency:'USD':true}}</a>
+      </div>
     </div>
   </div>
 </section>

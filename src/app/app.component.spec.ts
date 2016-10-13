@@ -13,13 +13,14 @@ import { FormsModule } from "@angular/forms";
 import {SearchAdvertisementComponent} from "./search-advertisement/search-advertisement.component";
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { DateFormatPipe } from 'angular2-moment/src/DateFormatPipe';
+import {ContactComponent} from "./contact/contact.component";
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent, SearchAdvertisementComponent,
-        PostAdvertisementComponent, GetAdvertisementComponent, DateFormatPipe
+        PostAdvertisementComponent, GetAdvertisementComponent, ContactComponent,DateFormatPipe
       ],
       imports: [
         routing, FormsModule

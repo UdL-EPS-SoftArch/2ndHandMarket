@@ -3,16 +3,15 @@
     <h2>Messages</h2>
     <!-- new message -->
 
-    <button ng-click="DivSendMessage = !DivSendMessage">
+    <button (click)="DivSendMessage = !DivSendMessage">
       Write a new message
     </button>
 
-    <div ng-show="DivSendMessage" text="New message">
-      <p><input type="text" name="title"></p>
-      <p><input type="text" name="body"></p>
+    <div [hidden]="DivSendMessage">
+      <p><input type="text" name="title" text="Title"></p>
+      <p><input type="text" name="body" text="Body"></p>
       <p><button ng-click="">Send</button></p>
     </div>
-
 
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>

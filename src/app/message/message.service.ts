@@ -11,7 +11,7 @@ export class MessageService {
 
   // GET /messages
   getAllMessages(): Observable<Message[]> {
-    return this.http.get(`${environment.API}/messages`)
+    return this.http.get(`${environment.API}/privateMessages`)
       .map((res: Response) => res.json().getAllMessages())//?????
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -30,7 +30,7 @@ export class MessageService {
     headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(`${environment.API}/messages`, body, options)
+    return this.http.post(`${environment.API}/privateMessages`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

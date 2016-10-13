@@ -14,6 +14,7 @@ import { PostAdvertisementComponent } from './advertisement/postAdvertisement.co
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { FooterComponent } from './footer/footer.component';
 import { DateFormatPipe } from 'angular2-moment';
+import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { DateFormatPipe } from 'angular2-moment';
     GetAdvertisementComponent,
     IntroComponent,
     FooterComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    SearchAdvertisementComponent
   ],
   providers: [
     appRoutingProviders,

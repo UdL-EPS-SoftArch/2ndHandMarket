@@ -5,6 +5,7 @@ import { PictureComponent } from './picture/picture.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
+import {SearchAdvertisementComponent} from "./search-advertisement/search-advertisement.component";
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 
 const appRoutes: Routes = [
@@ -12,6 +13,7 @@ const appRoutes: Routes = [
   { path: 'advertisements-new', component: PostAdvertisementComponent },
   { path: 'advertisements-1', component: GetAdvertisementComponent },
   { path: 'pictures', component: PictureComponent },
+  { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   //  { path: 'pictures/:id', component: PictureDetailComponent },
   { path: '', component: IntroComponent },
   //  { path: '**', component: PageNotFoundComponent }

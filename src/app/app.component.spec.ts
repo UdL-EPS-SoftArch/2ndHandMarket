@@ -11,12 +11,14 @@ import { FooterComponent } from "./footer/footer.component";
 import { PostAdvertisementComponent } from "./advertisement/postAdvertisement.component";
 import { FormsModule } from "@angular/forms";
 import {SearchAdvertisementComponent} from "./search-advertisement/search-advertisement.component";
+import { appRoutingProviders, routing } from './app.routing';
+import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent, SearchAdvertisementComponent, PostAdvertisementComponent
+        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent, SearchAdvertisementComponent, PostAdvertisementComponent, GetAdvertisementComponent
       ],
       imports: [
         routing, FormsModule

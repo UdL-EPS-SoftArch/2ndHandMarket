@@ -11,7 +11,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
+import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { FooterComponent } from './footer/footer.component';
+import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 
@@ -29,10 +31,12 @@ import { ContactComponent } from './contact/contact.component';
     IntroComponent,
     AdvertisementComponent,
     PostAdvertisementComponent,
+    GetAdvertisementComponent,
     IntroComponent,
     FooterComponent,
     SearchAdvertisementComponent,
-    ContactComponent
+    ContactComponent,
+    DateFormatPipe
   ],
   providers: [
     appRoutingProviders,

@@ -17,7 +17,7 @@
         By <a href="#">{{advertisement.owner}}</a> on {{advertisement.createdAt | date}}
       </div>
       <div class="info-special">
-        <a href="#" class="buy">{{advertisement.price | currency:'USD':true}}</a>
+        <a [routerLink]="[advertisement.uri]" class="buy">{{advertisement.price | currency:'USD':true}}</a>
       </div>
     </div>
   </div>

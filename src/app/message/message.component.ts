@@ -29,6 +29,7 @@ export class MessageComponent implements OnInit {
 
       this.newMessage.title = "aa";
       this.newMessage.body = "bb";
+      this.newMessage.destination = "cc";
       this.messageService.addMessage(this.newMessage)
         .subscribe(
           message  => this.messages.push(message),
@@ -36,5 +37,11 @@ export class MessageComponent implements OnInit {
       this.newMessage = new Message();
   }
 
+  removeMessage(message) {
+    this.messageService.deleteMessageByUri(message.uri)
+      .subscribe(
+        deleted => this.messages = this.messages.filter(p => p.uri !== message.uri),
+        error =>  this.errorMessage = <any>error.message);
+  }
 
 }

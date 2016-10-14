@@ -7,9 +7,10 @@
       Write a new message
     </button>
 
-    <div [hidden]="DivSendMessage">
-      <p><input type="text" name="title" text="Title"></p>
-      <p><input type="text" name="body" text="Body"></p>
+    <div [hidden]="!DivSendMessage">
+      <p><input type="text" name="title"></p>
+      <p><input type="text" name="body"></p>
+      <p><input type="text" name="destination"></p>
       <p><button ng-click="">Send</button></p>
     </div>
 
@@ -28,9 +29,10 @@
   <ul class="list-group" *ngIf="messages.length > 0">
     <li class="list-group-item" *ngFor="let message of messages">
       <div class="message">
-        <img src="{{message.content}}" />
-        <h4>{{message.filename}}</h4>
-        <button class="alert-danger" (click)="removemessage(message)">Delete</button>
+        <h4>To: {{message.destination}}</h4>
+        <h4>Title: {{message.title}}</h4>
+        <h4>Message: {{message.body}}</h4>
+        <button class="alert-danger" (click)="removeMessage(message)">Delete</button>
       </div>
     </li>
   </ul>

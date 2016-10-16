@@ -1,5 +1,5 @@
 export class RegisterSeller {
-  id: number;
+  uri: string ='';
   name: string = '';
   mail: string = '';
   password: string = '';

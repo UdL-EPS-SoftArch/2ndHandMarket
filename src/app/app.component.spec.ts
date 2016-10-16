@@ -8,12 +8,13 @@ import {PictureComponent} from "./picture/picture.component";
 import {IntroComponent} from "./intro/intro.component";
 import {AdvertisementComponent} from "./advertisement/advertisement.component";
 import {FooterComponent} from "./footer/footer.component";
+import {RegisterSellerComponent} from "./register-seller/register-seller.component";
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent
+        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent, RegisterSellerComponent
       ],
       imports: [
         routing

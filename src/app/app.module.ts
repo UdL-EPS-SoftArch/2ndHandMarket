@@ -11,7 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { FooterComponent } from './footer/footer.component';
-import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
+import { RegisterSellerComponent } from './register-seller/register-seller.component';
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import { MyNewComponentComponent } from './my-new-component/my-new-component.com
     AdvertisementComponent,
     IntroComponent,
     FooterComponent,
-    MyNewComponentComponent
+    RegisterSellerComponent
   ],
   providers: [
     appRoutingProviders,

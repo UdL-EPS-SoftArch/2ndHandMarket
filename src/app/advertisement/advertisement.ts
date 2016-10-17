@@ -14,6 +14,15 @@ export class Advertisement {
   color: string = '';
   weight: number = 0.0;
 
+  // Tags as string "first, second, third".
+  get tagsStr(): string {
+    return this.tags.join(',');
+  }
+
+  set tagsStr(input) {
+    this.tags = input.split(',');
+  }
+
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);
   }

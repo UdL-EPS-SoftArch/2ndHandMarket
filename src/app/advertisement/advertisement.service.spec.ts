@@ -102,4 +102,23 @@ describe('Service: Advertisement', () => {
         });
       })));
   });
+
+  describe('#deleteAdvertisement(id)', () => {
+    it ('should delete the advertisement',
+      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
+        const apiResponse = new ResponseOptions({
+          status: 204
+        });
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+          connection.mockRespond(new Response(apiResponse));
+        });
+
+        const advertisementId = 1;
+        service.deleteAdvertisement(advertisementId).subscribe((data) => {
+          console.info('*');
+          console.info(data);
+        });
+      })));
+  });
 });

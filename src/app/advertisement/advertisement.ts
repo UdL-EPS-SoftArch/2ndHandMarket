@@ -20,7 +20,7 @@ export class Advertisement {
   }
 
   set tagsStr(input) {
-    this.tags = input.split(',');
+    this.tags = input.split(',').map((tag) => tag.trim());
   }
 
   constructor(values: Object = {}) {

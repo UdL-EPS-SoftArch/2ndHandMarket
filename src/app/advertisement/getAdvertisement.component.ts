@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-advertisement',
@@ -19,10 +19,16 @@ export class GetAdvertisementComponent implements OnInit {
               private advertisementService: AdvertisementService) {
   }
 
+  /**
+   * On Startup:
+   * - Save current advertisement id on the advertisement object.
+   * - Search for its remaining info (API).
+   */
   ngOnInit() {
     this.route.params
       .map(params => params['id'])
       .subscribe((id) => {
+        this.advertisement.id = id;
         this.getAdvertisement(id);
       });
   }
@@ -35,14 +41,7 @@ export class GetAdvertisementComponent implements OnInit {
   }
 
   deleteAdvertisement() {
-    this.route.params
-      .map(params => params['id'])
-      .subscribe((id => {
-        this.deleteAdvertisementById(id);
-      }))
-  }
-
-  deleteAdvertisementById(id: number) {
+    const id = this.advertisement.id;
     this.advertisementService.deleteAdvertisement(id).subscribe(
       advertisement => {
         this.advertisement = advertisement;

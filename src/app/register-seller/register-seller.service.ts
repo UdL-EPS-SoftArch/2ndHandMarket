@@ -36,6 +36,14 @@ export class RegisterSellerService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
+  // DELETE /sellers/:id
+  deleteSellerByUri(uri: string) {
+    let headers = new Headers({ 'Authorization': 'Basic ' + btoa(environment.user + ':' + environment.password) });
+    let options = new RequestOptions({ headers: headers });
 
+    return this.http.delete(`${environment.API}${uri}`, options)
+      .map((res: Response) => res.ok)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 
   }

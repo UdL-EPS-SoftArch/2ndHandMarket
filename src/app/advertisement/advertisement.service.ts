@@ -34,4 +34,15 @@ export class AdvertisementService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  // DELETE /advertisements
+  deleteAdvertisement(id): Observable<Advertisement> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(`${environment.API}/advertisements/${id}`, options)
+      .map((res: Response) => res)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 }

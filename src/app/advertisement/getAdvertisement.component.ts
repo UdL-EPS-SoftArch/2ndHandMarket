@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-advertisement',
@@ -15,6 +15,7 @@ export class GetAdvertisementComponent implements OnInit {
   advertisement: Advertisement = new Advertisement();
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private advertisementService: AdvertisementService) {
   }
 
@@ -31,5 +32,24 @@ export class GetAdvertisementComponent implements OnInit {
       advertisement => this.advertisement = advertisement,
       error => alert('Error: Failed to retrieve advertisement!')
     );
+  }
+
+  deleteAdvertisement() {
+    this.route.params
+      .map(params => params['id'])
+      .subscribe((id => {
+        this.deleteAdvertisementById(id);
+      }))
+  }
+
+  deleteAdvertisementById(id: number) {
+    this.advertisementService.deleteAdvertisement(id).subscribe(
+      advertisement => {
+        this.advertisement = advertisement;
+
+        // TODO Redirect to advertisements page.
+      },
+      error => alert('Error: Failed to delete advertisement!')
+    )
   }
 }

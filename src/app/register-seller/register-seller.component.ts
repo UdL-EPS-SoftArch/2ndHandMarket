@@ -39,4 +39,5 @@ export class RegisterSellerComponent implements OnInit {
     this.newSeller = new RegisterSeller();
   }
 
+
 }

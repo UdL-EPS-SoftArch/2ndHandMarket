@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, async, inject } from '@angular/core/testing';
+import {} from '@angular/core/testing';
 
 import {SellerOffer} from './seller-offer';
 

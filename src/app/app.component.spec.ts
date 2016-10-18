@@ -7,13 +7,14 @@ import {APP_BASE_HREF} from "@angular/common";
 import {PictureComponent} from "./picture/picture.component";
 import {IntroComponent} from "./intro/intro.component";
 import {AdvertisementComponent} from "./advertisement/advertisement.component";
+import {SellerOfferComponent} from "./selleroffer/seller-offer.component";
 import {FooterComponent} from "./footer/footer.component";
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent
+        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent, SellerOfferComponent
       ],
       imports: [
         routing

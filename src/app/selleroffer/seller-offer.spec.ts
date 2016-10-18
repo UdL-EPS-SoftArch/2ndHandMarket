@@ -15,10 +15,13 @@ describe('SellerOffer', () => {
     const price = 45;
     const now = new Date().getTime();
 
-    let advertisement = new Advertisement({
-      seller_offer_id: 1,
+    let seller_offer = new SellerOffer({
+      seller_offer_id: id,
       value: price,
       date: now,
     });
-  }
+    expect(seller_offer.seller_offer_id).toEqual(id);
+    expect(seller_offer.value).toEqual(price);
+    expect(seller_offer.date).toEqual(now);
+  });
 });

@@ -1,0 +1,22 @@
+<section class="selleroffer">
+  <header>
+    <h2>SellerOffers</h2>
+  </header>
+  <div *ngIf="!selleroffers">
+    No SellerOffer were found! <a href="#">Create one</a>
+  </div>
+  <div class="card" *ngFor="let selleroffer of SellerOffers">
+    <div class="picture"></div>
+    <div class="seller_offer_id">
+      <a href="#" class="no-decorate">
+        {{selleroffer.seller_offer_id}}
+      </a>
+    </div>
+    <div class="info">
+      By <a href="#">user</a> on date
+    </div>
+    <div class="info-special">
+      <a href="#" class="buy">{{advertisement.value | currency:'USD':true}}</a>
+    </div>
+  </div>
+</section>

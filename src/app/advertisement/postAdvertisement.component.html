@@ -1,6 +1,6 @@
 <section class="postAdvertisement">
   <header>
-    <h2>New Advertisement</h2>
+    <h2>{{advertisement.id ? advertisement.title : 'New Advertisement'}}</h2>
   </header>
   <form>
     <h3>General</h3>
@@ -76,7 +76,9 @@
       </div>
     </div>
     <div class="form-group">
-      <button class="highlightButton big" (click)="sendForm()">Publish</button>
+      <button class="highlightButton big" (click)="sendForm()">
+        {{advertisement.id ? 'Update' : 'Publish'}}
+      </button>
     </div>
   </form>
 </section>

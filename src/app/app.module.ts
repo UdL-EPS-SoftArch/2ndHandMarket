@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
+import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { ContactComponent } from './contact/contact.component';
     AdvertisementComponent,
     PostAdvertisementComponent,
     GetAdvertisementComponent,
+    PutAdvertisementComponent,
     IntroComponent,
     FooterComponent,
     SearchAdvertisementComponent,

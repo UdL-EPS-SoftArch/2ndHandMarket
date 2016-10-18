@@ -5,19 +5,19 @@ import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
 
 @Component({
-  selector: 'app-get-advertisement',
-  templateUrl: './getAdvertisement.component.html',
-  styleUrls: ['getAdvertisement.component.scss'],
+  selector: 'app-post-advertisement',
+  templateUrl: './postAdvertisement.component.html',
+  styleUrls: ['postAdvertisement.component.scss'],
   providers: [AdvertisementService]
 })
-export class GetAdvertisementComponent implements OnInit {
+export class PutAdvertisementComponent implements OnInit {
 
   advertisement: Advertisement = new Advertisement();
+  errorMessage: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private advertisementService: AdvertisementService) {
-  }
+              private advertisementService: AdvertisementService) { }
 
   /**
    * On Startup:
@@ -29,11 +29,11 @@ export class GetAdvertisementComponent implements OnInit {
       .map(params => params['id'])
       .subscribe((id) => {
         this.advertisement.id = id;
-        this.getAdvertisement();
-      });
+        this.retrieveAdvertisement();
+      })
   }
 
-  getAdvertisement() {
+  retrieveAdvertisement() {
     const id = this.advertisement.id;
     this.advertisementService.getAdvertisement(id).subscribe(
       advertisement => {
@@ -46,16 +46,17 @@ export class GetAdvertisementComponent implements OnInit {
     );
   }
 
-  deleteAdvertisement() {
-    const id = this.advertisement.id;
-    this.advertisementService.deleteAdvertisement(id).subscribe(
-      advertisement => {
-        this.advertisement = advertisement;
-
-        // TODO Redirect to advertisements page.
-        alert('Your advertisement has been deleted. You will now be redirected to the advertisements page');
-      },
-      error => alert('Error: Failed to delete advertisement!')
-    )
+  sendForm() {
+    this.advertisementService.putAdvertisement(this.advertisement).subscribe(
+        advertisement => {
+          // TODO now redirect to the advertisement
+          alert('Your advertisement has been updated. You will now be redirected to your advertisement...');
+        },
+        error => {
+          this.errorMessage = error.errors ? <any>error.errors[0].message : <any>error.message;
+          // TODO display error in each field
+          alert(this.errorMessage);
+        }
+    );
   }
 }

@@ -12,7 +12,7 @@ export class MessageService {
   // GET /privateMessages
   getAllMessages(): Observable<Message[]> {
     return this.http.get(`${environment.API}/privateMessages`)
-      .map((res: Response) => res.json().getAllMessages())//?????
+      .map((res: Response) => res.json()._embedded.messages)
       .catch((error: any) => Observable.throw(error.json()));
   }
 

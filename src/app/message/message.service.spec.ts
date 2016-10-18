@@ -1,4 +1,3 @@
-/* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { MessageService } from './message.service';
@@ -8,11 +7,12 @@ import {Message} from "./message";
 
 describe('Service: Message', () => {
 
+  /*
   const firstMessage = new Message({
     'title': 'TitleTest',
     'body': 'BodyTest',
     'destination' : 'DestinationTest',
-  });
+  });*/
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -32,7 +32,6 @@ describe('Service: Message', () => {
     });
   }));
 
-
   describe('#getAllMessages()', () => {
 
     it('should return all messages',
@@ -41,7 +40,7 @@ describe('Service: Message', () => {
           (connection: MockConnection) => {
             connection.mockRespond(new Response(
               new ResponseOptions({
-                body: { '_embedded': { 'messages':
+                body: { '_embedded': { 'privateMessages':
                   [ { title: 'TitleTest1' }, { title: 'TitleTest2' } ] } }
 
               })

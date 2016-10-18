@@ -8,4 +8,5 @@ export const environment = {
   API: 'http://localhost:8080',
   user: 'user',
   password: 'password'
+  //Reminder: Check Slack to fix Bad credentials error
 };

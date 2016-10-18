@@ -32,7 +32,7 @@ export class RegisterSellerService {
     headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(`${environment.API}/register-sellers`, body, options)
+    return this.http.post(`${environment.API}/registerSellers`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

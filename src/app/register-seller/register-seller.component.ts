@@ -27,11 +27,7 @@ export class RegisterSellerComponent implements OnInit {
       );
   }
 
-  addSeller(/*input*/) {
-
-    this.newSeller.name = "pepo";
-    this.newSeller.mail = "pepo@pepo.com";
-    this.newSeller.password="pepopepo";
+  addSeller() {
     this.registerSellerService.addSeller(this.newSeller)
       .subscribe(
         seller  => this.sellers.push(seller),

@@ -8,10 +8,10 @@
       </button>
 
       <div [hidden]="!DivSingUp">
-        <p>Name:<input type="text" name="name"></p>
-        <p>Mail:<input type="text" name="mail"></p>
-        <p>Password: <input type="text" name="password"></p>
-        <p><button ng-click="sendForm()">Done</button></p>
+        <p>Name:<input type="text" name="name" [(ngModel)]="newSeller.name"></p>
+        <p>Mail:<input type="text" name="mail" [(ngModel)]="newSeller.mail"></p>
+        <p>Password: <input type="text" name="password" [(ngModel)]="newSeller.password"></p>
+        <p><button (click)="addSeller()">Done</button></p>
       </div>
     </header>
 

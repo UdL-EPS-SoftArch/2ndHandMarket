@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
+import {OfferComponent} from "./offer/offer.component";
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { ContactComponent } from './contact/contact.component';
   declarations: [
     AppComponent,
     PictureComponent,
+    OfferComponent,
     NavbarComponent,
     IntroComponent,
     AdvertisementComponent,

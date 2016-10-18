@@ -8,6 +8,7 @@ import { PostAdvertisementComponent } from './advertisement/postAdvertisement.co
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
+import {OfferComponent} from "./offer/offer.component";
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -16,6 +17,8 @@ const appRoutes: Routes = [
   { path: 'pictures', component: PictureComponent },
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'offers', component: OfferComponent },
+  //  { path: 'pictures/:id', component: PictureDetailComponent },
   { path: '', component: IntroComponent },
   //  { path: '**', component: PageNotFoundComponent }
 ];

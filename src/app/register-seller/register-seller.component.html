@@ -6,12 +6,13 @@
       <button class="btn btn-outline-primary" (click)="DivSingUp = !DivSendMessage">
         Sing Up
       </button>
-
-      <div [hidden]="!DivSingUp">
-        <p>Name:<input type="text" name="name" [(ngModel)]="newSeller.name"></p>
-        <p>Mail:<input type="text" name="mail" [(ngModel)]="newSeller.mail"></p>
-        <p>Password: <input type="text" name="password" [(ngModel)]="newSeller.password"></p>
-        <p><button (click)="addSeller()">Done</button></p>
+        <div class="form-section">
+          <div [hidden]="!DivSingUp">
+            <p>Name:<input type="text" placeholder="Name" name="name" [(ngModel)]="newSeller.name"></p>
+            <p>Mail:<input type="text" placeholder="Mail" name="mail" [(ngModel)]="newSeller.mail"></p>
+            <p>Password: <input type="text" placeholder="Password" name="password" [(ngModel)]="newSeller.password"></p>
+            <p><button (click)="addSeller()">Done</button></p>
+        </div>
       </div>
     </header>
 

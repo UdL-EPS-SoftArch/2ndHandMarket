@@ -52,8 +52,8 @@ export class GetAdvertisementComponent implements OnInit {
       advertisement => {
         this.advertisement = advertisement;
 
-        // TODO Redirect to advertisements page.
-        alert('Your advertisement has been deleted. You will now be redirected to the advertisements page');
+        // Redirect to advertisements page.
+        this.router.navigate(['/advertisements']);
       },
       error => alert('Error: Failed to delete advertisement!')
     )

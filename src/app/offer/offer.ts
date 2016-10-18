@@ -1,5 +1,5 @@
 export class Offer {
-  uri: string = '';
+  id: number;
   filename: string = '';
   value: number = 0;
 

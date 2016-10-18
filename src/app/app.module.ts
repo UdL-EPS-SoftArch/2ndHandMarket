@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { FooterComponent } from './footer/footer.component';
+import {OfferComponent} from "./offer/offer.component";
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     AppComponent,
     PictureComponent,
+    OfferComponent,
     NavbarComponent,
     IntroComponent,
     AdvertisementComponent,

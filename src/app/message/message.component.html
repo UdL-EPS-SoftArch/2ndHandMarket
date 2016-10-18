@@ -8,10 +8,12 @@
     </button>
 
     <div [hidden]="!DivSendMessage">
-      <p><input type="text" name="title"></p>
-      <p><input type="text" name="body"></p>
-      <p><input type="text" name="destination"></p>
-      <p><button ng-click="">Send</button></p>
+      <p><input type="text" name="title"  [(ngModel)]="newMessage.title"></p>
+      <p><input type="text" name="body"  [(ngModel)]="newMessage.body"></p>
+      <p><input type="text" name="destination"  [(ngModel)]="newMessage.destination"></p>
+
+
+      <p><button (click)="addMessage()">Send</button></p>
     </div>
 
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>

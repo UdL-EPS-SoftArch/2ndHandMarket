@@ -16,7 +16,7 @@ export class MessageComponent implements OnInit {
 
   constructor(private messageService: MessageService) { }
 
-  ngOnInit() { this.getMessages(); this.addMessage() }
+  ngOnInit() { this.getMessages(); }
 
   getMessages() {
     return this.messageService.getAllMessages()
@@ -25,11 +25,7 @@ export class MessageComponent implements OnInit {
         error =>  this.errorMessage = <any>error.message);
   }
 
-  addMessage(/*input*/) {
-
-      this.newMessage.title = "aa";
-      this.newMessage.body = "bb";
-      this.newMessage.destination = "cc";
+  addMessage() {
       this.messageService.addMessage(this.newMessage)
         .subscribe(
           message  => this.messages.push(message),

@@ -18,10 +18,10 @@ export class OfferComponent implements OnInit {
   constructor(private offerService: OfferService) { }
 
   ngOnInit() {
-    this.getImages();
+    this.getOffers();
   }
 
-  getImages() {
+  getOffers() {
     return this.offerService.getAllOffers()
       .subscribe(
         offers => this.offers = offers,

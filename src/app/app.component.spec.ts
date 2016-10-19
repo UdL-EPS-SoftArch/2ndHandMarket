@@ -14,12 +14,13 @@ import { SearchAdvertisementComponent } from './search-advertisement/search-adve
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { DateFormatPipe } from 'angular2-moment/src/DateFormatPipe';
 import {ContactComponent} from './contact/contact.component';
+import {OfferComponent} from "./offer/offer.component";
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent, SearchAdvertisementComponent,
+        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent, SearchAdvertisementComponent, OfferComponent,
         PostAdvertisementComponent, GetAdvertisementComponent, ContactComponent, DateFormatPipe
       ],
       imports: [

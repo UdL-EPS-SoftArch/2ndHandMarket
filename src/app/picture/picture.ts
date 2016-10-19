@@ -4,6 +4,6 @@ export class Picture {
   content: string = '';
 
   constructor(values: Object = {}) {
-    Object.assign(this, values);
+    (<any>Object).assign(this, values);
   }
 }

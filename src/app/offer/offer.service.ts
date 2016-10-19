@@ -13,12 +13,15 @@ export class OfferService {
 
   constructor( private http: Http ) { }
 
-  addOffer(offer: Offer): OfferService {
-    if (!offer.id) {
-      offer.id =  ++this.lastId;
-    }
-    this.offers.push(offer);
-    return this;
+  addOffer(offer: Offer): Observable<Offer> {
+    let body = JSON.stringify(offer);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(`${environment.API}/offers`, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
   }
 
   deleteOfferById(id: number): OfferService {

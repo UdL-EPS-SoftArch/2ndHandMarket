@@ -4,6 +4,6 @@ export class Offer {
   value: number = 0;
 
   constructor(values: Object = {}) {
-    Object.assign(this, values);
+    (<any>Object).assign(this, values);
   }
 }

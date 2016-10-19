@@ -58,7 +58,6 @@ describe('Service: Picture', () => {
   });
 
   describe('#save(picture)', () => {
-
     it('should save a new picture',
       async(inject([MockBackend, PictureService], (mockBackend, service) => {
         mockBackend.connections.subscribe(

@@ -13,7 +13,7 @@ export class SellerOfferService {
   // GET /SellerOffers
   getAllSellerOffers(): Observable<SellerOffer[]> {
     return this.http.get(`${environment.API}/selleroffers`)
-      .map((res: Response) => res.json()._embedded.advertisements)
+      .map((res: Response) => res.json()._embedded.selleroffers)
       .catch((error: any) => Observable.throw(error.json()));
   }
 }

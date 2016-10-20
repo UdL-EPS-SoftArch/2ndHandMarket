@@ -60,7 +60,7 @@ describe('Service: SellerOffer', () => {
         });
 
         service.getAllSellerOffers().subscribe((data) => {
-          expect(data.selleroffers.length).toBe(2);
+          expect(data.length).toBe(2);
           expect(data[0].seller_offer_id).toEqual(firstSellerOffer.seller_offer_id);
           expect(data[1].seller_offer_id).toEqual(secondSellerOffer.seller_offer_id);
           expect(data[0].value).toEqual(firstSellerOffer.value);

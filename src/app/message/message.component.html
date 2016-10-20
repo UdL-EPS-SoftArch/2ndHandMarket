@@ -1,29 +1,31 @@
 <section class="message">
   <header class="header">
-    <h2>Messages</h2>
     <!-- new message -->
 
     <button (click)="DivSendMessage = !DivSendMessage">
       Write a new message
     </button>
 
-    <div [hidden]="!DivSendMessage">
-      <p><input type="text" name="title"  [(ngModel)]="newMessage.title"></p>
-      <p><input type="text" name="body"  [(ngModel)]="newMessage.body"></p>
-      <p><input type="text" name="destination"  [(ngModel)]="newMessage.destination"></p>
+       <div class="form-section" [hidden]="!DivSendMessage">
+        <h2>Messages</h2>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter Title"  [(ngModel)]="newMessage.title"/>
+          </div>
 
-      <!--
-      <div class="form-section">
-      <div class="form-group">
-        <label for="inputDescription" class="col-sm-2">Description</label>
-        <div class="col-sm-10">
-          <textarea id="inputDescription" class="form-control" name="description" placeholder="Description" [(ngModel)]="advertisement.description"></textarea>
-        </div>
+          <div class="form-group">
+            <label for="body">Body</label>
+            <textarea class="form-control" id="body" placeholder="Enter Message" [(ngModel)]="newMessage.body"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <input type="text" class="form-control" id="destination" placeholder="Enter Destination" [(ngModel)]="newMessage.destination"/>
+          </div>
+
+          <button (click)="addMessage()">Send</button>
       </div>
-      </div>-->
 
-      <p><button (click)="addMessage()">Send</button></p>
-    </div>
 
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>

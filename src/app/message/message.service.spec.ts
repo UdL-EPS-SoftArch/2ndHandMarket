@@ -5,6 +5,14 @@ import {MockBackend, MockConnection} from "@angular/http/testing";
 import {BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response} from '@angular/http';
 import {Message} from "./message";
 
+
+
+class ResponseError extends Error {
+  json() {
+    return '{ \'message\': \'Error\' }';
+  }
+}
+
 describe('Service: Message', () => {
 
   /*
@@ -35,7 +43,7 @@ describe('Service: Message', () => {
   describe('#getAllMessages()', () => {
 
     it('should return all messages',
-      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
+      async(inject([ MockBackend, MessageService ], (mockBackend, service) => {
         mockBackend.connections.subscribe(
           (connection: MockConnection) => {
             connection.mockRespond(new Response(
@@ -47,10 +55,6 @@ describe('Service: Message', () => {
             ));
             connection.mockError(new ResponseError());
           });
-
-        mockBackend.connections.subscribe((connection: MockConnection) => {
-          connection.mockRespond(new Response(apiResponse));
-        });
 
         service.getAllMessages().subscribe((data) => {
           expect(data.length).toBe(2);

@@ -25,7 +25,8 @@ export class MessageService {
 
   // POST /privateMessages
   addMessage(message: Message): Observable<Message> {
-    let body = JSON.stringify({ 'title': message.title, 'body': message.body, 'destination' : message.destination});
+    let body = JSON.stringify({'title': message.title, 'body': message.body, 'destination' : message.destination, 'sender': message.sender });
+
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
     let options = new RequestOptions({ headers: headers });

@@ -8,6 +8,17 @@
 
        <div class="form-section" [hidden]="!DivSendMessage">
         <h2>Messages</h2>
+
+         <div class="form-group">
+           <label for="sender">Sender</label>
+           <input type="text" class="form-control" id="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender"/>
+         </div>
+
+         <div class="form-group">
+           <label for="destination">Destination</label>
+           <input type="text" class="form-control" id="destination" placeholder="Enter Destination" [(ngModel)]="newMessage.destination"/>
+         </div>
+
           <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" placeholder="Enter Title"  [(ngModel)]="newMessage.title"/>
@@ -16,11 +27,6 @@
           <div class="form-group">
             <label for="body">Body</label>
             <textarea class="form-control" id="body" placeholder="Enter Message" [(ngModel)]="newMessage.body"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="destination">Destination</label>
-            <input type="text" class="form-control" id="destination" placeholder="Enter Destination" [(ngModel)]="newMessage.destination"/>
           </div>
 
           <button (click)="addMessage()">Send</button>
@@ -42,6 +48,8 @@
   <ul class="list-group" *ngIf="messages.length > 0">
     <li class="list-group-item" *ngFor="let message of messages">
       <div class="message">
+        <h4>Uri: {{message.uri}}</h4>
+        <h4>Sender: {{message.sender}}</h4>
         <h4>To: {{message.destination}}</h4>
         <h4>Title: {{message.title}}</h4>
         <h4>Message: {{message.body}}</h4>

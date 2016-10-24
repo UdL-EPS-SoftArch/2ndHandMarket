@@ -8,11 +8,21 @@ describe('Offer', () => {
     expect(new Offer()).toBeTruthy();
   });
   it('should accept values in the constructor', () => {
+    const id = 123;
+    const uri = "offer1"
+    const date = new Date().getTime();
+    const value = 50;
+
+
     let offer = new Offer({
-      filename: 'offer1',
-      value: 50
+      //id: id,
+      uri: uri,
+      date: date,
+      value: value,
     });
-    expect(offer.filename).toEqual('offer1');
-    expect(offer.value).toEqual(50);
+    //expect(offer.id).toEqual(id);
+    expect(offer.uri).toEqual(uri);
+    expect(offer.value).toEqual(value);
+    expect(offer.date).toEqual(date);
   });
 });

@@ -1,6 +1,7 @@
 export class Offer {
-  id: number;
-  filename: string = '';
+  //id: number;
+  uri: string = '';
+  date:Date;
   value: number = 0;
 
   constructor(values: Object = {}) {

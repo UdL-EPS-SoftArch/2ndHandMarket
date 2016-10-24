@@ -24,20 +24,23 @@ export class OfferService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  deleteOfferById(id: number): OfferService {
-    this.offers = this.offers
-      .filter(offer => offer.id !== id);
-    return this;
+  deleteOfferByUri(uri: string) {
+    let headers = new Headers({ 'Authorization': 'Basic ' + btoa(environment.user + ':' + environment.password) });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(`${environment.API}${uri}`, options)
+      .map((res: Response) => res.ok)
+      .catch((error: any) => Observable.throw(error.json()));
   }
 
-  updateOfferById(id: number, values: Object = {}): Offer {
+  /*updateOfferById(id: number, values: Object = {}): Offer {
     let offer = this.getOfferById(id);
     if (!offer) {
       return null;
     }
     Object.assign(offer, values);
     return offer;
-  }
+  }*/
 
   getAllOffers(): Observable<Offer[]> {
     return this.http.get(`${environment.API}/offers`)
@@ -45,10 +48,10 @@ export class OfferService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  getOfferById(id: number): Offer {
+  /*getOfferById(id: number): Offer {
     return this.offers
       .filter(offer => offer.id === id)
       .pop();
-  }
+  }*/
 
 }

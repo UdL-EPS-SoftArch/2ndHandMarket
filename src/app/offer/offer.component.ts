@@ -14,6 +14,7 @@ export class OfferComponent implements OnInit {
 
   offers: Offer[] = [];
   errorMessage: string;
+  newOffer: Offer = new Offer();
 
   constructor(private offerService: OfferService) { }
 
@@ -25,8 +26,22 @@ export class OfferComponent implements OnInit {
     return this.offerService.getAllOffers()
       .subscribe(
         offers => this.offers = offers,
-        error => this.errorMessage = <any>error.message
-      );
+        error => this.errorMessage = <any>error.message);
+  }
+
+  addOffer() {
+    this.offerService.addOffer(this.newOffer)
+      .subscribe(
+        offer => this.offers.push(offer),
+        error =>  this.errorMessage = <any>error.message);
+    this.newOffer = new Offer();
+  }
+
+  deleteOffer(offer) {
+    this.offerService.deleteOfferByUri(offer.uri)
+      .subscribe(
+        deleted => this.offers = this.offers.filter(offer => offer.uri !== offer.uri),
+        error =>  this.errorMessage = <any>error.message);
   }
 }
 

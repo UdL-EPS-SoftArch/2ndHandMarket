@@ -16,10 +16,13 @@ export class OfferComponent implements OnInit {
   errorMessage: string;
   newOffer: Offer = new Offer();
 
+
   constructor(private offerService: OfferService) { }
 
   ngOnInit() {
     this.getOffers();
+    //this.addOffer();
+
   }
 
   getOffers() {
@@ -30,7 +33,8 @@ export class OfferComponent implements OnInit {
   }
 
   addOffer() {
-    this.offerService.addOffer(this.newOffer)
+      //newoff: Offer = new Offer();
+      this.offerService.addOffer(this.newOffer)
       .subscribe(
         offer => this.offers.push(offer),
         error =>  this.errorMessage = <any>error.message);

@@ -34,4 +34,29 @@ export class AdvertisementService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  // PUT /advertisements
+  putAdvertisement(advertisement: Advertisement): Observable<Advertisement> {
+    if (!advertisement.id) throw new Error('Advertisement ID is required.');
+
+    let body = JSON.stringify(advertisement);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.put(`${environment.API}/advertisements/${advertisement.id}`, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  // DELETE /advertisements
+  deleteAdvertisement(id: number): Observable<Advertisement> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.delete(`${environment.API}/advertisements/${id}`, options)
+      .map((res: Response) => res.ok)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 }

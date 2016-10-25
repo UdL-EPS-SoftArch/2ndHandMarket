@@ -1,5 +1,6 @@
 export class Advertisement {
   id: number;
+  uri: number;
   title: string = '';
   description: string = '';
   owner: string = '';
@@ -13,6 +14,15 @@ export class Advertisement {
   brand: string = '';
   color: string = '';
   weight: number = 0.0;
+
+  // Tags as string "first, second, third".
+  get tagsStr(): string {
+    return this.tags.join(',');
+  }
+
+  set tagsStr(input) {
+    this.tags = input.split(',').map((tag) => tag.trim());
+  }
 
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);

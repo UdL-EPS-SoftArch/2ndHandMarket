@@ -5,7 +5,11 @@
       <img class="photo" src="https://images-na.ssl-images-amazon.com/images/I/71h1yrWYc7L._UY500_.jpg" />
     </div>
     <div class="product-basics col-md-6">
-      <h2 class="title">{{advertisement.title}}</h2>
+      <h2 class="title">
+        {{advertisement.title}}
+        <a class="h2Button" routerLink="/advertisements/{{advertisement.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <a class="h2Button deleteButton" (click)="deleteAdvertisement()"><i class="fa fa-trash" aria-hidden="true"></i></a>
+      </h2>
       <span class="category">{{advertisement.category}}</span>
       <div class="product-dates">
         <span>Created at: {{advertisement.createdAt | amDateFormat:'YYYY-MM-DD HH:mm'}}</span>
@@ -35,18 +39,17 @@
       {{advertisement.description}}
     </div>
     <div class="col-md-6">
-      <h3>Owner Info</h3>
-      Published by <a href="#">{{advertisement.owner}}</a>
-    </div>
-  </div>
-
-  <div class="product-details row">
-    <div class="col-md-12">
-      <h3>Product details</h3>
-      <span>Brand: {{advertisement.brand}}</span>
-      <span>Color: {{advertisement.color}}</span>
-      <span>Weight: {{advertisement.weight | number: '1.1-2'}}</span>
-      <span>Tags: {{advertisement.tags}}</span>
+      <div class="row">
+        <h3>Owner Info</h3>
+        Published by <a href="#">{{advertisement.owner}}</a>
+      </div>
+      <div class="product-details row">
+        <h3>Product details</h3>
+        <span>Brand: {{advertisement.brand}}</span>
+        <span>Color: {{advertisement.color}}</span>
+        <span>Weight: {{advertisement.weight | number: '1.1-2'}}</span>
+        <span>Tags: {{advertisement.tags}}</span>
+      </div>
     </div>
   </div>
 </section>

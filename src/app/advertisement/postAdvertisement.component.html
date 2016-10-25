@@ -1,6 +1,6 @@
 <section class="postAdvertisement">
   <header>
-    <h2>New Advertisement</h2>
+    <h2>{{advertisement.id ? advertisement.title : 'New Advertisement'}}</h2>
   </header>
   <form>
     <h3>General</h3>
@@ -20,7 +20,7 @@
       <div class="form-group">
         <label for="inputTags" class="col-sm-2">Tags</label>
         <div class="col-sm-10">
-          <input type="text" id="inputTags" class="form-control" name="tags" placeholder="furniture,wood" [(ngModel)]="advertisement.tags" />
+          <input type="text" id="inputTags" class="form-control" name="tags" placeholder="furniture,wood" [(ngModel)]="advertisement.tagsStr" />
         </div>
       </div>
     </div>
@@ -76,7 +76,9 @@
       </div>
     </div>
     <div class="form-group">
-      <button class="highlightButton big" (click)="sendForm()">Publish</button>
+      <button class="highlightButton big" (click)="sendForm()">
+        {{advertisement.id ? 'Update' : 'Publish'}}
+      </button>
     </div>
   </form>
 </section>

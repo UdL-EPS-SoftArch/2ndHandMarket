@@ -94,6 +94,22 @@ a.no-decorate {
   }
 }
 
+.h2Button {
+  @extend a.no-decorate;
+
+  border-radius: 2px;
+  background-color: #ced6dd;
+  font-size: 15px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  padding: 3px;
+
+  &:hover {
+    background-color: #dbe3ea;
+  }
+}
+
 a.buy {
   @extend .highlightButton;
 

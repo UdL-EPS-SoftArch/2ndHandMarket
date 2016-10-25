@@ -33,10 +33,9 @@ export class OfferComponent implements OnInit {
   }
 
   addOffer() {
-      //newoff: Offer = new Offer();
       this.offerService.addOffer(this.newOffer)
       .subscribe(
-        offer => this.offers.push(offer),
+        offer =>  this.offers.push(offer),
         error =>  this.errorMessage = <any>error.message);
     this.newOffer = new Offer();
   }
@@ -44,7 +43,7 @@ export class OfferComponent implements OnInit {
   deleteOffer(offer) {
     this.offerService.deleteOfferByUri(offer.uri)
       .subscribe(
-        deleted => this.offers = this.offers.filter(offer => offer.uri !== offer.uri),
+        deleted => this.offers = this.offers.filter(p => p.uri !== offer.uri),
         error =>  this.errorMessage = <any>error.message);
   }
 }

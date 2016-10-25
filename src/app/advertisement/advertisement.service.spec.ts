@@ -6,6 +6,7 @@ import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Resp
 
 import { AdvertisementService } from './advertisement.service';
 import { Advertisement } from './advertisement';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 class ResponseError extends Error {
   json() {
@@ -44,6 +45,7 @@ describe('Service: Advertisement', () => {
     TestBed.configureTestingModule({
       providers: [
         AdvertisementService,
+        AuthenticationBasicService,
         MockBackend,
         BaseRequestOptions,
         {

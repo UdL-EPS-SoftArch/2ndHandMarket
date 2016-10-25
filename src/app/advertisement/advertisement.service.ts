@@ -4,11 +4,13 @@ import { Observable } from 'rxjs';
 
 import { Advertisement } from './advertisement';
 import { environment } from '../../environments/environment';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 @Injectable()
 export class AdvertisementService {
 
-  constructor (private http: Http) {}
+  constructor (private http: Http,
+               private authentication: AuthenticationBasicService) { }
 
   // GET /advertisements
   getAllAdvertisements(): Observable<Advertisement[]> {
@@ -27,7 +29,7 @@ export class AdvertisementService {
   addAdvertisement(advertisement: Advertisement): Observable<Advertisement> {
     let body = JSON.stringify(advertisement);
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${environment.API}/advertisements`, body, options)

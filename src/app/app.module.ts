@@ -10,6 +10,8 @@ import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import { BuyerComponent } from './buyer/buyer.component';
     PictureComponent,
     NavbarComponent,
     IntroComponent,
-    BuyerComponent
+    BuyerComponent,
+    LoginComponent,
   ],
   providers: [
     appRoutingProviders,

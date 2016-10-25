@@ -6,12 +6,13 @@ import {appRoutingProviders, routing} from "./app.routing";
 import {APP_BASE_HREF} from "@angular/common";
 import {PictureComponent} from "./picture/picture.component";
 import {IntroComponent} from "./intro/intro.component";
+import {BuyerComponent} from "./buyer/buyer.component";
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, PictureComponent, IntroComponent
+        AppComponent, PictureComponent, IntroComponent, BuyerComponent
       ],
       imports: [
         routing

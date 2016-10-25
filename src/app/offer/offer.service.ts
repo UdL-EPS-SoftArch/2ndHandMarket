@@ -44,7 +44,7 @@ export class OfferService {
 
   getAllOffers(): Observable<Offer[]> {
     return this.http.get(`${environment.API}/offers`)
-      .map((res: Response) => res.json()._embedded.offer)
+      .map((res: Response) => res.json()._embedded.offers)
       .catch((error: any) => Observable.throw(error.json()));
   }
 

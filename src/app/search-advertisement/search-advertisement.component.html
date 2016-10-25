@@ -4,7 +4,7 @@
     <h2>Search Advertisements</h2>
   </header>
 
-  <form class="row-search" (submit)="searchAdvertisementByTitle()" >
+  <form class="row-search" (submit)="searchAdvertisementByTitle() || searchAdvertisementByTag()" >
     <div class="input-group">
       <button type="submit" class="glyphicon glyphicon-search" ></button>
       <input type="text" name="name" placeholder="Search Advertisement" [(ngModel)]="searchInput" />
@@ -18,6 +18,9 @@
         <a href="#" class="no-decorate">
           <b>Title:</b> {{advertisement.title}} <b>Description:</b> {{advertisement.description}}
         </a>
+      </div>
+      <div class="tags">
+        <b>Tags:</b> {{advertisement.tags}}
       </div>
       <div class="info">
         By <a href="#">{{advertisement.owner}}</a> on {{advertisement.createdAt | date}}

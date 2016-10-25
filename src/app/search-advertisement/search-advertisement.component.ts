@@ -20,6 +20,7 @@ export class SearchAdvertisementComponent implements OnInit {
 
   ngOnInit() {
     this.searchAdvertisementByTitle();
+    this.searchAdvertisementByTag();
   }
 
   searchAdvertisementByTitle() {
@@ -29,7 +30,7 @@ export class SearchAdvertisementComponent implements OnInit {
     );
   }
 
-  searchAdvertismentByTag() {
+  searchAdvertisementByTag() {
     this.searchAdvertisementService.searchAdvertisementByTag(this.searchInput).subscribe(
       advertisements => this.advertisements = advertisements,
       error => alert('Error: Failed to retrieve advertisement!')

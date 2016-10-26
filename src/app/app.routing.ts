@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'pictures', component: PictureComponent },
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'messages', component: MessageComponent },
+  { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: '', component: IntroComponent },
   //  { path: '**', component: PageNotFoundComponent }
 ];

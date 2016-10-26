@@ -1,5 +1,32 @@
 <section class="searchAdvertisement">
+
   <header>
     <h2>Search Advertisements</h2>
   </header>
+
+  <form class="row-search" (submit)="searchAdvertisementByTitle() || searchAdvertisementByTag() || searchAdvertisementByCategory()" >
+    <div class="input-group">
+      <button type="submit" class="glyphicon glyphicon-search" ></button>
+      <input type="text" name="name" placeholder="Search Advertisement" [(ngModel)]="searchInput" />
+    </div>
+  </form>
+
+  <div class = "advertisement-list" *ngFor="let advertisement of advertisements">
+    <div class="card">
+      <div class="picture"></div>
+      <div class="title&description">
+        <a href="#" class="no-decorate">
+          <b>Title:</b> {{advertisement.title}} <b>Description:</b> {{advertisement.description}}
+        </a>
+      </div>
+      <div class="tags&Category">
+        <b>Tags:</b> {{advertisement.tags}} <b>Category:</b> {{advertisement.category}}
+      </div>
+      <div class="info">
+        By <a href="#">{{advertisement.owner}}</a> on {{advertisement.createdAt | date}}
+      </div>
+    </div>
+  </div>
+
+
 </section>

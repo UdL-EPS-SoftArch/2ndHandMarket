@@ -23,6 +23,14 @@ export class MessageService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
+  /*// GET
+  getMessageByTitle(): Observable<Message> {
+    console.log("services: "+title);
+    return this.http.get(`${environment.API}/privateMessages`)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }*/
+
   // POST /privateMessages
   addMessage(message: Message): Observable<Message> {
     let body = JSON.stringify({'title': message.title, 'body': message.body, 'destination' : message.destination, 'sender': message.sender });

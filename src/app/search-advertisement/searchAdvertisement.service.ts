@@ -23,4 +23,10 @@ export class SearchAdvertisementService {
       .map((res: Response) => res.json()._embedded.advertisements)
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  searchAdvertisementByCategory(category: string):Observable<Advertisement[]> {
+    return this.http.get(`${environment.API}/advertisements/search/findByCategory?category=${category}`)
+      .map((res: Response) => res.json()._embedded.advertisements)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 }

@@ -36,4 +36,11 @@ export class SearchAdvertisementComponent implements OnInit {
       error => alert('Error: Failed to retrieve advertisement!')
     );
   }
+
+  searchAdvertisementByCategory() {
+    this.searchAdvertisementService.searchAdvertisementByCategory(this.searchInput).subscribe(
+      advertisements => this.advertisements = advertisements,
+      error => alert('Error: Failed to retrieve advertisement!')
+    );
+  }
 }

@@ -1,9 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, beforeEachProviders,
-  describe,
-  expect, it
-  } from '@angular/core/testing';
+import { } from '@angular/core/testing';
 import {RegisterSeller} from './register-seller';
 
 describe('RegisterSeller', () => {

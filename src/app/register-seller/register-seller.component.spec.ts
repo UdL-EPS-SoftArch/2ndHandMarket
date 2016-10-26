@@ -12,8 +12,8 @@ beforeEach(() => {
 });
 
 describe('Component: RegisterSeller', () => {
-  it('should create an instance', () => {
-    let component = new RegisterSellerComponent();
+  inject([RegisterSellerService], (sellerService) => {
+    let component = new RegisterSellerComponent(sellerService);
     expect(component).toBeTruthy();
   });
 });

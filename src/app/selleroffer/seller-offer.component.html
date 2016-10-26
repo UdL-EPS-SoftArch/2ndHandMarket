@@ -1,22 +1,24 @@
-<section class="selleroffer">
+
+<section class="offer">
   <header>
     <h2>SellerOffers</h2>
   </header>
-  <div *ngIf="!selleroffers">
-    No SellerOffer were found! <a href="#">Create one</a>
+
+  <h3>Make a SellerOffer</h3>
+
+  <div>
+    <input type="number" id="value" name="value" min="0" max="10000" step="0.01" value="1" [(ngModel)]="newSellerOffer.value"/>&nbsp;€
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="addSellerOffer()">Make a SellerOffer</button>
   </div>
-  <div class="card" *ngFor="let selleroffer of SellerOffers">
-    <div class="picture"></div>
-    <div class="seller_offer_id">
-      <a href="#" class="no-decorate">
-        {{selleroffer.seller_offer_id}}
-      </a>
-    </div>
-    <div class="info">
-      By <a href="#">user</a> on date
-    </div>
-    <div class="info-special">
-      <a href="#" class="buy">{{advertisement.value | currency:'USD':true}}</a>
-    </div>
-  </div>
+  <h3>SellerOffer list</h3>
+  <p *ngIf="selleroffers.length == 0">
+    <span class="selleroffer-count">No selleroffers yet!</span>
+  </p>
+  <ul class="list-group" *ngIf="selleroffers.length > 0">
+    <li class="list-group-item" *ngFor="let selleroffer of selleroffers">
+      Offer {{selleroffer.uri}}, value: {{selleroffer.value}}€
+      <button (click)="deleteSellerOffer(selleroffer)">Delete selleroffer</button>
+    </li>
+  </ul>
 </section>

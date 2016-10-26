@@ -6,6 +6,7 @@ import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Resp
 
 import { AdvertisementService } from './advertisement.service';
 import { Advertisement } from './advertisement';
+import {Picture} from "../picture/picture";
 
 class ResponseError extends Error {
   json() {
@@ -15,29 +16,49 @@ class ResponseError extends Error {
 
 describe('Service: Advertisement', () => {
   const firstAdvertisement = new Advertisement({
-    'title': 'first',
-    'description': '',
-    'price': 1.0,
-    'negotiablePrice': false,
-    'paidShipping': false,
-    'tags': [],
-    'category': '',
-    'brand': '',
-    'color': '',
-    'weight': 0.0,
+    title: 'first',
+    description: '',
+    price: 1.0,
+    negotiablePrice: false,
+    paidShipping: false,
+    tags: [],
+    category: '',
+    brand: '',
+    color: '',
+    weight: 0.0,
   });
 
   const secondAdvertisement = new Advertisement({
-    'title': 'second',
-    'description': '',
-    'price': 2.0,
-    'negotiablePrice': false,
-    'paidShipping': false,
-    'tags': [],
-    'category': '',
-    'brand': '',
-    'color': '',
-    'weight': 0.0,
+    title: 'second',
+    description: '',
+    price: 2.0,
+    negotiablePrice: false,
+    paidShipping: false,
+    tags: [],
+    category: '',
+    brand: '',
+    color: '',
+    weight: 0.0,
+  });
+
+  const firstPicture = new Picture({
+    uri: '/pictures/1',
+    filename: 'picture1.jpg',
+    content: 'data:image/jpeg;base64,',
+
+    // WARNING! Depicts is not a response field, it is only used when submitting
+    // data. API returns depicts inside _links: { depicts: { href: {} } }
+    depicts: '/advertisements/1',
+  });
+
+  const secondPicture = new Picture({
+    uri: '/pictures/2',
+    filename: 'picture2.jpg',
+    content: 'data:image/jpeg;base64,',
+
+    // WARNING! Depicts is not a response field, it is only used when submitting
+    // data. API returns depicts inside _links: { depicts: { href: {} } }
+    depicts: '/advertisements/2',
   });
 
   beforeEach(async(() => {
@@ -82,6 +103,52 @@ describe('Service: Advertisement', () => {
           expect(data[1].title).toEqual(secondAdvertisement.title);
           expect(data[0].description).toEqual(firstAdvertisement.description);
           expect(data[1].description).toEqual(secondAdvertisement.description);
+        });
+      })));
+  });
+
+  describe('#getAdvertisement(id)', () => {
+    it('should return an advertisement',
+      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
+        const apiResponse = new ResponseOptions({
+          body: firstAdvertisement
+        });
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+          connection.mockRespond(new Response(apiResponse));
+        });
+
+        service.getAdvertisement(1).subscribe((data) => {
+          expect(data.title).toEqual(firstAdvertisement.title);
+          expect(data.description).toEqual(firstAdvertisement.description);
+        });
+      })));
+  });
+
+  describe('#getAdvertisementPictures(uri)', () => {
+    it('should return an advertisement pictures',
+      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
+        const apiResponse = new ResponseOptions({
+          body: {
+            '_embedded': {
+              'pictures': [
+                firstPicture,
+                secondPicture
+              ]
+            }
+          }
+        });
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+          connection.mockRespond(new Response(apiResponse));
+        });
+
+        service.getAdvertisementPictures('/advertisement/1').subscribe((data) => {
+          expect(data.length).toBe(2);
+          expect(data[0].uri).toEqual(firstPicture.uri);
+          expect(data[1].uri).toEqual(secondPicture.uri);
+          expect(data[0].filename).toEqual(firstPicture.filename);
+          expect(data[1].filename).toEqual(secondPicture.filename);
         });
       })));
   });

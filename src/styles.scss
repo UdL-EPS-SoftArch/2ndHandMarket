@@ -8,7 +8,7 @@ $highlightActiveColor: #1fb3c6;
 $pageComponentsMargin: 20px;
 
 @mixin perfectBackground {
-  background: no-repeat center center fixed;
+  background: no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -62,9 +62,12 @@ a.no-decorate {
   font-weight: bold;
   width: 100%;
 
+  &:link, &:hover, &:active {
+    color: #fff;
+  }
+
   &:hover {
     background-color: $highlightActiveColor;
-    color: #fff;
   }
 }
 

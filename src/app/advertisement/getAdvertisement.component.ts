@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
+import { Picture } from '../picture/picture';
 
 @Component({
   selector: 'app-get-advertisement',
@@ -13,6 +14,7 @@ import { AdvertisementService } from './advertisement.service';
 export class GetAdvertisementComponent implements OnInit {
 
   advertisement: Advertisement = new Advertisement();
+  picture: Picture = new Picture();
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -41,9 +43,20 @@ export class GetAdvertisementComponent implements OnInit {
 
         // The API does not provide us the id directly, so we'll store the one we have from the URL.
         this.advertisement.id = id;
+
+        // The advertisement picture is stored somewhere (let's query the API for it now that we have the advertisement).
+        this.getAdvertisementPicture();
       },
       error => alert('Error: Failed to retrieve advertisement!')
     );
+  }
+
+  getAdvertisementPicture() {
+    this.advertisementService.getAdvertisementPictures(this.advertisement.uri)
+      .subscribe(
+        pictures => this.picture = pictures[0],
+        error => alert(error.errorMessage)
+      );
   }
 
   deleteAdvertisement() {

@@ -47,7 +47,11 @@ export class PictureService {
 
   // PUT /pictures/:id
   updatePictureById(uri: string, picture: Picture): Observable<Picture> {
-    let body = JSON.stringify({ 'filename': picture.filename, 'content': picture.content });
+    let body = JSON.stringify({
+      filename: picture.filename,
+      content: picture.content,
+      depicts: picture.depicts
+    });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
     let options = new RequestOptions({ headers: headers });

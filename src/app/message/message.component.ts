@@ -1,22 +1,28 @@
 import {Component, OnInit } from '@angular/core';
-import {Message} from "./message";
-import {MessageService} from "./message.service";
+import {Message} from './message';
+import {MessageService} from './message.service';
+import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css'],
-  providers: [MessageService]
+  providers: [MessageService, AuthenticationBasicService]
 })
 export class MessageComponent implements OnInit {
 
   messages: Message[] = [];
   errorMessage: string;
-  newMessage: Message = new Message();
+  newMessage: Message;
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+              private authentication: AuthenticationBasicService) { }
 
-  ngOnInit() { this.getMessages(); }
+  ngOnInit() {
+    this.getMessages();
+    this.newMessage = new Message();
+    this.newMessage.sender = this.authentication.getCurrentUser().username;
+  }
 
   getMessages() {
     return this.messageService.getAllMessages()
@@ -26,11 +32,12 @@ export class MessageComponent implements OnInit {
   }
 
   addMessage() {
-      this.messageService.addMessage(this.newMessage)
-        .subscribe(
-          message  => this.messages.push(message),
-          error =>  this.errorMessage = <any>error.message);
-      this.newMessage = new Message();
+    this.messageService.addMessage(this.newMessage)
+      .subscribe(
+        message  => this.messages.push(message),
+        error =>  this.errorMessage = <any>error.message);
+    this.newMessage = new Message();
+    this.newMessage.sender = this.authentication.getCurrentUser().username;
   }
 
   removeMessage(message) {

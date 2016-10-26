@@ -16,6 +16,13 @@
     <li class="list-group-item" *ngFor="let offer of offers">
       Offer {{offer.uri}}, value: {{offer.value}}€
       <button (click)="deleteOffer(offer)">Delete offer</button>
+
+      <button (click)="DivMakeCounterOffer=!DivMakeCounterOffer">Make a counter offer</button>
+
+      <div class="form-section" [hidden]="!DivMakeCounterOffer">
+        <input type="number" id="countervalue" name="countervalue" min="0" max={{offer.value}} step="0.01" value={{offer.value}}/>&nbsp;€
+        <button (click)="updateOffer()">Confirm</button>
+      </div>
     </li>
   </ul>
 </section>

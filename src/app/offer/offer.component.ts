@@ -15,6 +15,7 @@ export class OfferComponent implements OnInit {
   offers: Offer[] = [];
   errorMessage: string;
   newOffer: Offer = new Offer();
+  modifiedOffer: Offer = new Offer();
 
 
   constructor(private offerService: OfferService) { }
@@ -46,5 +47,15 @@ export class OfferComponent implements OnInit {
         deleted => this.offers = this.offers.filter(p => p.uri !== offer.uri),
         error =>  this.errorMessage = <any>error.message);
   }
+
+  updateOffer(offer, value)
+  {
+    offer.value = value;
+    this.offerService.updateOfferById(offer.uri, this.modifiedOffer)
+      .subscribe(
+        update => this.offers = this.offers.filter(p => p.uri !== offer.uri),
+        error => this.errorMessage = <any>error.message);
+  }
 }
+
 

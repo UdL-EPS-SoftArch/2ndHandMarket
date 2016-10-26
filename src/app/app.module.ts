@@ -9,6 +9,7 @@ import { PictureComponent } from './picture/picture.component';
 import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
+import { MessageComponent } from './message/message.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
@@ -17,6 +18,7 @@ import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   imports: [
@@ -29,6 +31,8 @@ import { PutAdvertisementComponent } from './advertisement/putAdvertisement.comp
     AppComponent,
     PictureComponent,
     NavbarComponent,
+    IntroComponent,
+    MessageComponent,
     IntroComponent,
     AdvertisementComponent,
     PostAdvertisementComponent,

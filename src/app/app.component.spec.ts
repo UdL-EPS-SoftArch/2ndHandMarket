@@ -13,8 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { MomentModule } from 'angular2-moment';
-import {ContactComponent} from './contact/contact.component';
-import {PutAdvertisementComponent} from './advertisement/putAdvertisement.component';
+import { ContactComponent } from './contact/contact.component';
+import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
+import { MessageComponent } from './message/message.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -22,7 +23,7 @@ describe('App: Softarch1617Client', () => {
       declarations: [
         AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent
+        ContactComponent, MessageComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

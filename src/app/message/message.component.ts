@@ -34,7 +34,14 @@ export class MessageComponent implements OnInit {
   getMessageByUri(uri) {
     return this.messageService.getMessageByUri(uri)
       .subscribe(
-        message => this.messages = [message],
+        message => this.messagesUri = [message],
+        error =>  this.errorMessage = <any>error.message);
+  }
+
+  getMessageByTitle (title) {
+    return this.messageService.getAllMessages()
+      .subscribe(
+        message => this.messagesTitle = this.messages.filter(p => p.title == title),
         error =>  this.errorMessage = <any>error.message);
   }
 

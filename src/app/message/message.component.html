@@ -47,8 +47,8 @@
 
     <button (click)="getMessageByUri(newMessage.uri)">Search</button>
 
-    <ul class="list-group" *ngIf="messages.length > 0">
-      <li class="list-group-item" *ngFor="let message of messages">
+    <ul class="list-group" *ngIf="messagesUri.length > 0">
+      <li class="list-group-item" *ngFor="let message of messagesUri">
         <div class="message">
           <h4>Uri: {{message.uri}}</h4>
           <h4>Sender: {{message.sender}}</h4>
@@ -58,7 +58,29 @@
         </div>
       </li>
     </ul>
+  </div>
 
+  <div class="form-section">
+    <h2>Get message by Title</h2>
+
+    <div class="form-group">
+      <label for="sender">Find by Title</label>
+      <input type="text" class="form-control" id="byTitle" [(ngModel)]="newMessage.title"/>
+    </div>
+
+    <button (click)="getMessageByTitle(newMessage.title)">Search</button>
+
+    <ul class="list-group" *ngIf="messagesTitle.length > 0">
+      <li class="list-group-item" *ngFor="let message of messagesTitle">
+        <div class="message">
+          <h4>Uri: {{message.uri}}</h4>
+          <h4>Sender: {{message.sender}}</h4>
+          <h4>To: {{message.destination}}</h4>
+          <h4>Title: {{message.title}}</h4>
+          <h4>Message: {{message.body}}</h4>
+        </div>
+      </li>
+    </ul>
   </div>
 
 

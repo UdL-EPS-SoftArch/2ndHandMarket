@@ -12,18 +12,21 @@ import { PostAdvertisementComponent } from './advertisement/postAdvertisement.co
 import { FormsModule } from '@angular/forms';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
-import { DateFormatPipe } from 'angular2-moment/src/DateFormatPipe';
-import {ContactComponent} from './contact/contact.component';
+import { MomentModule } from 'angular2-moment';
+import { ContactComponent } from './contact/contact.component';
+import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
+import { MessageComponent } from './message/message.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent, SearchAdvertisementComponent,
-        PostAdvertisementComponent, GetAdvertisementComponent, ContactComponent, DateFormatPipe
+        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent,
+        PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
+        ContactComponent, MessageComponent
       ],
       imports: [
-        routing, FormsModule
+        routing, FormsModule, MomentModule
       ],
       providers: [
         appRoutingProviders,

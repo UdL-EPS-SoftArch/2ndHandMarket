@@ -50,5 +50,11 @@ describe('Advertisement', () => {
     expect(advertisement.brand).toEqual(brand);
     expect(advertisement.color).toEqual(color);
     expect(advertisement.weight).toEqual(weight);
+
+    // Text-based tags.
+    const newTags = ['rey', 'jedi'];
+    advertisement.tagsStr = " rey    ,     jedi ";
+    expect(advertisement.tags).toEqual(newTags);
+    expect(advertisement.tagsStr).toEqual("rey,jedi");
   });
 });

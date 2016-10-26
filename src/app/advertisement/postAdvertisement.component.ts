@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
@@ -14,15 +15,15 @@ export class PostAdvertisementComponent implements OnInit {
   advertisement: Advertisement = new Advertisement();
   errorMessage: string;
 
-  constructor(private advertisementService: AdvertisementService) { }
+  constructor(private router: Router, private advertisementService: AdvertisementService) { }
 
   ngOnInit() { }
 
   sendForm() {
     this.advertisementService.addAdvertisement(this.advertisement).subscribe(
         advertisement => {
-          // TODO now redirect to the advertisement
-          alert('Your advertisement has been recorded. You will now be redirected to your advertisement...');
+          // Redirect to the advertisement
+          this.router.navigate([advertisement.uri]);
         },
         error => {
           this.errorMessage = error.errors ? <any>error.errors[0].message : <any>error.message;

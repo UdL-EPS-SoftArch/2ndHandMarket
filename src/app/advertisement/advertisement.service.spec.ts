@@ -14,7 +14,7 @@ class ResponseError extends Error {
 }
 
 describe('Service: Advertisement', () => {
-  const firstAdvertisement = {
+  const firstAdvertisement = new Advertisement({
     'title': 'first',
     'description': '',
     'price': 1.0,
@@ -25,9 +25,9 @@ describe('Service: Advertisement', () => {
     'brand': '',
     'color': '',
     'weight': 0.0,
-  };
+  });
 
-  const secondAdvertisement = {
+  const secondAdvertisement = new Advertisement({
     'title': 'second',
     'description': '',
     'price': 2.0,
@@ -38,7 +38,7 @@ describe('Service: Advertisement', () => {
     'brand': '',
     'color': '',
     'weight': 0.0,
-  };
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -64,7 +64,10 @@ describe('Service: Advertisement', () => {
         const apiResponse = new ResponseOptions({
           body: {
             '_embedded': {
-              'advertisements': [ firstAdvertisement, secondAdvertisement ]
+              'advertisements': [
+                firstAdvertisement,
+                secondAdvertisement
+              ]
             }
           }
         });
@@ -88,17 +91,61 @@ describe('Service: Advertisement', () => {
       async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const apiResponse = new ResponseOptions({
           status: 201,
-          body: firstAdvertisement
+          body: JSON.stringify(firstAdvertisement)
         });
 
         mockBackend.connections.subscribe((connection: MockConnection) => {
           connection.mockRespond(new Response(apiResponse));
         });
 
-        service.addAdvertisement().subscribe((data) => {
+        service.addAdvertisement(firstAdvertisement).subscribe((data) => {
           expect(data.title).toEqual(firstAdvertisement.title);
           expect(data.description).toEqual(firstAdvertisement.description);
           expect(data.price).toEqual(firstAdvertisement.price);
+        });
+      })));
+  });
+
+  describe('#updateAdvertisement(advertisement)', () => {
+    it ('should update the advertisement',
+      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
+        const notUpdatedAdvertisement = new Advertisement({
+          id: 1,
+          title: 'something',
+          price: 2
+        });
+        const apiResponse = new ResponseOptions({
+          status: 201,
+          body: secondAdvertisement
+        });
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+          connection.mockRespond(new Response(apiResponse));
+        });
+
+        service.putAdvertisement(notUpdatedAdvertisement).subscribe((data) => {
+          expect(data.title).toEqual(secondAdvertisement.title);
+          expect(data.description).toEqual(secondAdvertisement.description);
+          expect(data.price).toEqual(secondAdvertisement.price);
+        });
+      })));
+  });
+
+  describe('#deleteAdvertisement(id)', () => {
+    it ('should delete the advertisement',
+      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
+        const apiResponse = new ResponseOptions({
+          status: 204
+        });
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+          connection.mockRespond(new Response(apiResponse));
+        });
+
+        const advertisementId = 1;
+        service.deleteAdvertisement(advertisementId).subscribe((data) => {
+          console.info('*');
+          console.info(data);
         });
       })));
   });

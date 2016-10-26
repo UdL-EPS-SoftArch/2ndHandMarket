@@ -3,7 +3,7 @@
     <h2>Advertisements</h2>
   </header>
   <div *ngIf="advertisements.length === 0">
-    No advertisements were found! <a href="#">Create one</a>
+    No advertisements were found! <a routerLink="/advertisements/new">Create one</a>
   </div>
   <div class="card-container" *ngFor="let advertisement of advertisements">
     <div class="card">

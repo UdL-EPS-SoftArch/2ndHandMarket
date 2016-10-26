@@ -43,7 +43,7 @@ export class AdvertisementService {
 
     let body = JSON.stringify(advertisement);
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.put(`${environment.API}/advertisements/${advertisement.id}`, body, options)
@@ -54,7 +54,7 @@ export class AdvertisementService {
   // DELETE /advertisements
   deleteAdvertisement(id: number): Observable<Advertisement> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}/advertisements/${id}`, options)

@@ -35,8 +35,34 @@
 
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>
-  <h3>Message board</h3>
 
+
+  <div class="form-section">
+    <h2>Get message by URI</h2>
+
+    <div class="form-group">
+      <label for="sender">Find by URI</label>
+      <input type="text" class="form-control" id="byUri" [(ngModel)]="newMessage.uri"/>
+    </div>
+
+    <button (click)="getMessageByUri(newMessage.uri)">Search</button>
+
+    <ul class="list-group" *ngIf="messages.length > 0">
+      <li class="list-group-item" *ngFor="let message of messages">
+        <div class="message">
+          <h4>Uri: {{message.uri}}</h4>
+          <h4>Sender: {{message.sender}}</h4>
+          <h4>To: {{message.destination}}</h4>
+          <h4>Title: {{message.title}}</h4>
+          <h4>Message: {{message.body}}</h4>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+
+
+  <h3>Message board</h3>
   <p *ngIf="messages.length > 0">
     <span class="message-count"><strong>{{messages.length}}</strong> {{messages.length == 1 ? 'message' : 'messages'}}</span>
   </p>

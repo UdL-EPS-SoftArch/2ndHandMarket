@@ -49,8 +49,8 @@ export class PutAdvertisementComponent implements OnInit {
   sendForm() {
     this.advertisementService.putAdvertisement(this.advertisement).subscribe(
         advertisement => {
-          // TODO now redirect to the advertisement
-          alert('Your advertisement has been updated. You will now be redirected to your advertisement...');
+          // Redirect to the advertisement
+          this.router.navigate([advertisement.uri]);
         },
         error => {
           this.errorMessage = error.errors ? <any>error.errors[0].message : <any>error.message;

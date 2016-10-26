@@ -1,5 +1,6 @@
 export class Advertisement {
   id: number;
+  uri: number;
   title: string = '';
   description: string = '';
   owner: string = '';

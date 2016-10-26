@@ -42,8 +42,7 @@ import { MessageComponent } from './message/message.component';
     FooterComponent,
     SearchAdvertisementComponent,
     ContactComponent,
-    DateFormatPipe,
-    MessageComponent
+    DateFormatPipe
   ],
   providers: [
     appRoutingProviders,

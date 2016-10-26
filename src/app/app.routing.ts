@@ -10,16 +10,17 @@ import { PutAdvertisementComponent } from './advertisement/putAdvertisement.comp
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
+import { LoggedInGuard } from './login-basic/loggedin.guard';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
-  { path: 'advertisements/new', component: PostAdvertisementComponent },
+  { path: 'advertisements/new', component: PostAdvertisementComponent, canActivate: [LoggedInGuard] },
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
   { path: 'advertisements/:id/edit', component: PutAdvertisementComponent },
   { path: 'pictures', component: PictureComponent },
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'messages', component: MessageComponent },
+  { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: '', component: IntroComponent },
   //  { path: '**', component: PageNotFoundComponent }
 ];

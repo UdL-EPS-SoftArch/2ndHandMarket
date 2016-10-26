@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions, Response} from '@angular/http';
-import {Message} from "./message";
+import {Message} from './message';
 import {Observable} from "rxjs";
 import {environment} from '../../environments/environment';
+import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
 
 @Injectable()
 export class MessageService {
 
-  constructor (private http: Http) {}
+  constructor (private http: Http,
+               private authentication: AuthenticationBasicService) { }
 
   // GET /privateMessages
   getAllMessages(): Observable<Message[]> {
@@ -28,7 +30,7 @@ export class MessageService {
     let body = JSON.stringify({'title': message.title, 'body': message.body, 'destination' : message.destination, 'sender': message.sender });
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${environment.API}/privateMessages`, body, options)
@@ -38,7 +40,7 @@ export class MessageService {
 
   // DELETE /privateMessages/:id
   deleteMessageByUri(uri: string) {
-    let headers = new Headers({ 'Authorization': 'Basic ' + btoa(environment.user + ':' + environment.password) });
+    let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}${uri}`, options)

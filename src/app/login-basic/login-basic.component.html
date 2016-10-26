@@ -1,0 +1,35 @@
+<a *ngIf="!isLoggedIn()" (click)="showLoginModal()">Login</a>
+
+<span *ngIf="isLoggedIn()">
+  <b>{{ getCurrentUserName() }}</b>
+  <a href (click)="logout()">(Log out)</a>
+</span>
+
+
+<div bsModal #loginModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="Login Form" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="hideLoginModal(username, password)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Please, sign in...</h4>
+      </div>
+      <div class="modal-body">
+
+        <alert *ngIf="errorMessage" type="danger">{{ errorMessage }}</alert>
+
+        <form class="form-signin">
+          <label for="username" class="sr-only">User</label>
+          <input type="text" id="username" class="form-control" placeholder="User Name" required autofocus #username>
+          <label for="password" class="sr-only">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="Password" required #password>
+          <p></p>
+          <button class="btn btn-lg btn-primary btn-block" type="button"
+                  (click)="login(username, password)">Sign in</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

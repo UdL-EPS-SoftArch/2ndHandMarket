@@ -3,11 +3,13 @@ import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {Picture} from './picture';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
+import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
 
 @Injectable()
 export class PictureService {
 
-  constructor (private http: Http) {}
+  constructor (private http: Http,
+               private authentication: AuthenticationBasicService) { }
 
   // GET /pictures
   getAllPictures(): Observable<Picture[]> {
@@ -27,7 +29,7 @@ export class PictureService {
   addPicture(picture: Picture): Observable<Picture> {
     let body = JSON.stringify({ 'filename': picture.filename, 'content': picture.content });
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${environment.API}/pictures`, body, options)
@@ -37,7 +39,7 @@ export class PictureService {
 
   // DELETE /pictures/:id
   deletePictureByUri(uri: string) {
-    let headers = new Headers({ 'Authorization': 'Basic ' + btoa(environment.user + ':' + environment.password) });
+    let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}${uri}`, options)
@@ -53,7 +55,7 @@ export class PictureService {
       depicts: picture.depicts
     });
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.put(`${environment.API}${uri}`, body, options)

@@ -1,11 +1,22 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
+
 import { SearchAdvertisementComponent } from './search-advertisement.component';
+import {SearchAdvertisementService} from "./searchAdvertisement.service";
 
 describe('Component: SearchAdvertisement', () => {
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [ SearchAdvertisementService]
+    });
+  });
+
   it('should create an instance', () => {
-    let component = new SearchAdvertisementComponent();
-    expect(component).toBeTruthy();
+    inject([SearchAdvertisementService], (searchAdvertisementService) => {
+      let component = new SearchAdvertisementComponent(searchAdvertisementService);
+      expect(component).toBeTruthy();
+    })
   });
 });

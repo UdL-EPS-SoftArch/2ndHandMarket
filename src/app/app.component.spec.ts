@@ -9,8 +9,6 @@ import {IntroComponent} from "./intro/intro.component";
 import {AdvertisementComponent} from "./advertisement/advertisement.component";
 import {FooterComponent} from "./footer/footer.component";
 import {RegisterSellerComponent} from "./register-seller/register-seller.component";
-import { appRoutingProviders, routing } from './app.routing';
-import { APP_BASE_HREF } from '@angular/common';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { FormsModule } from '@angular/forms';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';

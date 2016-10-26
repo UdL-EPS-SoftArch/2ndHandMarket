@@ -14,7 +14,6 @@ import { PostAdvertisementComponent } from './advertisement/postAdvertisement.co
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
-import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
 import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
@@ -38,8 +37,7 @@ import { PutAdvertisementComponent } from './advertisement/putAdvertisement.comp
     PutAdvertisementComponent,
     IntroComponent,
     FooterComponent,
-    RegisterSellerComponent
-    MyNewComponentComponent
+    RegisterSellerComponent,
     FooterComponent,
     SearchAdvertisementComponent,
     ContactComponent,

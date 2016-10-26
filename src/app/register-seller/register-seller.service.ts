@@ -3,7 +3,6 @@ import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {RegisterSeller} from './register-seller';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {Register} from "ts-node/dist";
 
 @Injectable()
 export class RegisterSellerService {

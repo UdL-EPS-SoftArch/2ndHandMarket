@@ -18,7 +18,7 @@ export class MessageService {
 
   // GET /privateMessages/:id
   getMessageByUri(uri: string): Observable<Message> {
-    return this.http.get(`${environment.API}${uri}`)
+    return this.http.get(`${environment.API}${"/privateMessages/"+uri}`)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

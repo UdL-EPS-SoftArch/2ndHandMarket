@@ -25,6 +25,13 @@ export class MessageComponent implements OnInit {
         error =>  this.errorMessage = <any>error.message);
   }
 
+  getMessageByUri(uri) {
+    return this.messageService.getMessageByUri(uri)
+      .subscribe(
+        message => this.messages = [message],
+        error =>  this.errorMessage = <any>error.message);
+  }
+
   addMessage() {
       this.messageService.addMessage(this.newMessage)
         .subscribe(

@@ -13,7 +13,7 @@ export class SellerOfferComponent implements OnInit {
 
   selleroffers: SellerOffer[] = [];
   errorMessage: string;
-  newSelleroffer: SellerOffer = new SellerOffer();
+  newSellerOffer: SellerOffer = new SellerOffer();
 
   constructor(private sellerofferService: SellerOfferService) { }
 
@@ -30,14 +30,14 @@ export class SellerOfferComponent implements OnInit {
   }
 
   addSellerOffer() {
-    this.sellerofferService.addSellerOffer(this.newSelleroffer)
+    this.sellerofferService.addSellerOffer(this.newSellerOffer)
       .subscribe(
         selleroffer  => this.selleroffers.push(selleroffer),
         error =>  this.errorMessage = <any>error.message);
-    this.newSelleroffer = new SellerOffer();
+    this.newSellerOffer = new SellerOffer();
   }
 
-  removeSellerOffers(selleroffer) {
+  deleteSellerOffer(selleroffer) {
     this.sellerofferService.deleteSellerOfferByUri(selleroffer.uri)
       .subscribe(
         deleted => this.selleroffers = this.selleroffers.filter(p => p.uri !== selleroffer.uri),

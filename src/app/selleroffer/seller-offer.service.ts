@@ -11,8 +11,8 @@ export class SellerOfferService {
 
   // GET /SellerOffers
   getAllSellerOffers(): Observable<SellerOffer[]> {
-    return this.http.get(`${environment.API}/selleroffers`)
-      .map((res: Response) => res.json()._embedded.selleroffers)
+    return this.http.get(`${environment.API}/sellerOffers`)
+      .map((res: Response) => res.json()._embedded.sellerOffers)
       .catch((error: any) => Observable.throw(error.json()));
   }
 
@@ -26,12 +26,12 @@ export class SellerOfferService {
 
   // POST /SellerOffers
   addSellerOffer(selleroffer: SellerOffer): Observable<SellerOffer> {
-    let body = JSON.stringify({'seller_offer_id': selleroffer.seller_offer_id, 'value': selleroffer.value, 'date' : selleroffer.date});
+    let body = JSON.stringify(selleroffer);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(`${environment.API}/selleroffers`, body, options)
+    return this.http.post(`${environment.API}/sellerOffers`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

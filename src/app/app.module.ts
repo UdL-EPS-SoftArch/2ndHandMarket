@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {APP_BASE_HREF} from '@angular/common';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { PictureComponent } from './picture/picture.component';
@@ -16,14 +16,21 @@ import { FooterComponent } from './footer/footer.component';
 import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
-import {OfferComponent} from "./offer/offer.component";
+import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
+import { MessageComponent } from './message/message.component';
+import { LoginBasicModule } from './login-basic/login-basic.module';
+import { LoginBasicComponent } from './login-basic/login-basic.component';
+import { LoggedInGuard } from './login-basic/loggedin.guard';
+import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
+import { OfferComponent } from './offer/offer.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    LoginBasicModule
   ],
   declarations: [
     AppComponent,
@@ -31,19 +38,20 @@ import {OfferComponent} from "./offer/offer.component";
     OfferComponent,
     NavbarComponent,
     IntroComponent,
+    MessageComponent,
     AdvertisementComponent,
     PostAdvertisementComponent,
     GetAdvertisementComponent,
-    IntroComponent,
+    PutAdvertisementComponent,
     FooterComponent,
     SearchAdvertisementComponent,
     ContactComponent,
     DateFormatPipe
   ],
   providers: [
-    appRoutingProviders,
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard,
     { provide: APP_BASE_HREF, useValue : '/' }
   ],
-  bootstrap: [AppComponent, NavbarComponent, FooterComponent]
+  bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
 })
 export class AppModule { }

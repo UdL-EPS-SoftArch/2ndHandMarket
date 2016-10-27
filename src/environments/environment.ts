@@ -5,7 +5,5 @@
 
 export const environment = {
   production: false,
-  API: 'http://localhost:8080',
-  user: 'user',
-  password: 'password'
+  API: 'http://localhost:8080'
 };

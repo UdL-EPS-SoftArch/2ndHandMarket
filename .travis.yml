@@ -1,0 +1,23 @@
+language: node_js
+sudo: true
+dist: trusty
+node_js:
+- 5.6.0
+branches:
+  only:
+  - master
+before_install:
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sudo apt-get update
+- sudo apt-get install -y libappindicator1 fonts-liberation
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
+deploy:
+  provider: heroku
+  strategy: git
+  app:
+    master: softarch-1617
+  api_key:
+    secure: mvVbuyddtGlcLqK8GUQUmEaMZyrFuNja6/K9M2WNsM6nG3IHvWcbq+nzRRxiWZInSTfOdoKe/S06dJBbui34V70c5q8wKSbZ0/bU1dJPOGwmYZdJz3dRCZkhmow1Li36EdhoqbxYV4weU8CQmdHH/WOYvgj7rYD+6Sv4lxk+lHTXxPSQNfwUtHypjGawt0sMPhHvbtHeVFIgMpa8YPQorum/9BQxSnj9w3QdRr8wIq7t/m8J4kYJA+6WsrYVzR+txBRsUCvIQXpjbOxyXShXXj6dBpY0DGhtHNyZf0Ru07ow1cdMubWbXKRzZNUGUgMcI94gSF9ynNkHMxNGbWSdilVpjAyelaHmaN7N5UAaR1DYB9cxuG+tHdgvIarm14ucSwqSl/aP8HG8coJy0nF1nEgA70eECHkj/ptHYntqyMg7BHm9Bes5Oe/m+8pRWCzKZLgKgVRriHgW8ZQ8X9G485oxtFRzSxbrgg10rf2VvNinn7OZnR0VkbGnVqH6IrYqaXwS2cUapJRZUYENSy0q/Phy7cKygcZyLRanVa+KVJ6Ck2LGVUg5dYlWWB/fMD59tmkRvrrAuzye6Afiskefg9xd+tSQiEeyOLeaS4VdIptzfJOlqJE1vOo9IP64VH9RG8ca6np9c3kpoewkBXGrx3ZjzmUsxm0H18k0JgUEVGg=

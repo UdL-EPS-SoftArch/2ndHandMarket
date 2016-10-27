@@ -25,6 +25,13 @@ export class AdvertisementService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
+  // GET /advertisements/:id/pictures
+  getAdvertisementPictures(uri: string): Observable<Advertisement> {
+    return this.http.get(`${environment.API}${uri}/pictures`)
+      .map((res: Response) => res.json()._embedded.pictures)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
   // POST /advertisements
   addAdvertisement(advertisement: Advertisement): Observable<Advertisement> {
     let body = JSON.stringify(advertisement);

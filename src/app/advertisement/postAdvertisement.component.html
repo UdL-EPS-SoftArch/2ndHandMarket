@@ -2,7 +2,7 @@
   <header>
     <h2>{{advertisement.id ? advertisement.title : 'New Advertisement'}}</h2>
   </header>
-  <form>
+  <form (submit)="sendForm()">
     <h3>General</h3>
     <div class="form-section">
       <div class="form-group">
@@ -23,6 +23,19 @@
           <input type="text" id="inputTags" class="form-control" name="tags" placeholder="furniture,wood" [(ngModel)]="advertisement.tagsStr" />
         </div>
       </div>
+      <div class="form-group">
+        <label for="inputPicture" class="col-sm-2">Picture</label>
+        <div class="col-sm-10">
+          <div>
+            <input type="file" id="inputPicture" autofocus="" (change)="addPicture(file)" #file />
+          </div>
+          <div>
+            <div class="picture-container" [hidden]="!picture.content">
+              <img [src]="picture.content" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <h3>Price</h3>
@@ -31,7 +44,7 @@
         <label for="inputPrice" class="col-sm-2">Price*</label>
         <div class="input-group col-sm-10">
           <div class="input-group-addon">$</div>
-          <input type="text" id="inputPrice" class="form-control" name="price" placeholder="0.00" required [(ngModel)]="advertisement.price" />
+          <input type="number" min="0.01" id="inputPrice" class="form-control" name="price" placeholder="0.00" required [(ngModel)]="advertisement.price" />
         </div>
       </div>
       <div class="form-group">
@@ -71,12 +84,12 @@
       <div class="form-group">
         <label for="inputWeight" class="col-sm-2">Weight</label>
         <div class="col-sm-10">
-          <input type="text" id="inputWeight" class="form-control" name="weight" placeholder="0.0" [(ngModel)]="advertisement.weight" />
+          <input type="number" min="0" id="inputWeight" class="form-control" name="weight" placeholder="0.0" [(ngModel)]="advertisement.weight" />
         </div>
       </div>
     </div>
     <div class="form-group">
-      <button class="highlightButton big" (click)="sendForm()">
+      <button class="highlightButton big">
         {{advertisement.id ? 'Update' : 'Publish'}}
       </button>
     </div>

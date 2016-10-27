@@ -2,8 +2,9 @@ export class Picture {
   uri: string = '';
   filename: string = '';
   content: string = '';
+  depicts: string;
 
   constructor(values: Object = {}) {
-    Object.assign(this, values);
+    (<any>Object).assign(this, values);
   }
 }

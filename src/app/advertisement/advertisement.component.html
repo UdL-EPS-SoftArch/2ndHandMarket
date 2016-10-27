@@ -7,7 +7,7 @@
   </div>
   <div class="card-container" *ngFor="let advertisement of advertisements">
     <div class="card">
-      <div class="picture"></div>
+      <div class="picture" [style.background-image]="'url(' + (advertisementPictures[advertisement.uri] && advertisementPictures[advertisement.uri].content)  + ')'"></div>
       <div class="title">
         <a href="#" class="no-decorate">
           {{advertisement.title}}

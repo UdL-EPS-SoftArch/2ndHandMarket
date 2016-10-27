@@ -16,8 +16,7 @@ import { MomentModule } from 'angular2-moment';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
-import { DateFormatPipe } from 'angular2-moment/src/DateFormatPipe';
-import { OfferComponent } from "./offer/offer.component";
+import { OfferComponent } from './offer/offer.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -25,10 +24,10 @@ describe('App: Softarch1617Client', () => {
       declarations: [
         AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, OfferComponent, DateFormatPipe
+        ContactComponent, MessageComponent, OfferComponent
       ],
       imports: [
-        routing, FormsModule
+        routing, FormsModule, MomentModule
       ],
       providers: [
         appRoutingProviders,

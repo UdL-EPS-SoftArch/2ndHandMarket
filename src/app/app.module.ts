@@ -22,6 +22,7 @@ import { LoginBasicModule } from './login-basic/login-basic.module';
 import { LoginBasicComponent } from './login-basic/login-basic.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
+import { OfferComponent } from './offer/offer.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { AuthenticationBasicService } from './login-basic/authentication-basic.s
   declarations: [
     AppComponent,
     PictureComponent,
+    OfferComponent,
     NavbarComponent,
     IntroComponent,
     MessageComponent,

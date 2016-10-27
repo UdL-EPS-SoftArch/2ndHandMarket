@@ -11,6 +11,7 @@ import { SearchAdvertisementComponent } from './search-advertisement/search-adve
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
+import { OfferComponent } from './offer/offer.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
+  { path: 'offers', component: OfferComponent },
   { path: '', component: IntroComponent },
   //  { path: '**', component: PageNotFoundComponent }
 ];

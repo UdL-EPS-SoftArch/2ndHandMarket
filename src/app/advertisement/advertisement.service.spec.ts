@@ -1,9 +1,8 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject, getTestBed } from '@angular/core/testing';
-import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response } from '@angular/http';
-
+import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AdvertisementService } from './advertisement.service';
 import { Advertisement } from './advertisement';
 import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';

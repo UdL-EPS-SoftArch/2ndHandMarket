@@ -5,6 +5,7 @@ import {PictureService} from './picture.service';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response} from '@angular/http';
 import {Picture} from './picture';
+import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
 
 class ResponseError extends Error {
   json() {
@@ -18,6 +19,7 @@ describe('Service: Picture', () => {
     TestBed.configureTestingModule({
       providers: [
         PictureService,
+        AuthenticationBasicService,
         MockBackend,
         BaseRequestOptions,
         {

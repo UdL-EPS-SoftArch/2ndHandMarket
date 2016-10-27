@@ -1,0 +1,24 @@
+<section class="advertisement">
+  <header>
+    <h2>Advertisements</h2>
+  </header>
+  <div *ngIf="advertisements.length === 0">
+    No advertisements were found! <a routerLink="/advertisements/new">Create one</a>
+  </div>
+  <div class="card-container" *ngFor="let advertisement of advertisements">
+    <div class="card">
+      <div class="picture" [style.background-image]="'url(' + (advertisementPictures[advertisement.uri] && advertisementPictures[advertisement.uri].content)  + ')'"></div>
+      <div class="title">
+        <a href="#" class="no-decorate">
+          {{advertisement.title}}
+        </a>
+      </div>
+      <div class="info">
+        By <a href="#">{{advertisement.owner}}</a> on {{advertisement.createdAt | date}}
+      </div>
+      <div class="info-special">
+        <a [routerLink]="[advertisement.uri]" class="buy">{{advertisement.price | currency:'USD':true}}</a>
+      </div>
+    </div>
+  </div>
+</section>

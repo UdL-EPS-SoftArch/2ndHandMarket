@@ -9,29 +9,49 @@ import { PictureComponent } from './picture/picture.component';
 import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
+import { AdvertisementComponent } from './advertisement/advertisement.component';
+import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
+import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
+import { FooterComponent } from './footer/footer.component';
+import { DateFormatPipe } from 'angular2-moment';
+import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
+import { ContactComponent } from './contact/contact.component';
+import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
+import { MessageComponent } from './message/message.component';
+import { LoginBasicModule } from './login-basic/login-basic.module';
+import { LoginBasicComponent } from './login-basic/login-basic.component';
+import { LoggedInGuard } from './login-basic/loggedin.guard';
+import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { BuyerComponent } from './buyer/buyer.component';
-import { LoginComponent } from './login/login.component';
-
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    LoginBasicModule
   ],
   declarations: [
     AppComponent,
     PictureComponent,
     NavbarComponent,
     IntroComponent,
+    MessageComponent,
+    AdvertisementComponent,
+    PostAdvertisementComponent,
+    GetAdvertisementComponent,
+    PutAdvertisementComponent,
+    FooterComponent,
+    SearchAdvertisementComponent,
+    ContactComponent,
     BuyerComponent,
-    LoginComponent,
+    DateFormatPipe
   ],
   providers: [
-    appRoutingProviders,
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard,
     { provide: APP_BASE_HREF, useValue : '/' }
   ],
-  bootstrap: [AppComponent, NavbarComponent]
+  bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
 })
 export class AppModule { }

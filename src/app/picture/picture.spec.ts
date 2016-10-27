@@ -10,12 +10,17 @@ describe('Picture', () => {
   });
 
   it('should accept values in the constructor', () => {
+    const filename = 'test.jpg';
+    const content = 'data:image/jpeg;base64,1234';
+    const depicts = 'advertisement/1';
     let picture = new Picture({
-      filename: 'test.jpg',
-      content: 'data:image/jpeg;base64,1234'
+      filename,
+      content,
+      depicts,
     });
-    expect(picture.filename).toEqual('test.jpg');
-    expect(picture.content).toEqual('data:image/jpeg;base64,1234');
+    expect(picture.filename).toEqual(filename);
+    expect(picture.content).toEqual(content);
+    expect(picture.depicts).toEqual(depicts);
   });
 
 });

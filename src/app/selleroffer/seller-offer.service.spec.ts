@@ -50,7 +50,7 @@ describe('Service: SellerOffer', () => {
         const apiResponse = new ResponseOptions({
           body: {
             '_embedded': {
-              'selleroffers': [ firstSellerOffer, secondSellerOffer ]
+              'sellerOffers': [ firstSellerOffer, secondSellerOffer ]
             }
           }
         });

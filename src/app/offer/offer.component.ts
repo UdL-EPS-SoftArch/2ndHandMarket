@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { Offer } from './offer';
 import { OfferService } from './offer.service';
 
@@ -48,9 +48,8 @@ export class OfferComponent implements OnInit {
         error =>  this.errorMessage = <any>error.message);
   }
 
-  updateOffer(offer, value)
+  updateOffer(offer)
   {
-    offer.value = value;
     this.offerService.updateOfferById(offer.uri, this.modifiedOffer)
       .subscribe(
         update => this.offers = this.offers.filter(p => p.uri !== offer.uri),

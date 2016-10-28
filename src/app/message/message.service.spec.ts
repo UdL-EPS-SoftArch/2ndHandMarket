@@ -1,11 +1,8 @@
-
 import { TestBed, async, inject } from '@angular/core/testing';
 import { MessageService } from './message.service';
-import {MockBackend, MockConnection} from "@angular/http/testing";
-import {BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response} from '@angular/http';
-import {Message} from "./message";
-
-
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response } from '@angular/http';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 class ResponseError extends Error {
   json() {
@@ -15,17 +12,11 @@ class ResponseError extends Error {
 
 describe('Service: Message', () => {
 
-  /*
-  const firstMessage = new Message({
-    'title': 'TitleTest',
-    'body': 'BodyTest',
-    'destination' : 'DestinationTest',
-  });*/
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
         MessageService,
+        AuthenticationBasicService,
         MockBackend,
         BaseRequestOptions,
         {

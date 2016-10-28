@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
+import { Picture } from '../picture/picture';
 
 
 @Component({
@@ -13,19 +14,33 @@ import { AdvertisementService } from './advertisement.service';
 export class AdvertisementComponent implements OnInit {
 
   advertisements: Advertisement[] = [];
+  advertisementPictures: { [key:string]: Picture } = {};
   errorMessage: string;
 
   constructor(private advertisementService: AdvertisementService) { }
 
   ngOnInit() {
-    this.getImages();
+    this.getAdvertisements();
   }
 
-  getImages() {
+  getAdvertisements() {
     return this.advertisementService.getAllAdvertisements()
       .subscribe(
-        advertisements => this.advertisements = advertisements,
+        advertisements => {
+          this.advertisements = advertisements;
+          this.advertisements.map((advertisement) => {
+            this.getAdvertisementPicture(advertisement);
+          });
+        },
         error => this.errorMessage = <any>error.message
+      );
+  }
+
+  getAdvertisementPicture(advertisement: Advertisement) {
+    this.advertisementService.getAdvertisementPictures(advertisement.uri)
+      .subscribe(
+        pictures => this.advertisementPictures[advertisement.uri] = pictures[0],
+        error => alert(error.errorMessage)
       );
   }
 

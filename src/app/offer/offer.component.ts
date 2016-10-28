@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Offer } from './offer';
 import { OfferService } from './offer.service';
 
@@ -17,13 +17,11 @@ export class OfferComponent implements OnInit {
   newOffer: Offer = new Offer();
   modifiedOffer: Offer = new Offer();
 
-
   constructor(private offerService: OfferService) { }
 
   ngOnInit() {
     this.getOffers();
-    //this.addOffer();
-
+    // this.addOffer();
   }
 
   getOffers() {
@@ -48,8 +46,7 @@ export class OfferComponent implements OnInit {
         error =>  this.errorMessage = <any>error.message);
   }
 
-  updateOffer(offer)
-  {
+  updateOffer(offer) {
     this.offerService.updateOfferById(offer.uri, this.modifiedOffer)
       .subscribe(
         update => this.offers = this.offers.filter(p => p.uri !== offer.uri),

@@ -3,7 +3,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { SearchAdvertisementComponent } from './search-advertisement.component';
-import {SearchAdvertisementService} from "./searchAdvertisement.service";
+import { SearchAdvertisementService } from './searchAdvertisement.service';
 
 describe('Component: SearchAdvertisement', () => {
 
@@ -17,6 +17,6 @@ describe('Component: SearchAdvertisement', () => {
     inject([SearchAdvertisementService], (searchAdvertisementService) => {
       let component = new SearchAdvertisementComponent(searchAdvertisementService);
       expect(component).toBeTruthy();
-    })
+    });
   });
 });

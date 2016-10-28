@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PictureComponent } from './picture/picture.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
-import { RegisterSellerComponent } from './register-seller/register-seller.component'
+import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';

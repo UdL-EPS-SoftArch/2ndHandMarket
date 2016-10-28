@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Advertisement} from "../advertisement/advertisement";
-import {SearchAdvertisementService} from "../search-advertisement/searchAdvertisement.service";
+import {Advertisement} from '../advertisement/advertisement';
+import {SearchAdvertisementService} from '../search-advertisement/searchAdvertisement.service';
 
 
 @Component({

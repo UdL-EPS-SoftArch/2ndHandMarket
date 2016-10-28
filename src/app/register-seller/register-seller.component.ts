@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {RegisterSellerService} from "./register-seller.service";
-import {RegisterSeller} from "./register-seller";
+import { RegisterSellerService } from './register-seller.service';
+import { RegisterSeller } from './register-seller';
 
 @Component({
   selector: 'app-register-seller',
@@ -17,7 +17,7 @@ export class RegisterSellerComponent implements OnInit {
 
   constructor(private registerSellerService: RegisterSellerService) { }
 
-  ngOnInit() { this.getSellers(); this.addSeller() }
+  ngOnInit() { this.getSellers(); this.addSeller(); }
 
   getSellers() {
     return this.registerSellerService.getAllSellers()

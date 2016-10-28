@@ -2,8 +2,8 @@
 
 import {TestBed, inject} from '@angular/core/testing';
 import { RegisterSellerComponent} from './register-seller.component';
-import {RegisterSellerService} from "./register-seller.service";
-import {Http} from "@angular/http";
+import {RegisterSellerService} from './register-seller.service';
+import {Http} from '@angular/http';
 
 
 beforeEach(() => {

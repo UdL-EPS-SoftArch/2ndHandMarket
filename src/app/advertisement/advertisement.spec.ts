@@ -58,8 +58,8 @@ describe('Advertisement', () => {
 
     // Text-based tags.
     const newTags = ['rey', 'jedi'];
-    advertisement.tagsStr = " rey    ,     jedi ";
+    advertisement.tagsStr = ' rey    ,     jedi ';
     expect(advertisement.tags).toEqual(newTags);
-    expect(advertisement.tagsStr).toEqual("rey,jedi");
+    expect(advertisement.tagsStr).toEqual('rey,jedi');
   });
 });

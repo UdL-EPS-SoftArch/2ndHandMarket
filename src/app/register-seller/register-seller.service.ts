@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
-import {RegisterSeller} from './register-seller';
-import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { RegisterSeller } from './register-seller';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 @Injectable()
 export class RegisterSellerService {
 
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+              private authentication: AuthenticationBasicService) { }
 
   // GET /seller
   getAllSellers(): Observable<RegisterSeller[]> {
@@ -26,23 +28,23 @@ export class RegisterSellerService {
 
   // POST /seller
   addSeller(seller: RegisterSeller): Observable<RegisterSeller> {
-    let body = JSON.stringify({ 'name': seller.name, 'mail': seller.mail, 'password':seller.password });
+    let body = JSON.stringify({ 'name': seller.name, 'mail': seller.mail, 'password': seller.password });
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${environment.API}/registerSellers`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
+
   // DELETE /sellers/:id
   deleteSellerByUri(uri: string) {
-    let headers = new Headers({ 'Authorization': 'Basic ' + btoa(environment.user + ':' + environment.password) });
+    let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}${uri}`, options)
       .map((res: Response) => res.ok)
       .catch((error: any) => Observable.throw(error.json()));
   }
-
-  }
+}

@@ -1,16 +1,15 @@
 /* tslint:disable:no-unused-variable */
-import {TestBed, inject,async} from '@angular/core/testing';
-import {RegisterSellerService} from "./register-seller.service";
-import {HttpModule, BaseRequestOptions, Http, XHRBackend} from "@angular/http";
-import {MockBackend} from "@angular/http/testing";
-
-
-
+import { TestBed, inject, async} from '@angular/core/testing';
+import { RegisterSellerService} from './register-seller.service';
+import { HttpModule, BaseRequestOptions, Http, XHRBackend} from '@angular/http';
+import { MockBackend} from '@angular/http/testing';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 beforeEach(async(() => {
   TestBed.configureTestingModule({
     providers: [
       RegisterSellerService,
+      AuthenticationBasicService,
       MockBackend,
       BaseRequestOptions,
       {
@@ -26,15 +25,9 @@ beforeEach(async(() => {
 }));
 
 describe('Service: RegisterSeller', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [RegisterSellerService],
-      imports: [HttpModule]
-
-    });
-  });
 
   it('should ...', inject([RegisterSellerService], (service: RegisterSellerService) => {
     expect(service).toBeTruthy();
   }));
+
 });

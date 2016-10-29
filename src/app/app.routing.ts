@@ -1,7 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PictureComponent } from './picture/picture.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
@@ -20,16 +19,14 @@ const appRoutes: Routes = [
   { path: 'advertisements/new', component: PostAdvertisementComponent, canActivate: [LoggedInGuard] },
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
   { path: 'advertisements/:id/edit', component: PutAdvertisementComponent },
-  { path: 'pictures', component: PictureComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
-  //  { path: 'pictures/:id', component: PictureDetailComponent },
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'offers', component: OfferComponent },
   { path: 'selleroffers', component: SellerOfferComponent },
   { path: '', component: IntroComponent },
-  //  { path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 export const appRoutingProviders: any[] = [];

@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { PictureComponent } from './picture/picture.component';
 import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
@@ -36,7 +35,6 @@ import { SellerOfferComponent } from './selleroffer/seller-offer.component';
   ],
   declarations: [
     AppComponent,
-    PictureComponent,
     OfferComponent,
     NavbarComponent,
     IntroComponent,

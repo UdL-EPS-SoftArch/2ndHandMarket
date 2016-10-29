@@ -15,7 +15,7 @@ export class Advertisement {
   color: string = '';
   weight: number = 0.0;
 
-  // Tags as string "first, second, third".
+  // Tags as string 'first, second, third'.
   get tagsStr(): string {
     return this.tags.join(',');
   }

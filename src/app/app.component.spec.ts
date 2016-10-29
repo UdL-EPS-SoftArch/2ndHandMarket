@@ -17,6 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
 import { OfferComponent } from './offer/offer.component';
+import { RegisterSellerComponent } from './register-seller/register-seller.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -24,7 +25,7 @@ describe('App: Softarch1617Client', () => {
       declarations: [
         AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, OfferComponent
+        ContactComponent, MessageComponent, OfferComponent, RegisterSellerComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

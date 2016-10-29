@@ -10,13 +10,14 @@ describe('Component: Offer', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [OfferService]
-    })
+    });
   });
+
   it('should create an instance', () => {
     inject([OfferService], (offerService) => {
       let component = new OfferComponent(offerService);
       expect(component).toBeTruthy();
-    })
-
+    });
   });
+
 });

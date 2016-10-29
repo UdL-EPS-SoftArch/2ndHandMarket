@@ -1,31 +1,30 @@
 <section class="offer">
   <header>
-    <h2>Offers</h2>
+    <h2>Buyer Counter Offers</h2>
   </header>
-  <h3>Make an offer</h3>
+  <h3>Make a buyer counter offer</h3>
   <div>
     <input type="number" id="value" name="value" min="0" max="10000" step="0.01" value="1" [(ngModel)]="newOffer.value"/>&nbsp;€
     &nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="addOffer()">Make offer</button>
   </div>
-  <h3>Offer list</h3>
+  <h3>Buyer Counteroffers list</h3>
   <p *ngIf="offers.length == 0">
     <span class="offer-count">No offers yet!</span>
   </p>
   <ul class="list-group" *ngIf="offers.length > 0">
-    <li class="list-group-item" *ngFor="let offer of offers">
+    <li class="list-group-item" *ngFor="let offer of offers; let i = index">
       Offer {{offer.uri}}, value: {{offer.value}}€
-      <button (click)="deleteOffer(offer)">Delete offer</button>
+      <button (click)="deleteOffer(offer)">Delete</button>
 
-      <button (click)="DivMakeCounterOffer=!DivMakeCounterOffer">
-        <a [hidden]="DivMakeCounterOffer">Make a counter offer</a>
-        <a [hidden]="!DivMakeCounterOffer">Hide</a>
-
+      <button (click)="hidden[i]=!hidden[i]">
+        <a [hidden]="!hidden[i]">Update</a>
+        <a [hidden]="hidden[i]">Hide</a>
       </button>
 
-      <div class="form-section" [hidden]="!DivMakeCounterOffer">
-        <input type="number" id="countervalue" name="countervalue" min="0" max={{offer.value}} step="0.01" value={{offer.value}}/>&nbsp;€
-        <button (click)="updateOffer()">Confirm</button>
+      <div class="form-section" [hidden]="hidden[i]">
+        <input type="number" id="countervalue" name="countervalue" min="0" max={{offer.value}} step="0.01" value={{offer.value}} #newPrice />&nbsp;€
+        <button (click)="updateOffer(offer, newPrice.value)">Confirm</button>
       </div>
     </li>
   </ul>

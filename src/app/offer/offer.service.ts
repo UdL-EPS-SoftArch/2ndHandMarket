@@ -20,7 +20,7 @@ export class OfferService {
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(`${environment.API}/offers`, body, options)
+    return this.http.post(`${environment.API}/buyerCounterOffers`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -44,8 +44,8 @@ export class OfferService {
   }*/
 
   getAllOffers(): Observable<Offer[]> {
-    return this.http.get(`${environment.API}/offers`)
-      .map((res: Response) => res.json()._embedded.offers)
+    return this.http.get(`${environment.API}/buyerCounterOffers`)
+      .map((res: Response) => res.json()._embedded.buyerCounterOffers)
       .catch((error: any) => Observable.throw(error.json()));
   }
 

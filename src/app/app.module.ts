@@ -13,6 +13,7 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { FooterComponent } from './footer/footer.component';
+import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
@@ -43,6 +44,8 @@ import { OfferComponent } from './offer/offer.component';
     PostAdvertisementComponent,
     GetAdvertisementComponent,
     PutAdvertisementComponent,
+    FooterComponent,
+    RegisterSellerComponent,
     FooterComponent,
     SearchAdvertisementComponent,
     ContactComponent,

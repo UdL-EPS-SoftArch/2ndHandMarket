@@ -1,7 +1,7 @@
 export class Offer {
-  //id: number;
+  // id: number;
   uri: string = '';
-  date:Date;
+  date: Date;
   value: number = 0;
 
   constructor(values: Object = {}) {

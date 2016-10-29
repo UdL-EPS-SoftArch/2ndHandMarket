@@ -1,3 +1,12 @@
+<section class="order">
+<header>
+  <h2 class="text-primary">My orders</h2>
+</header>
+
+<div *ngIf="products.length === 0">
+  No products were found! <a routerLink="/">Start to buy Second Hand Products</a>
+</div>
+
 <div class="table">
   <div class="table-responsive">
     <table class="table">
@@ -24,3 +33,5 @@
     </table>
     </div>
   </div>
+</section>
+

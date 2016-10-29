@@ -63,7 +63,7 @@ export class OfferComponent implements OnInit {
     this.offerService.updateOfferById(existingOffer.uri, updatedOffer)
       .subscribe(
         update => this.offers = this.offers.map(offer => {
-          if (offer.uri == existingOffer.uri) { return update; }
+          if (offer.uri === existingOffer.uri) { return update; }
           return offer;
         }),
         error => this.errorMessage = <any>error.message);

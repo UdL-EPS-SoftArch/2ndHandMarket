@@ -15,15 +15,15 @@ class ResponseError extends Error {
 
 describe('Service: SellerOffer', () => {
   const firstSellerOffer = {
-    "seller_offer_id": 1,
-    "value": 10,
-    "date": "",
+    'seller_offer_id': 1,
+    'value': 10,
+    'date': '',
   };
 
   const secondSellerOffer = {
-    "seller_offer_id": 2,
-    "value": 20,
-    "date": "",
+    'seller_offer_id': 2,
+    'value': 20,
+    'date': '',
   };
 
   beforeEach(async(() => {
@@ -65,7 +65,7 @@ describe('Service: SellerOffer', () => {
           expect(data[1].seller_offer_id).toEqual(secondSellerOffer.seller_offer_id);
           expect(data[0].value).toEqual(firstSellerOffer.value);
           expect(data[1].value).toEqual(secondSellerOffer.value);
-        })
+        });
       })));
   });
 });

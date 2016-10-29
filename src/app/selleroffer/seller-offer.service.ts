@@ -3,11 +3,13 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { SellerOffer } from './seller-offer';
 import { environment } from '../../environments/environment';
+import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
 
 @Injectable()
 export class SellerOfferService {
 
-  constructor (private http: Http) {}
+  constructor (private http: Http,
+               private authentication: AuthenticationBasicService) {}
 
   // GET /SellerOffers
   getAllSellerOffers(): Observable<SellerOffer[]> {
@@ -23,12 +25,11 @@ export class SellerOfferService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-
   // POST /SellerOffers
   addSellerOffer(selleroffer: SellerOffer): Observable<SellerOffer> {
     let body = JSON.stringify(selleroffer);
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', 'Basic ' + btoa(environment.user + ':' + environment.password));
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${environment.API}/sellerOffers`, body, options)
@@ -38,7 +39,7 @@ export class SellerOfferService {
 
   // DELETE /SellerOffers/:id
   deleteSellerOfferByUri(uri: string) {
-    let headers = new Headers({ 'Authorization': 'Basic ' + btoa(environment.user + ':' + environment.password) });
+    let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}${uri}`, options)

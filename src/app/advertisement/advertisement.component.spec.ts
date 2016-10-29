@@ -10,13 +10,14 @@ describe('Component: Advertisement', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [AdvertisementService]
-    })
+    });
   });
+
   it('should create an instance', () => {
     inject([AdvertisementService], (advertisementService) => {
       let component = new AdvertisementComponent(advertisementService);
       expect(component).toBeTruthy();
-    })
+    });
 
   });
 });

@@ -3,11 +3,15 @@
     <ul>
       <li class="active"><a routerLink="/" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
       <li><a routerLink="/advertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Advertisements</a></li>
+      <li><a routerLink="/offers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offers</a></li>
       <li><a routerLink="/selleroffers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">SellerOffer</a></li>
       <li><a routerLink="/pictures" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Pictures</a></li>
+      <li><a routerLink="/searchAdvertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"> Search Advertisements</a></li>
+      <li><a routerLink="/messages" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Messages</a></li>
       <!-- <li><a href="#contact">Contact</a></li> // move to footer -->
-      <li><a href="#">Sign In / Sign Up</a></li>
-      <li class="highlight"><a href="#">Post Your Advertisement</a></li>
+      <li login-basic>/li>
+      <li><a routerLink="/register-sellers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Sign In / Sign Up</a></li>
+      <li class="highlight"><a routerLink="/advertisements/new" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Post Your Advertisement</a></li>
     </ul>
   </nav>
   <a class="no-decorate" routerLink="/">

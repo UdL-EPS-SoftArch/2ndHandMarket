@@ -10,8 +10,11 @@ describe('Advertisement', () => {
   });
 
   it('should accept values in the constructor', () => {
+    const id = 1;
+    const uri = 'advertisement/1';
     const title = 'sample';
     const description = 'sample description';
+    const owner = 'user';
     const now = new Date().getTime();
     const price = 80.80;
     const tags = [ 'angular', 'javascript' ];
@@ -21,22 +24,27 @@ describe('Advertisement', () => {
     const weight = 10.1;
 
     let advertisement = new Advertisement({
-      id: 1,
-      title: title,
-      description: description,
+      id,
+      uri: 'advertisement/1',
+      title,
+      description,
+      owner: 'user',
       createdAt: now,
       modifiedAt: now,
-      price: price,
+      price,
       negotiablePrice: true,
       paidShipping: true,
-      tags: tags,
-      category: category,
-      brand: brand,
-      color: color,
-      weight: weight
+      tags,
+      category,
+      brand,
+      color,
+      weight,
     });
+    expect(advertisement.id).toEqual(id);
+    expect(advertisement.uri).toEqual(uri);
     expect(advertisement.title).toEqual(title);
     expect(advertisement.description).toEqual(description);
+    expect(advertisement.owner).toEqual(owner);
     expect(advertisement.createdAt).toEqual(now);
     expect(advertisement.modifiedAt).toEqual(now);
     expect(advertisement.price).toEqual(price);
@@ -47,5 +55,11 @@ describe('Advertisement', () => {
     expect(advertisement.brand).toEqual(brand);
     expect(advertisement.color).toEqual(color);
     expect(advertisement.weight).toEqual(weight);
+
+    // Text-based tags.
+    const newTags = ['rey', 'jedi'];
+    advertisement.tagsStr = ' rey    ,     jedi ';
+    expect(advertisement.tags).toEqual(newTags);
+    expect(advertisement.tagsStr).toEqual('rey,jedi');
   });
 });

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API: 'http://secondhandmarket-api.herokuapp.com'
+  API: 'https://softarch-1617-api.herokuapp.com'
 };

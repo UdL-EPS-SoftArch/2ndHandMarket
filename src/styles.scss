@@ -8,7 +8,7 @@ $highlightActiveColor: #1fb3c6;
 $pageComponentsMargin: 20px;
 
 @mixin perfectBackground {
-  background: no-repeat center center fixed;
+  background: no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -47,20 +47,69 @@ a.no-decorate {
   }
 }
 
-a.highlightButton {
+.highlightButton {
   @extend a.no-decorate;
 
+  border: 0;
   border-radius: 2px;
   background-color: $highlightColor;
+  box-shadow:none;
   color: #fff;
   display: block;
   padding: 7px 5px;
   text-align: center;
+  text-transform: uppercase;
   font-weight: bold;
+  width: 100%;
+
+  &:link, &:hover, &:active {
+    color: #fff;
+  }
 
   &:hover {
     background-color: $highlightActiveColor;
+  }
+}
+
+.highlightButton.big {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.blankButton {
+  @extend a.no-decorate;
+
+  border: 2px solid $highlightColor;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow:none;
+  color: $color;
+  display: block;
+  padding: 7px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+
+  &:hover {
+    background-color: $highlightColor;
     color: #fff;
+  }
+}
+
+.h2Button {
+  @extend a.no-decorate;
+
+  border-radius: 2px;
+  background-color: #ced6dd;
+  font-size: 15px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  padding: 3px;
+
+  &:hover {
+    background-color: #dbe3ea;
   }
 }
 
@@ -72,30 +121,91 @@ a.buy {
   }
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  width: 270px;
-  height: 400px;
-  margin: 0 15px 15px 0;
+.clearfix {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
 
+form {
+  .form-control {
+    border-radius: 1px;
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 40px;
+  }
 
-  .picture {
-    @include perfectBackground;
+  textarea.form-control {
+    height: 88px;
+  }
+
+  label {
+    text-transform: capitalize;
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  .form-section {
     background-color: #fff;
-    flex: 1;
+    padding: 15px;
+    margin: 5px 0 10px 0;
+  }
+
+  .form-group {
+    margin-top: 25px;
+
+    label {
+      margin-top: 10px;
+    }
+
+    input[type=text]:focus, textarea:focus {
+      box-shadow: none;
+      border: 1px solid #51cbee;
+    }
+  }
+
+  .form-group::after {
+    @extend .clearfix;
+  }
+
+  .form-group + .form-group {
+    margin-top: 20px;
+  }
+}
+
+.card-container {
+  display: inline-block;
+
+  .card {
+    display: flex;
+    flex-direction: column;
     width: 270px;
-  }
+    height: 400px;
+    margin: 15px 15px 15px 0;
 
-  .title, .info-special {
-    padding: 10px;
-  }
+    .picture {
+      @include perfectBackground;
+      background-color: #fff;
+      flex: 1;
+      width: 270px;
+    }
 
-  .title {
-    font-weight: bold;
-  }
+    .title, .info-special {
+      padding: 10px;
+    }
 
-  .info {
-    padding: 10px 5px;
+    .title {
+      font-weight: bold;
+    }
+
+    .info {
+      padding: 10px 5px;
+    }
   }
 }

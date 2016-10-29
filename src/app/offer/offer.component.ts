@@ -48,9 +48,11 @@ export class OfferComponent implements OnInit {
     this.offerService.deleteOfferByUri(deletedOffer.uri)
       .subscribe(
         deleted => {
-          this.offers = this.offers.filter(offer => offer.uri !== deletedOffer.uri);
-          this.hidden.pop();
-          this.hidden = this.hidden.map(hidden => true);
+          let offersHiddenFiltered = this.offers
+            .map((offer, i) => { return [offer, this.hidden[i]]; })
+            .filter((offerHidden: [Offer, boolean]) => offerHidden[0].uri !== deletedOffer.uri);
+          this.offers = offersHiddenFiltered.map((offerHidden: [Offer, boolean]) => offerHidden[0]);
+          this.hidden = offersHiddenFiltered.map((offerHidden: [Offer, boolean]) => offerHidden[1]);
         },
         error =>  this.errorMessage = <any>error.message);
   }

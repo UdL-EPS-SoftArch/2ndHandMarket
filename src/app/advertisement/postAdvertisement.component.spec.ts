@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { PostAdvertisementComponent } from './postAdvertisement.component';
 import { AdvertisementService } from './advertisement.service';
-import { PictureService } from '../picture/picture.service';
+import { PictureService } from './picture/picture.service';
 
 describe('Component: PostAdvertisement', () => {
   beforeEach(() => {

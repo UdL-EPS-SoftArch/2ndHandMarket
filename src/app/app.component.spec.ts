@@ -4,7 +4,6 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { appRoutingProviders, routing } from './app.routing';
 import { APP_BASE_HREF } from '@angular/common';
-import { PictureComponent } from './picture/picture.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { FooterComponent } from './footer/footer.component';
@@ -16,15 +15,18 @@ import { MomentModule } from 'angular2-moment';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
-import {BuyerComponent} from "./buyer/buyer.component";
+import { OfferComponent } from './offer/offer.component';
+import { RegisterSellerComponent } from './register-seller/register-seller.component';
+import { SellerOfferComponent } from './selleroffer/seller-offer.component';
+import { BuyerComponent } from './buyer/buyer.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent,
+        AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, BuyerComponent
+        ContactComponent, MessageComponent, OfferComponent, RegisterSellerComponent, SellerOfferComponent, BuyerComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

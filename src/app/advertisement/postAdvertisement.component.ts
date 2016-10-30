@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
-import { Picture } from '../picture/picture';
-import { PictureService } from '../picture/picture.service';
+import { Picture } from './picture/picture';
+import { PictureService } from './picture/picture.service';
 
 @Component({
   selector: 'app-post-advertisement',

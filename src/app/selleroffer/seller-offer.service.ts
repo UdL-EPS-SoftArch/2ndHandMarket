@@ -1,49 +1,44 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
-import {Message} from './message';
-import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import { SellerOffer } from './seller-offer';
+import { environment } from '../../environments/environment';
 import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
 
 @Injectable()
-export class MessageService {
+export class SellerOfferService {
 
   constructor (private http: Http,
-               private authentication: AuthenticationBasicService) { }
+               private authentication: AuthenticationBasicService) {}
 
-  // GET /privateMessages
-  getAllMessages(): Observable<Message[]> {
-    return this.http.get(`${environment.API}/privateMessages`)
-      .map((res: Response) => res.json()._embedded.privateMessages)
+  // GET /SellerOffers
+  getAllSellerOffers(): Observable<SellerOffer[]> {
+    return this.http.get(`${environment.API}/sellerOffers`)
+      .map((res: Response) => res.json()._embedded.sellerOffers)
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  // GET /privateMessages/:id
-  getMessageByUri(uri: string): Observable<Message> {
+  // GET /SellerOffers/:id
+  getSellerOffersByUri(uri: string): Observable<SellerOffer> {
     return this.http.get(`${environment.API}${uri}`)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  // POST /privateMessages
-  addMessage(message: Message): Observable<Message> {
-    let body = JSON.stringify({
-      'title': message.title,
-      'body': message.body,
-      'destination' : message.destination,
-      'sender': message.sender
-    });
+  // POST /SellerOffers
+  addSellerOffer(selleroffer: SellerOffer): Observable<SellerOffer> {
+    let body = JSON.stringify(selleroffer);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(`${environment.API}/privateMessages`, body, options)
+    return this.http.post(`${environment.API}/sellerOffers`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  // DELETE /privateMessages/:id
-  deleteMessageByUri(uri: string) {
+  // DELETE /SellerOffers/:id
+  deleteSellerOfferByUri(uri: string) {
     let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
     let options = new RequestOptions({ headers: headers });
 

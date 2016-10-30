@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-
 import { Advertisement } from './advertisement';
 import { environment } from '../../environments/environment';
 import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
@@ -46,7 +45,7 @@ export class AdvertisementService {
 
   // PUT /advertisements
   putAdvertisement(advertisement: Advertisement): Observable<Advertisement> {
-    if (!advertisement.id) throw new Error('Advertisement ID is required.');
+    if (!advertisement.id) { throw new Error('Advertisement ID is required.'); }
 
     let body = JSON.stringify(advertisement);
     let headers = new Headers({ 'Content-Type': 'application/json' });

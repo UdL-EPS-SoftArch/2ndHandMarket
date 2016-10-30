@@ -30,7 +30,7 @@ export class PutAdvertisementComponent implements OnInit {
       .subscribe((id) => {
         this.advertisement.id = id;
         this.retrieveAdvertisement();
-      })
+      });
   }
 
   retrieveAdvertisement() {

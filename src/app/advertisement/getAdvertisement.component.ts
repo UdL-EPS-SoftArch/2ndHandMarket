@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
-import { Picture } from '../picture/picture';
+import { Picture } from './picture/picture';
 
 @Component({
   selector: 'app-get-advertisement',
@@ -69,6 +69,6 @@ export class GetAdvertisementComponent implements OnInit {
         this.router.navigate(['/advertisements']);
       },
       error => alert('Error: Failed to delete advertisement!')
-    )
+    );
   }
 }

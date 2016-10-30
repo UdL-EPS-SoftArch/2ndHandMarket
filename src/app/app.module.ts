@@ -50,7 +50,7 @@ import { BuyerComponent } from './buyer/buyer.component';
     SearchAdvertisementComponent,
     ContactComponent,
     DateFormatPipe,
-    SellerOfferComponent
+    SellerOfferComponent,
     BuyerComponent
   ],
   providers: [

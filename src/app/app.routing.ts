@@ -13,6 +13,7 @@ import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
+import { BuyerComponent } from './buyer/buyer.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'offers', component: OfferComponent },
   { path: 'selleroffers', component: SellerOfferComponent },
   { path: '', component: IntroComponent },
+  { path: 'buyers', component: BuyerComponent },
   // { path: '**', component: PageNotFoundComponent }
 ];
 

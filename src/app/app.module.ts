@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders }  from './app.routing';
@@ -54,8 +53,7 @@ import { BuyerComponent } from './buyer/buyer.component';
     BuyerComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard,
-    { provide: APP_BASE_HREF, useValue : '/' }
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
 })

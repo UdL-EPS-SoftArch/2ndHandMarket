@@ -43,5 +43,11 @@ describe('App: Softarch1617Client', () => {
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-});
 
+  it('should render router-outlet in two div tags', async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div div router-outlet').localName).toBe('router-outlet');
+  }));
+});

@@ -48,6 +48,6 @@ describe('App: Softarch1617Client', () => {
     let fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div div router-outlet')).toBeDefined();
+    expect(compiled.querySelector('div div router-outlet').localName).toBe('router-outlet');
   }));
 });

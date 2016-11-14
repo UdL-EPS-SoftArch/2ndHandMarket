@@ -1,4 +1,4 @@
-<a *ngIf="!isLoggedIn()" (click)="showLoginModal()">Login</a>
+<a class="no-decorate" href="#" *ngIf="!isLoggedIn()" (click)="showLoginModal()">Login</a>
 
 <span *ngIf="isLoggedIn()">
   <b>{{ getCurrentUserName() }}</b>

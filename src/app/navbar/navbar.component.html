@@ -1,23 +1,39 @@
 <header class="navbar-container">
+  <a class="no-decorate" routerLink="/">
+    <span class="logo">
+      <span class="text">
+        Soft<span class="highlight">Arch</span>
+      </span>
+      <i class="highlight fa fa-shopping-bag fa-4"></i>
+    </span>
+  </a>
   <nav>
     <ul>
-      <li class="active"><a routerLink="/" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-      <li><a routerLink="/advertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Advertisements</a></li>
-      <li><a routerLink="/offers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offers</a></li>
-      <li><a routerLink="/selleroffers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">SellerOffer</a></li>
-      <li><a routerLink="/searchAdvertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"> Search Advertisements</a></li>
-      <li><a routerLink="/messages" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Messages</a></li>
+      <!--<li class="active"><a routerLink="/" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>-->
+      <!--<li><a routerLink="/advertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Advertisements</a></li>-->
+      <!--<li><a routerLink="/searchAdvertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"> Search Advertisements</a></li>-->
       <!-- <li><a href="#contact">Contact</a></li> // move to footer -->
-
-      <li login-basic>/li>
-      <li><a routerLink="/register-sellers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Sign In / Sign Up</a></li>
-      <li class="highlight"><a routerLink="/advertisements/new" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Post Your Advertisement</a></li>
-      <li><a routerLink="/buyers" routerLinkActive="active">Buyers</a></li>
+      <li id="nav-search">
+        <form class="inline">
+            <input type="text" placeholder="Need something?" />
+        </form>
+      </li>
+      <li><a routerLink="/messages" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Messages</a></li>
+      <li login-basic></li>
+      <li><a href="#">Basket (0)</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars fa-2" aria-hidden="true"></i></a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/advertisements/new" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Sell</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a routerLink="/offers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offers</a></li>
+          <li><a routerLink="/selleroffers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Seller offers</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a routerLink="/buyers" routerLinkActive="active">Buyers</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a routerLink="/register-sellers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Register sellers</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
-  <a class="no-decorate" routerLink="/">
-    <div class="logo">
-      Soft<span class="highlight">Arch</span> <i class="highlight fa fa-shopping-bag fa-4"></i>
-    </div>
-  </a>
 </header>

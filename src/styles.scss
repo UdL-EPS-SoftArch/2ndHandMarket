@@ -179,6 +179,16 @@ form {
   }
 }
 
+form.inline {
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  input[type=text] {
+    padding: 5px;
+  }
+}
+
 .card-container {
   display: inline-block;
 

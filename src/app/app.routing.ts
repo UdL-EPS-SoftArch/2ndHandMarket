@@ -20,13 +20,14 @@ const appRoutes: Routes = [
   { path: 'advertisements/new', component: PostAdvertisementComponent, canActivate: [LoggedInGuard] },
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
   { path: 'advertisements/:id/edit', component: PutAdvertisementComponent },
+  { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'offers', component: OfferComponent },
   { path: 'selleroffers', component: SellerOfferComponent },
-  { path: '', component: IntroComponent },
+  { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
   // { path: '**', component: PageNotFoundComponent }
 ];

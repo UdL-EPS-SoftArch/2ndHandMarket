@@ -4,11 +4,17 @@ $navHeight: 70px;
 $highlightColor: #1A99AA;
 $highlightActiveColor: #1fb3c6;
 
-.navbar-container {
+header {
   background-color: $navBgColor;
   border-bottom: 1px solid $navBgBorderColor;
+  width: 100%;
+}
+
+.navbar-container {
   display: flex;
   flex-direction: row;
+  height: $navHeight;
+  width: 100%;
 
   nav {
     flex: 1;
@@ -18,11 +24,10 @@ $highlightActiveColor: #1fb3c6;
   nav > ul {
     flex: 1;
     display: flex;
-    margin-bottom: 0;
 
     > li {
       display: inline;
-      line-height: $navHeight;
+      line-height: 70px;
       list-style-type: none;
       padding: 0 15px 0 15px;
       text-transform: uppercase;
@@ -70,13 +75,8 @@ $highlightActiveColor: #1fb3c6;
 
   .dropdown-menu {
     left: inherit;
+    top: inherit;
     right: 0;
-  }
-
-  form > input[type=text] {
-    border: 0;
-    background-color: transparent;
-    color: #333;
   }
 }
 
@@ -84,7 +84,21 @@ $highlightActiveColor: #1fb3c6;
   flex: 1;
 
   input[type=text] {
+    background-color: transparent;
+    border: 0;
+    color: #333;
     width: 100%;
+    height: $navHeight;
+    transition: background-color 0.2s ease;
+
+    &:focus {
+      outline: none;
+      background-color: #fcfcfc;
+    }
+  }
+
+  .icon {
+    text-align: right;
   }
 }
 
@@ -138,5 +152,13 @@ $highlightActiveColor: #1fb3c6;
 
   > li.divider {
     background-color: #ccc;
+  }
+}
+
+.search-expanded {
+  input[type=text] {
+    width: 100%;
+    border: 0;
+    height: 50px;
   }
 }

@@ -14,6 +14,9 @@
 
   <!-- Logged in -->
   <li *ngIf="isLoggedIn()">
+    <a href="/profile">Profile</a> <!-- TODO: as routerLink -->
+  </li>
+  <li *ngIf="isLoggedIn()">
     <a href="#" (click)="logout()">Log out</a>
   </li>
 </ul>

@@ -26,65 +26,79 @@
         Account overview
       </header>
 
-      <div class="container dashboard">
-        <h2>Admin Nimda</h2>
+      <div class="dashboard min-padding">
+        <h2>
+          {{user.name}}
+          <a *ngIf="!isEditing" (click)="toggleEdit()">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </a>
+          <a *ngIf="isEditing" (click)="submitEdit()">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            Save
+          </a>
+        </h2>
 
-        <h4>
-          General
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </h4>
+        <h4>General</h4>
         <div class="box">
           <form>
             <div class="form-group">
-              <label class="col-sm-2">Username</label>
+              <label for="name" class="col-sm-2">Name</label>
               <div class="col-sm-10">
-                <input type="text" value="admin" />
+                <input id="name" name="name" type="text" *ngIf="isEditing" [(ngModel)]="user.name" />
+                <span *ngIf="!isEditing">{{user.name}}</span>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2">Email</label>
+              <label for="lastname" class="col-sm-2">Last name</label>
               <div class="col-sm-10">
-                <input type="text" value="admin@example.com" />
+                <input id="lastname" name="lastname" type="text" *ngIf="isEditing" [(ngModel)]="user.lastname" />
+                <span *ngIf="!isEditing">{{user.lastname}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2">Email</label>
+              <div class="col-sm-10">
+                <input id="email" name="email" type="text" *ngIf="isEditing" [(ngModel)]="user.email" />
+                <span *ngIf="!isEditing">{{user.email}}</span>
               </div>
             </div>
           </form>
         </div>
 
-        <h4>
-          Security
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </h4>
+        <h4>Security</h4>
         <div class="box">
           <form>
             <div class="form-group">
-              <label class="col-sm-2">Password</label>
+              <label for="password" class="col-sm-2">Password</label>
               <div class="col-sm-10">
-                <input type="password" />
+                <input id="password" name="password" type="password" *ngIf="isEditing" [(ngModel)]="newPassword" />
+                <span *ngIf="!isEditing">***</span>
+              </div>
+              <div class="col-xs-12 comment" *ngIf="isEditing">Leave blank not to change your password.</div>
+            </div>
+          </form>
+        </div>
+
+        <h4>Personal</h4>
+        <div class="box">
+          <form>
+            <div class="form-group">
+              <label for="birthday" class="col-sm-2">Birthday</label>
+              <div class="col-sm-10">
+                <input id="birthday" name="birthday" type="text" *ngIf="isEditing" [(ngModel)]="user.birthday" />
+                <span *ngIf="!isEditing">{{user.birthday}}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="country" class="col-sm-2">Country</label>
+              <div class="col-sm-10">
+                <input id="country" name="country" type="text" *ngIf="isEditing" [(ngModel)]="user.country" />
+                <span *ngIf="!isEditing">{{user.country}}</span>
               </div>
             </div>
           </form>
         </div>
 
-        <h4>
-          Personal
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        </h4>
-        <div class="box">
-          <form>
-            <div class="form-group">
-              <label class="col-sm-2">Birthday</label>
-              <div class="col-sm-10">
-                <input type="text" value="1970-1-1" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2">Country</label>
-              <div class="col-sm-10">
-                <input type="text" value="" />
-              </div>
-            </div>
-          </form>
-        </div>
       </div>
 
     </section>

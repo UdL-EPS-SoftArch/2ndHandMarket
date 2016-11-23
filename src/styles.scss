@@ -110,6 +110,10 @@ a.no-decorate {
   }
 }
 
+.min-padding {
+  padding: 15px;
+}
+
 .h2Button {
   @extend a.no-decorate;
 
@@ -204,6 +208,10 @@ form.inline {
   input[type=text] {
     padding: 15px;
   }
+}
+
+.form-group .comment {
+  font-style: italic;
 }
 
 .card-container {

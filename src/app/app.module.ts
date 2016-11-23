@@ -2,10 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { PictureComponent } from './picture/picture.component';
 import { routing, appRoutingProviders }  from './app.routing';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
@@ -25,6 +23,7 @@ import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { OfferComponent } from './offer/offer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
+import { BuyerComponent } from './buyer/buyer.component';
 
 @NgModule({
   imports: [
@@ -36,7 +35,6 @@ import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
   ],
   declarations: [
     AppComponent,
-    PictureComponent,
     OfferComponent,
     NavbarComponent,
     IntroComponent,
@@ -51,11 +49,11 @@ import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
     SearchAdvertisementComponent,
     ContactComponent,
     DateFormatPipe,
-    BuyerOfferComponent
+    BuyerOfferComponent,
+    BuyerComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard,
-    { provide: APP_BASE_HREF, useValue : '/' }
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
 })

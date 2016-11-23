@@ -4,7 +4,6 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { appRoutingProviders, routing } from './app.routing';
 import { APP_BASE_HREF } from '@angular/common';
-import { PictureComponent } from './picture/picture.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { FooterComponent } from './footer/footer.component';
@@ -18,15 +17,16 @@ import { PutAdvertisementComponent } from './advertisement/putAdvertisement.comp
 import { MessageComponent } from './message/message.component';
 import { OfferComponent } from './offer/offer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
+import { BuyerComponent } from './buyer/buyer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, PictureComponent, IntroComponent, FooterComponent, AdvertisementComponent,
+        AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, OfferComponent, RegisterSellerComponent, BuyerOfferComponent
+        ContactComponent, MessageComponent, OfferComponent, RegisterSellerComponent, BuyerComponent, BuyerOfferComponent
       ],
       imports: [
         routing, FormsModule, MomentModule
@@ -43,5 +43,11 @@ describe('App: Softarch1617Client', () => {
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-});
 
+  it('should render router-outlet in two div tags', async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div div router-outlet').localName).toBe('router-outlet');
+  }));
+});

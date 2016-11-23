@@ -2,11 +2,12 @@
 
 Class project for the Software Architecture 2016-17 Course
 
+[![Build Status](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client.svg?branch=master)](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client/branches) 
 <a href="https://zenhub.com"><img src="https://cdn.rawgit.com/ZenHubIO/support/master/zenhub-badge.svg"></a>
 
 # Development
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.16.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

@@ -2,6 +2,7 @@ import {Authority} from './authority';
 
 export class User {
   username: string = '';
+  name: string = '';
   authorities: Authority[] = [];
   authorization: string = '';
   lastname: string  = '';
@@ -12,13 +13,5 @@ export class User {
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
-  }
-
-  get name() {
-    return this.username;
-  }
-
-  set name(name: string) {
-    this.username = name;
   }
 }

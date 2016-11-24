@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Offer } from './offer';
+import { Offer } from './buyerOffer';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';

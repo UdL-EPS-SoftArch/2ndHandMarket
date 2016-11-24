@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import {} from '@angular/core/testing';
-import {Offer} from './offer';
+import {Offer} from './buyerOffer';
 
 describe('Offer', () => {
 

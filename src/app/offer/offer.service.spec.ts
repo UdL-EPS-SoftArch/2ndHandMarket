@@ -6,7 +6,7 @@ import {MockBackend, MockConnection} from '@angular/http/testing';
 import {BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response} from '@angular/http';
 
 
-describe('Service: Offer', () => {
+describe('Service: BuyerOffer', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [

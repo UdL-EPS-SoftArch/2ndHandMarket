@@ -54,7 +54,7 @@ export class GetAdvertisementComponent implements OnInit {
   getAdvertisementPicture() {
     this.advertisementService.getAdvertisementPictures(this.advertisement.uri)
       .subscribe(
-        pictures => this.picture = pictures[0],
+        pictures => this.picture = pictures.length > 0 && pictures[0],
         error => alert(error.errorMessage)
       );
   }

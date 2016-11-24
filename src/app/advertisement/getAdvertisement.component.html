@@ -1,7 +1,7 @@
-<section class="getAdvertisement">
+<section class="getAdvertisement container">
   <div class="row product-basics">
     <div class="col-md-6 photo">
-      <img class="photo" [src]="picture.content" />
+      <img class="photo" *ngIf="picture" [src]="picture.content" />
     </div>
     <div class="col-md-6">
       <h2 class="title">

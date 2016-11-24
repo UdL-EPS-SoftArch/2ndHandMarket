@@ -308,3 +308,11 @@ form.inline {
   padding: 13px 20px;
   font-weight: 600;
 }
+
+* > .display-on-hover {
+  visibility: hidden;
+}
+
+*:hover > .display-on-hover {
+  visibility: visible;
+}

@@ -1,28 +1,24 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+
+import { TestBed, async, inject } from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
+import { ProfileService } from './profile.service';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
-describe('ProfileComponent', () => {
-  let component: ProfileComponent;
-  let fixture: ComponentFixture<ProfileComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
-    })
-    .compileComponents();
-  }));
+describe('Component: Advertisement', () => {
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      providers: [ProfileComponent]
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create an instance', () => {
+    inject([ProfileService, AuthenticationBasicService], (advertisementService, authenticationBasicService) => {
+      let component = new ProfileComponent(advertisementService, authenticationBasicService);
+      expect(component).toBeTruthy();
+    });
+
   });
 });

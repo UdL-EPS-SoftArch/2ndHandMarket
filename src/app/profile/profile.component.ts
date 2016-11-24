@@ -12,18 +12,18 @@ import { ProfileService } from "./profile.service";
 export class ProfileComponent implements OnInit {
   isEditing: boolean = false;
 
-  user: User;
-  newPassword: string; // Real password will not be displayed in the field.
+  user: User = new User();
+  newPassword: string; // TODO. Might be moved to the User class.
 
   constructor(private profileService: ProfileService,
-               private authenticationBasicService: AuthenticationBasicService) { }
+               private authenticationBasicService: AuthenticationBasicService) {
+  }
 
   ngOnInit() {
-    // Temporal placeholder whilst retrieving more information about the user.
-    this.user = this.authenticationBasicService.getCurrentUser();
+    const loggedInAs = this.authenticationBasicService.getCurrentUser().username;
 
     // Retrieve the current logged in user information.
-    this.profileService.getUser(this.user.name)
+    this.profileService.getUser(loggedInAs)
       .subscribe(
         user => this.user = user,
         error => alert('Error: Failed to retrieve user details!'),

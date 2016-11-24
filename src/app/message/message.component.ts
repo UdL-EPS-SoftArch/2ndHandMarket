@@ -12,6 +12,7 @@ import {AuthenticationBasicService} from '../login-basic/authentication-basic.se
 export class MessageComponent implements OnInit {
 
   messages: Message[] = [];
+  mySentMessages: Message[] = [];
   messagesUri: Message[] = [];
   messagesTitle: Message[] = [];
   errorMessage: string;
@@ -24,12 +25,20 @@ export class MessageComponent implements OnInit {
     this.getMessages();
     this.newMessage = new Message();
     this.newMessage.sender = this.authentication.getCurrentUser().username;
+    this.getMySent();
   }
 
   getMessages() {
     return this.messageService.getAllMessages()
       .subscribe(
         messages => this.messages = messages,
+        error =>  this.errorMessage = <any>error.message);
+  }
+
+  getMySent () {
+    return this.messageService.getAllMessages()
+      .subscribe(
+        messages => this.mySentMessages = this.messages.filter(p => p.sender ==  this.newMessage.sender),
         error =>  this.errorMessage = <any>error.message);
   }
 

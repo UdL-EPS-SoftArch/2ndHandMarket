@@ -12,6 +12,8 @@ import {AuthenticationBasicService} from '../login-basic/authentication-basic.se
 export class MessageComponent implements OnInit {
 
   messages: Message[] = [];
+  messagesUri: Message[] = [];
+  messagesTitle: Message[] = [];
   errorMessage: string;
   newMessage: Message;
 

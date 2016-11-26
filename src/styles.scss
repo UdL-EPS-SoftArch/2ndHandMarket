@@ -92,6 +92,7 @@ a.no-decorate {
   text-transform: uppercase;
   font-weight: bold;
   width: 100%;
+  transition: all 0.2s ease;
 
   &:hover {
     background-color: $highlightColor;

@@ -26,8 +26,11 @@ export class PurchaseComponent implements OnInit {
                private purchaseService: PurchaseService) {}
 
   ngOnInit() {
-    const advertisementId = 1; // TODO. URI id.
-    this.loadAdvertisement(advertisementId);
+    this.route.params
+      .map(params => params['id'])
+      .subscribe((advertisementId) => {
+        this.loadAdvertisement(advertisementId);
+      });
   }
 
   loadAdvertisement(id: number) {

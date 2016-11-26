@@ -23,6 +23,7 @@ import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { OfferComponent } from './offer/offer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
+import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { BuyerComponent } from './buyer/buyer.component';
     ContactComponent,
     DateFormatPipe,
     BuyerOfferComponent,
+    PersonalOffersListComponent,
     BuyerComponent
   ],
   providers: [

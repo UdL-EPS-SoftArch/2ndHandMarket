@@ -13,6 +13,7 @@ import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { OfferComponent } from './offer/offer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
+import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
 
 
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'offers', component: OfferComponent },
   { path: 'buyeroffers', component: BuyerOfferComponent },
+  { path: 'personalOffersList', component: PersonalOffersListComponent },
   { path: '', component: IntroComponent },
   { path: 'buyers', component: BuyerComponent },
   //  { path: '**', component: PageNotFoundComponent }

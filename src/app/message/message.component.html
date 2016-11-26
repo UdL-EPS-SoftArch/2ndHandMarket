@@ -1,12 +1,10 @@
 <section class="message">
   <header class="header">
     <!-- new message -->
-    <button (click)="DivSendMessage = !DivSendMessage" class="highlightButton big">
-      Write a new message
-    </button>
+    <button (click)="DivSendMessage = !DivSendMessage" class="highlightButtonMain big">Write a new message</button>
 
        <div class="form-section" [hidden]="!DivSendMessage">
-        <h2>Messages</h2>
+         <h2> </h2>
          <div class="form-group">
            <label for="sender">Sender</label>
            <input type="text" class="form-control" id="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender"/>
@@ -23,16 +21,13 @@
             <label for="body">Body</label>
             <textarea class="form-control" id="body" placeholder="Enter Message" [(ngModel)]="newMessage.body"></textarea>
           </div>
-          <button (click)="addMessage()" class="highlightButton big">Send</button>
+          <button (click)="addMessage()" class="highlightButtonGreen big">Send</button>
       </div>
-
 
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>
 
-  <button (click)="DivFindMessage = !DivFindMessage" class="highlightButton big">
-    Find a message
-  </button>
+  <button (click)="DivFindMessage = !DivFindMessage" class="highlightButtonMain big">Find a message</button>
 
   <div class="form-section" [hidden]="!DivFindMessage">
     <h2>Get message by URI</h2>

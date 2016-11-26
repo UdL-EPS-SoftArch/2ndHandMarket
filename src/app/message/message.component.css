@@ -1,9 +1,8 @@
-.active:active {
-  color: red;
+#outer
+{
+  width:100%;
 }
-.focus:focus {
-  color: red;
-}
-:target {
-  color: red;
+.inner
+{
+  display: inline-block;
 }

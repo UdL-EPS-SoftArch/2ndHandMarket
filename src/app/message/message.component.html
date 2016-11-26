@@ -1,10 +1,11 @@
 <section class="message">
   <header class="header">
+    <h2></h2>
     <!-- new message -->
     <button (click)="DivSendMessage = !DivSendMessage" class="highlightButtonMain big">Write a new message</button>
 
        <div class="form-section" [hidden]="!DivSendMessage">
-         <h2> </h2>
+         <h2></h2>
          <div class="form-group">
            <label for="sender">Sender</label>
            <input type="text" class="form-control" id="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender"/>
@@ -21,14 +22,13 @@
             <label for="body">Body</label>
             <textarea class="form-control" id="body" placeholder="Enter Message" [(ngModel)]="newMessage.body"></textarea>
           </div>
-          <button (click)="addMessage()" class="highlightButtonGreen big">Send</button>
+          <button (click)="addMessage(); DivSendMessage = !DivSendMessage" class="highlightButtonGreen big">Send</button>
       </div>
 
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>
 
   <button (click)="DivFindMessage = !DivFindMessage" class="highlightButtonMain big">Find a message</button>
-
   <div class="form-section" [hidden]="!DivFindMessage">
     <h2>Get message by URI</h2>
 
@@ -106,12 +106,11 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
       <ul class="list-group" *ngIf="mySentMessages.length > 0">
         <li class="list-group-item" *ngFor="let message of mySentMessages">
           <div class="messages">
-            <h4>Uri: {{message.uri}}</h4>
-            <h4>Sender: {{message.sender}}</h4>
+            <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>To: {{message.destination}}</h4>
             <h4>Title: {{message.title}}</h4>
             <h4>Message: {{message.body}}</h4>
-            <button class="alert-danger" (click)="removeMessage(message)">Delete</button>
+            <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
           </div>
         </li>
       </ul>
@@ -129,12 +128,11 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
       <ul class="list-group" *ngIf="myReceivedMessages.length > 0">
         <li class="list-group-item" *ngFor="let message of myReceivedMessages">
           <div class="messages">
-            <h4>Uri: {{message.uri}}</h4>
+            <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>Sender: {{message.sender}}</h4>
-            <h4>To: {{message.destination}}</h4>
             <h4>Title: {{message.title}}</h4>
             <h4>Message: {{message.body}}</h4>
-            <button class="alert-danger" (click)="removeMessage(message)">Delete</button>
+            <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
           </div>
         </li>
       </ul>
@@ -152,12 +150,12 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
       <ul class="list-group" *ngIf="messages.length > 0">
         <li class="list-group-item" *ngFor="let message of messages">
           <div class="message">
-            <h4>Uri: {{message.uri}}</h4>
+            <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>Sender: {{message.sender}}</h4>
             <h4>To: {{message.destination}}</h4>
             <h4>Title: {{message.title}}</h4>
             <h4>Message: {{message.body}}</h4>
-            <button class="alert-danger" (click)="removeMessage(message)">Delete</button>
+            <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
           </div>
         </li>
       </ul>

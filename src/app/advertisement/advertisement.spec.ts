@@ -1,7 +1,5 @@
 /* tslint:disable:no-unused-variable */
 
-import { } from '@angular/core/testing';
-
 import { Advertisement } from './advertisement';
 
 describe('Advertisement', () => {
@@ -23,7 +21,7 @@ describe('Advertisement', () => {
     const color = 'blue';
     const weight = 10.1;
 
-    let advertisement = new Advertisement({
+    const advertisement = new Advertisement({
       id,
       uri: 'advertisement/1',
       title,
@@ -40,6 +38,7 @@ describe('Advertisement', () => {
       color,
       weight,
     });
+
     expect(advertisement.id).toEqual(id);
     expect(advertisement.uri).toEqual(uri);
     expect(advertisement.title).toEqual(title);

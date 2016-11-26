@@ -1,26 +1,32 @@
 <section class="purchase">
   <!-- Error -->
-  <div class="page-box" *ngIf="errorMessage">
-    <h2>There was an error when processing your purchase</h2>
+  <div class="page-box container" *ngIf="errorMessage">
+    <h3>There was an error when processing your purchase</h3>
     <span>{{errorMessage}}</span>
-    <a href="/">Go bak to the advertisement list</a>
+    <div class="center">
+      <a href="/">Go bak to the advertisement list</a>
+    </div>
   </div>
 
   <div *ngIf="!loading">
     <!-- Confirmation -->
-    <div class="page-box" *ngIf="!errorMessage && !hasPurchased">
-      <h1>Confirm your order</h1>
+    <div class="page-box container" *ngIf="!errorMessage && !hasPurchased">
+      <h3>Confirm your order</h3>
       <span>You are about to buy "{{advertisement.title}}"</span>
-      <span>TOTAL: {{advertisement.price}}</span>
+      <strong>TOTAL: {{advertisement.price}}</strong>
       <button (click)="submitPurchase()">Complete purchase</button>
     </div>
 
     <!-- Success -->
-    <div class="page-box" *ngIf="!errorMessage && hasPurchased">
-      <h1>Purchase completed!</h1>
-      <span>You have bought "{{advertisement.title}}".</span>
-      <span>You can check your purchases on your user panel.</span>
-      <a href="/">Go back to the advertisement list</a>
+    <div class="page-box container" *ngIf="!errorMessage && hasPurchased">
+      <h3>Purchase completed!</h3>
+      <span>
+        Thank you for buying "{{advertisement.title}}".<br>
+        You can check your purchases on your user panel.
+      </span>
+      <div class="center">
+        <a href="/">Go back to the advertisement list</a>
+      </div>
     </div>
   </div>
 </section>

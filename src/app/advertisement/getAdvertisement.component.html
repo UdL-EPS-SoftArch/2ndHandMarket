@@ -25,9 +25,14 @@
           <label for="negotiablePrice">Negotiable Price</label>
         </div>
       </div>
-      <div class="action-buttons">
-        <button class="highlightButton">Buy</button>
-        <button class="blankButton">Add to Wishlist</button>
+      <div class="action-buttons" *ngIf="purchase">
+        <span class="sold">Sold</span>
+      </div>
+      <div class="action-buttons" *ngIf="!purchase">
+        <a routerLink="/advertisements/{{advertisement.id}}/purchase" class="highlightButton">
+          Buy
+        </a>
+        <a href="#" class="blankButton">Add to Wishlist</a>
       </div>
     </div>
   </div>

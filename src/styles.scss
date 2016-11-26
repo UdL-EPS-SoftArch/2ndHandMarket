@@ -35,6 +35,7 @@ body {
 
 app-root {
   flex: 1;
+  display: flex;
 }
 
 h1, h2, h3, h4 {
@@ -315,4 +316,17 @@ form.inline {
 
 *:hover > .display-on-hover {
   visibility: visible;
+}
+
+.page-box {
+  @extend .box;
+
+  span, strong, a {
+    display: block;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 15px;
+  }
 }

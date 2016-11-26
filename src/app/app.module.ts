@@ -10,6 +10,7 @@ import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
@@ -44,6 +45,7 @@ import { ProfileComponent } from './profile/profile.component';
     PostAdvertisementComponent,
     GetAdvertisementComponent,
     PutAdvertisementComponent,
+    PurchaseComponent,
     FooterComponent,
     RegisterSellerComponent,
     FooterComponent,

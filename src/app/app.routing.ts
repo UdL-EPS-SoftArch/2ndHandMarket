@@ -15,12 +15,14 @@ import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
   { path: 'advertisements/new', component: PostAdvertisementComponent, canActivate: [LoggedInGuard] },
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
   { path: 'advertisements/:id/edit', component: PutAdvertisementComponent },
+  { path: 'advertisements/:id/purchase', component: PurchaseComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},

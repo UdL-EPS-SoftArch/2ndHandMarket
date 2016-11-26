@@ -45,7 +45,7 @@ export class PurchaseService {
   }
 
   // POST /purchases
-  addPurchase(purchase: Purchase): Observable<Advertisement> {
+  addPurchase(purchase: Purchase): Observable<Purchase> {
     if (!(purchase.advertisement && purchase.advertisement.uri)) {
       throw new Error('Advertisement URI is required');
     }

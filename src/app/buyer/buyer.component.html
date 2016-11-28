@@ -1,73 +1,81 @@
-<section class="buyer">
+<section class="buyer" xmlns="http://www.w3.org/1999/html">
 <header>
-  <h1>Buyers</h1>
+  <h1>
+    <span>Buyers</span><br/>
+
+  </h1>
 
   <blockquote class="blockquote">
-      <p class="mb-0">
-        In this section you will find different options to manage your space buyer. See all your products, and continue sending
-        the packages.
-      </p>
-  </blockquote>
+    <p class="text-muted">
+    In this section you will find different options to manage your space buyer. See all your products, and continue sending
+    the packages.
+    </p>
+ </blockquote>
+
 
 </header>
 
   <!-- Column first -->
   <div class="row">
 
-      <div class="col-sm-3" >
+      <div class="col-list" >
         <div class="list-group" >
-            <h3 class="list-group-item disabled text-center">
+            <h4 class="list-group-item disabled text-center">
               <small class="text-muted">ALL CATEGORIES</small>
-            </h3>
-          <a href="#" class="list-group-item active">All orders</a>
-          <a href="#" class="list-group-item">WishList</a>
-          <a href="#" class="list-group-item">Coupons</a>
-          <a href="#" class="list-group-item ">Shipping</a>
+            </h4>
+          <a class="list-group-item" (click)="ShowOrder()"><i class="icons fa fa-file-text-o" aria-hidden="true"></i>All orders</a>
+          <a class="list-group-item" (click)="ShowWishList()"><i class="icons fa fa-list " aria-hidden="true"></i>WishList</a>
+          <a class="list-group-item" (click)="ShowOffers()"><i class="icons fa fa-handshake-o" aria-hidden="true"></i>Offers</a>
+          <a class="list-group-item" (click)="ShowCoupons()"><i class="icons fa fa-tags" aria-hidden="true"></i>Coupons</a>
+          <a class="list-group-item" (click)="ShowShipping()"><i class="icons fa fa-plane" aria-hidden="true"></i>Shipping</a>
         </div>
 
       </div>
 
-      <div class=".col-sm-9 " >
-          <h2 class="text-primary">My orders</h2>
-          <!--- Search -->
+    <div class="col-xs-9">
 
-          <form class="navbar-form" role="search">
-            <div class="input-group .pull-right" >
-              <input type="text" class="form-control" placeholder="Search..." name="srch-term" id="srch-term" autofocus=""[ngModel]="">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </form>
+      <div *ngIf="global === 1">
+        <h3 class="highlight"> My Orders </h3>
+            <br>
+          <table border="1px">
+            <th colspan="2">
+              Filter by Product:
+              <input class="form-control" [(ngModel)]="filterQuery"/>
+            </th>
 
-            <div class="table">
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                  <tr>
-                    <th>Id Order</th>
-                    <th>Date Order</th>
-                    <th>Name Order</th>
-                    <th>Seller</th>
-                    <th>Status</th>
-                    <th>Price</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>25/02/2004</td>
-                    <td>Mouse</td>
-                    <td>Ryan Thomas</td>
-                    <td>Sending</td>
-                    <td>10,00 €</td>
-                  </tr>
-                  </tbody>
-                </table>
-                </div>
-            </div>
+              <tr>
+                <th style="width: 20%" class="text-center"> idProduct</th>
+                <th style="width: 20%" class="text-center"> Product Name </th>
+                <th style="width: 20%" class="text-center"> Date </th>
+                <th style="width: 20%" class="text-center"> Details </th>
+                <th style="width: 20%" class="text-center"> Seller </th>
+              </tr>
 
-        </div>
+          </table>
+      </div>
+
+      <div *ngIf="global === 2" >
+
+        <h3 class="highlight"> My WishList </h3>
+      </div>
+
+      <div *ngIf="global === 3" >
+        <h3 class="highlight"> My Offers </h3>
+      </div>
+
+      <div *ngIf="global === 4" >
+
+        <h3 class="highlight"> My Coupons </h3>
+      </div>
+
+      <div *ngIf="global === 5" >
+        <h3 class="highlight"> My Shippings </h3>
+      </div>
+
+
+
     </div>
+
+  </div>
 
 </section>

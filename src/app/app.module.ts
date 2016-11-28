@@ -26,6 +26,7 @@ import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DataTableModule } from 'angular2-datatable';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     HttpModule,
     routing,
-    LoginBasicModule
+    LoginBasicModule,
+    DataTableModule
   ],
   declarations: [
     AppComponent,

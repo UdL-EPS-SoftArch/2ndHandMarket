@@ -17,6 +17,8 @@
     <a href="/profile">Profile</a> <!-- TODO: as routerLink -->
   </li>
   <li *ngIf="isLoggedIn()">
+    <a href="/buyers" >Buyer</a>
+    <a href="#" >Seller</a>
     <a href="#" (click)="logout()">Log out</a>
   </li>
 </ul>

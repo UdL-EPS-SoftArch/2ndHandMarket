@@ -7,9 +7,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuyerComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    this.global = 1;
+  }
+  global : number;
+
 
   ngOnInit() {
+  }
+
+  ShowOrder(): void{
+    this.global = 1;
+
+  }
+
+  ShowWishList() : void{
+    this.global = 2;
+
+  }
+
+  ShowOffers() : void{
+    this.global = 3;
+
+  }
+
+  ShowCoupons() : void{
+    this.global = 4;
+
+  }
+
+  ShowShipping() : void {
+    this.global = 5;
+
   }
 
 }

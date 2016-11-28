@@ -24,6 +24,7 @@ import { AuthenticationBasicService } from './login-basic/authentication-basic.s
 import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import {DataTableModule} from "angular2-datatable";
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { BuyerComponent } from './buyer/buyer.component';
     FormsModule,
     HttpModule,
     routing,
-    LoginBasicModule
+    LoginBasicModule,
+    DataTableModule
   ],
   declarations: [
     AppComponent,

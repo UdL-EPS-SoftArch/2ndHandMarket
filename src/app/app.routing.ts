@@ -1,5 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'advertisements/:id/purchase', component: PurchaseComponent, canActivate: [LoggedInGuard] },
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
+  { path: 'basketProducts', component: BasketProductComponent},
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },

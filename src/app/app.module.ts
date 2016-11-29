@@ -28,6 +28,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DataTableModule } from 'angular2-datatable';
 import { SellerComponent } from './seller/seller.component';
 import { ComponentsHelper } from 'ng2-bootstrap';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { ComponentsHelper } from 'ng2-bootstrap';
     DateFormatPipe,
     BuyerComponent,
     ProfileComponent,
-    SellerComponent
+    SellerComponent,
+    BasketProductComponent
   ],
   providers: [
     appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper

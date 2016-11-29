@@ -22,6 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { SellerComponent } from './seller/seller.component';
 import { ComponentsHelper } from 'ng2-bootstrap';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -33,6 +34,7 @@ describe('App: Softarch1617Client', () => {
         ContactComponent, MessageComponent, OfferComponent,
         RegisterSellerComponent, SellerComponent, BuyerComponent,
         ProfileComponent, PurchaseComponent, SellerComponent,
+        BasketProductComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

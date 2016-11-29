@@ -1,0 +1,35 @@
+<section class="purchase">
+  <!-- Error -->
+  <div class="page-box container" *ngIf="errorMessage">
+    <h3>There was an error when processing your purchase</h3>
+    <span>{{errorMessage}}</span>
+    <div class="center">
+      <a routerLink="/advertisements">Go bak to the advertisement list</a>
+    </div>
+  </div>
+
+  <div *ngIf="!loading">
+    <!-- Confirmation -->
+    <div class="page-box container" *ngIf="!errorMessage && !hasPurchased">
+      <h3>Confirm your order</h3>
+      <span>You are about to buy "{{advertisement.title}}"</span>
+      <strong>TOTAL: {{advertisement.price | currency:'USD':true}}</strong>
+      <div class="confirmation-buttons">
+        <a class="blankButton" routerLink="/advertisements/{{advertisement.id}}">Cancel</a>
+        <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div class="page-box container" *ngIf="!errorMessage && hasPurchased">
+      <h3>Purchase completed!</h3>
+      <span>
+        Thank you for buying "{{advertisement.title}}".<br>
+        You can check your purchases on your user panel.
+      </span>
+      <div class="center">
+        <a routerLink="/advertisements">Go back to the advertisement list</a>
+      </div>
+    </div>
+  </div>
+</section>

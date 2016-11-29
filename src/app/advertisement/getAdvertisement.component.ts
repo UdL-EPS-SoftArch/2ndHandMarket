@@ -4,21 +4,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
 import { Picture } from './picture/picture';
+import { Purchase } from '../purchase/purchase';
+import { PurchaseService } from '../purchase/purchase.service';
 
 @Component({
   selector: 'app-get-advertisement',
   templateUrl: './getAdvertisement.component.html',
   styleUrls: ['getAdvertisement.component.scss'],
-  providers: [AdvertisementService]
+  providers: [AdvertisementService, PurchaseService]
 })
 export class GetAdvertisementComponent implements OnInit {
 
   advertisement: Advertisement = new Advertisement();
+  purchase: Purchase;
   picture: Picture = new Picture();
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private advertisementService: AdvertisementService) {
+              private advertisementService: AdvertisementService,
+              private purchaseService: PurchaseService) {
   }
 
   /**
@@ -46,6 +50,9 @@ export class GetAdvertisementComponent implements OnInit {
 
         // The advertisement picture is stored somewhere (let's query the API for it now that we have the advertisement).
         this.getAdvertisementPicture();
+
+        // Check advertisement purchase status.
+        this.getAdvertisementPurchase();
       },
       error => alert('Error: Failed to retrieve advertisement!')
     );
@@ -56,6 +63,14 @@ export class GetAdvertisementComponent implements OnInit {
       .subscribe(
         pictures => this.picture = pictures.length > 0 && pictures[0],
         error => alert(error.errorMessage)
+      );
+  }
+
+  getAdvertisementPurchase() {
+    // HTML will hide Buy & Add to Wishlist buttons if the product has already been purchased.
+    this.purchaseService.getPurchaseByAdvertisement(this.advertisement)
+      .subscribe(
+        purchase => this.purchase = purchase,
       );
   }
 

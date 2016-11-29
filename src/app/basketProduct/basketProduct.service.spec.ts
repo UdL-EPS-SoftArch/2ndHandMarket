@@ -49,8 +49,8 @@ describe('Service: BasketProduct', () => {
 
         service.getAllProducts().subscribe((data) => {
           expect(data.length).toBe(2);
-          expect(data[0].title).toBe('TitleTest1');
-          expect(data[1].title).toBe('TitleTest2');
+          expect(data[0].product.title).toBe('TitleTest1');
+          expect(data[1].product.title).toBe('TitleTest2');
         });
       })));
   });

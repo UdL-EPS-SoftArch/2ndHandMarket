@@ -22,8 +22,7 @@ export class BasketProductService {
   // POST /product
   addProduct(product: BasketProduct): Observable<BasketProduct> {
     let body = JSON.stringify({
-      'title': product.title,
-      'price': product.price
+      'product': product.product
     });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);

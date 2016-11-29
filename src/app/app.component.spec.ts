@@ -19,6 +19,7 @@ import { OfferComponent } from './offer/offer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -26,7 +27,8 @@ describe('App: Softarch1617Client', () => {
       declarations: [
         AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, OfferComponent, RegisterSellerComponent, SellerOfferComponent, BuyerComponent
+        ContactComponent, MessageComponent, OfferComponent, RegisterSellerComponent, SellerOfferComponent, BuyerComponent,
+        BasketProductComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

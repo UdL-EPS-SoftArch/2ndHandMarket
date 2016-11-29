@@ -1,4 +1,4 @@
-<section class="advertisement">
+<section class="advertisement container">
   <header>
     <h2>Advertisements</h2>
   </header>
@@ -10,7 +10,7 @@
       <div class="card">
         <div class="picture" [style.background-image]="'url(' + (advertisementPictures[advertisement.uri] && advertisementPictures[advertisement.uri].content)  + ')'"></div>
         <div class="title">
-          <a href="#" class="no-decorate">
+          <a class="no-decorate" [routerLink]="[advertisement.uri]">
             {{advertisement.title}}
           </a>
         </div>

@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
     HttpModule,
     FormsModule,
     ModalModule,
-    AlertModule
+    AlertModule,
   ],
   providers: [AuthenticationBasicService],
   declarations: [LoginBasicComponent],

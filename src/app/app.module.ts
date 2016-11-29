@@ -10,6 +10,7 @@ import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
@@ -24,6 +25,7 @@ import { AuthenticationBasicService } from './login-basic/authentication-basic.s
 import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { ProfileComponent } from './profile/profile.component';
 import {DataTableModule} from "angular2-datatable";
 
 @NgModule({
@@ -45,6 +47,7 @@ import {DataTableModule} from "angular2-datatable";
     PostAdvertisementComponent,
     GetAdvertisementComponent,
     PutAdvertisementComponent,
+    PurchaseComponent,
     FooterComponent,
     RegisterSellerComponent,
     FooterComponent,
@@ -52,7 +55,8 @@ import {DataTableModule} from "angular2-datatable";
     ContactComponent,
     DateFormatPipe,
     SellerOfferComponent,
-    BuyerComponent
+    BuyerComponent,
+    ProfileComponent
   ],
   providers: [
     appRoutingProviders, AuthenticationBasicService, LoggedInGuard

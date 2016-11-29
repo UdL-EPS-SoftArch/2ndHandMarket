@@ -1,4 +1,4 @@
-<section class="postAdvertisement">
+<section class="postAdvertisement container">
   <header>
     <h2>{{advertisement.id ? advertisement.title : 'New Advertisement'}}</h2>
   </header>
@@ -30,7 +30,7 @@
             <input type="file" id="inputPicture" autofocus="" (change)="addPicture(file)" #file />
           </div>
           <div>
-            <div class="picture-container" [hidden]="!picture.content">
+            <div class="picture-container" *ngIf="picture" [hidden]="!picture.content">
               <img [src]="picture.content" />
             </div>
           </div>
@@ -44,7 +44,7 @@
         <label for="inputPrice" class="col-sm-2">Price*</label>
         <div class="input-group col-sm-10">
           <div class="input-group-addon">$</div>
-          <input type="number" min="0.01" id="inputPrice" class="form-control" name="price" placeholder="0.00" required [(ngModel)]="advertisement.price" />
+          <input type="number" min="0.01" step="any" id="inputPrice" class="form-control" name="price" placeholder="0.00" required [(ngModel)]="advertisement.price" />
         </div>
       </div>
       <div class="form-group">

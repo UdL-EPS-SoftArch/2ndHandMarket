@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
-import { Picture } from '../picture/picture';
-
+import { Picture } from './picture/picture';
 
 @Component({
   selector: 'app-advertisement',

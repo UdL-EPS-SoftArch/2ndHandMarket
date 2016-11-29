@@ -1,7 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PictureComponent } from './picture/picture.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
@@ -14,22 +13,27 @@ import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
+import { BuyerComponent } from './buyer/buyer.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
   { path: 'advertisements/new', component: PostAdvertisementComponent, canActivate: [LoggedInGuard] },
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
   { path: 'advertisements/:id/edit', component: PutAdvertisementComponent },
-  { path: 'pictures', component: PictureComponent },
+  { path: 'advertisements/:id/purchase', component: PurchaseComponent, canActivate: [LoggedInGuard] },
+  { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
-  //  { path: 'pictures/:id', component: PictureDetailComponent },
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'offers', component: OfferComponent },
   { path: 'selleroffers', component: SellerOfferComponent },
-  { path: '', component: IntroComponent },
-  //  { path: '**', component: PageNotFoundComponent }
+  { path: '', component: AdvertisementComponent },
+  { path: 'buyers', component: BuyerComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 export const appRoutingProviders: any[] = [];

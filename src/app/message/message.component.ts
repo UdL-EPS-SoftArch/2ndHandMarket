@@ -14,6 +14,7 @@ export class MessageComponent implements OnInit {
   messages: Message[] = [];
   mySentMessages: Message[] = [];
   myReceivedMessages: Message[] = [];
+  myAllMessages: Message[] = [];
 
   messagesUri: Message[] = [];
   messagesTitle: Message[] = [];
@@ -30,6 +31,7 @@ export class MessageComponent implements OnInit {
     this.newMessage.sender = this.authentication.getCurrentUser().username;
     this.getMySent();
     this.getMyReceived();
+    this.getAllMyMessages();
   }
 
   getMessages() {
@@ -51,6 +53,13 @@ export class MessageComponent implements OnInit {
       .subscribe(
         messages => this.myReceivedMessages = this.messages.filter(p => p.destination ==  this.newMessage.sender),
         error =>  this.errorMessage = <any>error.message);
+  }
+
+  getAllMyMessages() {
+    return this.messageService.getAllMessages()
+      .subscribe(
+        messages => this.myAllMessages = this.mySentMessages.concat(this.myReceivedMessages),
+        error => this.errorMessage = <any>error.message);
   }
 
   getMessageByUri(uri) {

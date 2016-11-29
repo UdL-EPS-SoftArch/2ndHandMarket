@@ -82,7 +82,8 @@
 
   <button (click)=" DivAllMessage = !DivAllMessage;
   DivReceivedMessage = !DivAllMessage;
-  DivSentMessage = !DivAllMessage" class="highlightButtonTest big">   ALL MESSAGES ({{messages.length}})  </button>
+  DivSentMessage = !DivAllMessage" class="highlightButtonTest big"> ALL MESSAGES ({{myAllMessages.length}})
+  </button>
 
   <button (click)="DivSentMessage = !DivSentMessage;
 DivReceivedMessage = !DivSentMessage;
@@ -129,7 +130,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
         <li class="list-group-item" *ngFor="let message of myReceivedMessages">
           <div class="messages">
             <!--<h4>Uri: {{message.uri}}</h4>-->
-            <h4>Sender: {{message.sender}}</h4>
+            <h4>From: {{message.sender}}</h4>
             <h4>Title: {{message.title}}</h4>
             <h4>Message: {{message.body}}</h4>
             <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
@@ -141,14 +142,14 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
   <!-- All -->
   <div class="form-section" [hidden]="!DivAllMessage">
       <h3>All messages</h3>
-      <p *ngIf="messages.length > 0">
-        <span class="message-count"><strong>{{messages.length}}</strong> {{messages.length == 1 ? 'message' : 'messages'}}</span>
+    <p *ngIf="myAllMessages.length > 0">
+      <span class="message-count"><strong>{{myAllMessages.length}}</strong> {{myAllMessages.length == 1 ? 'message' : 'messages'}}</span>
       </p>
-      <p *ngIf="messages.length == 0">
+    <p *ngIf="myAllMessages.length == 0">
         <span class="message-count">No messages</span>
       </p>
-      <ul class="list-group" *ngIf="messages.length > 0">
-        <li class="list-group-item" *ngFor="let message of messages">
+    <ul class="list-group" *ngIf="myAllMessages.length > 0">
+      <li class="list-group-item" *ngFor="let message of myAllMessages">
           <div class="message">
             <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>Sender: {{message.sender}}</h4>

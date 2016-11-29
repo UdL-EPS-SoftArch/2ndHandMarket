@@ -14,6 +14,7 @@ import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'selleroffers', component: SellerOfferComponent },
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
   // { path: '**', component: PageNotFoundComponent }
 ];
 

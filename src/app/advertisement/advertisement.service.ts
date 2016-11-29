@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Advertisement } from './advertisement';
 import { environment } from '../../environments/environment';
 import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Picture } from './picture/picture';
 
 @Injectable()
 export class AdvertisementService {
@@ -25,7 +26,7 @@ export class AdvertisementService {
   }
 
   // GET /advertisements/:id/pictures
-  getAdvertisementPictures(uri: string): Observable<Advertisement> {
+  getAdvertisementPictures(uri: string): Observable<Picture[]> {
     return this.http.get(`${environment.API}${uri}/pictures`)
       .map((res: Response) => res.json()._embedded.pictures)
       .catch((error: any) => Observable.throw(error.json()));

@@ -1,4 +1,4 @@
-<section class="postAdvertisement">
+<section class="postAdvertisement container">
   <header>
     <h2>{{advertisement.id ? advertisement.title : 'New Advertisement'}}</h2>
   </header>
@@ -30,7 +30,7 @@
             <input type="file" id="inputPicture" autofocus="" (change)="addPicture(file)" #file />
           </div>
           <div>
-            <div class="picture-container" [hidden]="!picture.content">
+            <div class="picture-container" *ngIf="picture" [hidden]="!picture.content">
               <img [src]="picture.content" />
             </div>
           </div>

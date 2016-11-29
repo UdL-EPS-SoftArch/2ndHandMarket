@@ -24,6 +24,7 @@ import { AuthenticationBasicService } from './login-basic/authentication-basic.s
 import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { BuyerComponent } from './buyer/buyer.component';
     ContactComponent,
     DateFormatPipe,
     SellerOfferComponent,
-    BuyerComponent
+    BuyerComponent,
+    ProfileComponent
   ],
   providers: [
     appRoutingProviders, AuthenticationBasicService, LoggedInGuard

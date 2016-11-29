@@ -19,14 +19,18 @@ import { OfferComponent } from './offer/offer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { ProfileComponent } from './profile/profile.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
-        PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, OfferComponent, RegisterSellerComponent, SellerOfferComponent, BuyerComponent
+        PostAdvertisementComponent, GetAdvertisementComponent,
+        PutAdvertisementComponent, SearchAdvertisementComponent,
+        ContactComponent, MessageComponent, OfferComponent,
+        RegisterSellerComponent, SellerOfferComponent, BuyerComponent,
+        ProfileComponent,
       ],
       imports: [
         routing, FormsModule, MomentModule

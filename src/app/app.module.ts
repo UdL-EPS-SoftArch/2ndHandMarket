@@ -10,6 +10,7 @@ import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
@@ -25,6 +26,7 @@ import { OfferComponent } from './offer/offer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -44,6 +46,7 @@ import { BuyerComponent } from './buyer/buyer.component';
     PostAdvertisementComponent,
     GetAdvertisementComponent,
     PutAdvertisementComponent,
+    PurchaseComponent,
     FooterComponent,
     RegisterSellerComponent,
     FooterComponent,
@@ -52,7 +55,8 @@ import { BuyerComponent } from './buyer/buyer.component';
     DateFormatPipe,
     BuyerOfferComponent,
     PersonalOffersListComponent,
-    BuyerComponent
+    BuyerComponent,
+    ProfileComponent
   ],
   providers: [
     appRoutingProviders, AuthenticationBasicService, LoggedInGuard

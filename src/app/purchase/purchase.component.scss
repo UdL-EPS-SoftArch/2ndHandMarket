@@ -1,0 +1,14 @@
+.purchase {
+  height: 100%;
+  background-color: #f2f1ef;
+  padding-top: 20px;
+}
+
+.confirmation-buttons {
+  margin-top: 10px;
+
+  a, button {
+    display: inline-block;
+    max-width: 200px;
+  }
+}

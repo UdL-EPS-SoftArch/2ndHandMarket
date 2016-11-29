@@ -13,7 +13,6 @@ import { GetAdvertisementComponent } from './advertisement/getAdvertisement.comp
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
-import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
@@ -24,6 +23,8 @@ import { AuthenticationBasicService } from './login-basic/authentication-basic.s
 import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
+
 
 @NgModule({
   imports: [
@@ -46,11 +47,11 @@ import { BuyerComponent } from './buyer/buyer.component';
     FooterComponent,
     RegisterSellerComponent,
     FooterComponent,
-    SearchAdvertisementComponent,
     ContactComponent,
     DateFormatPipe,
     SellerOfferComponent,
-    BuyerComponent
+    BuyerComponent,
+    SearchAdvertisementComponent
   ],
   providers: [
     appRoutingProviders, AuthenticationBasicService, LoggedInGuard

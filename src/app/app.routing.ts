@@ -35,6 +35,8 @@ const appRoutes: Routes = [
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
+  { path: 'profile/buyeroffers', component: OfferComponent, canActivate: [LoggedInGuard] },
+  { path: 'profile/selleroffers', component: SellerOfferComponent, canActivate: [LoggedInGuard] },
   // { path: '**', component: PageNotFoundComponent }
 ];
 

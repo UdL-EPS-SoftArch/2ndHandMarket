@@ -31,7 +31,7 @@ describe('App: Softarch1617Client', () => {
         PutAdvertisementComponent, SearchAdvertisementComponent,
         ContactComponent, MessageComponent, OfferComponent,
         RegisterSellerComponent, SellerOfferComponent, BuyerComponent,
-        ProfileComponent, PurchaseComponent,
+        ProfileComponent, PurchaseComponent, SellerComponent,
       ],
       imports: [
         routing, FormsModule, MomentModule

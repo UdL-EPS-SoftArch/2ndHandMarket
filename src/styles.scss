@@ -8,6 +8,9 @@ $highlightColor: #1a99aa;
 $highlightActiveColor: #1fb3c6;
 $pageComponentsMargin: 20px;
 
+$messageColor: #fde500;
+$highlightActiveMessageColor: #e7d200;
+
 @mixin perfectBackground {
   background: no-repeat center center;
   -webkit-background-size: cover;
@@ -76,6 +79,161 @@ a.no-decorate {
 .highlightButton.big {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.highlightButtonTest {
+  @extend a.no-decorate;
+
+  border: 0;
+  border-radius: 4px;
+  //background-color: $messageColor;
+  background-color: $highlightColor;
+  box-shadow:none;
+  color: #fff;
+  display: inline-block;
+  padding: 7px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 25%;
+  height: 50px;
+
+  &:link, &:hover, &:active {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: $highlightActiveColor;
+  }
+}
+
+.highlightButtonTest.big {
+  margin-top: 15px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+.highlightButtonGreen {
+  @extend a.no-decorate;
+
+  border: 0;
+  border-radius: 4px;
+  background-color: #04FF99;
+  box-shadow:none;
+  color: #fff;
+  display: inline-block;
+  padding: 7px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  height: 50px;
+
+  &:link, &:hover, &:active {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: #00AA77;
+  }
+}
+
+.highlightButtonGreen.big {
+  margin-top: 15px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+.highlightButtonGreen {
+  @extend a.no-decorate;
+
+  border: 0;
+  border-radius: 4px;
+  background-color: #04FF99;
+  box-shadow:none;
+  color: #fff;
+  display: inline-block;
+  padding: 7px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  height: 50px;
+
+  &:link, &:hover, &:active {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: #00AA77;
+  }
+}
+
+.highlightButtonGreen.big {
+  margin-top: 15px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+.highlightButtonDelete {
+  @extend a.no-decorate;
+
+  border: 0;
+  border-radius: 4px;
+  background-color: #FF574F;
+  box-shadow:none;
+  color: #fff;
+  display: inline-block;
+  padding: 7px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  height: 50px;
+
+  &:link, &:hover, &:active {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: #B00200;
+  }
+}
+
+.highlightButtonDelete.big {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.highlightButtonMain {
+  @extend a.no-decorate;
+
+  border: 0;
+  border-radius: 4px;
+  background-color: $highlightColor;
+  box-shadow:none;
+  color: #fff;
+  display: inline-block;
+  padding: 7px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  height: 50px;
+
+  &:link, &:hover, &:active {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: $highlightActiveColor;;
+  }
+}
+
+.highlightButtonMain.big {
+  margin-top: 3px;
+  margin-right: 10px;
+  margin-bottom: 3px;
 }
 
 .blankButton {

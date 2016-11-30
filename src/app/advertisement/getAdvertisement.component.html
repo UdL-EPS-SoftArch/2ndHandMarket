@@ -32,11 +32,8 @@
         <a routerLink="/advertisements/{{advertisement.id}}/purchase" class="highlightButton">
           Buy
         </a>
-        <a class="highlightButton" routerLink="/profile/buyeroffers">
+        <a class="highlightButton" routerLink="/profile/buyeroffers" *ngIf="getCurrentUser() != advertisement.owner">
           Make an offer
-        </a>
-        <a class="highlightButton" routerLink="/profile/selleroffers">
-          Manage offers
         </a>
         <a href="#" class="blankButton">Add to Wishlist</a>
       </div>

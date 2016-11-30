@@ -34,6 +34,7 @@ export class OfferComponent implements OnInit {
   }
 
   addOffer() {
+      this.newOffer.date = Date.now().valueOf();
       this.offerService.addOffer(this.newOffer)
       .subscribe(
         offer =>  {

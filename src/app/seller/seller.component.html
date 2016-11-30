@@ -1,0 +1,99 @@
+<section >
+  <div class="row no-gutter" style="margin-left:15px ; margin-right:25px">
+
+    <header>
+      <h1><span>Seller</span><br/></h1>
+
+      <blockquote class="blockquote">
+        <p class="text-muted">
+          In this section you will find different options to manage your space buyer. See all your products, and continue sending
+          the packages.
+        </p>
+      </blockquote>
+
+    </header>
+
+    <div class="col-xs-12 col-sm-2 " >
+
+      <aside class="sidebar-left">
+        <nav>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="sidebar-menu">
+              <li class="header">ALL CATEGORIES</li>
+              <li>
+                <a class="active" (click)="ShowProducts()">
+                  <i class="icons fa fa-file-text-o"></i> <span>My products</span>
+                </a>
+              </li>
+              <li>
+                <a (click)="ShowCountOffers()">
+                  <i class="icons fa fa-list"></i> <span>CountOffers</span>
+                </a>
+              </li>
+              <li>
+                <a (click)="AddCoupons()">
+                  <i class="icons fa fa-handshake-o"></i> <span>Add Coupons</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+    </div>
+
+    <div class="col-xs-12 col-sm-10">
+
+      <div *ngIf="global === 1">
+        <header class="page-title"> My Products</header><br>
+        <div class="dashboard padding">
+          <p>Filter by Product:
+            <input class="form-control input" [(ngModel)]="filterQuery"/>
+          </p><br>
+
+          <table class="table .table-striped">
+            <tr>
+              <th width="20%" class="text-center"> idProduct</th>
+              <th width="20%" class="text-center"> Product Name </th>
+              <th width="20%" class="text-center"> Date </th>
+              <th width="20%" class="text-center"> Details </th>
+              <th width="20%" class="text-center"> Seller </th>
+            </tr>
+            <tr>
+              <th width="20%" class="text-center"> 1565480</th>
+              <th width="20%" class="text-center"> Laptop</th>
+              <th width="20%" class="text-center"> 10/10/2016 </th>
+              <th width="20%" class="text-center"><a href="#">More</a></th>
+              <th width="20%" class="text-center"><a href="#" style="color: black; size:10px" ><i class="icons fa fa-envelope-o "></i></a></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div *ngIf="global === 2" >
+        <header class="page-title">CountOffers</header><br>
+        <div class="dashboard padding">
+
+        </div>
+      </div>
+
+      <div *ngIf="global === 3" >
+        <header class="page-title">Add Coupons</header><br>
+        <div class="dashboard padding">
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

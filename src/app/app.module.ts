@@ -53,6 +53,7 @@ import { SellerComponent } from './seller/seller.component';
     FooterComponent,
     RegisterSellerComponent,
     FooterComponent,
+    PurchaseComponent,
     SearchAdvertisementComponent,
     ContactComponent,
     DateFormatPipe,

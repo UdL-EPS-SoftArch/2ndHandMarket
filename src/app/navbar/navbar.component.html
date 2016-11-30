@@ -16,7 +16,8 @@
         <!-- <li><a href="#contact">Contact</a></li> // move to footer -->
         <li id="nav-search">
           <form class="hidden-xs inline">
-            <input type="text" placeholder="Need something?" autofocus />
+            <span class="fa fa-search icon"></span>
+            <input type="text" placeholder="Need something?" />
           </form>
         </li>
         <li class="visible-xs">
@@ -52,9 +53,8 @@
             <li><a routerLink="/advertisements/new" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Sell</a></li>
             <li role="separator" class="divider"></li>
             <li><a routerLink="/offers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offers</a></li>
-            <li><a routerLink="/selleroffers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Seller offers</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a routerLink="/buyers" routerLinkActive="active">Buyers</a></li>
+            <li><a routerLink="/buyeroffers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">BuyerOffer</a></li>
+            <li><a routerLink="/personalOffersList" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Personal Offers</a></li>
             <li role="separator" class="divider"></li>
             <li><a routerLink="/register-sellers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Register sellers</a></li>
           </ul>

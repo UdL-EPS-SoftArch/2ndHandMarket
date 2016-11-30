@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   { path: 'offers', component: OfferComponent },
   { path: 'buyeroffers', component: BuyerOfferComponent },
   { path: 'personalOffersList', component: PersonalOffersListComponent },
-  { path: '', component: IntroComponent },
+  { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
   // { path: '**', component: PageNotFoundComponent }

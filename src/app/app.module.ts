@@ -51,6 +51,7 @@ import { ProfileComponent } from './profile/profile.component';
     FooterComponent,
     RegisterSellerComponent,
     FooterComponent,
+    PurchaseComponent,
     SearchAdvertisementComponent,
     ContactComponent,
     DateFormatPipe,

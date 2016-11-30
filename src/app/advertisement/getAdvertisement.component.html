@@ -32,9 +32,12 @@
         <a routerLink="/advertisements/{{advertisement.id}}/purchase" class="highlightButton">
           Buy
         </a>
-        <a routerLink="/personalOffersList" class="highlightButton" *ngIf="!advertisement.negotiablePrice">
-          Make your offer
-        </a>
+        <div *ngIf="advertisement.negotiablePrice">
+          <form>
+            <input type="number" id="inputValue" name="value" min="0" placeholder="Your Offer" [(ngModel)]="newBuyerOffer.value"/>
+            <button (click)="addBuyerOffer()">OFFER</button>
+          </form>
+        </div>
         <a href="#" class="blankButton">Add to Wishlist</a>
       </div>
     </div>

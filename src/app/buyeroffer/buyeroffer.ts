@@ -1,6 +1,7 @@
 export class BuyerOffer {
   uri: string = '';
-  buyer_offer_id: number;
+  buyer_id: number;
+  advertisement_id: number;
   value: number;
   date: Date;
 

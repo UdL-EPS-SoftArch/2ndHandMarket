@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript">
+    function offerbutton(){
+      var element = document.getElementById("makeoffer");
+      if (advertisement.negotiablePrice = true) {
+        element.classList.remove("visibleoffer");
+        element.classList.add("hiddenoffer");
+      } else {
+        element.classList.remove("hiddenoffer");
+        element.classList.add("visibleoffer");
+      }
+    }
+  </script>
+</head>
+
 <section class="getAdvertisement container">
   <div class="row product-basics">
     <div class="col-md-6 photo">
@@ -28,9 +45,12 @@
       <div class="action-buttons" *ngIf="purchase">
         <span class="sold">Sold</span>
       </div>
-      <div class="action-buttons" *ngIf="!purchase">
+      <div onLoad="offerbutton()"> class="action-buttons" *ngIf="!purchase">
         <a routerLink="/advertisements/{{advertisement.id}}/purchase" class="highlightButton">
           Buy
+        </a>
+        <a routerLink="/personalOffersList" class="highlightButton" id ="makeoffer">
+          Make your offer
         </a>
         <a href="#" class="blankButton">Add to Wishlist</a>
       </div>

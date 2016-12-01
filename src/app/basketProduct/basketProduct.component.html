@@ -1,3 +1,18 @@
-<p>
-  basket works!
-</p>
+<section class="basketProduct">
+    <header class="header">
+        <h2>Products</h2>
+
+    </header>
+<ul class="list-group" *ngIf="products.length > 0">
+  <li class="list-group-item" *ngFor="let product of products">
+    <div class="basketProduct">
+      <h4>Name: {{product.product.title}}</h4>
+      <h4>Price: {{product.product.price}}</h4>
+      <button class="alert-danger" (click)="removeProduct(product)">Delete</button>
+    </div>
+  </li>
+</ul>
+
+</section>
+
+

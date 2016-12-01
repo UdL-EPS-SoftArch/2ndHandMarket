@@ -6,12 +6,15 @@ import { AdvertisementService } from './advertisement.service';
 import { Picture } from './picture/picture';
 import { Purchase } from '../purchase/purchase';
 import { PurchaseService } from '../purchase/purchase.service';
+import {BasketProductService} from "../basketProduct/basketProduct.service";
+import {BasketProduct} from "../basketProduct/basketProduct";
 
 @Component({
   selector: 'app-get-advertisement',
   templateUrl: './getAdvertisement.component.html',
   styleUrls: ['./getAdvertisement.component.scss'],
-  providers: [AdvertisementService, PurchaseService]
+  providers: [AdvertisementService, PurchaseService, BasketProductService]
+
 })
 export class GetAdvertisementComponent implements OnInit {
 
@@ -22,7 +25,8 @@ export class GetAdvertisementComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private advertisementService: AdvertisementService,
-              private purchaseService: PurchaseService) {
+              private purchaseService: PurchaseService,
+              private basketProductService: BasketProductService) {
   }
 
   /**
@@ -87,4 +91,11 @@ export class GetAdvertisementComponent implements OnInit {
       error => alert(`Error: ${error.message}`)
     );
   }
+
+  addProduct(advertisement): void {
+    let basketProduct : BasketProduct = new BasketProduct();
+    basketProduct.product = advertisement;
+    this.basketProductService.addProduct(basketProduct);
+  }
+
 }

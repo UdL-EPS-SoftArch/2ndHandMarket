@@ -8,6 +8,8 @@ import {AuthenticationBasicService} from '../login-basic/authentication-basic.se
 @Injectable()
 export class BasketProductService {
 
+  products: BasketProduct[] = [];
+
   constructor (private http: Http,
                private authentication: AuthenticationBasicService) { }
 
@@ -26,8 +28,8 @@ export class BasketProductService {
     });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
+    this.products.push(product);
     let options = new RequestOptions({ headers: headers });
-
     return this.http.post(`${environment.API}/basket`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerComponent implements OnInit {
 
+  filterQuery: string = "";
 
   constructor() {
     this.global = 1;

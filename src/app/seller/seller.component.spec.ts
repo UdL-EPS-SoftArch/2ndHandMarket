@@ -1,28 +1,21 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {async, ComponentFixture, TestBed, inject} from '@angular/core/testing';
 
 import { SellerComponent } from './seller.component';
 
 describe('SellerComponent', () => {
-  let component: SellerComponent;
-  let fixture: ComponentFixture<SellerComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SellerComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SellerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      providers: [ SellerComponent ]
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create an instance', () => {
+    inject([], () => {
+      let component = new SellerComponent();
+      expect(component).toBeTruthy();
+    });
+
   });
 });

@@ -45,4 +45,16 @@
       </div>
     </div>
   </div>
+
+  <h3>BuyerOffer list</h3>
+
+  <p *ngIf="buyeroffers.length == 0">
+    <span class="buyeroffer-count">No buyeroffers yet!</span>
+  </p>
+  <ul class="list-group" *ngIf="buyeroffers.length > 0">
+    <li class="list-group-item" *ngFor="let buyeroffer of buyeroffers">
+      Offer {{buyeroffer.uri}}, value: {{buyeroffer.value}}€
+      <button (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
+    </li>
+  </ul>
 </section>

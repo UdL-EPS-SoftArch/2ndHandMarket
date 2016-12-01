@@ -35,7 +35,7 @@ export class PurchaseService {
   getPurchaseByAdvertisement(advertisement: Advertisement): Observable<Purchase> {
     if (!advertisement.id) throw new Error('Advertisement ID is required');
 
-    return this.http.get(`${environment.API}/purchases/${advertisement.id}`)
+    return this.http.get(`${environment.API}/advertisements/${advertisement.id}/purchase`)
       .map((res: Response) => res.json())
       .map((purchase: Purchase) => {
         purchase.advertisement = advertisement;

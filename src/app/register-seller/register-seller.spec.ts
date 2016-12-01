@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 
+
 import { } from '@angular/core/testing';
 import {RegisterSeller} from './register-seller';
 

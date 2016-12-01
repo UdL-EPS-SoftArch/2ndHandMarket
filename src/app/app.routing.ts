@@ -1,6 +1,5 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
@@ -12,10 +11,10 @@ import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { OfferComponent } from './offer/offer.component';
-import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { SellerComponent } from './seller/seller.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -29,9 +28,9 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'offers', component: OfferComponent },
-  { path: 'selleroffers', component: SellerOfferComponent },
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
+  { path: 'sellers', component: SellerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
   // { path: '**', component: PageNotFoundComponent }
 ];

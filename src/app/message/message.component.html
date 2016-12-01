@@ -1,61 +1,163 @@
 <section class="message">
   <header class="header">
+    <h2></h2>
     <!-- new message -->
-
-    <button (click)="DivSendMessage = !DivSendMessage">
-      Write a new message
-    </button>
+    <button (click)="DivSendMessage = !DivSendMessage" class="highlightButtonMain big">Write a new message</button>
 
        <div class="form-section" [hidden]="!DivSendMessage">
-        <h2>Messages</h2>
-
+         <h2></h2>
          <div class="form-group">
            <label for="sender">Sender</label>
            <input type="text" class="form-control" id="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender"/>
          </div>
-
          <div class="form-group">
            <label for="destination">Destination</label>
            <input type="text" class="form-control" id="destination" placeholder="Enter Destination" [(ngModel)]="newMessage.destination"/>
          </div>
-
           <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" placeholder="Enter Title"  [(ngModel)]="newMessage.title"/>
           </div>
-
           <div class="form-group">
             <label for="body">Body</label>
             <textarea class="form-control" id="body" placeholder="Enter Message" [(ngModel)]="newMessage.body"></textarea>
           </div>
-
-          <button (click)="addMessage()">Send</button>
+          <button (click)="addMessage(); DivSendMessage = !DivSendMessage" class="highlightButtonGreen big">Send</button>
       </div>
-
 
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>
-  <h3>Message board</h3>
 
-  <p *ngIf="messages.length > 0">
-    <span class="message-count"><strong>{{messages.length}}</strong> {{messages.length == 1 ? 'message' : 'messages'}}</span>
-  </p>
+  <button (click)="DivFindMessage = !DivFindMessage" class="highlightButtonMain big">Find a message</button>
+  <div class="form-section" [hidden]="!DivFindMessage">
+    <h2>Get message by URI</h2>
 
-  <p *ngIf="messages.length == 0">
-    <span class="message-count">No messages</span>
-  </p>
+    <div class="form-group">
+      <label for="sender">Find by URI</label>
+      <input type="text" class="form-control" id="byUri" [(ngModel)]="newMessage.uri"/>
+    </div>
 
-  <ul class="list-group" *ngIf="messages.length > 0">
-    <li class="list-group-item" *ngFor="let message of messages">
-      <div class="message">
-        <h4>Uri: {{message.uri}}</h4>
-        <h4>Sender: {{message.sender}}</h4>
-        <h4>To: {{message.destination}}</h4>
-        <h4>Title: {{message.title}}</h4>
-        <h4>Message: {{message.body}}</h4>
-        <button class="alert-danger" (click)="removeMessage(message)">Delete</button>
-      </div>
-    </li>
-  </ul>
+    <button (click)="getMessageByUri(newMessage.uri)">Search</button>
+    <ul class="list-group" *ngIf="messagesUri.length > 0">
+      <li class="list-group-item" *ngFor="let message of messagesUri">
+        <div class="message">
+          <h4>Uri: {{message.uri}}</h4>
+          <h4>Sender: {{message.sender}}</h4>
+          <h4>To: {{message.destination}}</h4>
+          <h4>Title: {{message.title}}</h4>
+          <h4>Message: {{message.body}}</h4>
+        </div>
+      </li>
+    </ul>
 
+
+    <h2>Get message by Title</h2>
+
+    <div class="form-group">
+      <label for="sender">Find by Title</label>
+      <input type="text" class="form-control" id="byTitle" [(ngModel)]="newMessage.title"/>
+    </div>
+
+    <button (click)="getMessageByTitle(newMessage.title)">Search</button>
+    <ul class="list-group" *ngIf="messagesTitle.length > 0">
+      <li class="list-group-item" *ngFor="let message of messagesTitle">
+        <div class="message">
+          <h4>Uri: {{message.uri}}</h4>
+          <h4>Sender: {{message.sender}}</h4>
+          <h4>To: {{message.destination}}</h4>
+          <h4>Title: {{message.title}}</h4>
+          <h4>Message: {{message.body}}</h4>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- Buttons row
+  <div id="outer">
+    <div class="inner"><button (click)="DivSentMessage = !DivSentMessage" class="highlightButtonTest big">   SENT MESSAGES   </button></div>
+    <div class="inner"><button (click)="DivReceivedMessage = !DivReceivedMessage" class="highlightButtonTest big">   RECEIVED MESSAGES   </button></div>
+    <div class="inner"><button (click)="DivAllMessage = !DivAllMessage" class="highlightButtonTest big">   ALL MESSAGES   </button></div>
+  </div>-->
+
+  <button (click)=" DivAllMessage = !DivAllMessage;
+  DivReceivedMessage = !DivAllMessage;
+  DivSentMessage = !DivAllMessage" class="highlightButtonTest big">   ALL MESSAGES ({{messages.length}})  </button>
+
+  <button (click)="DivSentMessage = !DivSentMessage;
+DivReceivedMessage = !DivSentMessage;
+DivAllMessage = !DivSentMessage;" class="highlightButtonTest big">   SENT MESSAGES ({{mySentMessages.length}})  </button>
+
+  <button (click)="DivReceivedMessage = !DivReceivedMessage;
+DivSentMessage = !DivReceivedMessage;
+DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVED MESSAGES ({{myReceivedMessages.length}})  </button>
+
+
+
+  <!-- Sent -->
+  <div class="form-section" [hidden]="!DivSentMessage">
+      <h3>Sent</h3>
+      <p *ngIf="mySentMessages.length > 0">
+        <span class="message-count"><strong>{{mySentMessages.length}}</strong> {{mySentMessages.length == 1 ? 'message' : 'messages'}}</span>
+      </p>
+      <p *ngIf="mySentMessages.length == 0">
+        <span class="message-count">No messages sent yet</span>
+      </p>
+      <ul class="list-group" *ngIf="mySentMessages.length > 0">
+        <li class="list-group-item" *ngFor="let message of mySentMessages">
+          <div class="messages">
+            <!--<h4>Uri: {{message.uri}}</h4>-->
+            <h4>To: {{message.destination}}</h4>
+            <h4>Title: {{message.title}}</h4>
+            <h4>Message: {{message.body}}</h4>
+            <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
+          </div>
+        </li>
+      </ul>
+  </div>
+
+  <!-- Received -->
+  <div class="form-section" [hidden]="!DivReceivedMessage">
+      <h3>Received</h3>
+      <p *ngIf="myReceivedMessages.length > 0">
+        <span class="message-count"><strong>{{myReceivedMessages.length}}</strong> {{myReceivedMessages.length == 1 ? 'message' : 'messages'}}</span>
+      </p>
+      <p *ngIf="myReceivedMessages.length == 0">
+        <span class="message-count">No messages received yet :(</span>
+      </p>
+      <ul class="list-group" *ngIf="myReceivedMessages.length > 0">
+        <li class="list-group-item" *ngFor="let message of myReceivedMessages">
+          <div class="messages">
+            <!--<h4>Uri: {{message.uri}}</h4>-->
+            <h4>Sender: {{message.sender}}</h4>
+            <h4>Title: {{message.title}}</h4>
+            <h4>Message: {{message.body}}</h4>
+            <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
+          </div>
+        </li>
+      </ul>
+  </div>
+
+  <!-- All -->
+  <div class="form-section" [hidden]="!DivAllMessage">
+      <h3>All messages</h3>
+      <p *ngIf="messages.length > 0">
+        <span class="message-count"><strong>{{messages.length}}</strong> {{messages.length == 1 ? 'message' : 'messages'}}</span>
+      </p>
+      <p *ngIf="messages.length == 0">
+        <span class="message-count">No messages</span>
+      </p>
+      <ul class="list-group" *ngIf="messages.length > 0">
+        <li class="list-group-item" *ngFor="let message of messages">
+          <div class="message">
+            <!--<h4>Uri: {{message.uri}}</h4>-->
+            <h4>Sender: {{message.sender}}</h4>
+            <h4>To: {{message.destination}}</h4>
+            <h4>Title: {{message.title}}</h4>
+            <h4>Message: {{message.body}}</h4>
+            <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
+          </div>
+        </li>
+      </ul>
+  </div>
 </section>

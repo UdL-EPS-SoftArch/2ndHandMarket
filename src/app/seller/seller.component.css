@@ -38,10 +38,6 @@ i.icons{
   position:relative
 }
 
-.input{
-  width: 40%;
-}
-
 .sidebar-left{
   margin:0;
   border-right: 1px solid #e2e2e2;
@@ -75,7 +71,7 @@ i.icons{
 
 .sidebar-menu > li:hover > a,.sidebar-menu > li.active > a{
   color:#000000;
-  background:#f2f2f2;
+  background:#e2e2e2;
   border-left-color:#3c8dbc
 }
 
@@ -106,7 +102,9 @@ i.icons{
   transform:rotate(-90deg)
 }
 
-
+.input{
+  width: 40%;
+}
 
 @media (min-width:768px){.sidebar-left{
   top:0;
@@ -115,7 +113,7 @@ i.icons{
   height:100%;
   z-index:2016;
   margin-bottom: 40px
-  }
+}
   .sidebar-left .navbar-header{
     float:none
   }

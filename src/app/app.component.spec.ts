@@ -17,10 +17,10 @@ import { PutAdvertisementComponent } from './advertisement/putAdvertisement.comp
 import { MessageComponent } from './message/message.component';
 import { OfferComponent } from './offer/offer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
-import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { SellerComponent } from './seller/seller.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -30,8 +30,8 @@ describe('App: Softarch1617Client', () => {
         PostAdvertisementComponent, GetAdvertisementComponent,
         PutAdvertisementComponent, SearchAdvertisementComponent,
         ContactComponent, MessageComponent, OfferComponent,
-        RegisterSellerComponent, SellerOfferComponent, BuyerComponent,
-        ProfileComponent, PurchaseComponent,
+        RegisterSellerComponent, SellerComponent, BuyerComponent,
+        ProfileComponent, PurchaseComponent, SellerComponent,
       ],
       imports: [
         routing, FormsModule, MomentModule

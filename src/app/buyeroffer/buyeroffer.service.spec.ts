@@ -4,8 +4,8 @@ import { TestBed, async, inject, getTestBed } from '@angular/core/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response } from '@angular/http';
 
-import { SellerOfferService } from './seller-offer.service';
-import { SellerOffer } from './seller-offer';
+import { BuyerOfferService } from './buyeroffer.service';
+import { BuyerOffer } from './buyeroffer';
 
 class ResponseError extends Error {
   json() {
@@ -13,15 +13,15 @@ class ResponseError extends Error {
   }
 }
 
-describe('Service: SellerOffer', () => {
-  const firstSellerOffer = {
-    'seller_offer_id': 1,
+describe('Service: BuyerOffer', () => {
+  const firstBuyerOffer = {
+    'buyer_offer_id': 1,
     'value': 10,
     'date': '',
   };
 
-  const secondSellerOffer = {
-    'seller_offer_id': 2,
+  const secondBuyerOffer = {
+    'buyer_offer_id': 2,
     'value': 20,
     'date': '',
   };
@@ -29,7 +29,7 @@ describe('Service: SellerOffer', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [
-        SellerOfferService,
+        BuyerOfferService,
         MockBackend,
         BaseRequestOptions,
         {
@@ -44,13 +44,13 @@ describe('Service: SellerOffer', () => {
     });
   }));
 
-  describe('#getAllSellerOffers()', () => {
-    it('should return all SellerOffers',
-      async(inject([MockBackend, SellerOfferService], (mockBackend, service) => {
+  describe('#getAllBuyerOffers()', () => {
+    it('should return all BuyerOffers',
+      async(inject([MockBackend, BuyerOfferService], (mockBackend, service) => {
         const apiResponse = new ResponseOptions({
           body: {
             '_embedded': {
-              'sellerOffers': [ firstSellerOffer, secondSellerOffer ]
+              'buyerOffers': [ firstBuyerOffer, secondBuyerOffer ]
             }
           }
         });
@@ -59,12 +59,12 @@ describe('Service: SellerOffer', () => {
             connection.mockRespond(new Response(apiResponse));
         });
 
-        service.getAllSellerOffers().subscribe((data) => {
+        service.getAllBuyerOffers().subscribe((data) => {
           expect(data.length).toBe(2);
-          expect(data[0].seller_offer_id).toEqual(firstSellerOffer.seller_offer_id);
-          expect(data[1].seller_offer_id).toEqual(secondSellerOffer.seller_offer_id);
-          expect(data[0].value).toEqual(firstSellerOffer.value);
-          expect(data[1].value).toEqual(secondSellerOffer.value);
+          expect(data[0].buyer_offer_id).toEqual(firstBuyerOffer.buyer_offer_id);
+          expect(data[1].buyer_offer_id).toEqual(secondBuyerOffer.buyer_offer_id);
+          expect(data[0].value).toEqual(firstBuyerOffer.value);
+          expect(data[1].value).toEqual(secondBuyerOffer.value);
         });
       })));
   });

@@ -26,6 +26,8 @@ import { OfferComponent } from './offer/offer.component';
 import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DataTableModule } from 'angular2-datatable';
+import { SellerComponent } from './seller/seller.component';
 
 @NgModule({
   imports: [
@@ -33,7 +35,8 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     HttpModule,
     routing,
-    LoginBasicModule
+    LoginBasicModule,
+    DataTableModule
   ],
   declarations: [
     AppComponent,
@@ -54,7 +57,8 @@ import { ProfileComponent } from './profile/profile.component';
     DateFormatPipe,
     SellerOfferComponent,
     BuyerComponent,
-    ProfileComponent
+    ProfileComponent,
+    SellerComponent
   ],
   providers: [
     appRoutingProviders, AuthenticationBasicService, LoggedInGuard

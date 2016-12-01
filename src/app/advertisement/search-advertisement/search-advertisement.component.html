@@ -1,10 +1,18 @@
 <header>
 
+  <!--
   <li id="nav-search">
-    <form class="hidden-xs inline">
-      <input type="text" placeholder="Need something?" autofocus />
+    <form class="hidden-xs inline" (submit)="searchAdvertisementByTitle() || searchAdvertisementByTag() || searchAdvertisementByCategory()">
+      <input type="text" placeholder="Need something?" autofocus [(ngModel)]="searchInput"/>
     </form>
   </li>
+  -->
+  <form id="nav-search" class="row-search" (submit)="searchAdvertisementByTitle() || searchAdvertisementByTag()
+  || searchAdvertisementByCategory()" >
+    <div class="input-group">
+      <input type="text" name="name" placeholder="Need something?" autofocus [(ngModel)]="searchInput" />
+    </div>
+  </form>
 
 </header>
 

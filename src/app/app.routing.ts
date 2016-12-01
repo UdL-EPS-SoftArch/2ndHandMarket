@@ -30,13 +30,13 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'offers', component: OfferComponent },
-  { path: 'buyeroffers', component: BuyerOfferComponent },
+  { path: 'profile/buyeroffers', component: BuyerOfferComponent },
   { path: 'personalOffersList', component: PersonalOffersListComponent },
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
-  { path: 'profile/buyeroffers', component: OfferComponent, canActivate: [LoggedInGuard] },
-  { path: 'profile/selleroffers', component: SellerOfferComponent, canActivate: [LoggedInGuard] },
+ // { path: 'profile/buyeroffers', component: OfferComponent, canActivate: [LoggedInGuard] },
+  { path: 'profile/manageoffers', component: OfferComponent, canActivate: [LoggedInGuard] },
   // { path: '**', component: PageNotFoundComponent }
 ];
 

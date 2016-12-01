@@ -32,7 +32,8 @@
         <a routerLink="/advertisements/{{advertisement.id}}/purchase" class="highlightButton">
           Buy
         </a>
-        <div *ngIf="advertisement.negotiablePrice">
+        <a> {{getCurrentUser()}} ___ {{advertisement.owner}}</a>
+        <div *ngIf="advertisement.negotiablePrice && getCurrentUser()!=advertisement.owner">
           <form>
             <input type="number" id="inputValue" name="value" min="0" placeholder="Your Offer" [(ngModel)]="newBuyerOffer.value"/>
             <button (click)="addBuyerOffer()">OFFER</button>

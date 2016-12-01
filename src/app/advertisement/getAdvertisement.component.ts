@@ -83,7 +83,7 @@ export class GetAdvertisementComponent implements OnInit {
         // Redirect to advertisements page.
         this.router.navigate(['/advertisements']);
       },
-      error => alert('Error: Failed to delete advertisement!')
+      error => alert(`Error: ${error.message}`)
     );
   }
 }

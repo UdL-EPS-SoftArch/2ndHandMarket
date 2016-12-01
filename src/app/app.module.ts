@@ -23,7 +23,6 @@ import { LoginBasicComponent } from './login-basic/login-basic.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { OfferComponent } from './offer/offer.component';
-import { SellerOfferComponent } from './selleroffer/seller-offer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DataTableModule } from 'angular2-datatable';
@@ -55,7 +54,6 @@ import { SellerComponent } from './seller/seller.component';
     SearchAdvertisementComponent,
     ContactComponent,
     DateFormatPipe,
-    SellerOfferComponent,
     BuyerComponent,
     ProfileComponent,
     SellerComponent

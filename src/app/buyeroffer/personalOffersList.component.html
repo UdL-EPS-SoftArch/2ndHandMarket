@@ -34,12 +34,12 @@
             <th>Offer</th>
           </tr>
           </thead>
-          <tbody>
-          <tr>
-            <td>2016/11/16</td>
-            <td>100</td>
-            <td>80</td>
-          </tr>
+          <tbody  class="list-group-item" *ngFor="let buyeroffer of buyeroffers">
+            <tr>
+              <td>{{buyeroffer.date}}</td>
+              <td>100</td>
+              <td>{{buyeroffer.value}}</td>
+            </tr>
           </tbody>
         </table>
       </div>

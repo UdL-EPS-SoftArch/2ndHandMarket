@@ -24,7 +24,7 @@ export class OfferComponent implements OnInit {
   }
 
   getOffers() {
-    return this.offerService.getAllOffers()
+    this.offerService.getAllOffers()
       .subscribe(
         offers => {
           this.offers = offers;
@@ -34,7 +34,7 @@ export class OfferComponent implements OnInit {
   }
 
   addOffer() {
-      this.offerService.addOffer(this.newOffer)
+    this.offerService.addOffer(this.newOffer)
       .subscribe(
         offer =>  {
           this.offers.push(offer);

@@ -35,42 +35,42 @@ export class MessageComponent implements OnInit {
   }
 
   getMessages() {
-    return this.messageService.getAllMessages()
+    this.messageService.getAllMessages()
       .subscribe(
         messages => this.messages = messages,
         error =>  this.errorMessage = <any>error.message);
   }
 
   getMySent () {
-    return this.messageService.getAllMessages()
+    this.messageService.getAllMessages()
       .subscribe(
         messages => this.mySentMessages = this.messages.filter(p => p.sender ==  this.newMessage.sender),
         error =>  this.errorMessage = <any>error.message);
   }
 
   getMyReceived () {
-    return this.messageService.getAllMessages()
+    this.messageService.getAllMessages()
       .subscribe(
         messages => this.myReceivedMessages = this.messages.filter(p => p.destination ==  this.newMessage.sender),
         error =>  this.errorMessage = <any>error.message);
   }
 
   getAllMyMessages() {
-    return this.messageService.getAllMessages()
+    this.messageService.getAllMessages()
       .subscribe(
         messages => this.myAllMessages = this.mySentMessages.concat(this.myReceivedMessages),
         error => this.errorMessage = <any>error.message);
   }
 
   getMessageByUri(uri) {
-    return this.messageService.getMessageByUri(uri)
+    this.messageService.getMessageByUri(uri)
       .subscribe(
         message => this.messagesUri = [message],
         error =>  this.errorMessage = <any>error.message);
   }
 
   getMessageByTitle (title) {
-    return this.messageService.getAllMessages()
+    this.messageService.getAllMessages()
       .subscribe(
         message => this.messagesTitle = this.messages.filter(p => p.title == title),
         error =>  this.errorMessage = <any>error.message);

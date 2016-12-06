@@ -9,7 +9,7 @@ import { PictureService } from './picture/picture.service';
 @Component({
   selector: 'app-post-advertisement',
   templateUrl: './postAdvertisement.component.html',
-  styleUrls: ['postAdvertisement.component.scss'],
+  styleUrls: ['./postAdvertisement.component.scss'],
   providers: [AdvertisementService, PictureService]
 })
 export class PostAdvertisementComponent implements OnInit {

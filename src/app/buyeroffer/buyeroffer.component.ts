@@ -29,7 +29,8 @@ export class BuyerOfferComponent implements OnInit {
       );
   }
 
-  addBuyerOffer() {
+  addBuyerOffer(/*advertisement_id : number*/) {
+    //this.newBuyerOffer.advertisement_id = advertisement_id;
     this.buyerofferService.addBuyerOffer(this.newBuyerOffer)
       .subscribe(
         buyeroffer  => this.buyeroffers.push(buyeroffer),

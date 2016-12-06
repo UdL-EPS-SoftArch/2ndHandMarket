@@ -7,7 +7,7 @@ import { AdvertisementService } from './advertisement.service';
 @Component({
   selector: 'app-post-advertisement',
   templateUrl: './postAdvertisement.component.html',
-  styleUrls: ['postAdvertisement.component.scss'],
+  styleUrls: ['./postAdvertisement.component.scss'],
   providers: [AdvertisementService]
 })
 export class PutAdvertisementComponent implements OnInit {

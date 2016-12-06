@@ -10,7 +10,7 @@ import { PurchaseService } from '../purchase/purchase.service';
 @Component({
   selector: 'app-get-advertisement',
   templateUrl: './getAdvertisement.component.html',
-  styleUrls: ['getAdvertisement.component.scss'],
+  styleUrls: ['./getAdvertisement.component.scss'],
   providers: [AdvertisementService, PurchaseService]
 })
 export class GetAdvertisementComponent implements OnInit {

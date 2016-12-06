@@ -71,6 +71,7 @@ export class GetAdvertisementComponent implements OnInit {
     this.purchaseService.getPurchaseByAdvertisement(this.advertisement)
       .subscribe(
         purchase => this.purchase = purchase,
+        error => null, // Expecting a 404 if there is no purchase.
       );
   }
 
@@ -83,7 +84,7 @@ export class GetAdvertisementComponent implements OnInit {
         // Redirect to advertisements page.
         this.router.navigate(['/advertisements']);
       },
-      error => alert('Error: Failed to delete advertisement!')
+      error => alert(`Error: ${error.message}`)
     );
   }
 }

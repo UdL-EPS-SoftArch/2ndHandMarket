@@ -21,6 +21,7 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { SellerComponent } from './seller/seller.component';
+import { ComponentsHelper } from 'ng2-bootstrap';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -38,7 +39,8 @@ describe('App: Softarch1617Client', () => {
       ],
       providers: [
         appRoutingProviders,
-        { provide: APP_BASE_HREF, useValue : '/' }
+        { provide: APP_BASE_HREF, useValue : '/' },
+        ComponentsHelper
       ]
     });
   });

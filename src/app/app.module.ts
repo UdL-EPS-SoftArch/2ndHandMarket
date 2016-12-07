@@ -27,6 +27,7 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DataTableModule } from 'angular2-datatable';
 import { SellerComponent } from './seller/seller.component';
+import { ComponentsHelper } from 'ng2-bootstrap';
 
 @NgModule({
   imports: [
@@ -60,7 +61,7 @@ import { SellerComponent } from './seller/seller.component';
     SellerComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
 })

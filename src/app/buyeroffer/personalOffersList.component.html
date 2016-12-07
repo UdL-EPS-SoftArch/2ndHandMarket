@@ -25,20 +25,26 @@
     </div>
 
     <div class="table">
-      <div class="table-responsive">
+      <div class="">
         <table class="table">
-          <thead>
+          <thead class="thead-inverse">
           <tr>
-            <th>Date</th>
+            <th>Advertisement</th>
+            <th>Seller</th>
             <th>Initial Price</th>
-            <th>Offer</th>
+            <th>My Offer</th>
+            <th>Date</th>
+            <th></th>
           </tr>
           </thead>
-          <tbody  class="list-group-item" *ngFor="let buyeroffer of buyeroffers">
+          <tbody *ngFor="let buyeroffer of buyeroffers">
             <tr>
-              <td>{{buyeroffer.date}}</td>
-              <td>100</td>
+              <td>{{buyeroffer.advertisement_title}}</td>
+              <td>{{buyeroffer.advertisement_seller}}</td>
+              <td>{{buyeroffer.advertisement_iniPrice}}</td>
               <td>{{buyeroffer.value}}</td>
+              <td>{{buyeroffer.date}}</td>
+              <td><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button></td>
             </tr>
           </tbody>
         </table>

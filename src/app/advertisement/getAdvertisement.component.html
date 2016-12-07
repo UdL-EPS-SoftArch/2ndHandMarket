@@ -34,7 +34,7 @@
         </a>
         <a href="#" class="blankButton">Add to Wishlist</a>
         <div *ngIf="advertisement.negotiablePrice && getCurrentUser()!=advertisement.owner">
-          <app-buyeroffer></app-buyeroffer>
+          <app-buyeroffer [advertisement]="advertisement"></app-buyeroffer>
         </div>
       </div>
     </div>

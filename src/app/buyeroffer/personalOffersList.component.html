@@ -18,23 +18,23 @@
           <small class="text-muted">Offered Products</small>
         </h3>
         <button class="column_button" onclick="">Product 1</button>
-        <button class="column_button" onclick="">Product 1</button>
-        <button class="column_button" onclick="">Product 1</button>
-        <button class="column_button" onclick="">Product 1</button>
+        <button class="column_button" onclick="">Product 2</button>
+        <button class="column_button" onclick="">Product 3</button>
+        <button class="column_button" onclick="">Product 4</button>
       </div>
     </div>
 
     <div class="table">
-      <div class="">
+      <div class="table-responsive">
         <table class="table">
-          <thead class="thead-inverse">
+          <thead>
           <tr>
             <th>Advertisement</th>
             <th>Seller</th>
             <th>Initial Price</th>
             <th>My Offer</th>
             <th>Date</th>
-            <th></th>
+            <th>Management</th>
           </tr>
           </thead>
           <tbody *ngFor="let buyeroffer of buyeroffers">
@@ -44,23 +44,12 @@
               <td>{{buyeroffer.advertisement_iniPrice}}</td>
               <td>{{buyeroffer.value}}</td>
               <td>{{buyeroffer.date}}</td>
-              <td><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button></td>
+              <td><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
+                <button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Update</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-
-  <h3>BuyerOffer list</h3>
-
-  <p *ngIf="buyeroffers.length == 0">
-    <span class="buyeroffer-count">No buyeroffers yet!</span>
-  </p>
-  <ul class="list-group" *ngIf="buyeroffers.length > 0">
-    <li class="list-group-item" *ngFor="let buyeroffer of buyeroffers">
-      Offer {{buyeroffer.uri}}, value: {{buyeroffer.value}}€
-      <button (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
-    </li>
-  </ul>
 </section>

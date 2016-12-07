@@ -6,6 +6,7 @@ import { AdvertisementService } from './advertisement.service';
 import { Picture } from './picture/picture';
 import { Purchase } from '../purchase/purchase';
 import { PurchaseService } from '../purchase/purchase.service';
+import {AuthenticationBasicService} from "../login-basic/authentication-basic.service";
 
 @Component({
   selector: 'app-get-advertisement',
@@ -22,7 +23,8 @@ export class GetAdvertisementComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private advertisementService: AdvertisementService,
-              private purchaseService: PurchaseService) {
+              private purchaseService: PurchaseService,
+              private authentication: AuthenticationBasicService) {
   }
 
   /**
@@ -85,5 +87,9 @@ export class GetAdvertisementComponent implements OnInit {
       },
       error => alert('Error: Failed to delete advertisement!')
     );
+  }
+
+  getCurrentUser() : string {
+    return this.authentication.getCurrentUser().username;
   }
 }

@@ -21,6 +21,7 @@ export class GetAdvertisementComponent implements OnInit {
   advertisement: Advertisement = new Advertisement();
   purchase: Purchase;
   picture: Picture = new Picture();
+  errorMessage: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

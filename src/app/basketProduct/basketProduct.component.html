@@ -1,17 +1,26 @@
 <section class="basketProduct">
     <header class="header">
         <h2>Products</h2>
+      <strong>{{products.length}}</strong>
 
     </header>
-<ul class="list-group" *ngIf="products.length > 0">
-  <li class="list-group-item" *ngFor="let product of products">
-    <div class="basketProduct">
-      <h4>Name: {{product.product.title}}</h4>
-      <h4>Price: {{product.product.price}}</h4>
-      <button class="alert-danger" (click)="removeProduct(product)">Delete</button>
-    </div>
-  </li>
-</ul>
+
+    <p *ngIf="products!= null && products.length > 0">
+    <span class="message-count"><strong>{{products.length}}</strong> {{products.length == 1 ? 'product' : 'products'}}</span>
+   </p>
+
+    <p *ngIf="products == null ">
+    <span class="message-count">No products</span>
+  </p>
+    <ul class="list-group" *ngIf="products!= null && products.length > 0">
+      <li class="list-group-item" *ngFor="let product of products">
+        <div class="basketProduct">
+          <h4>Name: {{product.product.title}}</h4>
+          <h4>Price: {{product.product.price}}</h4>
+          <button class="alert-danger">Delete</button>
+        </div>
+      </li>
+    </ul>
 
 </section>
 

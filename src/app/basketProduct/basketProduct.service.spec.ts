@@ -40,7 +40,7 @@ describe('Service: BasketProduct', () => {
             connection.mockRespond(new Response(
               new ResponseOptions({
                 body: { '_embedded': { 'products':
-                  [ { title: 'TitleTest1' }, { title: 'TitleTest2' } ] } }
+                  [ { title : 'ProductTest1' }, { title : 'TitleTest2' } ] } }
 
               })
             ));

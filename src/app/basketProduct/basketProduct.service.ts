@@ -14,27 +14,27 @@ export class BasketProductService {
                private authentication: AuthenticationBasicService) { }
 
   // GET /products
-  getAllProducts(): Observable<BasketProduct[]> {
-    return this.http.get(`${environment.API}/basket`)
-      .map((res: Response) => res.json()._embedded.basket)
+  getAllProducts(): Observable<BasketProduct[]>{
+    return this.http.get(`${environment.API}/basketProducts`)
+      .map((res: Response) => res.json()._embedded.basketProducts)
       .catch((error: any) => Observable.throw(error.json()));
   }
-
-
-  // POST /product
   addProduct(product: BasketProduct): Observable<BasketProduct> {
     let body = JSON.stringify({
       'product': product.product
     });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
-    this.products.push(product);
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(`${environment.API}/basket`, body, options)
+    this.products.push(product);
+    console.log(this.products[0].product);
+    return this.http.post(`${environment.API}/basketProducts`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
-
+  getArrayProducts(): BasketProduct[]{
+    return this.products;
+  }
   // DELETE /product/:id
   deleteProductByUri(uri: string) {
     let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });

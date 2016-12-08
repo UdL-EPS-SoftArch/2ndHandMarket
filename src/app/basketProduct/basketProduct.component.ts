@@ -7,30 +7,30 @@ import {AuthenticationBasicService} from '../login-basic/authentication-basic.se
   selector: 'app-basketProduct',
   templateUrl: './basketProduct.component.html',
   styleUrls: ['./basketProduct.component.css'],
-  providers: [BasketProductService, AuthenticationBasicService]
+  providers: [BasketProductService]
 })
 export class BasketProductComponent implements OnInit {
 
-
+  products: BasketProduct[];
   errorMessage: string;
   newBasketProduct: BasketProduct;
 
-  constructor(private basketProductService: BasketProductService,
-              private authentication: AuthenticationBasicService) { }
+  constructor(private basketProductService: BasketProductService) { }
 
   ngOnInit() {
-    //this.getProducts();
+    this.getProducts();
     this.newBasketProduct = new BasketProduct();
   }
 
- /* getProducts() {
+  getProducts() {
+    //console.log(this.basketProductService.products[0].product);
     return this.basketProductService.getAllProducts()
       .subscribe(
-        products => this.products = products,
-        error =>  this.errorMessage = <any>error.message);
+        products => this.products = this.basketProductService.getArrayProducts(),
+       error =>  this.errorMessage = <any>error.message)
   }
-
-  /*addProduct() {
+/*
+  addProduct() {
     this.basketProductService.addProduct(this.newBasketProduct)
       .subscribe(
         product  => this.products.push(product),

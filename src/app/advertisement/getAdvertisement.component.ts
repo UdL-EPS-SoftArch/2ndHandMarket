@@ -18,6 +18,7 @@ export class GetAdvertisementComponent implements OnInit {
 
   advertisement: Advertisement = new Advertisement();
   picture: Picture = new Picture();
+  errorMessage: string;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private advertisementService: AdvertisementService,
@@ -78,6 +79,7 @@ export class GetAdvertisementComponent implements OnInit {
     let basketProduct : BasketProduct = new BasketProduct();
     basketProduct.product = advertisement;
     this.basketProductService.addProduct(basketProduct);
+
   }
 
 }

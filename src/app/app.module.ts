@@ -29,6 +29,7 @@ import { DataTableModule } from 'angular2-datatable';
 import { SellerComponent } from './seller/seller.component';
 import { ComponentsHelper } from 'ng2-bootstrap';
 import { BasketProductComponent } from './basketProduct/basketProduct.component';
+import { BasketProductService } from './basketProduct/basketProduct.service';
 
 @NgModule({
   imports: [
@@ -63,7 +64,7 @@ import { BasketProductComponent } from './basketProduct/basketProduct.component'
     BasketProductComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
 })

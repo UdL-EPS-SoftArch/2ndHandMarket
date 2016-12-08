@@ -13,8 +13,7 @@ import {BasketProduct} from "../basketProduct/basketProduct";
   selector: 'app-get-advertisement',
   templateUrl: './getAdvertisement.component.html',
   styleUrls: ['./getAdvertisement.component.scss'],
-  providers: [AdvertisementService, PurchaseService, BasketProductService]
-
+  providers: [AdvertisementService, PurchaseService]
 })
 export class GetAdvertisementComponent implements OnInit {
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <section class="buyeroffer">
+    <header>
+      <h2>Manage your offers</h2>
+
+      <blockquote class="blockquote">
+        <p class="mb-0">
+          Here you can access to the offers done by other users to you products:
+        </p>
+      </blockquote>
+
+    </header>
+
+    <div class="row">
+
+      <div class="col-sm-3" >
+        <div class="list-group" >
+          <h3 class="list-group-item disabled text-center">
+            <small class="text-muted">Offered Products</small>
+          </h3>
+          <button class="column_button" onclick="">Product 1</button>
+
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Product</th>
+              <th>Date</th>
+              <th>Initial Price</th>
+            </tr>
+            </thead>
+            <div *ngIf="advertisements.length !== 0" class="row">
+              <div class="list-group-item" *ngFor="let advertisement of advertisements">
+                <tbody>
+
+                      <tr>
+                        <td>name: {{advertisement.name}}</td>
+                        <td>date: {{advertisement.date}}</td>
+                        <td>price: {{advertisement.price}}</td>
+                      </tr>
+
+                </tbody>
+              </div>
+            </div>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3>BuyerOffer list</h3>
+
+    <p *ngIf="buyeroffers.length == 0">
+      <span class="buyeroffer-count">No buyeroffers yet!</span>
+    </p>
+    <ul class="list-group" *ngIf="buyeroffers.length > 0">
+      <li class="list-group-item" *ngFor="let buyeroffer of buyeroffers">
+        Offer {{buyeroffer.uri}}, value: {{buyeroffer.value}}€
+        <button (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
+      </li>
+    </ul>
+  </section>
+</html>
+

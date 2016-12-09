@@ -27,6 +27,7 @@ import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
+import {ManageOffersComponent} from "./buyeroffer/manageOffers.component";
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { ProfileComponent } from './profile/profile.component';
     BuyerOfferComponent,
     PersonalOffersListComponent,
     BuyerComponent,
+    ManageOffersComponent,
     ProfileComponent
   ],
   providers: [

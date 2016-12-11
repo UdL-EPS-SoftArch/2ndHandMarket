@@ -10,17 +10,22 @@ export class AuthenticationBasicService {
   constructor (private http: Http) {}
 
   login(username: string, password: string): Observable<User> {
-    let authorization: string = 'Basic ' + btoa(username + ':' + password);
-    let headers = new Headers({ 'Authorization': authorization });
-    let options = new RequestOptions({ headers: headers });
+    const authorization = this.generateAuthorization(username, password);
+    const headers = new Headers({ 'Authorization': authorization });
+    const options = new RequestOptions({ headers: headers });
 
     return this.http.get(`${environment.API}/login`, options)
       .map((res: Response) => {
         let user: User = new User(res.json());
         user.authorization = authorization;
+        user.password = password;
         return user;
       })
       .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  generateAuthorization(username: string, password: string) : string {
+    return 'Basic ' + btoa(username + ':' + password);
   }
 
   storeCurrentUser(user: User): void {

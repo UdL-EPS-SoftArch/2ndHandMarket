@@ -4,7 +4,9 @@ export class User {
   username: string = '';
   name: string = '';
   authorities: Authority[] = [];
-  authorization: string = '';
+  authorization: string = ''; // That's not secure at all.
+                              // Should be changed for a token or session.
+  password: string = '';
   lastname: string  = '';
   email: string = '';
   birthday: string = '';

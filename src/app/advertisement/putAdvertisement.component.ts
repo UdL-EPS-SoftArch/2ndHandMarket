@@ -3,21 +3,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
+import { Picture } from './picture/picture';
+import { PictureService } from './picture/picture.service';
 
 @Component({
   selector: 'app-post-advertisement',
   templateUrl: './postAdvertisement.component.html',
   styleUrls: ['./postAdvertisement.component.scss'],
-  providers: [AdvertisementService]
+  providers: [AdvertisementService, PictureService]
 })
 export class PutAdvertisementComponent implements OnInit {
 
   advertisement: Advertisement = new Advertisement();
+  picture: Picture = new Picture();
   errorMessage: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private advertisementService: AdvertisementService) { }
+              private advertisementService: AdvertisementService,
+              private pictureService: PictureService) { }
 
   /**
    * On Startup:
@@ -41,16 +45,38 @@ export class PutAdvertisementComponent implements OnInit {
 
         // The API does not provide us the id directly, so we'll store the one we have from the URL.
         this.advertisement.id = id;
+
+        this.getAdvertisementPicture();
       },
       error => alert('Error: Failed to retrieve advertisement!')
     );
   }
 
+  getAdvertisementPicture() {
+    this.advertisementService.getAdvertisementPictures(this.advertisement.uri)
+      .subscribe(
+        pictures => this.picture = pictures.length > 0 && pictures[0],
+        error => alert(error.errorMessage)
+      );
+  }
+
+  /**
+   * Send form.
+   */
   sendForm() {
     this.advertisementService.putAdvertisement(this.advertisement).subscribe(
         advertisement => {
+          this.advertisement = advertisement;
+          if (this.picture.content) {
+            // A picture was attached. Link it with the current advertisement first.
+            this.sendFormPicture();
+          } else {
+            // No picture was attached. No further steps need to be done.
+            this.redirectToAdvertisement();
+          }
+
           // Redirect to the advertisement
-          this.router.navigate([advertisement.uri]);
+          this.router.navigate([this.advertisement.uri]);
         },
         error => {
           this.errorMessage = error.errors ? <any>error.errors[0].message : <any>error.message;
@@ -58,5 +84,61 @@ export class PutAdvertisementComponent implements OnInit {
           alert(this.errorMessage);
         }
     );
+  }
+
+  sendFormPicture() {
+    this.picture.depicts = this.advertisement.uri;
+    this.pictureService.updatePictureById(this.picture.uri, this.picture).subscribe(
+      picture => this.redirectToAdvertisement(),
+      error => alert(error)
+    );
+  }
+
+  redirectToAdvertisement() {
+    this.router.navigate([this.advertisement.uri]);
+  }
+
+
+  addPicture(input) {
+    let file = input.files[0];
+    let reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+      this.picture.filename = file.name;
+      this.picture.content = this.resizeImage(event.target.result, file.type, 240, 240);
+      this.pictureService.addPicture(this.picture)
+        .subscribe(
+          picture => this.picture = picture,
+          error => alert(error.message));
+    }, false);
+
+    reader.readAsDataURL(file);
+  }
+
+  resizeImage(imageData, type, MAX_WIDTH = 480, MAX_HEIGHT = 480) {
+    let img = document.createElement('img');
+    img.src = imageData;
+    let width = img.width;
+    let height = img.height;
+
+    if (width > height) {
+      if (width > MAX_WIDTH) {
+        height *= MAX_WIDTH / width;
+        width = MAX_WIDTH;
+      }
+    } else {
+      if (height > MAX_HEIGHT) {
+        width *= MAX_HEIGHT / height;
+        height = MAX_HEIGHT;
+      }
+    }
+
+    let canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    let ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, width, height);
+
+    return canvas.toDataURL(type);
   }
 }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { NgReduxModule, DevToolsExtension } from 'ng2-redux';
 
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders }  from './app.routing';
@@ -32,7 +33,8 @@ import { SearchAdvertisementComponent } from './advertisement/search-advertiseme
     FormsModule,
     HttpModule,
     routing,
-    LoginBasicModule
+    LoginBasicModule,
+    NgReduxModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -54,7 +56,7 @@ import { SearchAdvertisementComponent } from './advertisement/search-advertiseme
     SearchAdvertisementComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, DevToolsExtension,
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
 })

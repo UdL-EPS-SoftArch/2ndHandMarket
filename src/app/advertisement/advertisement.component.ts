@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgRedux, select } from 'ng2-redux';
+import { Observable } from 'rxjs/Rx';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
@@ -15,6 +17,8 @@ export class AdvertisementComponent implements OnInit {
   advertisements: Advertisement[] = [];
   advertisementPictures: { [key: string]: Picture } = {};
   errorMessage: string;
+
+  @select(['search', 'keyword']) search$: Observable<string>;
 
   constructor(private advertisementService: AdvertisementService) { }
 

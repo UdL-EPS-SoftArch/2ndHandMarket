@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgRedux, select } from 'ng2-redux';
+import { Observable } from 'rxjs/Rx';
+import { SearchActions } from '../../../actions/search.actions';
+import { IAppState } from '../../../store';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import {Advertisement} from '../advertisement';
 import {SearchAdvertisementService} from '../search-advertisement/searchAdvertisement.service';
@@ -7,14 +12,20 @@ import {SearchAdvertisementService} from '../search-advertisement/searchAdvertis
   selector: 'search-ad',
   templateUrl: './search-advertisement.component.html',
   styleUrls: ['search-advertisement.component.scss'],
-  providers: [SearchAdvertisementService]
+  providers: [SearchAdvertisementService, SearchActions]
 })
+
 export class SearchAdvertisementComponent implements OnInit {
 
   advertisements: Advertisement[] = [];
   searchInput: string = '';
+  @select(['search', 'keyword']) search$: Observable<string>;
+  keyword: string;
 
-  constructor(private searchAdvertisementService:SearchAdvertisementService) {
+  constructor(public actions: SearchActions,
+              private ngRedux: NgRedux<IAppState>,
+              private router: Router,
+              private searchAdvertisementService:SearchAdvertisementService) {
   }
 
   ngOnInit() {
@@ -23,8 +34,14 @@ export class SearchAdvertisementComponent implements OnInit {
     this.searchAdvertisementByCategory();
   }
 
+  // not necessary
+  handleKeyUp(value) {
+    this.keyword = value;
+    this.actions.searchDispatch(value);
+  }
+
   searchAdvertisementByTitle() {
-    this.searchAdvertisementService.searchAdvertisementByTitle(this.searchInput).subscribe(
+    this.searchAdvertisementService.searchAdvertisementByTitle(this.keyword).subscribe(
       advertisements => this.advertisements = advertisements,
       error => alert('Error: Failed to retrieve advertisement!')
     );

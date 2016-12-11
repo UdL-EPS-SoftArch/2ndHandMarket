@@ -63,6 +63,6 @@ import { ComponentsHelper } from 'ng2-bootstrap';
   providers: [
     appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper
   ],
-  bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
+  bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })
 export class AppModule { }

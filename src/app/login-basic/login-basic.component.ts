@@ -1,14 +1,16 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { AuthenticationBasicService } from './authentication-basic.service';
 import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
   selector: '[login-basic]',
   templateUrl: './login-basic.component.html',
-  styleUrls: ['./login-basic.component.scss']
+  styleUrls: ['./login-basic.component.scss'],
+  providers: [AuthenticationBasicService]
 })
 export class LoginBasicComponent implements OnInit {
 
+  @Input('appRouter') appRouter;
   @ViewChild('loginModal') public loginModal: ModalDirective;
   @ViewChild('username') username;
   errorMessage: string = '';

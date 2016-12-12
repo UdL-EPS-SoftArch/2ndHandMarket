@@ -14,7 +14,7 @@
 
   <!-- Logged in -->
   <li *ngIf="isLoggedIn()">
-    <a href="/profile">Profile</a> <!-- TODO: as routerLink -->
+    <a (click)="appRouter.navigate(['/profile'])">Profile</a>
   </li>
   <li *ngIf="isLoggedIn()">
     <a href="/buyers" >Buyer</a>

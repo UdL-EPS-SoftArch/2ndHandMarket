@@ -2,7 +2,10 @@
 
 Class project for the Software Architecture 2016-17 Course
 
-[![Build Status](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client.svg?branch=master)](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client/branches) 
+[![Dependency Status](https://david-dm.org/UdL-EPS-SoftArch/softarch-1617-client/status.svg?style=flat)](https://david-dm.org/UdL-EPS-SoftArch/softarch-1617-client)
+[![Build Status](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client.svg?branch=master)](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client/branches)
+[![Coverage Status](https://coveralls.io/repos/github/UdL-EPS-SoftArch/softarch-1617-client/badge.svg?branch=master)](https://coveralls.io/github/UdL-EPS-SoftArch/softarch-1617-client?branch=master)
+[![bitHound Overall Score](https://www.bithound.io/github/UdL-EPS-SoftArch/softarch-1617-client/badges/score.svg)](https://www.bithound.io/github/UdL-EPS-SoftArch/softarch-1617-client)
 <a href="https://zenhub.com"><img src="https://cdn.rawgit.com/ZenHubIO/support/master/zenhub-badge.svg"></a>
 
 # Development

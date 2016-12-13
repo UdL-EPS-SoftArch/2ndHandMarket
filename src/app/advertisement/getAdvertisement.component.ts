@@ -11,7 +11,7 @@ import {AuthenticationBasicService} from "../login-basic/authentication-basic.se
 @Component({
   selector: 'app-get-advertisement',
   templateUrl: './getAdvertisement.component.html',
-  styleUrls: ['getAdvertisement.component.scss'],
+  styleUrls: ['./getAdvertisement.component.scss'],
   providers: [AdvertisementService, PurchaseService]
 })
 export class GetAdvertisementComponent implements OnInit {
@@ -73,6 +73,7 @@ export class GetAdvertisementComponent implements OnInit {
     this.purchaseService.getPurchaseByAdvertisement(this.advertisement)
       .subscribe(
         purchase => this.purchase = purchase,
+        error => null, // Expecting a 404 if there is no purchase.
       );
   }
 
@@ -85,7 +86,7 @@ export class GetAdvertisementComponent implements OnInit {
         // Redirect to advertisements page.
         this.router.navigate(['/advertisements']);
       },
-      error => alert('Error: Failed to delete advertisement!')
+      error => alert(`Error: ${error.message}`)
     );
   }
 

@@ -1,19 +1,20 @@
 
-<section class="register-seller">
-    <header>
-      <h2>Sing In/Sing Up</h2>
 
-      <button class="btn btn-outline-primary" (click)="DivSingUp =!DivSendMessage">
-        Sing Up
-      </button>
-        <div class="form-section">
-          <div [hidden]="!DivSingUp">
-            <p>Name:<input type="text" placeholder="Name" name="name" [(ngModel)]="newSeller.name"></p>
-            <p>Mail:<input type="email" placeholder="Mail" name="mail" [(ngModel)]="newSeller.mail"></p>
-            <p>Password: <input type="password" placeholder="Password" name="password" [(ngModel)]="newSeller.password"></p>
-            <p><button (click)="addSeller()">Done</button></p>
-        </div>
+<section class="register-seller">
+  <header>
+    <h2>Sing In/Sing Up</h2>
+
+    <button class="btn btn-outline-primary" (click)="DivSingUp =!DivSendMessage">
+      Sing Up
+    </button>
+    <div class="form-section">
+      <div [hidden]="!DivSingUp">
+        <p>Name:<input type="text" placeholder="Name" name="name" [(ngModel)]="newSeller.name"></p>
+        <p>Mail:<input type="email" placeholder="Mail" name="mail" [(ngModel)]="newSeller.mail"></p>
+        <p>Password: <input type="password" placeholder="Password" name="password" [(ngModel)]="newSeller.password"></p>
+        <p><button (click)="addSeller()">Done</button></p>
       </div>
-    </header>
+    </div>
+  </header>
 
 </section>

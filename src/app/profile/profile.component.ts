@@ -13,7 +13,8 @@ export class ProfileComponent implements OnInit {
   isEditing: boolean = false;
 
   user: User = new User();
-  newPassword: string; // TODO. Might be moved to the User class.
+  newPassword: string = '';
+  newPasswordRepeat: string = '';
 
   constructor(private profileService: ProfileService,
                private authenticationBasicService: AuthenticationBasicService) {
@@ -35,14 +36,35 @@ export class ProfileComponent implements OnInit {
   }
 
   submitEdit() {
-    // TODO. Handle new password.
+    // Verify that both new password and its repeated match.
+    // Note: even when not changing the password, they still have to match to an
+    // empty string.
+    if (this.newPassword !== this.newPasswordRepeat) {
+      alert('New passwords do not match');
+      return;
+    }
+    // API requires us a password. Take the newest password, that is the form
+    // one only if its not blank.
+    const newPassword = this.newPassword
+      ? this.newPassword
+      : this.authenticationBasicService.getCurrentUser().password;
+    this.user.password = newPassword;
+
     this.profileService.putUser(this.user)
       .subscribe(
         user => {
           this.user = user;
 
           // All went alright. Clear password, and turn back to the read-only mode.
-          this.newPassword = '';
+          // Other fields don't have to be cleaned-up, they are meant to feed
+          // the read status as well.
+          this.newPassword = this.newPasswordRepeat = '';
+          // Also, update the new user into the storage, so that the user
+          // doesn't have to log back in again.
+          this.user.authorization = this.authenticationBasicService.generateAuthorization(this.user.username, newPassword);
+          this.user.password = newPassword;
+          this.authenticationBasicService.storeCurrentUser(this.user);
+
           this.toggleEdit();
         },
         error => alert('Error: Failed to update user details!'),

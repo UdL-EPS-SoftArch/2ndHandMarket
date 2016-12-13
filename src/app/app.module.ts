@@ -19,7 +19,6 @@ import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
 import { LoginBasicModule } from './login-basic/login-basic.module';
-import { LoginBasicComponent } from './login-basic/login-basic.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { OfferComponent } from './offer/offer.component';
@@ -27,6 +26,8 @@ import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DataTableModule } from 'angular2-datatable';
+import { ComponentsHelper } from 'ng2-bootstrap';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     HttpModule,
     routing,
-    LoginBasicModule
+    LoginBasicModule,
+    DataTableModule
   ],
   declarations: [
     AppComponent,
@@ -42,25 +44,26 @@ import { ProfileComponent } from './profile/profile.component';
     NavbarComponent,
     IntroComponent,
     MessageComponent,
+    IntroComponent,
     AdvertisementComponent,
     PostAdvertisementComponent,
     GetAdvertisementComponent,
     PutAdvertisementComponent,
-    PurchaseComponent,
     FooterComponent,
     RegisterSellerComponent,
     FooterComponent,
+    PurchaseComponent,
     SearchAdvertisementComponent,
     ContactComponent,
     DateFormatPipe,
+    BuyerComponent,
     BuyerOfferComponent,
     PersonalOffersListComponent,
-    BuyerComponent,
     ProfileComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper
   ],
-  bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
+  bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })
 export class AppModule { }

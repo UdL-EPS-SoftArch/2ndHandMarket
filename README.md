@@ -2,12 +2,15 @@
 
 Class project for the Software Architecture 2016-17 Course
 
-[![Build Status](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client.svg?branch=master)](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client/branches) 
+[![Dependency Status](https://david-dm.org/UdL-EPS-SoftArch/softarch-1617-client/status.svg?style=flat)](https://david-dm.org/UdL-EPS-SoftArch/softarch-1617-client)
+[![Build Status](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client.svg?branch=master)](https://travis-ci.org/UdL-EPS-SoftArch/softarch-1617-client/branches)
+[![Coverage Status](https://coveralls.io/repos/github/UdL-EPS-SoftArch/softarch-1617-client/badge.svg?branch=master)](https://coveralls.io/github/UdL-EPS-SoftArch/softarch-1617-client?branch=master)
+[![bitHound Overall Score](https://www.bithound.io/github/UdL-EPS-SoftArch/softarch-1617-client/badges/score.svg)](https://www.bithound.io/github/UdL-EPS-SoftArch/softarch-1617-client)
 <a href="https://zenhub.com"><img src="https://cdn.rawgit.com/ZenHubIO/support/master/zenhub-badge.svg"></a>
 
 # Development
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.22-1.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

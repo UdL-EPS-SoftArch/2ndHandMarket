@@ -133,6 +133,29 @@ describe('Service: Advertisement', () => {
           body: {
             '_embedded': {
               'pictures': [
+                firstPicture
+              ]
+            }
+          }
+        });
+
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+          connection.mockRespond(new Response(apiResponse));
+        });
+
+        service.getAdvertisementPictures('/advertisement/1').subscribe((data) => {
+          expect(data.length).toBe(1);
+          expect(data[0].uri).toEqual(firstPicture.uri);
+          expect(data[0].filename).toEqual(firstPicture.filename);
+        });
+      })));
+
+    it('should return pictures in desc order (by creation date)',
+      async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
+        const apiResponse = new ResponseOptions({
+          body: {
+            '_embedded': {
+              'pictures': [
                 firstPicture,
                 secondPicture
               ]
@@ -146,12 +169,12 @@ describe('Service: Advertisement', () => {
 
         service.getAdvertisementPictures('/advertisement/1').subscribe((data) => {
           expect(data.length).toBe(2);
-          expect(data[0].uri).toEqual(firstPicture.uri);
-          expect(data[1].uri).toEqual(secondPicture.uri);
-          expect(data[0].filename).toEqual(firstPicture.filename);
-          expect(data[1].filename).toEqual(secondPicture.filename);
+          expect(data[0].uri).toEqual(secondPicture.uri);
+          expect(data[1].uri).toEqual(firstPicture.uri);
+          expect(data[0].filename).toEqual(secondPicture.filename);
+          expect(data[1].filename).toEqual(firstPicture.filename);
         });
-      })));
+    })));
   });
 
   describe('#addAdvertisement(advertisement)', () => {

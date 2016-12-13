@@ -40,8 +40,8 @@ export class ProfileService {
   // PUT /users/<name>
   putUser(user: User): Observable<User> {
     if (!(user.username || user.name || user.lastname || user.email
-          || user.birthday || user.country)) {
-      throw new Error('Advertisement basics were not defined.');
+          || user.password || user.birthday || user.country)) {
+      throw new Error('User basics were not defined.');
     }
 
     // API will not accept certain fields (like authorities). Let's create
@@ -51,6 +51,7 @@ export class ProfileService {
       name: user.name,
       lastname: user.lastname,
       email: user.email,
+      password: user.password,
       birthday: user.birthday,
       country: user.country,
     };

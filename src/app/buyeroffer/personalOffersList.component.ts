@@ -25,7 +25,7 @@ export class PersonalOffersListComponent implements OnInit {
   }
 
   getBuyerOffer() {
-    return this.buyerofferService.getAllBuyerOffers()
+    this.buyerofferService.getAllBuyerOffers()
       .subscribe(
         buyeroffers => this.buyeroffers = buyeroffers,
         error => this.errorMessage = <any>error.message

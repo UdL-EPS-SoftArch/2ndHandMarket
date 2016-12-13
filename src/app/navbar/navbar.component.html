@@ -43,7 +43,9 @@
         <li>
           <a routerLink="/basketProducts" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
             <span class="visible-xs"><i class="fa fa-shopping-cart fa-2" aria-hidden="true"></i></span>
-            <span class="hidden-xs">Basket ({{countBasketProducts()}})</span>
+            <span class="hidden-xs"><span class="glyphicon glyphicon-shopping-cart"></span></span>
+            <span class="notification-icon"><span class="badge">{{countBasketProducts()}}</span></span>
+
           </a>
         </li>
 

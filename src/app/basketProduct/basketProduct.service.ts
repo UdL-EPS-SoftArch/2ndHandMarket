@@ -9,7 +9,7 @@ import {AuthenticationBasicService} from '../login-basic/authentication-basic.se
 export class BasketProductService {
 
   products: BasketProduct[] = [];
-
+  productsId : number [] = [];
   constructor () { }
 
   getAllProducts(): BasketProduct[] {
@@ -17,6 +17,19 @@ export class BasketProductService {
   }
 
   addProduct(product: BasketProduct): void {
-    this.products.push(product);
+    if (this.productsId.indexOf(product.product.id) == -1){
+      this.products.push(product);
+      this.productsId.push(product.product.id)
+    }
+    else{alert("This product is already in your cart");}
   }
+
+  removeProduct(product): void{
+    let i = this.products.indexOf(product);
+    this.products.splice(i,1);
+    this.productsId.splice(i,1);
+
+  }
+
+
 }

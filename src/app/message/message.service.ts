@@ -38,7 +38,8 @@ export class MessageService {
       'title': message.title,
       'body': message.body,
       'destination' : message.destination,
-      'sender': message.sender
+      'sender': message.sender,
+      'isRead': message.isRead,
     });
     let headers = new Headers({
       Authorization: this.authentication.getCurrentUser().authorization,

@@ -129,6 +129,9 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
       <ul class="list-group" *ngIf="myReceivedMessages.length > 0">
         <li class="list-group-item" *ngFor="let message of myReceivedMessages">
           <div class="messages">
+            <!--<p *ngIf="!message.isRead">
+              <button  (click)="SetAsRead(message)">Set as read</button>
+            </p>-->
             <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>From: {{message.sender}}</h4>
             <h4>Title: {{message.title}}</h4>

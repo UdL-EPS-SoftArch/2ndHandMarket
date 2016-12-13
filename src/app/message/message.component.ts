@@ -64,6 +64,13 @@ export class MessageComponent implements OnInit {
         error =>  this.errorMessage = <any>error.message);
   }
 
+  /*getNotRead () {
+    this.messageService.getAllMessages()
+      .subscribe(
+        messages => this.notRead = this.messages.filter(p => p.isRead ==  false),
+        error =>  this.errorMessage = <any>error.message);
+  }*/
+
   getAllMyMessages() {
     this.messageService.getAllMessages()
       .subscribe(

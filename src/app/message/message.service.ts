@@ -32,6 +32,20 @@ export class MessageService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
+  // Update TODO
+  setAsRead(message: Message): Observable<Message> {
+    if (!message.uri) throw new Error('Message URI is required.');
+
+    let body = JSON.stringify(message);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.put(`${environment.API}/privateMessages/${message.uri}`, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
   // POST /privateMessages
   addMessage(message: Message): Observable<Message> {
     let body = JSON.stringify({

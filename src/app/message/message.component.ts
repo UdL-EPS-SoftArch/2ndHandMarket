@@ -101,6 +101,14 @@ export class MessageComponent implements OnInit {
     this.newMessage.sender = this.authentication.getCurrentUser().username;
   }
 
+  //TODO
+  setAsRead() {
+    this.messageService.setAsRead(this.newMessage)
+      .subscribe(
+        message  => this.messages.push(message),
+        error =>  this.errorMessage = <any>error.message);
+  }
+
   removeMessage(message) {
     this.messageService.deleteMessageByUri(message.uri)
       .subscribe(

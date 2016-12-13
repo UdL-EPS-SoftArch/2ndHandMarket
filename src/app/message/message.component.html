@@ -132,6 +132,9 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
             <!--<p *ngIf="!message.isRead">
               <button  (click)="SetAsRead(message)">Set as read</button>
             </p>-->
+            <p *ngIf="!message.isRead">
+              <button  (click)="setAsRead(message)">Set as read</button>
+            </p>
             <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>From: {{message.sender}}</h4>
             <h4>Title: {{message.title}}</h4>

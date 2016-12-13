@@ -19,7 +19,6 @@ import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
 import { LoginBasicModule } from './login-basic/login-basic.module';
-import { LoginBasicComponent } from './login-basic/login-basic.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { OfferComponent } from './offer/offer.component';
@@ -66,6 +65,6 @@ import { BasketProductService } from './basketProduct/basketProduct.service';
   providers: [
     appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService
   ],
-  bootstrap: [AppComponent, NavbarComponent, FooterComponent, LoginBasicComponent]
+  bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })
 export class AppModule { }

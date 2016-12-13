@@ -1,15 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { AuthenticationBasicService } from './authentication-basic.service';
 import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
   selector: '[login-basic]',
   templateUrl: './login-basic.component.html',
-  styleUrls: ['./login-basic.component.scss']
+  styleUrls: ['./login-basic.component.scss'],
+  providers: [AuthenticationBasicService]
 })
 export class LoginBasicComponent implements OnInit {
 
+  @Input('appRouter') appRouter;
   @ViewChild('loginModal') public loginModal: ModalDirective;
+  @ViewChild('username') username;
   errorMessage: string = '';
 
   constructor(private authenticationService: AuthenticationBasicService) { }
@@ -18,6 +21,10 @@ export class LoginBasicComponent implements OnInit {
 
   showLoginModal(): void {
     this.loginModal.show();
+
+    // For some unapparent reason, someone else is taking the focus, that's just
+    // a quick fix.
+    setTimeout(() => this.username.nativeElement.focus(), 500);
   }
 
   hideLoginModal(userInput: HTMLInputElement, passwordInput: HTMLInputElement): void {

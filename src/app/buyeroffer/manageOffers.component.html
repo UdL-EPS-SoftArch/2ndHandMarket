@@ -13,14 +13,14 @@
     </header>
 
      <div class="row" *ngIf="advertisements.length !== 0">
-      <div class="col-sm-5" >
+      <div class="col-sm-2" >
         <div class="list-group" >
           <h3 class="list-group-item disabled text-center">
             <small class="text-muted">Your Products</small>
           </h3>
           <div *ngFor="let advertisement of advertisements">
             <div *ngIf="advertisement.owner == getCurrentUser()">
-              <button class="column_button" onclick="">{{advertisement.title}}</button>
+              <button class="column_button" routerLink="/{{advertisement.uri}}">{{advertisement.title}}</button>
             </div>
           </div>
 
@@ -34,6 +34,8 @@
             <thead>
             <tr>
               <th>Product</th>
+              <th>Brand</th>
+              <th>Description</th>
               <th>Date</th>
               <th>Initial Price</th>
               <th>Offers</th>
@@ -42,10 +44,16 @@
             <tbody *ngFor="let advertisement of advertisements" class="row">
               <tr *ngIf="advertisement.owner == getCurrentUser()">
                 <td>{{advertisement.title}}</td>
+                <td>{{advertisement.brand}}
+                <td>{{advertisement.description}}</td>
                 <td>{{advertisement.createdAt}}</td>
                 <td>{{advertisement.price}}€</td>
                 <tbody *ngFor="let offer of buyeroffers">
-                  <td>{{offer.value}}€ by user: {{offer.buyer_id}}</td>
+                  <td>
+                    <b>{{offer.value}}€</b> by {{advertisement.}} o {{offer.advertisement_id}} user <b>{{offer.buyer_id}}</b>&nbsp;
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </td>
                 </tbody>
               </tr>
             </tbody>

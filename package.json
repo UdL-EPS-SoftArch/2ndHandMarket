@@ -6,7 +6,7 @@
   "scripts": {
     "start": "http-server dist/",
     "start-dev": "ng serve",
-    "test": "npm-run-all -c test:pree2e test:e2e test:cli test:lint",
+    "test": "npm-run-all -c test:cli test:lint",
     "test:pree2e": "webdriver-manager update",
     "test:e2e": "protractor",
     "test:cli": "ng test --watch false --code-coverage",
@@ -47,7 +47,7 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
-    "protractor": "4.0.9",
+    "protractor": "^4.0.13",
     "ts-node": "1.2.1",
     "tslint": "^4.0.2",
     "typescript": "~2.0.3",

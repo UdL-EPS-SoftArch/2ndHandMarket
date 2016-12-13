@@ -7,31 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerComponent implements OnInit {
 
-  filterQuery: string = "";
+  filterQuery: string = '';
+  global: number;
 
   constructor() {
     this.global = 1;
   }
 
-  global : number;
-
-
   ngOnInit() {
   }
 
-  ShowProducts(): void{
+  ShowProducts(): void {
     this.global = 1;
-
   }
 
-  ShowCountOffers() : void{
+  ShowCountOffers(): void {
     this.global = 2;
-
   }
 
-  AddCoupons() : void{
+  AddCoupons(): void {
     this.global = 3;
-
   }
 
 }

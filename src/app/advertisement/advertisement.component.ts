@@ -13,7 +13,7 @@ import { Picture } from './picture/picture';
 export class AdvertisementComponent implements OnInit {
 
   advertisements: Advertisement[] = [];
-  advertisementPictures: { [key: string]: Picture } = {};
+  advertisementPictures: Picture = new Picture();
   errorMessage: string;
 
   constructor(private advertisementService: AdvertisementService) { }

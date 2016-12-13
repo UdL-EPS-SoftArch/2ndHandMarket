@@ -18,8 +18,10 @@ export class PurchaseService {
   getPurchase(id: number): Observable<any> {
     return new Observable(observer => {
       Observable.forkJoin(
-        this.http.get(`${environment.API}/purchases/${id}`).map((res: Response) => res.json()),
-        this.http.get(`${environment.API}/purchases/${id}/advertisement`).map((res: Response) => res.json()),
+        this.http.get(`${environment.API}/purchases/${id}`)
+          .map((res: Response) => res.json()),
+        this.http.get(`${environment.API}/purchases/${id}/advertisement`)
+          .map((res: Response) => res.json()),
       ).subscribe(
         data => {
           const purchase = data[0];
@@ -33,7 +35,9 @@ export class PurchaseService {
 
   // GET /purchases/:id
   getPurchaseByAdvertisement(advertisement: Advertisement): Observable<Purchase> {
-    if (!advertisement.id) throw new Error('Advertisement ID is required');
+    if (!advertisement.id) {
+      throw new Error('Advertisement ID is required');
+    }
 
     return this.http.get(`${environment.API}/advertisements/${advertisement.id}/purchase`)
       .map((res: Response) => res.json())

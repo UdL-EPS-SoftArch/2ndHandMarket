@@ -11,6 +11,8 @@ import { RegisterSeller } from './register-seller';
 
 export class RegisterSellerComponent implements OnInit {
 
+  DivSingUp;
+
   sellers: RegisterSeller[] = [];
   errorMessage: string;
   newSeller: RegisterSeller = new RegisterSeller();

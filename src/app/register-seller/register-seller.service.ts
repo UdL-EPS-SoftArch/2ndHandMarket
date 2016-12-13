@@ -28,7 +28,11 @@ export class RegisterSellerService {
 
   // POST /seller
   addSeller(seller: RegisterSeller): Observable<RegisterSeller> {
-    let body = JSON.stringify({ 'name': seller.name, 'mail': seller.mail, 'password': seller.password });
+    let body = JSON.stringify({
+      name: seller.name,
+      mail: seller.mail,
+      password: seller.password
+    });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
@@ -40,7 +44,10 @@ export class RegisterSellerService {
 
   // DELETE /sellers/:id
   deleteSellerByUri(uri: string) {
-    let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
+    let headers = new Headers({
+      Authorization:
+      this.authentication.getCurrentUser().authorization
+    });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}${uri}`, options)

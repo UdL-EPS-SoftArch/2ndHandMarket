@@ -21,7 +21,6 @@ export class BuyerOfferComponent implements OnInit {
 
   ngOnInit() {
     this.getBuyerOffer();
-    console.info(this.advertisement);
   }
 
   getBuyerOffer() {
@@ -37,7 +36,6 @@ export class BuyerOfferComponent implements OnInit {
     this.newBuyerOffer.advertisement_title = this.advertisement.title;
     this.newBuyerOffer.advertisement_seller = this.advertisement.owner;
     this.newBuyerOffer.advertisement_iniPrice = this.advertisement.price;
-    console.info(this.newBuyerOffer);
     this.buyerofferService.addBuyerOffer(this.newBuyerOffer)
       .subscribe(
         buyeroffer  => this.buyeroffers.push(buyeroffer),

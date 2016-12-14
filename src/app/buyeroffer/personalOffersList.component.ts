@@ -7,7 +7,7 @@ import { BuyerOfferService } from './buyeroffer.service';
 
 
 @Component({
-  selector: 'app-personalOffersList',
+  selector: 'app-personal-offers-list',
   templateUrl: './personalOffersList.component.html',
   styleUrls: ['./personalOffersList.component.css'],
   providers: [BuyerOfferService]

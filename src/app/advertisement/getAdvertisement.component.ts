@@ -6,7 +6,7 @@ import { AdvertisementService } from './advertisement.service';
 import { Picture } from './picture/picture';
 import { Purchase } from '../purchase/purchase';
 import { PurchaseService } from '../purchase/purchase.service';
-import {AuthenticationBasicService} from "../login-basic/authentication-basic.service";
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-get-advertisement',
@@ -93,7 +93,7 @@ export class GetAdvertisementComponent implements OnInit {
     );
   }
 
-  getCurrentUser() : string {
+  getCurrentUser(): string {
     return this.authentication.getCurrentUser().username;
   }
 }

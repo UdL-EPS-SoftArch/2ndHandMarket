@@ -1,4 +1,4 @@
-import { element, by, protractor, ElementArrayFinder } from 'protractor';
+import { element, by } from 'protractor';
 import Promise = webdriver.promise.Promise;
 
 export class AdvertisementFormPage {

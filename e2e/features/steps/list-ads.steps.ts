@@ -1,47 +1,48 @@
 import { binding, given, when, then } from 'cucumber-tsflow';
 import { browser, element, by } from 'protractor';
-import { AdvertisementFormPage } from "../../ad-form.page";
+import { AdvertisementFormPage } from '../../ad-form.page';
+import { NavigationBar } from '../../navbar.page';
+import { LoginForm } from '../../login-form.page';
 
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
 
 @binding()
 class ListAdsSteps {
+  private adForm = new AdvertisementFormPage();
+  private navBar = new NavigationBar();
+  private loginForm = new LoginForm();
+
+  @given(/^I'm in the home page$/)
+  public iMInHomePage(callback): void {
+    browser.get('http://localhost:4200');
+    callback();
+  };
 
   @given(/^I sign in as "([^"]*)" with password "([^"]*)"$/)
   public iSignInAsWithPassword (username: string, password: string, callback): void {
-    browser.get('http://localhost:4200');
-    element(by.id('myaccount')).click();
-    element(by.id('signin')).click();
-
-    let loginForm = element(by.css('form.form-signin'));
-    element(by.id('username')).sendKeys(username);
-    element(by.id('password')).sendKeys(password);
-    loginForm.submit();
+    this.navBar.clickMyAccount();
+    this.navBar.clickSignin();
+    this.loginForm.typeUsername(username);
+    this.loginForm.typePassword(password);
+    this.loginForm.submitForm();
     browser.waitForAngular();
     callback();
-  }
+  };
 
   @when(/^I create an advertisement with title "([^"]*)" and price (\d+)$/)
   public createAdWithTitleAndPrice (title: string, price: number, callback): void {
     element(by.linkText('Create one')).click();
-    let adForm = new AdvertisementFormPage();
-    adForm.setTitle(title);
-    adForm.setPrice(price);
-    adForm.submitForm();
+    this.adForm.setTitle(title);
+    this.adForm.setPrice(price);
+    this.adForm.submitForm();
     browser.waitForAngular();
-    callback();
-  }
-
-  @when(/^I list all available advertisements$/)
-  public iListAllAvailableAds(callback): void {
-    browser.get('http://localhost:4200/advertisements');
     callback();
   };
 
   @when(/^I go back to home$/)
   public iGoBackToHome(callback): void {
-    element(by.id('home')).click();
+    this.navBar.goToHome();
     browser.waitForAngular();
     callback();
   };

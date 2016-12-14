@@ -4,7 +4,7 @@ Feature: List Advertisements
   I want to list advertisements
 
   Scenario: List all advertisements when none
-    When I list all available advertisements
+    When I'm in the home page
     Then I see 0 advertisements
 
   Scenario: List all advertisements when one created

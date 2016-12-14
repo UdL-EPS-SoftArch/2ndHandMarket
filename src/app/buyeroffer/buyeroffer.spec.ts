@@ -20,7 +20,11 @@ describe('BuyerOffer', () => {
     const now = new Date().getTime();
 
     let buyer_offer = new BuyerOffer({
-      buyer_offer_id: id,
+      buyer_id: id,
+      advertisement_id: adver_id,
+      advertisement_title: title,
+      advertisement_seller: seller,
+      advertisement_iniPrice: initPrice,
       value: price,
       date: now,
     });

@@ -39,6 +39,8 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.22-1",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "codelyzer": "~2.0.0-beta.1",
     "cucumber": "^1.3.1",
     "cucumber-tsflow": "^1.1.2",

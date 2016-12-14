@@ -1,4 +1,4 @@
-  /* tslint:disable:no-unused-variable */
+/* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
 
@@ -7,15 +7,15 @@ import { BuyerOfferService } from './buyeroffer.service';
 
 describe('Component: BuyerOffer', () => {
 
-  beforeEach(() =>{
+  beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [BuyerOfferService]
     });
   });
 
   it('should create an instance', () => {
-    inject([BuyerOfferService], (buyerofferService) => {
-      let component = new BuyerOfferComponent(buyerofferService);
+    inject([BuyerOfferService], (buyerOfferService) => {
+      let component = new BuyerOfferComponent(buyerOfferService);
       expect(component).toBeTruthy();
     });
   });

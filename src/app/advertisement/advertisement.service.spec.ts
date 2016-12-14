@@ -1,18 +1,13 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject, getTestBed } from '@angular/core/testing';
-import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response } from '@angular/http';
+import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response
+} from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AdvertisementService } from './advertisement.service';
 import { Advertisement } from './advertisement';
 import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 import { Picture } from './picture/picture';
-
-class ResponseError extends Error {
-  json() {
-    return '{ \'message\': \'Error\' }';
-  }
-}
 
 describe('Service: Advertisement', () => {
   const firstAdvertisement = new Advertisement({
@@ -235,8 +230,7 @@ describe('Service: Advertisement', () => {
 
         const advertisementId = 1;
         service.deleteAdvertisement(advertisementId).subscribe((data) => {
-          console.info('*');
-          console.info(data);
+
         });
       })));
   });

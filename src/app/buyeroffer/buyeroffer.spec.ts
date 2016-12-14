@@ -10,7 +10,6 @@ describe('BuyerOffer', () => {
   });
 
   it('should accept values in the constructor', () => {
-    /*Inicialization*/
     const id = 1;
     const adver_id = 1;
     const title = "object";
@@ -19,7 +18,7 @@ describe('BuyerOffer', () => {
     const price = 45;
     const now = new Date().getTime();
 
-    let buyer_offer = new BuyerOffer({
+    let buyerOffer = new BuyerOffer({
       buyer_id: id,
       advertisement_id: adver_id,
       advertisement_title: title,
@@ -28,12 +27,12 @@ describe('BuyerOffer', () => {
       value: price,
       date: now,
     });
-    expect(buyer_offer.buyer_id).toEqual(id);
-    expect(buyer_offer.advertisement_id).toEqual(adver_id);
-    expect(buyer_offer.advertisement_title).toEqual(title);
-    expect(buyer_offer.advertisement_seller).toEqual(seller);
-    expect(buyer_offer.advertisement_iniPrice).toEqual(initPrice);
-    expect(buyer_offer.value).toEqual(price);
-    expect(buyer_offer.date).toEqual(now);
+    expect(buyerOffer.buyer_id).toEqual(id);
+    expect(buyerOffer.advertisement_id).toEqual(adver_id);
+    expect(buyerOffer.advertisement_title).toEqual(title);
+    expect(buyerOffer.advertisement_seller).toEqual(seller);
+    expect(buyerOffer.advertisement_iniPrice).toEqual(initPrice);
+    expect(buyerOffer.value).toEqual(price);
+    expect(buyerOffer.date).toEqual(now);
   });
 });

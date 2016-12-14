@@ -15,8 +15,13 @@ describe('Component: PostAdvertisement', () => {
   });
 
   it ('should create an instance', () => {
-    inject([ Router, AdvertisementService, PictureService ], (router, advertisementService, pictureService) => {
-      let component = new PostAdvertisementComponent(router, advertisementService, pictureService);
+    inject([ Router, AdvertisementService, PictureService ],
+      (router, advertisementService, pictureService) => {
+      let component = new PostAdvertisementComponent(
+        router,
+        advertisementService,
+        pictureService
+      );
       expect(component).toBeTruthy();
     });
   });

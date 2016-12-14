@@ -51,8 +51,8 @@ describe('Service: Purchase', () => {
 
     purchase = new Purchase({
       uri: '/purchases/1',
-      purchaser: "user1",
-      createdAt: "2016-11-26T12:25:41.45+01:00",
+      purchaser: 'user1',
+      createdAt: '2016-11-26T12:25:41.45+01:00',
     });
   }));
 

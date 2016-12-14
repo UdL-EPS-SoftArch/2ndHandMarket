@@ -1,7 +1,8 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { MessageService } from './message.service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response } from '@angular/http';
+import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response
+} from '@angular/http';
 import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 class ResponseError extends Error {

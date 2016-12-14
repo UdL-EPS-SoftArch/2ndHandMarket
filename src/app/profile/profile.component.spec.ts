@@ -15,8 +15,12 @@ describe('Component: Advertisement', () => {
   });
 
   it('should create an instance', () => {
-    inject([ProfileService, AuthenticationBasicService], (advertisementService, authenticationBasicService) => {
-      let component = new ProfileComponent(advertisementService, authenticationBasicService);
+    inject([ProfileService, AuthenticationBasicService],
+      (advertisementService, authenticationBasicService) => {
+      let component = new ProfileComponent(
+        advertisementService,
+        authenticationBasicService
+      );
       expect(component).toBeTruthy();
     });
 

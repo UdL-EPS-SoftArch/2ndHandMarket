@@ -47,10 +47,12 @@ export class GetAdvertisementComponent implements OnInit {
       advertisement => {
         this.advertisement = advertisement;
 
-        // The API does not provide us the id directly, so we'll store the one we have from the URL.
+        // The API does not provide us the id directly, so we'll store the one
+        // we have from the URL.
         this.advertisement.id = id;
 
-        // The advertisement picture is stored somewhere (let's query the API for it now that we have the advertisement).
+        // The advertisement picture is stored somewhere (let's query the API
+        // for it now that we have the advertisement).
         this.getAdvertisementPicture();
 
         // Check advertisement purchase status.
@@ -69,7 +71,8 @@ export class GetAdvertisementComponent implements OnInit {
   }
 
   getAdvertisementPurchase() {
-    // HTML will hide Buy & Add to Wishlist buttons if the product has already been purchased.
+    // HTML will hide Buy & Add to Wishlist buttons if the product has already
+    // been purchased.
     this.purchaseService.getPurchaseByAdvertisement(this.advertisement)
       .subscribe(
         purchase => this.purchase = purchase,

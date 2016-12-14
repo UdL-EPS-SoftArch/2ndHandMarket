@@ -24,8 +24,8 @@ export class AuthenticationBasicService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  generateAuthorization(username: string, password: string) : string {
-    return 'Basic ' + btoa(username + ':' + password);
+  generateAuthorization(username: string, password: string): string {
+    return `Basic ${btoa(`${username}:${password}`)}`;
   }
 
   storeCurrentUser(user: User): void {

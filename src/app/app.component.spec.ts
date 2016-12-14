@@ -19,9 +19,10 @@ import { MessageComponent } from './message/message.component';
 import { OfferComponent } from './offer/offer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
+import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import { SellerComponent } from './seller/seller.component';
 import { ComponentsHelper } from 'ng2-bootstrap';
 
 describe('App: Softarch1617Client', () => {
@@ -31,9 +32,10 @@ describe('App: Softarch1617Client', () => {
         AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent,
         PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, OfferComponent,
-        RegisterSellerComponent, SellerComponent, BuyerComponent,
-        ProfileComponent, PurchaseComponent, SellerComponent,
+        RegisterSellerComponent, BuyerComponent, BuyerOfferComponent,
+        PersonalOffersListComponent,
+        ContactComponent, MessageComponent,
+        ProfileComponent, PurchaseComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

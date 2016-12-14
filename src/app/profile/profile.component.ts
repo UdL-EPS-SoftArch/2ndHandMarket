@@ -61,7 +61,8 @@ export class ProfileComponent implements OnInit {
           this.newPassword = this.newPasswordRepeat = '';
           // Also, update the new user into the storage, so that the user
           // doesn't have to log back in again.
-          this.user.authorization = this.authenticationBasicService.generateAuthorization(this.user.username, newPassword);
+          this.user.authorization = this.authenticationBasicService
+            .generateAuthorization(this.user.username, newPassword);
           this.user.password = newPassword;
           this.authenticationBasicService.storeCurrentUser(this.user);
 

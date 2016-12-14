@@ -2,16 +2,11 @@
 
 import { TestBed, async, inject, getTestBed } from '@angular/core/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response } from '@angular/http';
+import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response
+} from '@angular/http';
 
 import { BuyerOfferService } from './buyeroffer.service';
 import { BuyerOffer } from './buyeroffer';
-
-class ResponseError extends Error {
-  json() {
-    return '{ \'message\': \'Error\' }';
-  }
-}
 
 describe('Service: BuyerOffer', () => {
   const firstBuyerOffer = {

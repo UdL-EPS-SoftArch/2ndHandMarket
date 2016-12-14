@@ -6,14 +6,14 @@ export class Advertisement {
   owner: string = '';
   createdAt = Date;
   modifiedAt = Date;
-  price: number = 0.0;
+  price: number = 0;
   negotiablePrice: boolean = false;
   paidShipping: boolean = false;
   tags: string[] = [];
   category: string = '';
   brand: string = '';
   color: string = '';
-  weight: number = 0.0;
+  weight: number = 0;
 
   // Tags as string 'first, second, third'.
   get tagsStr(): string {
@@ -29,6 +29,6 @@ export class Advertisement {
   }
 
   getUriId(): number {
-    return this.uri ? Number(this.uri.split('/')[1]): null;
+    return this.uri ? Number(this.uri.split('/')[1]) : null;
   }
 }

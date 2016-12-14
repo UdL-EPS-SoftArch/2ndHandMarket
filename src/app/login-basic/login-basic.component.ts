@@ -3,7 +3,7 @@ import { AuthenticationBasicService } from './authentication-basic.service';
 import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
-  selector: '[login-basic]',
+  selector: 'app-login-basic',
   templateUrl: './login-basic.component.html',
   styleUrls: ['./login-basic.component.scss'],
   providers: [AuthenticationBasicService]

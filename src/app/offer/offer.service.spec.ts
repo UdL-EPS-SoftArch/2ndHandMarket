@@ -2,8 +2,9 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { OfferService } from './offer.service';
-import {MockBackend, MockConnection} from '@angular/http/testing';
-import {BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response} from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response
+} from '@angular/http';
 
 
 describe('Service: Offer', () => {

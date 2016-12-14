@@ -49,7 +49,9 @@ export class AdvertisementService {
 
   // PUT /advertisements
   putAdvertisement(advertisement: Advertisement): Observable<Advertisement> {
-    if (!advertisement.id) throw new Error('Advertisement ID is required.');
+    if (!advertisement.id) {
+      throw new Error('Advertisement ID is required.');
+    }
 
     let body = JSON.stringify(advertisement);
     let headers = new Headers({ 'Content-Type': 'application/json' });

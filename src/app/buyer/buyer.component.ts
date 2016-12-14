@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuyerComponent implements OnInit {
 
-  global : number;
-  coupons : number;
-  Ncoupons : number;
+  filterQuery;
+
+  global: number;
+  coupons: number;
+  Ncoupons: number;
 
   constructor() {
     this.global = 1;
@@ -20,33 +22,33 @@ export class BuyerComponent implements OnInit {
 
   }
 
-  ShowOrder(): void{
+  ShowOrder(): void {
     this.global = 1;
   }
 
-  ShowWishList() : void{
+  ShowWishList(): void {
     this.global = 2;
   }
 
-  ShowOffers() : void{
+  ShowOffers(): void {
     this.global = 3;
   }
 
-  ShowCoupons() : void{
+  ShowCoupons(): void {
     this.global = 4;
     this.coupons = 1;
   }
 
-  ShowShipping() : void {
+  ShowShipping(): void {
     this.global = 5;
   }
 
-  ShowCouponsGlobal() : void{
+  ShowCouponsGlobal(): void {
     this.coupons = 1;
     this.Ncoupons = -1;
   }
 
-  ShowCouponsSeller() : void {
+  ShowCouponsSeller(): void {
     this.coupons  = 2;
     this.Ncoupons = -1;
   }

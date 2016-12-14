@@ -3,7 +3,8 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { AuthenticationBasicService } from './authentication-basic.service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { BaseRequestOptions, Http, XHRBackend, HttpModule, ResponseOptions, Response } from '@angular/http';
+import { BaseRequestOptions, Http, XHRBackend, HttpModule, ResponseOptions, Response
+} from '@angular/http';
 import { User} from './user';
 
 describe('Service: AuthenticationBasic', () => {
@@ -59,7 +60,7 @@ describe('Service: AuthenticationBasic', () => {
               new ResponseOptions({
                 status: 401,
                 body: {
-                  message: 'Unauthorized'
+                  message: 'Unauthorized',
                 }
               })
             ));

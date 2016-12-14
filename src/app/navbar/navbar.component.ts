@@ -10,6 +10,6 @@ export class NavbarComponent {
 
   appTitle: string = 'Second Hand Market';
 
-  constructor(private router: Router) {
+  constructor(public router: Router) {
   }
 }

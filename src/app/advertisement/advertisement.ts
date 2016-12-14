@@ -29,6 +29,6 @@ export class Advertisement {
   }
 
   getUriId(): number {
-    return this.uri ? Number(this.uri.split('/')[1]): null;
+    return this.uri ? Number(this.uri.split('/')[1]) : null;
   }
 }

@@ -7,7 +7,7 @@ import { AuthenticationBasicService } from '../login-basic/authentication-basic.
 
 @Injectable()
 export class MessageService {
-
+  notRead: Message[] = [];
   constructor (private http: Http,
                private authentication: AuthenticationBasicService) { }
 
@@ -36,12 +36,19 @@ export class MessageService {
   setAsRead(message: Message): Observable<Message> {
     if (!message.uri) throw new Error('Message URI is required.');
 
-    let body = JSON.stringify(message);
+    let body = JSON.stringify({
+      'title': message.title,
+      'body': message.body,
+      'destination' : message.destination,
+      'sender': message.sender,
+      'isRead': true
+    });
+    //let body = JSON.stringify(message);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put(`${environment.API}/privateMessages/${message.uri}`, body, options)
+    return this.http.put(`${environment.API}/privateMessages${message.uri}`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -76,6 +83,11 @@ export class MessageService {
     return this.http.delete(`${environment.API}${uri}`, options)
       .map((res: Response) => res.ok)
       .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  getNotRead () : number {
+
+    return this.getAllMessages().filter(p => p.isRead ==  false).count();
   }
 
 }

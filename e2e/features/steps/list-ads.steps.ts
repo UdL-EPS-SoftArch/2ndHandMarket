@@ -17,7 +17,7 @@ class ListAdsSteps {
     let loginForm = element(by.css('form.form-signin'));
     element(by.id('username')).sendKeys(username);
     element(by.id('password')).sendKeys(password);
-    loginForm.element(by.tagName('button')).click();
+    loginForm.submit();
     browser.waitForAngular();
     callback();
   }

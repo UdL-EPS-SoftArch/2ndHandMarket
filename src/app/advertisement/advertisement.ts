@@ -27,4 +27,8 @@ export class Advertisement {
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);
   }
+
+  getUriId(): number {
+    return this.uri ? Number(this.uri.split('/')[1]): null;
+  }
 }

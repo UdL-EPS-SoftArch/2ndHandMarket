@@ -107,7 +107,7 @@ export class MessageComponent implements OnInit {
   setAsRead(message) {
     this.messageService.setAsRead(message)
       .subscribe(
-        message  => this.messages.push(message),
+        message  => this.newMessage = message,
         error =>  this.errorMessage = <any>error.message);
   }
 

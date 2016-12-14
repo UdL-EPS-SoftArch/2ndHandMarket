@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { Message } from './message';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import {Injectable} from '@angular/core';
+import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import {Message} from './message';
+import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
+import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
 
 @Injectable()
 export class MessageService {
@@ -20,7 +20,7 @@ export class MessageService {
 
   // GET /privateMessages/:id
   getMessageByUri(uri: string): Observable<Message> {
-    return this.http.get(`${environment.API}/privateMessages/${uri}`)
+    return this.http.get(`${environment.API}${"/privateMessages/"+uri}`)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -43,12 +43,13 @@ export class MessageService {
       'sender': message.sender,
       'isRead': true
     });
+
     //let body = JSON.stringify(message);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put(`${environment.API}/privateMessages${message.uri}`, body, options)
+    return this.http.put(`${environment.API}${message.uri}`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -62,10 +63,9 @@ export class MessageService {
       'sender': message.sender,
       'isRead': message.isRead,
     });
-    let headers = new Headers({
-      Authorization: this.authentication.getCurrentUser().authorization,
-      'Content-Type': 'application/json',
-    });
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${environment.API}/privateMessages`, body, options)
@@ -75,9 +75,7 @@ export class MessageService {
 
   // DELETE /privateMessages/:id
   deleteMessageByUri(uri: string) {
-    let headers = new Headers({
-      Authorization: this.authentication.getCurrentUser().authorization,
-    });
+    let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}${uri}`, options)
@@ -87,7 +85,6 @@ export class MessageService {
 
     // TODO
   getNotRead () : number {
-
     //return this.getAllMessages().filter(p => p.isRead ==  false).count();
     return 1;
   }

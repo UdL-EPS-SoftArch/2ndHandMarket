@@ -28,4 +28,8 @@ export class NavbarComponent {
   countBasketProducts(): number {
     return this.basketProductService.getAllProducts().length;
   }
+
+  /*countUnReadMessages(): number {
+    return this.messageService.getNotRead();
+  }*/
 }

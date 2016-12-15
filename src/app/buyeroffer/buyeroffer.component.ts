@@ -32,6 +32,7 @@ export class BuyerOfferComponent implements OnInit {
   }
 
   addBuyerOffer() {
+    this.newBuyerOffer.advertisement = this.advertisement.uri;
     this.newBuyerOffer.advertisement_id = this.advertisement.id;
     this.newBuyerOffer.advertisement_title = this.advertisement.title;
     this.newBuyerOffer.advertisement_seller = this.advertisement.owner;

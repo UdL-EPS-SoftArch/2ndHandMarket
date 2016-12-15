@@ -14,8 +14,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
-import { SearchAdvertisementComponent
-} from './search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
@@ -29,6 +28,8 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DataTableModule } from 'angular2-datatable';
 import { ComponentsHelper } from 'ng2-bootstrap';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
+import { BasketProductService } from './basketProduct/basketProduct.service';
 
 @NgModule({
   imports: [
@@ -60,10 +61,11 @@ import { ComponentsHelper } from 'ng2-bootstrap';
     BuyerComponent,
     BuyerOfferComponent,
     PersonalOffersListComponent,
-    ProfileComponent
+    ProfileComponent,
+    BasketProductComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })

@@ -49,10 +49,10 @@
                 <td>{{advertisement.createdAt}}</td>
                 <td>{{advertisement.price}}€</td>
                 <tbody *ngFor="let offer of buyeroffers">
-                  <td>
+                  <td *ngIf="advertisement.title === offer.advertisement_title">
                     <b>{{offer.value}}€</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <button class="glyphicon glyphicon-ok" aria-hidden="true" (click)="deleteBuyerOffer(offer)"></button>&nbsp;
+                    <button class="glyphicon glyphicon-remove" aria-hidden="true" (click)="deleteBuyerOffer(offer)"></button>
                   </td>
                 </tbody>
               </tr>

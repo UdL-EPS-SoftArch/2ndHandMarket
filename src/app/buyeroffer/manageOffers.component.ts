@@ -45,7 +45,7 @@ export class ManageOffersComponent implements OnInit {
   }
 
   getAdvertisements() {
-    return this.advertisementService.getAllAdvertisements()
+    this.advertisementService.getAllAdvertisements()
       .subscribe(
         advertisements => {
           this.advertisements = advertisements;
@@ -55,7 +55,7 @@ export class ManageOffersComponent implements OnInit {
   }
 
   getBuyerOffer() {
-    return this.buyerofferService.getAllBuyerOffers()
+    this.buyerofferService.getAllBuyerOffers()
       .subscribe(
         buyeroffers => this.buyeroffers = buyeroffers,
         error => this.errorMessage = <any>error.message

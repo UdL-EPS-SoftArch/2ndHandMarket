@@ -22,7 +22,6 @@ import { MessageComponent } from './message/message.component';
 import { LoginBasicModule } from './login-basic/login-basic.module';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
-import { OfferComponent } from './offer/offer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
@@ -42,7 +41,6 @@ import { ComponentsHelper } from 'ng2-bootstrap';
   ],
   declarations: [
     AppComponent,
-    OfferComponent,
     NavbarComponent,
     IntroComponent,
     MessageComponent,

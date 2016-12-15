@@ -3,8 +3,8 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 
 
-import {environment} from "../../../environments/environment";
-import {Advertisement} from "../advertisement";
+import { environment } from '../../../environments/environment';
+import { Advertisement } from '../advertisement';
 
 @Injectable()
 export class SearchAdvertisementService {

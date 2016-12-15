@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Advertisement } from '../advertisement';
 
 @Component({
-  selector: 'search-ad',
+  selector: 'app-search-ad',
   templateUrl: './search-advertisement.component.html',
   styleUrls: ['./search-advertisement.component.scss']
 })

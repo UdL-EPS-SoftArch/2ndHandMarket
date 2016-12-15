@@ -15,7 +15,7 @@ describe('Component: Advertisement', () => {
   });
 
   it('should create an instance', () => {
-    inject([ActivatedRoute ], (activatedRoute,) => {
+    inject([ActivatedRoute ], (activatedRoute ) => {
       let component = new SearchAdvertisementComponent(activatedRoute);
       expect(component).toBeTruthy();
     });

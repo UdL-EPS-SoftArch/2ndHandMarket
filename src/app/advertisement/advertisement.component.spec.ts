@@ -16,7 +16,16 @@ describe('Component: Advertisement', () => {
   });
 
   it('should create an instance', () => {
-    inject([ActivatedRoute ,AdvertisementService, SearchAdvertisementService], (activatedRoute, advertisementService, searchAdvertisementService) => {
+    inject([
+      ActivatedRoute,
+      AdvertisementService,
+      SearchAdvertisementService
+      ],
+      (
+        activatedRoute,
+        advertisementService,
+        searchAdvertisementService
+      ) => {
       let component = new AdvertisementComponent(activatedRoute, advertisementService, searchAdvertisementService);
       expect(component).toBeTruthy();
     });

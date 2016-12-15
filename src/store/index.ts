@@ -4,8 +4,7 @@ import { ISearchState, searchReducer } from './search.reducer';
 const persistState = require('redux-localstorage');
 
 export class IAppState {
-  counter?: number;
-  search?: ISearchState;
+  search?: ISearchState
 };
 
 export const rootReducer = combineReducers<IAppState>({

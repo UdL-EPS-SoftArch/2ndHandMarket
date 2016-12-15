@@ -7,11 +7,10 @@
     </form>
   </li>
   -->
-  <form id="nav-search" class="row-search" (submit)="searchAdvertisementByTitle() || searchAdvertisementByTag()
-  || searchAdvertisementByCategory()" #field (keyup)="handleKeyUp(field.value)" >
+  <form id="nav-search" class="row-search" (submit)="submitSearch()">
     <div class="input-group">
-      <!-- <input type="text" name="name" placeholder="Need something?" autofocus [(ngModel)]="searchInput" /> -->
-      <input id='search-input' type="text" class="search" placeholder="Need something?" #field (keyup)="handleKeyUp(field.value)"/>
+      <input type="text" name="name" placeholder="Need something?" autofocus [(ngModel)]="searchInput" />
+      <!-- <input id='search-input' type="text" class="search" placeholder="Need something?" #field (keyup)="handleKeyUp(field.value)"/> -->
     </div>
   </form>
 

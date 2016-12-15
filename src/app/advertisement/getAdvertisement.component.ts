@@ -26,6 +26,7 @@ export class GetAdvertisementComponent implements OnInit {
    * - Save current advertisement id on the advertisement object.
    * - Search for its remaining info (API).
    */
+
   ngOnInit() {
     this.route.params
       .map(params => params['id'])

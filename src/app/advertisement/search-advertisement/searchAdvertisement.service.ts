@@ -9,7 +9,11 @@ import {Advertisement} from "../advertisement";
 @Injectable()
 export class SearchAdvertisementService {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+    this.searchAdvertisementByTitle = this.searchAdvertisementByTitle.bind(this);
+    this.searchAdvertisementByTag = this.searchAdvertisementByTag.bind(this);
+    this.searchAdvertisementByCategory = this.searchAdvertisementByCategory.bind(this);
+  }
 
   // Search Advertisement
   searchAdvertisementByTitle(title: string): Observable<Advertisement[]> {

@@ -7,7 +7,7 @@ import { BuyerOfferService } from './buyeroffer.service';
 
 
 @Component({
-  selector: 'app-personalOffersList',
+  selector: 'app-personal-offers-list',
   templateUrl: './personalOffersList.component.html',
   styleUrls: ['./personalOffersList.component.css'],
   providers: [BuyerOfferService]
@@ -25,7 +25,7 @@ export class PersonalOffersListComponent implements OnInit {
   }
 
   getBuyerOffer() {
-    return this.buyerofferService.getAllBuyerOffers()
+    this.buyerofferService.getAllBuyerOffers()
       .subscribe(
         buyeroffers => this.buyeroffers = buyeroffers,
         error => this.errorMessage = <any>error.message

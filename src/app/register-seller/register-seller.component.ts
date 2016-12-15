@@ -11,6 +11,8 @@ import { RegisterSeller } from './register-seller';
 
 export class RegisterSellerComponent implements OnInit {
 
+  DivSingUp;
+
   sellers: RegisterSeller[] = [];
   errorMessage: string;
   newSeller: RegisterSeller = new RegisterSeller();
@@ -20,7 +22,7 @@ export class RegisterSellerComponent implements OnInit {
   ngOnInit() { this.getSellers(); this.addSeller(); }
 
   getSellers() {
-    return this.registerSellerService.getAllSellers()
+    this.registerSellerService.getAllSellers()
       .subscribe(
         sellers => this.sellers = sellers,
         error => this.errorMessage = <any>error.message

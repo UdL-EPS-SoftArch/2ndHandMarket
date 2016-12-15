@@ -9,7 +9,8 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { FooterComponent } from './footer/footer.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { FormsModule } from '@angular/forms';
-import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent
+} from './search-advertisement/search-advertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { MomentModule } from 'angular2-moment';
 import { ContactComponent } from './contact/contact.component';
@@ -22,26 +23,27 @@ import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.com
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { ComponentsHelper } from 'ng2-bootstrap';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
-        PostAdvertisementComponent, GetAdvertisementComponent, PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, OfferComponent, RegisterSellerComponent, BuyerComponent, BuyerOfferComponent, PersonalOffersListComponent,
         PostAdvertisementComponent, GetAdvertisementComponent,
         PutAdvertisementComponent, SearchAdvertisementComponent,
-        ContactComponent, MessageComponent, OfferComponent,
-        RegisterSellerComponent, BuyerComponent,
-        ProfileComponent, PurchaseComponent,
+        RegisterSellerComponent, BuyerComponent, BuyerOfferComponent,
+        PersonalOffersListComponent,
+        ContactComponent, MessageComponent,
+        ProfileComponent, PurchaseComponent
       ],
       imports: [
         routing, FormsModule, MomentModule
       ],
       providers: [
         appRoutingProviders,
-        { provide: APP_BASE_HREF, useValue : '/' }
+        { provide: APP_BASE_HREF, useValue : '/' },
+        ComponentsHelper
       ]
     });
   });

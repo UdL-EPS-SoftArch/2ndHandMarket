@@ -26,7 +26,9 @@ export class OfferService {
   }
 
   deleteOfferByUri(uri: string) {
-    let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
+    let headers = new Headers({
+      Authorization: this.authentication.getCurrentUser().authorization
+    });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}${uri}`, options)
@@ -57,8 +59,10 @@ export class OfferService {
 
   updateOfferById(uri: string, offer: Offer): Observable<Offer> {
     let body = JSON.stringify({'value': offer.value});
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
+    let headers = new Headers({
+      Authorization: this.authentication.getCurrentUser().authorization,
+      'Content-Type': 'application/json',
+    });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.put(`${environment.API}${uri}`, body, options)

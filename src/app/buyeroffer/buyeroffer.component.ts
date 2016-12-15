@@ -1,7 +1,6 @@
-import {Component, OnInit, Output, Input} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { BuyerOffer } from './buyeroffer';
 import { BuyerOfferService } from './buyeroffer.service';
-import {EventEmitter} from "@angular/common/src/facade/async";
 
 
 @Component({
@@ -27,7 +26,7 @@ export class BuyerOfferComponent implements OnInit {
   }
 
   getBuyerOffer() {
-    return this.buyerofferService.getAllBuyerOffers()
+    this.buyerofferService.getAllBuyerOffers()
       .subscribe(
         buyeroffers => this.buyeroffers = buyeroffers,
         error => this.errorMessage = <any>error.message
@@ -36,7 +35,9 @@ export class BuyerOfferComponent implements OnInit {
 
   addBuyerOffer() {
     this.newBuyerOffer.advertisement_id = this.advertisement.id;
-    console.info(this.newBuyerOffer);
+    this.newBuyerOffer.advertisement_title = this.advertisement.title;
+    this.newBuyerOffer.advertisement_seller = this.advertisement.owner;
+    this.newBuyerOffer.advertisement_iniPrice = this.advertisement.price;
     this.buyerofferService.addBuyerOffer(this.newBuyerOffer)
       .subscribe(
         buyeroffer  => this.buyeroffers.push(buyeroffer),

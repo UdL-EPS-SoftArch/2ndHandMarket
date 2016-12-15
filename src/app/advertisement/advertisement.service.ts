@@ -26,9 +26,12 @@ export class AdvertisementService {
   }
 
   // GET /advertisements/:id/pictures
-  getAdvertisementPictures(uri: string): Observable<Picture[]> {
-    return this.http.get(`${environment.API}${uri}/pictures`)
-      .map((res: Response) => res.json()._embedded.pictures)
+  getAdvertisementPictures(advertisementUri: string): Observable<Picture[]> {
+    return this.http.get(`${environment.API}${advertisementUri}/pictures`)
+      .map((res: Response) => {
+        const pictures = res.json()._embedded.pictures;
+        return pictures.sort((p1, p2) => p1.uri < p2.uri);
+      })
       .catch((error: any) => Observable.throw(error.json()));
   }
 
@@ -46,7 +49,9 @@ export class AdvertisementService {
 
   // PUT /advertisements
   putAdvertisement(advertisement: Advertisement): Observable<Advertisement> {
-    if (!advertisement.id) throw new Error('Advertisement ID is required.');
+    if (!advertisement.id) {
+      throw new Error('Advertisement ID is required.');
+    }
 
     let body = JSON.stringify(advertisement);
     let headers = new Headers({ 'Content-Type': 'application/json' });

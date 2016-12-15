@@ -1,17 +1,16 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
-import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent
+} from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
-import { OfferComponent } from './offer/offer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
@@ -21,17 +20,23 @@ import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
-  { path: 'advertisements/new', component: PostAdvertisementComponent, canActivate: [LoggedInGuard] },
+  { path: 'advertisements/new',
+    component: PostAdvertisementComponent,
+    canActivate: [LoggedInGuard]
+  },
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
   { path: 'advertisements/:id/edit', component: PutAdvertisementComponent },
-  { path: 'advertisements/:id/purchase', component: PurchaseComponent, canActivate: [LoggedInGuard] },
+  {
+    path: 'advertisements/:id/purchase',
+    component: PurchaseComponent,
+    canActivate: [LoggedInGuard]
+  },
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
-  { path: 'offers', component: OfferComponent },
-  { path: 'profile/buyeroffers', component: BuyerOfferComponent },
+  { path: 'buyeroffers', component: BuyerOfferComponent },
   { path: 'personalOffersList', component: PersonalOffersListComponent },
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },

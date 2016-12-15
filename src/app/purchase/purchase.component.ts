@@ -38,7 +38,7 @@ export class PurchaseComponent implements OnInit {
       advertisement => {
         this.advertisement = advertisement;
         this.advertisement.id = id; // Required for the getPurchaseByAdvertisement service.
-        this.loadPurchase(advertisement)
+        this.loadPurchase(advertisement);
       },
       error => this.errorMessage = 'The advertisement does not exist.',
     );

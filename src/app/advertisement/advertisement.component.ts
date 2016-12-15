@@ -7,13 +7,13 @@ import { Picture } from './picture/picture';
 @Component({
   selector: 'app-advertisement',
   templateUrl: './advertisement.component.html',
-  styleUrls: ['advertisement.component.scss'],
+  styleUrls: ['./advertisement.component.scss'],
   providers: [AdvertisementService]
 })
 export class AdvertisementComponent implements OnInit {
 
   advertisements: Advertisement[] = [];
-  advertisementPictures: { [key: string]: Picture } = {};
+  advertisementPictures: Picture = new Picture();
   errorMessage: string;
 
   constructor(private advertisementService: AdvertisementService) { }
@@ -23,7 +23,7 @@ export class AdvertisementComponent implements OnInit {
   }
 
   getAdvertisements() {
-    return this.advertisementService.getAllAdvertisements()
+    this.advertisementService.getAllAdvertisements()
       .subscribe(
         advertisements => {
           this.advertisements = advertisements;
@@ -39,7 +39,7 @@ export class AdvertisementComponent implements OnInit {
     this.advertisementService.getAdvertisementPictures(advertisement.uri)
       .subscribe(
         pictures => this.advertisementPictures[advertisement.uri] = pictures[0],
-        error => alert(error.errorMessage)
+        error => alert(`There was an error retrieving an advertisement picture ${error.message}`)
       );
   }
 

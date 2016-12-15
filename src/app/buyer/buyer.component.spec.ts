@@ -9,3 +9,4 @@ describe('Component: Buyer', () => {
     expect(component).toBeTruthy();
   });
 });
+

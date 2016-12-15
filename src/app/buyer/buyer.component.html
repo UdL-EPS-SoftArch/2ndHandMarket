@@ -1,73 +1,200 @@
-<section class="buyer">
-<header>
-  <h1>Buyers</h1>
+<section >
+  <div class="row no-gutter" style="margin-left:15px ; margin-right:25px">
 
-  <blockquote class="blockquote">
-      <p class="mb-0">
+    <header>
+      <h1><span>Buyers</span><br/></h1>
+
+      <blockquote class="blockquote">
+        <p class="text-muted">
         In this section you will find different options to manage your space buyer. See all your products, and continue sending
         the packages.
-      </p>
-  </blockquote>
+        </p>
+     </blockquote>
 
-</header>
+    </header>
 
-  <!-- Column first -->
-  <div class="row">
+    <div class="col-xs-12 col-sm-2 " >
 
-      <div class="col-sm-3" >
-        <div class="list-group" >
-            <h3 class="list-group-item disabled text-center">
-              <small class="text-muted">ALL CATEGORIES</small>
-            </h3>
-          <a href="#" class="list-group-item active">All orders</a>
-          <a href="#" class="list-group-item">WishList</a>
-          <a href="#" class="list-group-item">Coupons</a>
-          <a href="#" class="list-group-item ">Shipping</a>
+        <aside class="sidebar-left">
+          <nav>
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="sidebar-menu">
+                    <li class="header">ALL CATEGORIES</li>
+                    <li>
+                      <a class="active" (click)="ShowOrder()">
+                        <i class="icons fa fa-file-text-o"></i> <span>Orders</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="ShowWishList()">
+                        <i class="icons fa fa-list"></i> <span>WishList</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="ShowOffers()">
+                        <i class="icons fa fa-handshake-o"></i> <span>Offers</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="ShowCoupons()">
+                        <i class="icons fa fa-tags"></i> <span>Coupons</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="ShowShipping()">
+                        <i class="icons fa fa-plane"></i> <span>Shipping</span>
+                      </a>
+                    </li>
+                </ul>
+              </div>
+          </nav>
+        </aside>
+      </div>
+
+    <div class="col-xs-12 col-sm-10">
+
+      <div *ngIf="global === 1">
+        <header class="page-title"> My Orders</header><br>
+          <div class="dashboard padding">
+            <p>Filter by Product:
+              <input class="form-control input" [(ngModel)]="filterQuery"/>
+            </p><br>
+
+            <table class="table table-striped">
+              <tr>
+                <th width="20%" class="text-center"> idProduct</th>
+                <th width="20%" class="text-center"> Product Name </th>
+                <th width="20%" class="text-center"> Date </th>
+                <th width="20%" class="text-center"> Details </th>
+                <th width="20%" class="text-center"> Seller </th>
+              </tr>
+
+              <tr *ngFor="let item of advertisement ">
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.date}}</td>
+                <td><a href="#">more</a></td>
+                <td><i class="icons fa fa-envelope"></i></td>
+              </tr>
+
+            </table>
+
+          </div>
+      </div>
+
+      <div *ngIf="global === 2" >
+        <header class="page-title">My WishList</header><br>
+            <div class="dashboard padding">
+                <table class="table">
+                  <caption>My favorites products</caption>
+                  <tr>
+                    <td>
+                      <img src="" alt="Image laptop" />
+                    </td>
+                    <td>
+                      <h4><a href="#" title="See more information about the laptop">Laptop - 3 GHz - 4 GB RAM</a></h4>
+                      <p><a href="#" title="Buy a laptop">Buy:</a> <del>2.990 &euro;</del> <strong>2.599 &euro;</strong></p>
+                    </td>
+                    <td>
+                      <a href="#" title="Delete"><button type="button" class="btn btn-danger">Delete</button></a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><img src="" alt="Image videocámara" /></td>
+                    <td>
+                      <h4><a href="#" title="See more information about videocámara">Videocámara - Alta definición 1080p - 60 GB</a></h4>
+                      <p><a href="#" title="Comprar la videocámara">Buy:</a> <del>1.099 &euro;</del> <strong>999 &euro;</strong></p>
+                    </td>
+                    <td>
+                      <a href="#" title="Delete"><button type="button" class="btn btn-danger">Delete</button></a>
+                    </td>
+
+                  </tr>
+
+                  <tr>
+                    <td><img src="" alt="Image tv" /></td>
+                    <td>
+                      <h4><a href="#" title="Ver más información sobre el televisor">Televisor - 46" - Full HD</a></h4>
+                      <p><a href="#" title="Comprar el televisor">Buy:</a> <del>1.999 &euro;</del> <strong>1.799 &euro;</strong></p>
+                    </td>
+                    <td>
+                      <a href="#" title="Delete"><button type="button" class="btn-group-xs btn btn-danger">Delete</button></a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><img src="" alt="Image mobile telephone" /></td>
+                    <td>
+                      <h4><a href="#" title="Ver más información sobre el móvil">Móvil - 3G - Wi-Fi - 8 GB</a></h4>
+                      <p><a href="#" title="Comprar el móvil">Comprar:</a> <del>399 &euro;</del> <strong>349 &euro;</strong></p>
+                    </td>
+                    <td>
+                      <a href="#" title="Delete"><button type="button" class="btn btn-danger">Delete</button></a>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+      </div>
+
+      <div *ngIf="global === 3" >
+        <header class="page-title">My Offers</header><br>
+        <div class="dashboard padding">
+          <p>
+            Filter by Product:
+            <input class="form-control input" [(ngModel)]="filterQuery"/>
+          </p>
+
+              <table class="table">
+
+                  <tr class="table-commun">
+                    <th width="20%" class="text-center"> idProduct</th>
+                    <th width="20%" class="text-center"> Product Name </th>
+                    <th width="20%" class="text-center"> Price </th>
+                    <th width="20%" class="text-center"> Offer </th>
+                    <th width="20%" class="text-center"> Details </th>
+                  </tr>
+
+                </table>
+         </div>
+      </div>
+
+      <div *ngIf="global === 4" >
+
+        <header class="page-title">My Cuppons</header><br>
+        <div class="dashboard padding">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a (click)="ShowCouponsGlobal()">SoftArch coupons </a></li>
+            <li role="presentation"><a (click)="ShowCouponsSeller()">Seller coupons</a></li>
+          </ul>
+          <div *ngIf="coupons===1 && Ncoupons<0" >
+                <p>No yet coupons :( </p>
+          </div>
+
+          <div *ngIf="coupons===2 && Ncoupons<0" >
+            <p>No yet coupons  </p>
+          </div>
         </div>
 
       </div>
 
-      <div class=".col-sm-9 " >
-          <h2 class="text-primary">My orders</h2>
-          <!--- Search -->
-
-          <form class="navbar-form" role="search">
-            <div class="input-group .pull-right" >
-              <input type="text" class="form-control" placeholder="Search..." name="srch-term" id="srch-term" autofocus=""[ngModel]="">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          </form>
-
-            <div class="table">
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                  <tr>
-                    <th>Id Order</th>
-                    <th>Date Order</th>
-                    <th>Name Order</th>
-                    <th>Seller</th>
-                    <th>Status</th>
-                    <th>Price</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>25/02/2004</td>
-                    <td>Mouse</td>
-                    <td>Ryan Thomas</td>
-                    <td>Sending</td>
-                    <td>10,00 €</td>
-                  </tr>
-                  </tbody>
-                </table>
-                </div>
-            </div>
-
+      <div *ngIf="global === 5" >
+        <header class="page-title">My Shipping</header><br>
+        <div class="dashboard padding">
         </div>
+      </div>
+
     </div>
+
+  </div>
 
 </section>

@@ -31,21 +31,26 @@
             <span class="hidden-xs">Messages</span>
           </a>
         </li>
-        <li class="dropdown" login-basic></li>
+ <!--       <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-labelledby="true" aria-expanded="false">
+            <span class="hidden-xs"> <i class="fa fa-user" aria-hidden="true"></i>User </span>
+          </a>
+
+        </li>
+          -->
+        <li class="dropdown"><app-login-basic [appRouter]="router"></app-login-basic></li>
+
         <li>
           <a href="#">
             <span class="visible-xs"><i class="fa fa-shopping-cart fa-2" aria-hidden="true"></i></span>
             <span class="hidden-xs">Basket (0)</span>
           </a>
         </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars fa-2" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
             <li><a routerLink="/advertisements/new" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Sell</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a routerLink="/offers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offers</a></li>
-            <li><a routerLink="/buyeroffers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">BuyerOffer</a></li>
-            <li><a routerLink="/personalOffersList" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Personal Offers</a></li>
             <li role="separator" class="divider"></li>
             <li><a routerLink="/buyers" routerLinkActive="active">Buyers</a></li>
             <li role="separator" class="divider"></li>

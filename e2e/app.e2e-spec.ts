@@ -6,9 +6,4 @@ describe('softarch-1617-client App', function() {
   beforeEach(() => {
     page = new Softarch1617ClientPage();
   });
-
-  it('should display about message in main page', () => {
-    page.navigateTo('/');
-    expect(page.getParagraphText()).toEqual('About');
-  });
 });

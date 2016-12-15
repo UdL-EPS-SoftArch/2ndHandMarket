@@ -54,11 +54,21 @@ describe('Advertisement', () => {
     expect(advertisement.brand).toEqual(brand);
     expect(advertisement.color).toEqual(color);
     expect(advertisement.weight).toEqual(weight);
+    expect(advertisement.getUriId()).toEqual(1);
 
     // Text-based tags.
     const newTags = ['rey', 'jedi'];
     advertisement.tagsStr = ' rey    ,     jedi ';
     expect(advertisement.tags).toEqual(newTags);
     expect(advertisement.tagsStr).toEqual('rey,jedi');
+  });
+
+  it('should return uriId null if uri has not been set', () => {
+    const advertisement = new Advertisement({
+      id: 2,
+    });
+
+    expect(advertisement.id).toEqual(2);
+    expect(advertisement.getUriId()).toBe(null);
   });
 });

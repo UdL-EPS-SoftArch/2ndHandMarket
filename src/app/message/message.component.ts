@@ -1,7 +1,7 @@
-import {Component, OnInit } from '@angular/core';
-import {Message} from './message';
-import {MessageService} from './message.service';
-import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
+import { Component, OnInit } from '@angular/core';
+import { Message } from './message';
+import { MessageService } from './message.service';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 @Component({
   selector: 'app-message',
@@ -10,6 +10,13 @@ import {AuthenticationBasicService} from '../login-basic/authentication-basic.se
   providers: [MessageService, AuthenticationBasicService]
 })
 export class MessageComponent implements OnInit {
+
+  DivSendMessage;
+  DivSentMessage;
+  DivFindMessage;
+  DivAllMessage;
+  DivReceivedMessage;
+
 
   messages: Message[] = [];
   mySentMessages: Message[] = [];
@@ -23,7 +30,7 @@ export class MessageComponent implements OnInit {
   newMessage: Message;
 
   constructor(private messageService: MessageService,
-              private authentication: AuthenticationBasicService) { }
+               private authentication: AuthenticationBasicService) { }
 
   ngOnInit() {
     this.getMessages();
@@ -44,14 +51,16 @@ export class MessageComponent implements OnInit {
   getMySent () {
     this.messageService.getAllMessages()
       .subscribe(
-        messages => this.mySentMessages = this.messages.filter(p => p.sender ==  this.newMessage.sender),
+        messages => this.mySentMessages = this.messages
+          .filter(p => p.sender === this.newMessage.sender),
         error =>  this.errorMessage = <any>error.message);
   }
 
   getMyReceived () {
     this.messageService.getAllMessages()
       .subscribe(
-        messages => this.myReceivedMessages = this.messages.filter(p => p.destination ==  this.newMessage.sender),
+        messages => this.myReceivedMessages = this.messages
+          .filter(p => p.destination ===  this.newMessage.sender),
         error =>  this.errorMessage = <any>error.message);
   }
 
@@ -72,7 +81,7 @@ export class MessageComponent implements OnInit {
   getMessageByTitle (title) {
     this.messageService.getAllMessages()
       .subscribe(
-        message => this.messagesTitle = this.messages.filter(p => p.title == title),
+        message => this.messagesTitle = this.messages.filter(p => p.title === title),
         error =>  this.errorMessage = <any>error.message);
   }
 

@@ -39,7 +39,9 @@ export class PictureService {
 
   // DELETE /pictures/:id
   deletePictureByUri(uri: string) {
-    let headers = new Headers({ 'Authorization': this.authentication.getCurrentUser().authorization });
+    let headers = new Headers({
+      Authorization: this.authentication.getCurrentUser().authorization
+    });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.API}${uri}`, options)

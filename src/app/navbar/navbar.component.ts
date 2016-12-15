@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {BasketProductService} from "../basketProduct/basketProduct.service";
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
+import { BasketProductService } from '../basketProduct/basketProduct.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +11,11 @@ export class NavbarComponent {
 
   appTitle: string = 'Second Hand Market';
 
-  constructor(private router: Router, private basketProductService: BasketProductService) { }
+  constructor(public router: Router,
+              public basketProductService: BasketProductService) {
+  }
 
   countBasketProducts(): number {
     return this.basketProductService.getAllProducts().length;
   }
-
 }

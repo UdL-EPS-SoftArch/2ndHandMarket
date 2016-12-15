@@ -6,8 +6,9 @@ import { AdvertisementService } from './advertisement.service';
 import { Picture } from './picture/picture';
 import { Purchase } from '../purchase/purchase';
 import { PurchaseService } from '../purchase/purchase.service';
-import {BasketProductService} from "../basketProduct/basketProduct.service";
-import {BasketProduct} from "../basketProduct/basketProduct";
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { BasketProductService} from '../basketProduct/basketProduct.service';
+import { BasketProduct} from '../basketProduct/basketProduct';
 
 @Component({
   selector: 'app-get-advertisement',
@@ -20,7 +21,6 @@ export class GetAdvertisementComponent implements OnInit {
   advertisement: Advertisement = new Advertisement();
   purchase: Purchase;
   picture: Picture = new Picture();
-  errorMessage: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -49,10 +49,12 @@ export class GetAdvertisementComponent implements OnInit {
       advertisement => {
         this.advertisement = advertisement;
 
-        // The API does not provide us the id directly, so we'll store the one we have from the URL.
+        // The API does not provide us the id directly, so we'll store the one
+        // we have from the URL.
         this.advertisement.id = id;
 
-        // The advertisement picture is stored somewhere (let's query the API for it now that we have the advertisement).
+        // The advertisement picture is stored somewhere (let's query the API
+        // for it now that we have the advertisement).
         this.getAdvertisementPicture();
 
         // Check advertisement purchase status.
@@ -71,7 +73,8 @@ export class GetAdvertisementComponent implements OnInit {
   }
 
   getAdvertisementPurchase() {
-    // HTML will hide Buy & Add to Wishlist buttons if the product has already been purchased.
+    // HTML will hide Buy & Add to Wishlist buttons if the product has already
+    // been purchased.
     this.purchaseService.getPurchaseByAdvertisement(this.advertisement)
       .subscribe(
         purchase => this.purchase = purchase,
@@ -92,10 +95,13 @@ export class GetAdvertisementComponent implements OnInit {
     );
   }
 
+  getCurrentUser(): string {
+    return this.authentication.getCurrentUser().username;
+  }
+
   addProduct(advertisement): void {
     let basketProduct : BasketProduct = new BasketProduct();
     basketProduct.product = advertisement;
     this.basketProductService.addProduct(basketProduct);
   }
-
 }

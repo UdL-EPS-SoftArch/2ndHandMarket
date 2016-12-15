@@ -13,19 +13,23 @@ export class SearchAdvertisementService {
 
   // Search Advertisement
   searchAdvertisementByTitle(title: string): Observable<Advertisement[]> {
-    return this.http.get(`${environment.API}/advertisements/search/findByTitleContaining?word=${title}`)
+    const titleUrl = `${environment.API}/advertisements/search/findByTitleContaining?word=${title}`;
+    return this.http.get(titleUrl)
       .map((res: Response) => res.json()._embedded.advertisements)
       .catch((error: any) => Observable.throw(error.json()));
   }
 
   searchAdvertisementByTag(tag: string): Observable<Advertisement[]> {
-    return this.http.get(`${environment.API}/advertisements/search/findByTagsIn?tag=${tag}`)
+    const tagUrl = `${environment.API}/advertisements/search/findByTagsIn?tag=${tag}`;
+    return this.http.get(tagUrl)
       .map((res: Response) => res.json()._embedded.advertisements)
       .catch((error: any) => Observable.throw(error.json()));
   }
 
   searchAdvertisementByCategory(category: string): Observable<Advertisement[]> {
-    return this.http.get(`${environment.API}/advertisements/search/findByCategory?category=${category}`)
+    const categoryUrl = `${environment.API}/advertisements/search/findByCategory
+      ?category=${category}`;
+    return this.http.get(categoryUrl)
       .map((res: Response) => res.json()._embedded.advertisements)
       .catch((error: any) => Observable.throw(error.json()));
   }

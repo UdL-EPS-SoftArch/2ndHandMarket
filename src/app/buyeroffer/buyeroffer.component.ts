@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { BuyerOffer } from './buyeroffer';
 import { BuyerOfferService } from './buyeroffer.service';
 
@@ -15,6 +15,8 @@ export class BuyerOfferComponent implements OnInit {
   errorMessage: string;
   newBuyerOffer: BuyerOffer = new BuyerOffer();
 
+  @Input('advertisement') advertisement;
+
   constructor(private buyerofferService: BuyerOfferService) { }
 
   ngOnInit() {
@@ -22,7 +24,7 @@ export class BuyerOfferComponent implements OnInit {
   }
 
   getBuyerOffer() {
-    return this.buyerofferService.getAllBuyerOffers()
+    this.buyerofferService.getAllBuyerOffers()
       .subscribe(
         buyeroffers => this.buyeroffers = buyeroffers,
         error => this.errorMessage = <any>error.message
@@ -30,6 +32,10 @@ export class BuyerOfferComponent implements OnInit {
   }
 
   addBuyerOffer() {
+    this.newBuyerOffer.advertisement_id = this.advertisement.id;
+    this.newBuyerOffer.advertisement_title = this.advertisement.title;
+    this.newBuyerOffer.advertisement_seller = this.advertisement.owner;
+    this.newBuyerOffer.advertisement_iniPrice = this.advertisement.price;
     this.buyerofferService.addBuyerOffer(this.newBuyerOffer)
       .subscribe(
         buyeroffer  => this.buyeroffers.push(buyeroffer),

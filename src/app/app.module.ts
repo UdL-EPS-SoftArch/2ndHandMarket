@@ -22,10 +22,11 @@ import { LoginBasicModule } from './login-basic/login-basic.module';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { OfferComponent } from './offer/offer.component';
+import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
+import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DataTableModule } from 'angular2-datatable';
-import { SellerComponent } from './seller/seller.component';
 import { ComponentsHelper } from 'ng2-bootstrap';
 import { BasketProductComponent } from './basketProduct/basketProduct.component';
 import { BasketProductService } from './basketProduct/basketProduct.service';
@@ -58,8 +59,9 @@ import { BasketProductService } from './basketProduct/basketProduct.service';
     ContactComponent,
     DateFormatPipe,
     BuyerComponent,
+    BuyerOfferComponent,
+    PersonalOffersListComponent,
     ProfileComponent,
-    SellerComponent,
     BasketProductComponent
   ],
   providers: [

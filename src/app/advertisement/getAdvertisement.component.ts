@@ -26,6 +26,7 @@ export class GetAdvertisementComponent implements OnInit {
               private router: Router,
               private advertisementService: AdvertisementService,
               private purchaseService: PurchaseService,
+              private authentication: AuthenticationBasicService,
               private basketProductService: BasketProductService) {
   }
 

@@ -1,7 +1,4 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { NgRedux, DevToolsExtension } from 'ng2-redux';
-import { IAppState, rootReducer, enhancers } from '../store/index';
-const createLogger = require('redux-logger');
 
 @Component({
   selector: 'app-root',
@@ -10,15 +7,6 @@ const createLogger = require('redux-logger');
 })
 export class AppComponent {
 
-  constructor( private ngRedux: NgRedux<IAppState>,
-               private devTool: DevToolsExtension,
-               private viewContainerRef: ViewContainerRef) {
-
-
-    this.ngRedux.configureStore(
-      rootReducer,
-      {},
-      [ createLogger() ],
-      [ ...enhancers, devTool.isEnabled() ? devTool.enhancer() : f => f]);
+  constructor(private viewContainerRef: ViewContainerRef) {
   }
 }

@@ -35,6 +35,15 @@ export class ManageOffersComponent implements OnInit {
     return this.authentication.getCurrentUser().username;
   }
 
+  /*getAdvertisementId(adv: Advertisement) : number {
+    return adv.getUriId();
+  }*/
+
+  test(advert: Advertisement){
+    console.info(advert.uri);
+    //console.info(advert.getUriId());
+  }
+
   getAdvertisements() {
     return this.advertisementService.getAllAdvertisements()
       .subscribe(

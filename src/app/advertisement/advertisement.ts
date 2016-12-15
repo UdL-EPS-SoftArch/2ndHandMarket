@@ -24,7 +24,10 @@ export class Advertisement {
     this.tags = input.split(',').map((tag) => tag.trim());
   }
 
+
+
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);
   }
 }
+

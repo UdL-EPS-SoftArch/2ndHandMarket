@@ -43,14 +43,14 @@
             </thead>
             <tbody *ngFor="let advertisement of advertisements" class="row">
               <tr *ngIf="advertisement.owner == getCurrentUser()">
-                <td>{{advertisement.title}}</td>
+                <td>{{advertisement.title}} </td>
                 <td>{{advertisement.brand}}
                 <td>{{advertisement.description}}</td>
                 <td>{{advertisement.createdAt}}</td>
                 <td>{{advertisement.price}}€</td>
                 <tbody *ngFor="let offer of buyeroffers">
                   <td>
-                    <b>{{offer.value}}€</b> by {{advertisement.}} o {{offer.advertisement_id}} user <b>{{offer.buyer_id}}</b>&nbsp;
+                    <b>{{offer.value}}€</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                   </td>

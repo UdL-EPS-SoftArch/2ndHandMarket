@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { FormsModule } from '@angular/forms';
 import { SearchAdvertisementComponent
-} from './search-advertisement/search-advertisement.component';
+} from './advertisement/search-advertisement/search-advertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { MomentModule } from 'angular2-moment';
 import { ContactComponent } from './contact/contact.component';

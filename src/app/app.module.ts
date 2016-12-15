@@ -15,7 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent
-} from './search-advertisement/search-advertisement.component';
+} from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';

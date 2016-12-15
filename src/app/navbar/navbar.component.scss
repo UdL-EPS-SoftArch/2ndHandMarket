@@ -81,38 +81,7 @@ header {
   }
 }
 
-#nav-search {
-  flex: 1;
 
-  form {
-    position: relative;
-  }
-
-  input[type=text] {
-    background-color: transparent;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #333;
-    font-size: 1em;
-    font-weight: 200;
-    height: 60%;
-    width: 100%;
-    transition: border 0.2s ease;
-
-    &:focus {
-      border: 1px solid $highlightColor;
-      outline: none;
-    }
-  }
-
-  .icon {
-    position: absolute;
-    top: 1.5px;
-    right: 15px;
-    pointer-events: none;
-
-  }
-}
 
 .logo {
   font-size: 2em;

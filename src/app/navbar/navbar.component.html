@@ -14,17 +14,8 @@
         <!--<li><a routerLink="/advertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Advertisements</a></li>-->
         <!--<li><a routerLink="/searchAdvertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"> Search Advertisements</a></li>-->
         <!-- <li><a href="#contact">Contact</a></li> // move to footer -->
-        <li id="nav-search">
-          <form class="hidden-xs inline">
-            <span class="fa fa-search icon"></span>
-            <input type="text" placeholder="Need something?" />
-          </form>
-        </li>
-        <li class="visible-xs">
-          <a href="#nav-search-expanded" class="visible-xs icon" data-toggle="collapse">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </a>
-        </li>
+        <search-ad></search-ad>
+
         <li>
           <a routerLink="/messages" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
             <span class="visible-xs"><i class="fa fa-bell fa-2" aria-hidden="true"></i></span>

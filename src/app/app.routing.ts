@@ -7,7 +7,7 @@ import { PostAdvertisementComponent } from './advertisement/postAdvertisement.co
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { SearchAdvertisementComponent
-} from './search-advertisement/search-advertisement.component';
+} from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';

@@ -2,21 +2,23 @@
 
 import { TestBed, inject } from '@angular/core/testing';
 
-import { SearchAdvertisementComponent } from './search-advertisement.component';
+import { ActivatedRoute } from '@angular/router';
 import { SearchAdvertisementService } from './searchAdvertisement.service';
+import { SearchAdvertisementComponent } from './search-advertisement.component';
 
-describe('Component: SearchAdvertisement', () => {
+describe('Component: Advertisement', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ SearchAdvertisementService]
+      providers: [SearchAdvertisementService]
     });
   });
 
   it('should create an instance', () => {
-    inject([SearchAdvertisementService], (searchAdvertisementService) => {
-      let component = new SearchAdvertisementComponent(searchAdvertisementService);
+    inject([ActivatedRoute ], (activatedRoute,) => {
+      let component = new SearchAdvertisementComponent(activatedRoute);
       expect(component).toBeTruthy();
     });
+
   });
 });

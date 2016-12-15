@@ -1,10 +1,9 @@
-import {Component, OnInit } from '@angular/core';
-import {BasketProduct} from './basketProduct';
-import {BasketProductService} from './basketProduct.service';
-import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
+import { Component, OnInit } from '@angular/core';
+import { BasketProduct } from './basketProduct';
+import { BasketProductService } from './basketProduct.service';
 
 @Component({
-  selector: 'app-basketProduct',
+  selector: 'app-basket-product',
   templateUrl: './basketProduct.component.html',
   styleUrls: ['./basketProduct.component.css'],
 })
@@ -23,13 +22,13 @@ export class BasketProductComponent implements OnInit {
   getProducts(): BasketProduct[] {
     return this.basketProductService.getAllProducts();
   }
-  deleteProduct(product){
+  deleteProduct(product) {
     this.basketProductService.removeProduct(product);
     this.totalPrice = this.getTotalPrice();
   }
 
-  getTotalPrice(): number{
-    let total : number = 0.0;
+  getTotalPrice(): number {
+    let total = 0.0;
     for (let prod of this.products){
       total += prod.product.price;
     }

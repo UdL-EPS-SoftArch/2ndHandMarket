@@ -1,10 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
-import {TestBed, async, inject} from '@angular/core/testing';
-import {BasketProductComponent } from './basketProduct.component';
-import {BasketProductService} from './basketProduct.service';
-import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
-import {Http} from "@angular/http";
+import { TestBed, inject } from '@angular/core/testing';
+import { BasketProductComponent } from './basketProduct.component';
+import { BasketProductService } from './basketProduct.service';
+import { Http} from '@angular/http';
 
 beforeEach(() => {
   TestBed.configureTestingModule({

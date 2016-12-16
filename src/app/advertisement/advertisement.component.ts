@@ -3,12 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
 import { Picture } from './picture/picture';
+import { ActivatedRoute } from '@angular/router';
+import { SearchAdvertisementService } from './search-advertisement/searchAdvertisement.service';
 
 @Component({
   selector: 'app-advertisement',
   templateUrl: './advertisement.component.html',
   styleUrls: ['./advertisement.component.scss'],
-  providers: [AdvertisementService]
+  providers: [AdvertisementService, SearchAdvertisementService]
 })
 export class AdvertisementComponent implements OnInit {
 
@@ -16,14 +18,24 @@ export class AdvertisementComponent implements OnInit {
   advertisementPictures: Picture = new Picture();
   errorMessage: string;
 
-  constructor(private advertisementService: AdvertisementService) { }
+  constructor(private route: ActivatedRoute,
+              private advertisementService: AdvertisementService,
+              private searchAdvertisementService: SearchAdvertisementService) { }
 
   ngOnInit() {
-    this.getAdvertisements();
+    this.route.queryParams.subscribe(
+      (queryParam: any) => {
+        if (Object.keys(queryParam).length === 0) {
+          this.getAdvertisements(this.advertisementService.getAllAdvertisements);
+        } else {
+          this.getAdvertisements(this.searchAdvertisementService.searchAdvertisementByTitle, queryParam.title);
+        }
+      }
+    );
   }
 
-  getAdvertisements() {
-    this.advertisementService.getAllAdvertisements()
+  getAdvertisements(advertisementService, ...params) {
+    advertisementService(...params)
       .subscribe(
         advertisements => {
           this.advertisements = advertisements;

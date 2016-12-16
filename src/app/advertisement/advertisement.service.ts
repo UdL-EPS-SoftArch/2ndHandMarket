@@ -10,7 +10,13 @@ import { Picture } from './picture/picture';
 export class AdvertisementService {
 
   constructor (private http: Http,
-               private authentication: AuthenticationBasicService) { }
+               private authentication: AuthenticationBasicService) {
+    this.getAllAdvertisements = this.getAllAdvertisements.bind(this);
+    this.getAdvertisement = this.getAdvertisement.bind(this);
+    this.getAdvertisementPictures = this.getAdvertisementPictures.bind(this);
+    this.addAdvertisement = this.addAdvertisement.bind(this);
+    this.putAdvertisement = this.putAdvertisement.bind(this);
+  }
 
   // GET /advertisements
   getAllAdvertisements(): Observable<Advertisement[]> {

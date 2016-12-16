@@ -9,7 +9,7 @@ describe('Advertisement', () => {
 
   it('should accept values in the constructor', () => {
     const id = 1;
-    const uri = 'advertisement/1';
+    const uri = '/advertisement/1';
     const title = 'sample';
     const description = 'sample description';
     const owner = 'user';
@@ -23,7 +23,7 @@ describe('Advertisement', () => {
 
     const advertisement = new Advertisement({
       id,
-      uri: 'advertisement/1',
+      uri,
       title,
       description,
       owner: 'user',

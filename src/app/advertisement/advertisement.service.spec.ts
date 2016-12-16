@@ -12,6 +12,7 @@ import { Picture } from './picture/picture';
 describe('Service: Advertisement', () => {
   const firstAdvertisement = new Advertisement({
     title: 'first',
+    uri: '/advertisement/1',
     description: '',
     price: 1.0,
     negotiablePrice: false,
@@ -25,6 +26,7 @@ describe('Service: Advertisement', () => {
 
   const secondAdvertisement = new Advertisement({
     title: 'second',
+    uri: '/advertisement/2',
     description: '',
     price: 2.0,
     negotiablePrice: false,
@@ -82,8 +84,8 @@ describe('Service: Advertisement', () => {
           body: {
             '_embedded': {
               'advertisements': [
-                firstAdvertisement,
-                secondAdvertisement
+                JSON.stringify(firstAdvertisement),
+                JSON.stringify(secondAdvertisement),
               ]
             }
           }
@@ -107,7 +109,7 @@ describe('Service: Advertisement', () => {
     it('should return an advertisement',
       async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const apiResponse = new ResponseOptions({
-          body: firstAdvertisement
+          body: JSON.stringify(firstAdvertisement)
         });
 
         mockBackend.connections.subscribe((connection: MockConnection) => {
@@ -117,6 +119,7 @@ describe('Service: Advertisement', () => {
         service.getAdvertisement(1).subscribe((data) => {
           expect(data.title).toEqual(firstAdvertisement.title);
           expect(data.description).toEqual(firstAdvertisement.description);
+          expect(data.getUriId()).toEqual(1);
         });
       })));
   });
@@ -188,6 +191,7 @@ describe('Service: Advertisement', () => {
           expect(data.title).toEqual(firstAdvertisement.title);
           expect(data.description).toEqual(firstAdvertisement.description);
           expect(data.price).toEqual(firstAdvertisement.price);
+          expect(data.getUriId()).toEqual(1);
         });
       })));
   });
@@ -198,11 +202,11 @@ describe('Service: Advertisement', () => {
         const notUpdatedAdvertisement = new Advertisement({
           id: 1,
           title: 'something',
-          price: 2
+          price: 2,
         });
         const apiResponse = new ResponseOptions({
           status: 201,
-          body: secondAdvertisement
+          body: JSON.stringify(secondAdvertisement),
         });
 
         mockBackend.connections.subscribe((connection: MockConnection) => {
@@ -213,6 +217,7 @@ describe('Service: Advertisement', () => {
           expect(data.title).toEqual(secondAdvertisement.title);
           expect(data.description).toEqual(secondAdvertisement.description);
           expect(data.price).toEqual(secondAdvertisement.price);
+          expect(data.getUriId()).toEqual(2);
         });
       })));
   });

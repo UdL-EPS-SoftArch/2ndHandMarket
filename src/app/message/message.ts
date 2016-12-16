@@ -4,6 +4,7 @@ export class Message {
   body: string = '';
   destination: string = '';
   sender: string = '';
+  isRead: boolean;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

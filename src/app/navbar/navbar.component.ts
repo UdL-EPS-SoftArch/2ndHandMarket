@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { BasketProductService } from '../basketProduct/basketProduct.service';
-import { MessageService} from "../message/message.service";
+import { MessageService } from '../message/message.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,19 +17,11 @@ export class NavbarComponent {
               private message: MessageService) {
   }
 
-  /*countBasketProducts(): number {
-    return this.basketProductService.getAllProducts().length;
-  }*/
-
-  countUnReadMessages(): number {
-    return this.message.getNotRead();
-  }
-
   countBasketProducts(): number {
     return this.basketProductService.getAllProducts().length;
   }
 
-  /*countUnReadMessages(): number {
-    return this.messageService.getNotRead();
-  }*/
+  countUnReadMessages(): number {
+    return this.message.getNotRead();
+  }
 }

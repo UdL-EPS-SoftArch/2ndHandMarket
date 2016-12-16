@@ -20,7 +20,7 @@ export class MessageService {
 
   // GET /privateMessages/:id
   getMessageByUri(uri: string): Observable<Message> {
-    return this.http.get(`${environment.API}${"/privateMessages/"+uri}`)
+    return this.http.get(`${environment.API}/privateMessages/${uri}`)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -34,17 +34,19 @@ export class MessageService {
 
   // Update TODO
   setAsRead(message: Message): Observable<Message> {
-    if (!message.uri) throw new Error('Message URI is required.');
+    if (!message.uri) {
+      throw new Error('Message URI is required.');
+    }
 
     let body = JSON.stringify({
-      'title': message.title,
-      'body': message.body,
-      'destination' : message.destination,
-      'sender': message.sender,
-      'isRead': true
+      title: message.title,
+      body: message.body,
+      destination : message.destination,
+      sender: message.sender,
+      isRead: true,
     });
 
-    //let body = JSON.stringify(message);
+    // let body = JSON.stringify(message);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
@@ -84,8 +86,8 @@ export class MessageService {
   }
 
     // TODO
-  getNotRead () : number {
-    //return this.getAllMessages().filter(p => p.isRead ==  false).count();
+  getNotRead(): number {
+    // return this.getAllMessages().filter(p => p.isRead ==  false).count();
     return 1;
   }
 

@@ -22,6 +22,7 @@ export class MessageComponent implements OnInit {
   mySentMessages: Message[] = [];
   myReceivedMessages: Message[] = [];
   myAllMessages: Message[] = [];
+  notRead: Message[] = [];
 
   messagesUri: Message[] = [];
   messagesTitle: Message[] = [];
@@ -64,10 +65,10 @@ export class MessageComponent implements OnInit {
         error =>  this.errorMessage = <any>error.message);
   }
 
-  getNotRead () : Message[] {
+  getNotRead(): Message[] {
     this.messageService.getAllMessages()
       .subscribe(
-        messages => this.notRead = this.messages.filter(p => p.isRead ==  false),
+        messages => this.notRead = this.messages.filter(p => p.isRead ===  false),
         error =>  this.errorMessage = <any>error.message);
 
     return this.notRead;
@@ -103,11 +104,11 @@ export class MessageComponent implements OnInit {
     this.newMessage.sender = this.authentication.getCurrentUser().username;
   }
 
-  //TODO
+  // TODO
   setAsRead(message) {
     this.messageService.setAsRead(message)
       .subscribe(
-        message  => this.newMessage = message,
+        newMessage  => this.newMessage = newMessage,
         error =>  this.errorMessage = <any>error.message);
   }
 

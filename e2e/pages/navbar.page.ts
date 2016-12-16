@@ -14,15 +14,19 @@ export class NavigationBar {
     this.home = element(by.id('home'));
   }
 
-  clickMyAccount(): Promise<string> {
+  clickMyAccount(): Promise<void> {
     return this.myaccount.click();
   }
 
-  clickSignin(): Promise<string> {
+  clickSignin(): Promise<void> {
     return this.signin.click();
   }
 
   goToHome(): Promise<void> {
     return this.home.click();
+  }
+
+  getCurrentUser(): Promise<string> {
+    return this.myaccount.getText();
   }
 }

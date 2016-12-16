@@ -1,8 +1,9 @@
 import { binding, given, when, then } from 'cucumber-tsflow';
 import { browser, element, by } from 'protractor';
-import { AdvertisementFormPage } from '../../ad-form.page';
-import { NavigationBar } from '../../navbar.page';
-import { LoginForm } from '../../login-form.page';
+import { AdvertisementFormPage } from '../../pages/ad-form.page';
+import { NavigationBar } from '../../pages/navbar.page';
+import { LoginForm } from '../../pages/login-form.page';
+import { AdvertisementsListPage } from '../../pages/ads-list.page';
 
 let chai = require('chai').use(require('chai-as-promised'));
 let expect = chai.expect;
@@ -12,6 +13,7 @@ class ListAdsSteps {
   private adForm = new AdvertisementFormPage();
   private navBar = new NavigationBar();
   private loginForm = new LoginForm();
+  private adsList = new AdvertisementsListPage();
 
   @given(/^I'm in the home page$/)
   public iMInHomePage(callback): void {
@@ -30,6 +32,13 @@ class ListAdsSteps {
     callback();
   };
 
+  @given(/^I'm signed in as "([^"]*)"$/)
+  public iMSignedInAs (username: string, callback): void {
+    let currentUser = this.navBar.getCurrentUser();
+    expect(currentUser)
+      .to.eventually.equal(username.toUpperCase()).and.notify(callback);
+  }
+
   @when(/^I create an advertisement with title "([^"]*)" and price (\d+)$/)
   public createAdWithTitleAndPrice (title: string, price: number, callback): void {
     element(by.linkText('Create one')).click();
@@ -47,10 +56,24 @@ class ListAdsSteps {
     callback();
   };
 
+  @when(/^I browse details for advertisement listed in position (\d+)$/)
+  public iBroseDetailsForAdListesInPosition (position: number, callback): void {
+    this.adsList.clickAdInPosition(position);
+    browser.waitForAngular();
+    callback();
+  }
+
+  @when(/^I delete the advertisement$/)
+  public iDeleteTheAd (callback): void {
+    element(by.css('a.deleteButton')).click();
+    browser.waitForAngular();
+    callback();
+  }
+
   @then(/^I see (\d+) advertisements$/)
   public iSeeAds(count: string, callback): void {
-    expect(element.all(by.css('div.card-container')).count())
-      .to.eventually.equal(parseInt(count)).and.notify(callback);
+    expect(this.adsList.getAdvertisementsCount())
+      .to.eventually.equal(parseInt(count, 10)).and.notify(callback);
   };
 }
 

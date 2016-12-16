@@ -1,11 +1,12 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AdvertisementService } from './advertisement.service';
 import { GetAdvertisementComponent } from './getAdvertisement.component';
 import { PurchaseService } from '../purchase/purchase.service';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 describe('Component: GetAdvertisement', () => {
   beforeEach(() => {
@@ -15,13 +16,14 @@ describe('Component: GetAdvertisement', () => {
   });
 
   it ('should create an instance', () => {
-    inject([ ActivatedRoute, Router, AdvertisementService, PurchaseService ],
-           (activatedRoute, router, advertisementService, purchaseService) => {
+    inject([ ActivatedRoute, Router, AdvertisementService, PurchaseService, AuthenticationBasicService ],
+           (activatedRoute, router, advertisementService, purchaseService, authenticationBasicService) => {
       let component = new GetAdvertisementComponent(
         activatedRoute,
         router,
         advertisementService,
-        purchaseService
+        purchaseService,
+        authenticationBasicService
       );
       expect(component).toBeTruthy();
     });

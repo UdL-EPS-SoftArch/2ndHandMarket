@@ -15,7 +15,6 @@ import { MomentModule } from 'angular2-moment';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
-import { OfferComponent } from './offer/offer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
@@ -24,6 +23,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ComponentsHelper } from 'ng2-bootstrap';
 import { BasketProductComponent } from './basketProduct/basketProduct.component';
+import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -36,7 +36,7 @@ describe('App: Softarch1617Client', () => {
         PersonalOffersListComponent,
         ContactComponent, MessageComponent,
         ProfileComponent, PurchaseComponent,
-        BasketProductComponent
+        BasketProductComponent, ManageOffersComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

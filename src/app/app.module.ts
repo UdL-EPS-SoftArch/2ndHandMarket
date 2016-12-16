@@ -14,8 +14,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
-import { SearchAdvertisementComponent
-} from './search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent} from './search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
@@ -26,7 +25,7 @@ import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
-import {ManageOffersComponent} from "./buyeroffer/manageOffers.component";
+import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { DataTableModule } from 'angular2-datatable';
 import { ComponentsHelper } from 'ng2-bootstrap';
 

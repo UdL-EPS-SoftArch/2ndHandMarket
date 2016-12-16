@@ -5,12 +5,12 @@ import { Component, OnInit } from '@angular/core';
 import { BuyerOffer } from './buyeroffer';
 import { BuyerOfferService } from './buyeroffer.service';
 import { AdvertisementService } from '../advertisement/advertisement.service';
-import {Advertisement} from "../advertisement/advertisement";
-import {AuthenticationBasicService} from "../login-basic/authentication-basic.service";
+import { Advertisement } from '../advertisement/advertisement';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 
 
 @Component({
-  selector: 'app-manageOffers',
+  selector: 'app-manage-offers',
   templateUrl: './manageOffers.component.html',
   styleUrls: ['./manageOffers.component.css'],
   providers: [BuyerOfferService, AdvertisementService]
@@ -31,17 +31,8 @@ export class ManageOffersComponent implements OnInit {
     this.getAdvertisements();
   }
 
-  getCurrentUser() : string {
+  getCurrentUser(): string {
     return this.authentication.getCurrentUser().username;
-  }
-
-  /*getAdvertisementId(adv: Advertisement) : number {
-    return adv.getUriId();
-  }*/
-
-  test(advert: Advertisement){
-    console.info(advert.uri);
-    //console.info(advert.getUriId());
   }
 
   getAdvertisements() {

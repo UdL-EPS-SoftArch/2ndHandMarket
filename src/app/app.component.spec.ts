@@ -22,6 +22,7 @@ import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ComponentsHelper } from 'ng2-bootstrap';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 
 describe('App: Softarch1617Client', () => {
@@ -34,7 +35,8 @@ describe('App: Softarch1617Client', () => {
         RegisterSellerComponent, BuyerComponent, BuyerOfferComponent,
         PersonalOffersListComponent,
         ContactComponent, MessageComponent,
-        ProfileComponent, PurchaseComponent, ManageOffersComponent
+        ProfileComponent, PurchaseComponent,
+        BasketProductComponent, ManageOffersComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

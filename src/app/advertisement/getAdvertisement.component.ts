@@ -7,6 +7,8 @@ import { Picture } from './picture/picture';
 import { Purchase } from '../purchase/purchase';
 import { PurchaseService } from '../purchase/purchase.service';
 import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { BasketProductService} from '../basketProduct/basketProduct.service';
+import { BasketProduct} from '../basketProduct/basketProduct';
 
 @Component({
   selector: 'app-get-advertisement',
@@ -24,7 +26,8 @@ export class GetAdvertisementComponent implements OnInit {
               private router: Router,
               private advertisementService: AdvertisementService,
               private purchaseService: PurchaseService,
-              private authentication: AuthenticationBasicService) {
+              private authentication: AuthenticationBasicService,
+              private basketProductService: BasketProductService) {
   }
 
   /**
@@ -62,10 +65,6 @@ export class GetAdvertisementComponent implements OnInit {
     );
   }
 
-  getCurrentUser() : string {
-    return this.authentication.getCurrentUser().username;
-  }
-
   getAdvertisementPicture() {
     this.advertisementService.getAdvertisementPictures(this.advertisement.uri)
       .subscribe(
@@ -95,5 +94,15 @@ export class GetAdvertisementComponent implements OnInit {
       },
       error => alert(`Error: ${error.message}`)
     );
+  }
+
+  getCurrentUser(): string {
+    return this.authentication.getCurrentUser().username;
+  }
+
+  addProduct(advertisement): void {
+    let basketProduct: BasketProduct = new BasketProduct();
+    basketProduct.product = advertisement;
+    this.basketProductService.addProduct(basketProduct);
   }
 }

@@ -28,6 +28,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { DataTableModule } from 'angular2-datatable';
 import { ComponentsHelper } from 'ng2-bootstrap';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
+import { BasketProductService } from './basketProduct/basketProduct.service';
 
 @NgModule({
   imports: [
@@ -58,12 +60,12 @@ import { ComponentsHelper } from 'ng2-bootstrap';
     BuyerComponent,
     BuyerOfferComponent,
     PersonalOffersListComponent,
-    BuyerComponent,
-    ManageOffersComponent,
-    ProfileComponent
+    ProfileComponent,
+    BasketProductComponent,
+    ManageOffersComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })

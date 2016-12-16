@@ -79,4 +79,8 @@ export class AdvertisementService {
       .map((res: Response) => res.ok)
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  getUriId(advertisement: Advertisement): number {
+    return advertisement.uri ? Number(advertisement.uri.split('/')[1]) : null;
+  }
 }

@@ -14,21 +14,22 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
-import { SearchAdvertisementComponent
-} from './advertisement/search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
 import { LoginBasicModule } from './login-basic/login-basic.module';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
-import { OfferComponent } from './offer/offer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { DataTableModule } from 'angular2-datatable';
 import { ComponentsHelper } from 'ng2-bootstrap';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
+import { BasketProductService } from './basketProduct/basketProduct.service';
 
 @NgModule({
   imports: [
@@ -41,7 +42,6 @@ import { ComponentsHelper } from 'ng2-bootstrap';
   ],
   declarations: [
     AppComponent,
-    OfferComponent,
     NavbarComponent,
     IntroComponent,
     MessageComponent,
@@ -60,10 +60,12 @@ import { ComponentsHelper } from 'ng2-bootstrap';
     BuyerComponent,
     BuyerOfferComponent,
     PersonalOffersListComponent,
-    ProfileComponent
+    ProfileComponent,
+    BasketProductComponent,
+    ManageOffersComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })

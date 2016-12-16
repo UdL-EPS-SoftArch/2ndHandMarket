@@ -1,13 +1,13 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertisementComponent } from './advertisement/advertisement.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
-import { SearchAdvertisementComponent
-} from './advertisement/search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
@@ -16,6 +16,7 @@ import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.com
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   },
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
+  { path: 'basketProducts', component: BasketProductComponent},
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
@@ -40,7 +42,7 @@ const appRoutes: Routes = [
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] }
 ];
 
 export const appRoutingProviders: any[] = [];

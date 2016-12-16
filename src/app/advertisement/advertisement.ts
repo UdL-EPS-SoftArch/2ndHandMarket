@@ -24,6 +24,8 @@ export class Advertisement {
     this.tags = input.split(',').map((tag) => tag.trim());
   }
 
+
+
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);
   }
@@ -32,3 +34,4 @@ export class Advertisement {
     return this.uri ? Number(this.uri.split('/')[1]) : null;
   }
 }
+

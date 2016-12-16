@@ -75,6 +75,6 @@ export class AdvertisementService {
   }
 
   getUriId(advertisement: Advertisement): number {
-    return advertisement.uri ? Number(advertisement.uri.split('/')[1]): null;
+    return advertisement.uri ? Number(advertisement.uri.split('/')[1]) : null;
   }
 }

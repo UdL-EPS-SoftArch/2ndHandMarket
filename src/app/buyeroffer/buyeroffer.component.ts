@@ -15,14 +15,12 @@ export class BuyerOfferComponent implements OnInit {
   errorMessage: string;
   newBuyerOffer: BuyerOffer = new BuyerOffer();
 
-  //@Output() retrieveAdvertisement:EventEmitter<any> = new EventEmitter();
   @Input('advertisement') advertisement;
 
   constructor(private buyerofferService: BuyerOfferService) { }
 
   ngOnInit() {
     this.getBuyerOffer();
-    console.info(this.advertisement);
   }
 
   getBuyerOffer() {

@@ -14,7 +14,7 @@
         <!--<li><a routerLink="/advertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Advertisements</a></li>-->
         <!--<li><a routerLink="/searchAdvertisements" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }"> Search Advertisements</a></li>-->
         <!-- <li><a href="#contact">Contact</a></li> // move to footer -->
-        <app-search-ad></app-search-ad>
+        <li id="nav-search"><app-search-ad></app-search-ad></li>
 
         <li>
           <a routerLink="/messages" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
@@ -34,9 +34,7 @@
         <li>
           <a routerLink="/basketProducts" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
             <span class="visible-xs"><i class="fa fa-shopping-cart fa-2" aria-hidden="true"></i></span>
-            <span class="hidden-xs"><span class="glyphicon glyphicon-shopping-cart"></span></span>
-            <span class="notification-icon"><span class="badge">{{countBasketProducts()}}</span></span>
-
+            <span class="hidden-xs">Basket <span class="notification-icon badge">{{countBasketProducts()}}</span></span>
           </a>
         </li>
 

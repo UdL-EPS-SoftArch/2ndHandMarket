@@ -1,8 +1,6 @@
 $highlightColor: #1A99AA;
 
-#nav-search {
-  flex: 1;
-
+.nav-search-container {
   form {
     position: relative;
   }
@@ -14,7 +12,7 @@ $highlightColor: #1A99AA;
     color: #333;
     font-size: 1em;
     font-weight: 200;
-    height: 60%;
+    height: 50%;
     width: 100%;
     transition: border 0.2s ease;
 

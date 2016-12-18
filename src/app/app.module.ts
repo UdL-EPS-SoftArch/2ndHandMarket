@@ -14,7 +14,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { DateFormatPipe } from 'angular2-moment';
-import { SearchAdvertisementComponent} from './search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
@@ -29,7 +29,9 @@ import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { DataTableModule } from 'angular2-datatable';
 import { ComponentsHelper } from 'ng2-bootstrap';
 import { BasketProductComponent } from './basketProduct/basketProduct.component';
+import { SellerComponent } from './seller/seller.component';
 import { BasketProductService } from './basketProduct/basketProduct.service';
+import { MessageService } from './message/message.service';
 
 @NgModule({
   imports: [
@@ -62,10 +64,13 @@ import { BasketProductService } from './basketProduct/basketProduct.service';
     PersonalOffersListComponent,
     ProfileComponent,
     BasketProductComponent,
-    ManageOffersComponent
+    ManageOffersComponent,
+    ProfileComponent,
+    SellerComponent,
+    BasketProductComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService
+    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService, MessageService
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })

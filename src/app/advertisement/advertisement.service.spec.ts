@@ -82,10 +82,10 @@ describe('Service: Advertisement', () => {
       async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const apiResponse = new ResponseOptions({
           body: {
-            '_embedded': {
-              'advertisements': [
-                JSON.stringify(firstAdvertisement),
-                JSON.stringify(secondAdvertisement),
+            _embedded: {
+              advertisements: [
+                firstAdvertisement,
+                secondAdvertisement,
               ]
             }
           }

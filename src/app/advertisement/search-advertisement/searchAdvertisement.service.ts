@@ -18,19 +18,31 @@ export class SearchAdvertisementService {
   // Search Advertisement
   searchAdvertisementByTitle(title: string): Observable<Advertisement[]> {
     return this.http.get(`${environment.API}/advertisements/search/findByTitleContaining?word=${title}&sort=createdAt,desc`)
-      .map((res: Response) => res.json()._embedded.advertisements)
+      .map((res: Response) => {
+        const advertisementApi = res.json()._embedded.advertisements;
+        return advertisementApi
+          .map((advertisementInfo) => new Advertisement(advertisementInfo));
+      })
       .catch((error: any) => Observable.throw(error.json()));
   }
 
   searchAdvertisementByTag(tag: string): Observable<Advertisement[]> {
     return this.http.get(`${environment.API}/advertisements/search/findByTagsIn?tag=${tag}&sort=createdAt,desc`)
-      .map((res: Response) => res.json()._embedded.advertisements)
+      .map((res: Response) => {
+        const advertisementApi = res.json()._embedded.advertisements;
+        return advertisementApi
+          .map((advertisementInfo) => new Advertisement(advertisementInfo));
+      })
       .catch((error: any) => Observable.throw(error.json()));
   }
 
   searchAdvertisementByCategory(category: string): Observable<Advertisement[]> {
     return this.http.get(`${environment.API}/advertisements/search/findByCategory?category=${category}&sort=createdAt,desc`)
-      .map((res: Response) => res.json()._embedded.advertisements)
+      .map((res: Response) => {
+        const advertisementApi = res.json()._embedded.advertisements;
+        return advertisementApi
+          .map((advertisementInfo) => new Advertisement(advertisementInfo));
+      })
       .catch((error: any) => Observable.throw(error.json()));
   }
 }

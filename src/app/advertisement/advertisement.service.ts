@@ -24,7 +24,7 @@ export class AdvertisementService {
       .map((res: Response) => {
         const advertisementsApi = res.json()._embedded.advertisements;
         return advertisementsApi
-          .map((advertisementInfo) => new Advertisement(JSON.parse(advertisementInfo)));
+          .map((advertisementInfo) => new Advertisement(advertisementInfo));
       })
       .catch((error: any) => Observable.throw(error.json()));
   }

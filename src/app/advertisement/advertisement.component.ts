@@ -15,7 +15,7 @@ import { SearchAdvertisementService } from './search-advertisement/searchAdverti
 export class AdvertisementComponent implements OnInit {
 
   advertisements: Advertisement[] = [];
-  advertisementPictures: Picture = new Picture();
+  advertisementPictures: {} = {};
   errorMessage: string;
 
   constructor(private route: ActivatedRoute,
@@ -50,7 +50,7 @@ export class AdvertisementComponent implements OnInit {
   getAdvertisementPicture(advertisement: Advertisement) {
     this.advertisementService.getAdvertisementPictures(advertisement.uri)
       .subscribe(
-        pictures => this.advertisementPictures[advertisement.uri] = pictures[0],
+        pictures => this.advertisementPictures[advertisement.uri] = pictures[0] && pictures[0].content,
         error => alert(`There was an error retrieving an advertisement picture ${error.message}`)
       );
   }

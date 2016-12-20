@@ -20,7 +20,7 @@
           </h3>
           <div *ngFor="let advertisement of advertisements">
             <div *ngIf="advertisement.owner == getCurrentUser()">
-              <button class="column_button" routerLink="/{{advertisement.uri}}">{{advertisement.title}}</button>
+              <button type="button" class="btn btn-default" routerLink="/{{advertisement.uri}}">{{advertisement.title}}</button>
             </div>
           </div>
 
@@ -42,19 +42,24 @@
             </tr>
             </thead>
             <tbody *ngFor="let advertisement of advertisements" class="row">
-              <tr *ngIf="advertisement.owner == getCurrentUser()">
-                <td>{{advertisement.title}} </td>
+              <tr *ngIf="advertisement.owner === getCurrentUser()">
+                <button type="button" class="btn btn-default" routerLink="/{{advertisement.uri}}">{{advertisement.title}}</button>
                 <td>{{advertisement.brand}}
                 <td>{{advertisement.description}}</td>
                 <td>{{advertisement.createdAt}}</td>
                 <td>{{advertisement.price}}€</td>
-                <tbody *ngFor="let offer of buyeroffers">
-                  <td *ngIf="advertisement.title === offer.advertisement_title">
-                    <b>{{offer.value}}€</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
-                    <button class="glyphicon glyphicon-ok" aria-hidden="true" (click)="deleteBuyerOffer(offer)"></button>&nbsp;
-                    <button class="glyphicon glyphicon-remove" aria-hidden="true" (click)="deleteBuyerOffer(offer)"></button>
-                  </td>
-                </tbody>
+                <td *ngIf="!advertisement.negotiablePrice">Not negotiable price!</td>
+                <td *ngIf="advertisement.negotiablePrice">
+                  <tbody *ngFor="let offer of buyeroffers">
+                    <td *ngIf="advertisement.title === offer.advertisement_title">
+                      <b>{{offer.value}}€</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
+                      <!--<button class="glyphicon glyphicon-ok" aria-hidden="true" (click)="deleteBuyerOffer(offer)"></button>-->
+                      <!--<button class="glyphicon glyphicon-remove" aria-hidden="true" (click)="deleteBuyerOffer(offer)"></button>-->
+                      <button type="button" class="btn btn-success" (click)="deleteBuyerOffer(offer)">Accept</button>&nbsp;
+                      <button type="button" class="btn btn-danger" (click)="deleteBuyerOffer(offer)">Reject</button>&nbsp;
+                    </td>
+                  </tbody>
+                </td>
               </tr>
             </tbody>
           </table>

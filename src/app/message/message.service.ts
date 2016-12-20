@@ -4,10 +4,11 @@ import {Message} from './message';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
+import {MessageComponent} from "./message.component";
 
 @Injectable()
 export class MessageService {
-  notRead: Message[] = [];
+
   constructor (private http: Http,
                private authentication: AuthenticationBasicService) { }
 
@@ -15,6 +16,13 @@ export class MessageService {
   getAllMessages(): Observable<Message[]> {
     return this.http.get(`${environment.API}/privateMessages`)
       .map((res: Response) => res.json()._embedded.privateMessages)
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  // GET /privateMessages
+  getAllMessagesNotRead(): Observable<Message[]> {
+    return this.http.get(`${environment.API}/privateMessages`)
+      .map((res: Response) => res.json()._embedded.privateMessages.filter(p => p.isRead ===  false).count())
       .catch((error: any) => Observable.throw(error.json()));
   }
 

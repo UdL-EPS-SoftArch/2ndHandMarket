@@ -1,0 +1,18 @@
+<div class="nav-search-container">
+  <form class="hidden-xs inline" (submit)="submitSearch()">
+    <span class="fa fa-search icon"></span>
+    <input name="searchInput" type="text" placeholder="Need something?" [(ngModel)]="searchInput" />
+  </form>
+</div>
+
+<a href="#nav-search-expanded" class="visible-xs icon" data-toggle="collapse">
+  <i class="fa fa-search" aria-hidden="true"></i>
+</a>
+
+
+<div id="nav-search-expanded" class="search-expanded collapse">
+  <form class="inline"  (submit)="submitSearch()">
+    <input  name="searchInput" type="text" placeholder="Blue house" [(ngModel)]="searchInput" />
+  </form>
+</div>
+

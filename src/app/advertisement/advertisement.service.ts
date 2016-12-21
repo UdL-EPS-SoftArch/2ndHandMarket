@@ -10,18 +10,28 @@ import { Picture } from './picture/picture';
 export class AdvertisementService {
 
   constructor (private http: Http,
-               private authentication: AuthenticationBasicService) { }
+               private authentication: AuthenticationBasicService) {
+    this.getAllAdvertisements = this.getAllAdvertisements.bind(this);
+    this.getAdvertisement = this.getAdvertisement.bind(this);
+    this.getAdvertisementPictures = this.getAdvertisementPictures.bind(this);
+    this.addAdvertisement = this.addAdvertisement.bind(this);
+    this.putAdvertisement = this.putAdvertisement.bind(this);
+  }
 
   // GET /advertisements
   getAllAdvertisements(): Observable<Advertisement[]> {
     return this.http.get(`${environment.API}/advertisements?sort=createdAt,desc`)
-      .map((res: Response) => res.json()._embedded.advertisements)
+      .map((res: Response) => {
+        const advertisementsApi = res.json()._embedded.advertisements;
+        return advertisementsApi
+          .map((advertisementInfo) => new Advertisement(advertisementInfo));
+      })
       .catch((error: any) => Observable.throw(error.json()));
   }
 
   getAdvertisement(id: number): Observable<Advertisement> {
     return this.http.get(`${environment.API}/advertisements/${id}`)
-      .map((res: Response) => res.json())
+      .map((res: Response) => new Advertisement(res.json()))
       .catch((error: any) => Observable.throw(error.json()));
   }
 
@@ -43,7 +53,7 @@ export class AdvertisementService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${environment.API}/advertisements`, body, options)
-      .map((res: Response) => res.json())
+      .map((res: Response) => new Advertisement(res.json()))
       .catch((error: any) => Observable.throw(error.json()));
   }
 
@@ -59,7 +69,7 @@ export class AdvertisementService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.put(`${environment.API}/advertisements/${advertisement.id}`, body, options)
-      .map((res: Response) => res.json())
+      .map((res: Response) => new Advertisement(res.json()))
       .catch((error: any) => Observable.throw(error.json()));
   }
 

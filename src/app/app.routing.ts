@@ -7,7 +7,7 @@ import { RegisterSellerComponent } from './register-seller/register-seller.compo
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
-import { SearchAdvertisementComponent } from './search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
@@ -42,9 +42,7 @@ const appRoutes: Routes = [
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
- // { path: 'profile/buyeroffers', component: OfferComponent, canActivate: [LoggedInGuard] },
-  { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] }
 ];
 
 export const appRoutingProviders: any[] = [];

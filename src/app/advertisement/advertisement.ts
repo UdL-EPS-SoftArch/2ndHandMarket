@@ -24,14 +24,12 @@ export class Advertisement {
     this.tags = input.split(',').map((tag) => tag.trim());
   }
 
-
-
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);
   }
 
   getUriId(): number {
-    return this.uri ? Number(this.uri.split('/')[1]) : null;
+    return this.uri ? Number(this.uri.split('/')[2]) : null;
   }
 }
 

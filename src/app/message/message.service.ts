@@ -85,10 +85,8 @@ export class MessageService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-    // TODO
-  getNotRead(): number {
-    // return this.getAllMessages().filter(p => p.isRead ==  false).count();
-    return 1;
+  filterUnread(messages: Message[]): Message[] {
+    return messages.filter(p => !p.isRead);
   }
 
 }

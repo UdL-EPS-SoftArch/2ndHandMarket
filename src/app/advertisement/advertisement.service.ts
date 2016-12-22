@@ -38,10 +38,9 @@ export class AdvertisementService {
   // GET /advertisements/:id/pictures
   getAdvertisementPictures(advertisementUri: string): Observable<Picture[]> {
     return this.http.get(`${environment.API}${advertisementUri}/pictures`)
-      .map((res: Response) => {
-        const pictures = res.json()._embedded.pictures;
-        return pictures.sort((p1, p2) => p1.uri < p2.uri);
-      })
+      .map((res: Response) => res.json()._embedded.pictures
+        .map(item => new Picture(item))
+        .sort((p1, p2) => p2.getUriId() - p1.getUriId()))
       .catch((error: any) => Observable.throw(error.json()));
   }
 

@@ -85,10 +85,20 @@ export class MessageService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-    // TODO
-  getNotRead(): number {
-    // return this.getAllMessages().filter(p => p.isRead ==  false).count();
-    return 1;
+  filterMessages(messages: Message[], fun): Message[] {
+    return messages.filter(fun);
+  }
+
+  filterUnread(messages: Message[]): Message[] {
+    return this.filterMessages(messages, p => !p.isRead);
+  }
+
+  filterBySender(messages: Message[], sender): Message[] {
+    return this.filterMessages(messages, p => p.sender === sender);
+  }
+
+  filterByDestination(messages: Message[], destination): Message[] {
+    return this.filterMessages(messages, p => p.destination === destination);
   }
 
 }

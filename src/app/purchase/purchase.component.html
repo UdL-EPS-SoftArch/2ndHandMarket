@@ -17,7 +17,7 @@
     <span>You are about to buy "{{advertisements[0].title}}"</span>
     <strong>TOTAL: {{advertisements[0].price | currency:'USD':true}}</strong>
     <div class="confirmation-buttons">
-      <a class="blankButton" routerLink="/advertisements/{{advertisements[0].getUriId()}}">Cancel</a>
+      <a class="blankButton" routerLink="/advertisements/{{advertisements[0].id}}">Cancel</a>
       <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
     </div>
   </div>

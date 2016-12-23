@@ -1,5 +1,6 @@
-export class Advertisement {
-  id: number;
+import API from '../../api';
+
+export class Advertisement extends API {
   uri: string;
   title: string;
   description: string;
@@ -22,14 +23,6 @@ export class Advertisement {
 
   set tagsStr(input) {
     this.tags = input.split(',').map((tag) => tag.trim());
-  }
-
-  constructor(values: Object = {}) {
-    (<any>Object).assign(this, values);
-  }
-
-  getUriId(): number {
-    return this.uri ? Number(this.uri.split('/')[2]) : null;
   }
 }
 

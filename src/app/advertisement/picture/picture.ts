@@ -1,14 +1,8 @@
-export class Picture {
+import API from '../../../api';
+
+export class Picture extends API {
   uri: string;
   filename: string;
   content: string;
   depicts: string;
-
-  constructor(values: Object = {}) {
-    (<any>Object).assign(this, values);
-  }
-
-  getUriId(): number {
-    return this.uri ? Number(this.uri.split('/')[2]) : null;
-  }
 }

@@ -35,7 +35,6 @@ describe('Service: Purchase', () => {
     });
 
     advertisement = new Advertisement({
-      id: 1,
       uri: '/advertisements/1',
       title: 'first',
       description: '',

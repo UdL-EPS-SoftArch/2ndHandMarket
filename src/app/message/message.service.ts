@@ -65,42 +65,20 @@ export class MessageService {
 
   // POST /privateMessages
   addMessage(message: Message): Observable<Message> {
-    let body = JSON.stringify({
-      'title': message.title,
-      'body': message.body,
-      'destination': message.destination,
-      'sender': message.sender,
-      'isRead': message.isRead,
-    });
-    // 'body': message.body.replace('\n', '<br>'),
-
-    if (message.sender !== this.authentication.getCurrentUser().username) {
-
-      alert('Error: Sender does not match logged user!');
-
-    } else {
-
-      if (this.notBlank(message)) {
-
-      let headers = new Headers({'Content-Type': 'application/json'});
-      headers.append('Authorization', this.authentication.getCurrentUser().authorization);
-      let options = new RequestOptions({headers: headers});
-
-      return this.http.post(`${environment.API}/privateMessages`, body, options)
-        .map((res: Response) => res.json())
-        .catch((error: any) => Observable.throw(error.json()));
-      } else {
-
-        alert('Error: There must not be blank fields!');
-      }
+    if (!(message.title && message.body && message.destination)) {
+      throw 'Missing message parameters. Required: title, body, destination.';
     }
+
+    let body = JSON.stringify(message);
+
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.post(`${environment.API}/privateMessages`, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
   }
-
-  notBlank(message: Message):  boolean {
-    return message.title !== '' && message.body !== ''  && message.destination !== ''  && message.sender !== '' ;
-  }
-
-
 
   // DELETE /privateMessages/:id
   deleteMessageByUri(uri: string) {
@@ -112,6 +90,7 @@ export class MessageService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
+  // Message filters
   filterMessages(messages: Message[], fun): Message[] {
     return messages.filter(fun);
   }

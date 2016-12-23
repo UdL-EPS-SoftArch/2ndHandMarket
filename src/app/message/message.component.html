@@ -3,7 +3,7 @@
     <h2></h2>
     <!-- new message -->
     <button (click)="DivSendMessage = !DivSendMessage" class="highlightButtonMain big">Write a new message</button>
-
+    <div id="sendMess" style="margin-left:5%;margin-right:5%;">
        <div class="form-section" [hidden]="!DivSendMessage">
          <h2></h2>
          <div class="form-group">
@@ -24,7 +24,7 @@
           </div>
           <button (click)="addMessage(); DivSendMessage = !DivSendMessage" class="highlightButtonGreen big">Send</button>
       </div>
-
+    </div>
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>
 
@@ -80,6 +80,7 @@
     <div class="inner"><button (click)="DivAllMessage = !DivAllMessage" class="highlightButtonTest big">   ALL MESSAGES   </button></div>
   </div>-->
 
+  <div id="cont" style="margin-left:5%;">
   <button (click)=" DivAllMessage = !DivAllMessage;
   DivReceivedMessage = !DivAllMessage;
   DivSentMessage = !DivAllMessage" class="highlightButtonTest big"> ALL MESSAGES ({{myAllMessages.length}})
@@ -93,10 +94,10 @@ DivAllMessage = !DivSentMessage;" class="highlightButtonTest big">   SENT MESSAG
 DivSentMessage = !DivReceivedMessage;
 DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVED MESSAGES ({{myReceivedMessages.length}})  </button>
 
-
+  </div>
 
   <!-- Sent -->
-  <div class="form-section" [hidden]="!DivSentMessage">
+  <div class="form-section" [hidden]="!DivSentMessage" style="margin-left:5%;margin-right:5%;">
       <h3>Sent</h3>
       <p *ngIf="mySentMessages.length > 0">
         <span class="message-count"><strong>{{mySentMessages.length}}</strong> {{mySentMessages.length == 1 ? 'message' : 'messages'}}</span>
@@ -118,7 +119,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
   </div>
 
   <!-- Received -->
-  <div class="form-section" [hidden]="!DivReceivedMessage">
+  <div class="form-section" [hidden]="!DivReceivedMessage" style="margin-left:5%;margin-right:5%;">
       <h3>Received</h3>
       <p *ngIf="myReceivedMessages.length > 0">
         <span class="message-count"><strong>{{myReceivedMessages.length}}</strong> {{myReceivedMessages.length == 1 ? 'message' : 'messages'}}</span>
@@ -146,7 +147,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
   </div>
 
   <!-- All -->
-  <div class="form-section" [hidden]="!DivAllMessage">
+  <div class="form-section" [hidden]="!DivAllMessage" style="margin-left:5%;margin-right:5%;">
       <h3>All messages</h3>
     <p *ngIf="myAllMessages.length > 0">
       <span class="message-count"><strong>{{myAllMessages.length}}</strong> {{myAllMessages.length == 1 ? 'message' : 'messages'}}</span>

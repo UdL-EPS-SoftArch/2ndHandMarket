@@ -73,6 +73,7 @@ export class MessageService {
       'sender': message.sender,
       'isRead': message.isRead,
     });
+    // 'body': message.body.replace('\n', '<br>'),
 
     if (message.sender != this.authentication.getCurrentUser().username) {
 

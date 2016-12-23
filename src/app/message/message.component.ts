@@ -28,15 +28,13 @@ export class MessageComponent implements OnInit {
   messagesTitle: Message[] = [];
 
   errorMessage: string;
-  newMessage: Message;
+  newMessage: Message = new Message();
 
   constructor(private messageService: MessageService,
                private authentication: AuthenticationBasicService) { }
 
   ngOnInit() {
     this.getMessages();
-    this.newMessage = new Message();
-    this.newMessage.sender = this.authentication.getCurrentUser().username;
   }
 
   getMessages() {
@@ -69,10 +67,11 @@ export class MessageComponent implements OnInit {
   addMessage() {
     this.messageService.addMessage(this.newMessage)
       .subscribe(
-        message  => this.messages.push(message),
+        message => {
+          this.messages.push(message);
+          this.toggleSendMessage();
+        },
         error =>  this.errorMessage = <any>error.message);
-    this.newMessage = new Message();
-    this.newMessage.sender = this.authentication.getCurrentUser().username;
   }
 
   // TODO
@@ -88,6 +87,13 @@ export class MessageComponent implements OnInit {
       .subscribe(
         deleted => this.messages = this.messages.filter(p => p.uri !== message.uri),
         error =>  this.errorMessage = <any>error.message);
+  }
+
+  toggleSendMessage() {
+    this.DivSendMessage = !this.DivSendMessage;
+    this.newMessage = new Message({
+      sender: this.authentication.getCurrentUser().username,
+    });
   }
 
 }

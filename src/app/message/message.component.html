@@ -2,10 +2,10 @@
   <header class="header">
     <h2></h2>
     <!-- new message -->
-    <button (click)="DivSendMessage = !DivSendMessage" class="highlightButtonMain big">Write a new message</button>
+    <button (click)="toggleSendMessage()" class="highlightButtonMain big">Write a new message</button>
     <div id="sendMess" style="margin-left:5%;margin-right:5%;">
-       <div class="form-section" [hidden]="!DivSendMessage">
-         <form (submit)="addMessage(); DivSendMessage = !DivSendMessage">
+       <div class="form-section" *ngIf="DivSendMessage">
+         <form (submit)="addMessage()">
            <div class="form-group">
              <label for="sender">Sender</label>
              <input type="text" class="form-control" id="sender" name="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender" />

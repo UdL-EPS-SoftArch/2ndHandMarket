@@ -4,7 +4,6 @@ import {Message} from './message';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
-import {MessageComponent} from "./message.component";
 
 @Injectable()
 export class MessageService {
@@ -75,13 +74,13 @@ export class MessageService {
     });
     // 'body': message.body.replace('\n', '<br>'),
 
-    if (message.sender != this.authentication.getCurrentUser().username) {
+    if (message.sender !== this.authentication.getCurrentUser().username) {
 
       alert('Error: Sender does not match logged user!');
 
     } else {
 
-      if (this.notBlank(message)){
+      if (this.notBlank(message)) {
 
       let headers = new Headers({'Content-Type': 'application/json'});
       headers.append('Authorization', this.authentication.getCurrentUser().authorization);
@@ -90,7 +89,7 @@ export class MessageService {
       return this.http.post(`${environment.API}/privateMessages`, body, options)
         .map((res: Response) => res.json())
         .catch((error: any) => Observable.throw(error.json()));
-      }else{
+      } else {
 
         alert('Error: There must not be blank fields!');
       }
@@ -98,7 +97,7 @@ export class MessageService {
   }
 
   notBlank(message: Message):  boolean {
-    return message.title != "" && message.body != ""  && message.destination != ""  && message.sender != "" ;
+    return message.title !== '' && message.body !== ''  && message.destination !== ''  && message.sender !== '' ;
   }
 
 

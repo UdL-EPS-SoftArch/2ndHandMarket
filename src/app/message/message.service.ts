@@ -69,18 +69,25 @@ export class MessageService {
     let body = JSON.stringify({
       'title': message.title,
       'body': message.body,
-      'destination' : message.destination,
+      'destination': message.destination,
       'sender': message.sender,
       'isRead': message.isRead,
     });
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    if (message.sender != this.authentication.getCurrentUser().username) {
+
+      alert('Error: Sender does not match logged user!');
+
+    } else {
+
+    let headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
 
     return this.http.post(`${environment.API}/privateMessages`, body, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
+    }
   }
 
   // DELETE /privateMessages/:id

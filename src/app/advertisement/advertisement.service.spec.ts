@@ -200,7 +200,7 @@ describe('Service: Advertisement', () => {
     it ('should update the advertisement',
       async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const notUpdatedAdvertisement = new Advertisement({
-          id: 1,
+          uri: '/advertisements/1',
           title: 'something',
           price: 2,
         });

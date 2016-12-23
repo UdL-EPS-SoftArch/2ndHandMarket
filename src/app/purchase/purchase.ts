@@ -5,7 +5,7 @@ export class Purchase {
   uri: string;
   purchaser: string;
   createdAt: Date;
-  advertisement: Advertisement;
+  advertisements: Advertisement[] = [];
 
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);

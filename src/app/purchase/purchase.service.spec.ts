@@ -53,6 +53,8 @@ describe('Service: Purchase', () => {
       uri: '/purchases/1',
       purchaser: 'user1',
       createdAt: '2016-11-26T12:25:41.45+01:00',
+      total: 100,
+      advertisements: [advertisement],
     });
   }));
 
@@ -64,8 +66,8 @@ describe('Service: Purchase', () => {
             body: purchase,
           }),
           new ResponseOptions({
-            body: advertisement,
-          })
+            body: { _embedded: { advertisements: [ advertisement ]}},
+          }),
         ];
 
         mockBackend.connections.subscribe((connection: MockConnection) => {
@@ -73,11 +75,12 @@ describe('Service: Purchase', () => {
           connection.mockRespond(new Response(response));
         });
 
-        service.getPurchase(1).subscribe((data) => {
+        service.getPurchase(1).subscribe((data: Purchase) => {
           expect(data.uri).toEqual(purchase.uri);
           expect(data.purchaser).toEqual(purchase.purchaser);
           expect(data.createdAt).toEqual(purchase.createdAt);
-          expect(data.advertisement).toEqual(advertisement);
+          expect(Array.isArray(data.advertisements)).toBeTruthy();
+          expect(data.advertisements).toEqual([advertisement]);
         });
     })));
   });
@@ -85,19 +88,29 @@ describe('Service: Purchase', () => {
   describe('#getPurchaseByAdvertisement(advertisement)', () => {
     it('should return a purchase',
       async(inject([ MockBackend, PurchaseService ], (mockBackend, service) => {
-        const apiResponse = new ResponseOptions({
-          body: purchase,
-        });
+        const responses = [
+          new ResponseOptions({
+            body: purchase,
+          }),
+          new ResponseOptions({
+            body: purchase,
+          }),
+          new ResponseOptions({
+            body: { _embedded: { advertisements: [ advertisement ]}},
+          }),
+        ];
 
         mockBackend.connections.subscribe((connection: MockConnection) => {
-          connection.mockRespond(new Response(apiResponse));
+          const response = responses.shift();
+          connection.mockRespond(new Response(response));
         });
 
-        service.getPurchaseByAdvertisement(advertisement).subscribe((data) => {
+        service.getPurchaseByAdvertisement(advertisement.uri).subscribe((data) => {
           expect(data.uri).toEqual(purchase.uri);
           expect(data.purchaser).toEqual(purchase.purchaser);
           expect(data.createdAt).toEqual(purchase.createdAt);
-          expect(data.advertisement).toEqual(advertisement);
+          expect(Array.isArray(data.advertisements)).toBeTruthy();
+          expect(data.advertisements).toEqual([advertisement]);
         });
     })));
   });
@@ -113,14 +126,16 @@ describe('Service: Purchase', () => {
           connection.mockRespond(new Response(apiResponse));
         });
 
-        // purchase variable is mutable, we want to test whether the API really
-        // returns the advertisement object with the purchase one.
+        // We want to test whether the API really returns the advertisement
+        // object with the purchase one.
+        // Since our test-defined object is mutable, we create a new one.
         const newPurchase = new Purchase();
-        newPurchase.advertisement = advertisement;
+        newPurchase.advertisements.push(advertisement);
 
         service.addPurchase(newPurchase).subscribe((data) => {
           expect(data.purchaser).toEqual(purchase.purchaser);
-          expect(data.advertisement).toEqual(advertisement);
+          expect(Array.isArray(data.advertisements)).toBeTruthy();
+          expect(data.advertisements).toEqual([advertisement]);
         });
       })));
   });

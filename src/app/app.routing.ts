@@ -6,7 +6,6 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
-import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
@@ -25,7 +24,7 @@ const appRoutes: Routes = [
     canActivate: [LoggedInGuard]
   },
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
-  { path: 'advertisements/:id/edit', component: PutAdvertisementComponent },
+  { path: 'advertisements/:id/edit', component: PostAdvertisementComponent },
   {
     path: 'advertisements/:id/purchase',
     component: PurchaseComponent,

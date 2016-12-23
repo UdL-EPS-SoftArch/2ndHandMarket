@@ -1,4 +1,7 @@
 <section class="purchase">
+  <!-- Loading -->
+  <div class="page-box container" *ngIf="loading">Loading...</div>
+
   <!-- Error -->
   <div class="page-box container" *ngIf="errorMessage">
     <h3>There was an error when processing your purchase</h3>
@@ -8,28 +11,26 @@
     </div>
   </div>
 
-  <div *ngIf="!loading">
-    <!-- Confirmation -->
-    <div class="page-box container" *ngIf="!errorMessage && !hasPurchased">
-      <h3>Confirm your order</h3>
-      <span>You are about to buy "{{advertisement.title}}"</span>
-      <strong>TOTAL: {{advertisement.price | currency:'USD':true}}</strong>
-      <div class="confirmation-buttons">
-        <a class="blankButton" routerLink="/advertisements/{{advertisement.id}}">Cancel</a>
-        <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
-      </div>
+  <!-- Confirmation -->
+  <div class="page-box container" *ngIf="!loading && !errorMessage && !hasPurchased">
+    <h3>Confirm your order</h3>
+    <span>You are about to buy "{{advertisements[0].title}}"</span>
+    <strong>TOTAL: {{advertisements[0].price | currency:'USD':true}}</strong>
+    <div class="confirmation-buttons">
+      <a class="blankButton" routerLink="/advertisements/{{advertisements[0].getUriId()}}">Cancel</a>
+      <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
     </div>
+  </div>
 
-    <!-- Success -->
-    <div class="page-box container" *ngIf="!errorMessage && hasPurchased">
-      <h3>Purchase completed!</h3>
-      <span>
-        Thank you for buying "{{advertisement.title}}".<br>
+  <!-- Success -->
+  <div class="page-box container" *ngIf="!errorMessage && hasPurchased">
+    <h3>Purchase completed!</h3>
+    <span>
+        Thank you for buying "{{advertisements[0].title}}".<br>
         You can check your purchases on your user panel.
       </span>
-      <div class="center">
-        <a routerLink="/advertisements">Go back to the advertisement list</a>
-      </div>
+    <div class="center">
+      <a routerLink="/advertisements">Go back to the advertisement list</a>
     </div>
   </div>
 </section>

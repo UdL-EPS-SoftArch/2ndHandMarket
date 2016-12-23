@@ -1,4 +1,8 @@
-<section class="getAdvertisement container">
+<div class="loading" *ngIf="!advertisement">Loading...</div>
+<section class="getAdvertisement container" *ngIf="advertisement">
+  <div class="row" *ngIf="!advertisement">
+    Loading...
+  </div>
   <div class="row product-basics">
     <div class="col-md-6 photo">
       <img class="photo" *ngIf="picture" [src]="picture.content" />
@@ -6,8 +10,8 @@
     <div class="col-md-6">
       <h2 class="title">
         {{advertisement.title}}
-        <a class="h2Button" routerLink="/advertisements/{{advertisement.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-        <a class="h2Button deleteButton" (click)="deleteAdvertisement()"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        <a class="h2Button" routerLink="/advertisements/{{advertisement.getUriId()}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <a class="h2Button deleteButton" (click)="deleteAdvertisement(advertisement.uri)"><i class="fa fa-trash" aria-hidden="true"></i></a>
       </h2>
       <span class="category">{{advertisement.category}}</span>
       <div class="product-dates">
@@ -29,12 +33,12 @@
         <span class="sold">Sold</span>
       </div>
       <div class="action-buttons" *ngIf="!purchase">
-        <a routerLink="/advertisements/{{advertisement.id}}/purchase" class="highlightButton">
+        <a routerLink="/advertisements/{{advertisement.getUriId()}}/purchase" class="highlightButton">
           Buy
         </a>
-        <button class="highlightButton"  (click)="addProduct(advertisement)">Add to Cart</button>
+        <button class="highlightButton" (click)="addProduct(advertisement)">Add to Cart</button>
         <a href="#" class="blankButton">Add to Wishlist</a>
-        <div *ngIf="advertisement.negotiablePrice && getCurrentUser()!=advertisement.owner">
+        <div *ngIf="advertisement.negotiablePrice && getCurrentUser() != advertisement.owner">
           <app-buyeroffer [advertisement]="advertisement"></app-buyeroffer>
         </div>
       </div>

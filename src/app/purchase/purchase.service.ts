@@ -1,11 +1,10 @@
-import {Response, Http, Headers, RequestOptions} from '@angular/http';
+import { Response, Http, Headers, RequestOptions } from '@angular/http';
 import { Observable} from 'rxjs';
 import { Injectable} from '@angular/core';
 
 import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 import { environment } from '../../environments/environment';
 import { Purchase } from './purchase';
-import { Advertisement } from '../advertisement/advertisement';
 
 @Injectable()
 export class PurchaseService {
@@ -15,51 +14,44 @@ export class PurchaseService {
   }
 
   // GET /purchases/:id
-  getPurchase(id: number): Observable<any> {
-    return new Observable(observer => {
-      Observable.forkJoin(
-        this.http.get(`${environment.API}/purchases/${id}`)
+  getPurchase(uri: string): Observable<Purchase> {
+    return Observable.forkJoin(
+        this.http.get(`${environment.API}${uri}`)
           .map((res: Response) => res.json()),
-        this.http.get(`${environment.API}/purchases/${id}/advertisement`)
-          .map((res: Response) => res.json()),
-      ).subscribe(
-        data => {
-          const purchase = data[0];
-          purchase.advertisement = data[1];
-          observer.complete(purchase);
-        },
-        error => observer.error(error.json()),
-      );
-    });
-  }
-
-  // GET /purchases/:id
-  getPurchaseByAdvertisement(advertisement: Advertisement): Observable<Purchase> {
-    if (!advertisement.id) {
-      throw new Error('Advertisement ID is required');
-    }
-
-    return this.http.get(`${environment.API}/advertisements/${advertisement.id}/purchase`)
-      .map((res: Response) => res.json())
-      .map((purchase: Purchase) => {
-        purchase.advertisement = advertisement;
+        this.http.get(`${environment.API}${uri}/advertisements`)
+          .map((res: Response) => res.json()._embedded.advertisements),
+      )
+      .map((data) => {
+        const purchase = new Purchase(data[0]);
+        purchase.advertisements = data[1];
         return purchase;
       })
       .catch((error: any) => Observable.throw(error.json()));
   }
 
+  // GET /purchases/:id
+  getPurchaseByAdvertisement(advertisementUri: string): Observable<Purchase> {
+    return this.http.get(`${environment.API}${advertisementUri}/purchase`)
+      .map((res: Response) => res.json())
+      .map((purchase: Purchase) => {
+        return purchase.uri;
+      })
+      .flatMap((purchaseUri) => this.getPurchase(purchaseUri))
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
   // POST /purchases
   addPurchase(purchase: Purchase): Observable<Purchase> {
-    if (!(purchase.advertisement && purchase.advertisement.uri)) {
-      throw new Error('Advertisement URI is required');
+    if (!purchase.advertisements || purchase.advertisements.filter((e) => !e.uri).length > 0) {
+      throw new Error('Advertisement(s) URI is required');
     }
 
-    // API expects advertisement to be an only URI string.
+    // API expects advertisement to be an array of only URI strings.
     // We're storing the advertisement as an object.
     // Moreover, the API doesn't expect any other field but this one. So let's
     // just build another object which contains this field.
     const newPurchase = {
-      advertisement: purchase.advertisement.uri,
+      advertisements: purchase.advertisements.map((advertisement) => advertisement.uri),
     };
     const body = JSON.stringify(newPurchase);
 
@@ -70,8 +62,8 @@ export class PurchaseService {
     return this.http.post(`${environment.API}/purchases`, body, options)
       .map((res: Response) => res.json())
       .map((purchaseResult: Purchase) => {
-        purchaseResult.advertisement = purchase.advertisement;
-        return purchaseResult;
+        purchaseResult.advertisements = purchase.advertisements;
+        return new Purchase(purchaseResult);
       })
       .catch((error: any) => Observable.throw(error.json()));
   }

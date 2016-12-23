@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
@@ -19,14 +19,55 @@ export class PostAdvertisementComponent implements OnInit {
   picture: Picture = new Picture();
   errorMessage: string;
 
-  constructor(private router: Router,
+  isUpdating: boolean; // Marks advertisement as a creation / update.
+
+  constructor(private route: ActivatedRoute,
+              private router: Router,
               private advertisementService: AdvertisementService,
               private pictureService: PictureService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.route.params
+      .map(params => params['id'])
+      .subscribe((id) => {
+        if (!id) { return; }
 
+        // Continue from an existing advertisement (update).
+        this.isUpdating = true;
+        const uri = `/advertisements/${id}`;
+        this.retrieveAdvertisement(uri);
+      });
+  }
+
+  retrieveAdvertisement(uri: string) {
+    this.advertisementService.getAdvertisement(uri).subscribe(
+      advertisement => {
+        this.advertisement = advertisement;
+
+        // Get current picture (if any).
+        this.getAdvertisementPicture(uri);
+      },
+      error => alert('Error: Failed to retrieve advertisement!'),
+    );
+  }
+
+  getAdvertisementPicture(advertisementUri: string) {
+    this.advertisementService.getAdvertisementPictures(advertisementUri)
+      .subscribe(
+        pictures => this.picture = pictures.length > 0 && pictures[0],
+        error => alert(error.errorMessage)
+      );
+  }
+
+  /**
+   * Send form.
+   */
   sendForm() {
-    this.advertisementService.addAdvertisement(this.advertisement).subscribe(
+    const action = this.isUpdating
+      ? this.advertisementService.putAdvertisement
+      : this.advertisementService.addAdvertisement;
+
+    action(this.advertisement).subscribe(
         advertisement => {
           this.advertisement = advertisement;
           if (this.picture.content) {
@@ -40,7 +81,7 @@ export class PostAdvertisementComponent implements OnInit {
         error => {
           this.errorMessage = error.errors ? <any>error.errors[0].message : <any>error.message;
           // TODO display error in each field
-          alert(this.errorMessage);
+          alert(`Error: ${this.errorMessage}`);
         }
     );
   }

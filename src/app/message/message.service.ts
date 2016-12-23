@@ -80,15 +80,27 @@ export class MessageService {
 
     } else {
 
-    let headers = new Headers({'Content-Type': 'application/json'});
-    headers.append('Authorization', this.authentication.getCurrentUser().authorization);
-    let options = new RequestOptions({headers: headers});
+      if (this.notBlank(message)){
 
-    return this.http.post(`${environment.API}/privateMessages`, body, options)
-      .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json()));
+      let headers = new Headers({'Content-Type': 'application/json'});
+      headers.append('Authorization', this.authentication.getCurrentUser().authorization);
+      let options = new RequestOptions({headers: headers});
+
+      return this.http.post(`${environment.API}/privateMessages`, body, options)
+        .map((res: Response) => res.json())
+        .catch((error: any) => Observable.throw(error.json()));
+      }else{
+
+        alert('Error: There must not be blank fields!');
+      }
     }
   }
+
+  notBlank(message: Message):  boolean {
+    return message.title != "" && message.body != ""  && message.destination != ""  && message.sender != "" ;
+  }
+
+
 
   // DELETE /privateMessages/:id
   deleteMessageByUri(uri: string) {

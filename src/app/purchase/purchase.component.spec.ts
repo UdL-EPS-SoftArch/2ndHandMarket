@@ -16,11 +16,10 @@ describe('Component: Purchase', () => {
   });
 
   it('should create an instance', () => {
-    inject([ActivatedRoute, Router, AdvertisementService, PurchaseService],
-      (activatedRouter, router, advertisementService, purchaseService) => {
+    inject([ActivatedRoute, AdvertisementService, PurchaseService],
+      (activatedRouter, advertisementService, purchaseService) => {
       let component = new PurchaseComponent(
         activatedRouter,
-        router,
         advertisementService,
         purchaseService
       );

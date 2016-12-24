@@ -16,7 +16,6 @@ import { RegisterSellerComponent } from './register-seller/register-seller.compo
 import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
-import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
 import { LoginBasicModule } from './login-basic/login-basic.module';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
@@ -51,7 +50,6 @@ import { MessageService } from './message/message.service';
     AdvertisementComponent,
     PostAdvertisementComponent,
     GetAdvertisementComponent,
-    PutAdvertisementComponent,
     FooterComponent,
     RegisterSellerComponent,
     FooterComponent,

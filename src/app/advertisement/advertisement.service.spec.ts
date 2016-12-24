@@ -119,7 +119,7 @@ describe('Service: Advertisement', () => {
         service.getAdvertisement(1).subscribe((data) => {
           expect(data.title).toEqual(firstAdvertisement.title);
           expect(data.description).toEqual(firstAdvertisement.description);
-          expect(data.getUriId()).toEqual(1);
+          expect(data.id).toEqual(1);
         });
       })));
   });
@@ -191,7 +191,7 @@ describe('Service: Advertisement', () => {
           expect(data.title).toEqual(firstAdvertisement.title);
           expect(data.description).toEqual(firstAdvertisement.description);
           expect(data.price).toEqual(firstAdvertisement.price);
-          expect(data.getUriId()).toEqual(1);
+          expect(data.id).toEqual(1);
         });
       })));
   });
@@ -200,7 +200,7 @@ describe('Service: Advertisement', () => {
     it ('should update the advertisement',
       async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const notUpdatedAdvertisement = new Advertisement({
-          id: 1,
+          uri: '/advertisements/1',
           title: 'something',
           price: 2,
         });
@@ -217,7 +217,7 @@ describe('Service: Advertisement', () => {
           expect(data.title).toEqual(secondAdvertisement.title);
           expect(data.description).toEqual(secondAdvertisement.description);
           expect(data.price).toEqual(secondAdvertisement.price);
-          expect(data.getUriId()).toEqual(2);
+          expect(data.id).toEqual(2);
         });
       })));
   });

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
-import { Picture } from './picture/picture';
 import { ActivatedRoute } from '@angular/router';
 import { SearchAdvertisementService } from './search-advertisement/searchAdvertisement.service';
 

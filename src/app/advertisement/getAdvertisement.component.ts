@@ -18,9 +18,9 @@ import { BasketProduct} from '../basketProduct/basketProduct';
 })
 export class GetAdvertisementComponent implements OnInit {
 
-  advertisement: Advertisement = new Advertisement();
+  advertisement: Advertisement;
   purchase: Purchase;
-  picture: Picture = new Picture();
+  picture: Picture;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -39,56 +39,43 @@ export class GetAdvertisementComponent implements OnInit {
     this.route.params
       .map(params => params['id'])
       .subscribe((id) => {
-        this.advertisement.id = id;
-        this.getAdvertisement();
+        const uri = `/advertisements/${id}`;
+        this.getAdvertisement(uri);
       });
   }
 
-  getAdvertisement() {
-    const id = this.advertisement.id;
-    this.advertisementService.getAdvertisement(id).subscribe(
+  getAdvertisement(uri: string) {
+    this.advertisementService.getAdvertisement(uri).subscribe(
       advertisement => {
         this.advertisement = advertisement;
 
-        // The API does not provide us the id directly, so we'll store the one
-        // we have from the URL.
-        this.advertisement.id = id;
-
-        // The advertisement picture is stored somewhere (let's query the API
-        // for it now that we have the advertisement).
-        this.getAdvertisementPicture();
-
-        // Check advertisement purchase status.
-        this.getAdvertisementPurchase();
+        // The advertisement does exist, let's query the rest.
+        this.getAdvertisementPicture(this.advertisement.uri);
+        this.getAdvertisementPurchase(this.advertisement.uri);
       },
       error => alert('Error: Failed to retrieve advertisement!')
     );
   }
 
-  getAdvertisementPicture() {
-    this.advertisementService.getAdvertisementPictures(this.advertisement.uri)
+  getAdvertisementPicture(advertisementUri: string) {
+    this.advertisementService.getAdvertisementPictures(advertisementUri)
       .subscribe(
         pictures => this.picture = pictures.length > 0 && pictures[0],
-        error => alert(error.errorMessage)
+        error => null, // Could be 404 if pictures were never created.
       );
   }
 
-  getAdvertisementPurchase() {
-    // HTML will hide Buy & Add to Wishlist buttons if the product has already
-    // been purchased.
-    this.purchaseService.getPurchaseByAdvertisement(this.advertisement)
+  getAdvertisementPurchase(advertisementUri: string) {
+    this.purchaseService.getPurchaseByAdvertisement(advertisementUri)
       .subscribe(
         purchase => this.purchase = purchase,
         error => null, // Expecting a 404 if there is no purchase.
       );
   }
 
-  deleteAdvertisement() {
-    const id = this.advertisement.id;
-    this.advertisementService.deleteAdvertisement(id).subscribe(
+  deleteAdvertisement(uri: string) {
+    this.advertisementService.deleteAdvertisement(uri).subscribe(
       advertisement => {
-        this.advertisement = advertisement;
-
         // Redirect to advertisements page.
         this.router.navigate(['/advertisements']);
       },

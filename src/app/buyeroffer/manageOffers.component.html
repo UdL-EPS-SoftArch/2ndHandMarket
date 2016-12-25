@@ -49,13 +49,14 @@
                 <td>{{advertisement.createdAt}}</td>
                 <td>{{advertisement.price}}€</td>
                 <td *ngIf="!advertisement.negotiablePrice">Not negotiable price!</td>
-                <td *ngIf="advertisement.negotiablePrice">
+                <td *ngIf="hasPurchased">Already sold!</td>
+                <td *ngIf="advertisement.negotiablePrice  && !hasPurchased">
                   <tbody *ngFor="let offer of buyeroffers">
                     <td *ngIf="advertisement.title === offer.advertisement_title">
                       <b>{{offer.value}}€</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
                       <!--<button class="glyphicon glyphicon-ok" aria-hidden="true" (click)="deleteBuyerOffer(offer)"></button>-->
                       <!--<button class="glyphicon glyphicon-remove" aria-hidden="true" (click)="deleteBuyerOffer(offer)"></button>-->
-                      <button type="button" class="btn btn-success" (click)="deleteBuyerOffer(offer)">Accept</button>&nbsp;
+                      <button type="button" class="btn btn-success" (click)="submitOfferAndPurchase(offer, advertisement)">Accept</button>&nbsp;
                       <button type="button" class="btn btn-danger" (click)="deleteBuyerOffer(offer)">Reject</button>&nbsp;
                     </td>
                   </tbody>

@@ -1,4 +1,4 @@
-# Software Architecture 2016-17 Client
+# SoftArch Store
 
 Class project for the Software Architecture 2016-17 Course
 

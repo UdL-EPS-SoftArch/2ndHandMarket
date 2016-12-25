@@ -16,12 +16,11 @@ export class PurchaseComponent implements OnInit {
   loading: boolean = true;
 
   hasPurchased: boolean = false;
-  advertisement: Advertisement;
+  advertisements: Advertisement[];
   purchase: Purchase; // It will exist either if the product was already
                       // purchased, or the user has just completed the purchase.
 
   constructor(private route: ActivatedRoute,
-               private router: Router,
                private advertisementService: AdvertisementService,
                private purchaseService: PurchaseService) {}
 
@@ -29,23 +28,24 @@ export class PurchaseComponent implements OnInit {
     this.route.params
       .map(params => params['id'])
       .subscribe((advertisementId) => {
-        this.loadAdvertisement(advertisementId);
+        const advertisementUri = `/advertisements/${advertisementId}`;
+        this.loadAdvertisement(advertisementUri);
       });
   }
 
-  loadAdvertisement(id: number) {
-    this.advertisementService.getAdvertisement(id).subscribe(
+  loadAdvertisement(uri: string) {
+    this.advertisementService.getAdvertisement(uri).subscribe(
       advertisement => {
-        this.advertisement = advertisement;
-        this.advertisement.id = id; // Required for the getPurchaseByAdvertisement service.
-        this.loadPurchase(advertisement);
+        this.advertisements = [advertisement];
+
+        this.loadPurchase(advertisement.uri);
       },
       error => this.errorMessage = 'The advertisement does not exist.',
     );
   }
 
-  loadPurchase(advertisement: Advertisement) {
-    this.purchaseService.getPurchaseByAdvertisement(advertisement).subscribe(
+  loadPurchase(advertisementUri: string) {
+    this.purchaseService.getPurchaseByAdvertisement(advertisementUri).subscribe(
       error => { // Notice the inverted purchase <-> error order.
         this.purchase = error;
         this.errorMessage = 'This product has already been purchased.';
@@ -60,7 +60,7 @@ export class PurchaseComponent implements OnInit {
 
   submitPurchase() {
     // Create the final purchase first, based on the ngInit advertisement.
-    this.purchase = new Purchase({ advertisement: this.advertisement, });
+    this.purchase = new Purchase({ advertisements: this.advertisements, });
 
     // Submit the purchase.
     this.purchaseService.addPurchase(this.purchase).subscribe(

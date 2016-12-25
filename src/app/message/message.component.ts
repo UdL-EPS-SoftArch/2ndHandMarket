@@ -22,63 +22,32 @@ export class MessageComponent implements OnInit {
   mySentMessages: Message[] = [];
   myReceivedMessages: Message[] = [];
   myAllMessages: Message[] = [];
-  notRead: Message[] = [];
+  unreadMessages: Message[] = [];
 
   messagesUri: Message[] = [];
   messagesTitle: Message[] = [];
 
   errorMessage: string;
-  newMessage: Message;
+  newMessage: Message = new Message();
 
   constructor(private messageService: MessageService,
                private authentication: AuthenticationBasicService) { }
 
   ngOnInit() {
     this.getMessages();
-    this.newMessage = new Message();
-    this.newMessage.sender = this.authentication.getCurrentUser().username;
-    this.getMySent();
-    this.getMyReceived();
-    this.getAllMyMessages();
   }
 
   getMessages() {
+    const username = this.authentication.getCurrentUser().username;
     this.messageService.getAllMessages()
       .subscribe(
-        messages => this.messages = messages,
+        messages => {
+          this.messages = messages;
+          this.mySentMessages = this.messageService.filterBySender(messages, username);
+          this.myReceivedMessages = this.messageService.filterByDestination(messages, username);
+          this.unreadMessages = this.messageService.filterUnread(messages);
+        },
         error =>  this.errorMessage = <any>error.message);
-  }
-
-  getMySent () {
-    this.messageService.getAllMessages()
-      .subscribe(
-        messages => this.mySentMessages = this.messages
-          .filter(p => p.sender === this.newMessage.sender),
-        error =>  this.errorMessage = <any>error.message);
-  }
-
-  getMyReceived () {
-    this.messageService.getAllMessages()
-      .subscribe(
-        messages => this.myReceivedMessages = this.messages
-          .filter(p => p.destination ===  this.newMessage.sender),
-        error =>  this.errorMessage = <any>error.message);
-  }
-
-  getNotRead(): Message[] {
-    this.messageService.getAllMessages()
-      .subscribe(
-        messages => this.notRead = this.messages.filter(p => p.isRead ===  false),
-        error =>  this.errorMessage = <any>error.message);
-
-    return this.notRead;
-  }
-
-  getAllMyMessages() {
-    this.messageService.getAllMessages()
-      .subscribe(
-        messages => this.myAllMessages = this.mySentMessages.concat(this.myReceivedMessages),
-        error => this.errorMessage = <any>error.message);
   }
 
   getMessageByUri(uri) {
@@ -98,10 +67,11 @@ export class MessageComponent implements OnInit {
   addMessage() {
     this.messageService.addMessage(this.newMessage)
       .subscribe(
-        message  => this.messages.push(message),
+        message => {
+          this.messages.push(message);
+          this.toggleSendMessage();
+        },
         error =>  this.errorMessage = <any>error.message);
-    this.newMessage = new Message();
-    this.newMessage.sender = this.authentication.getCurrentUser().username;
   }
 
   // TODO
@@ -117,6 +87,13 @@ export class MessageComponent implements OnInit {
       .subscribe(
         deleted => this.messages = this.messages.filter(p => p.uri !== message.uri),
         error =>  this.errorMessage = <any>error.message);
+  }
+
+  toggleSendMessage() {
+    this.DivSendMessage = !this.DivSendMessage;
+    this.newMessage = new Message({
+      sender: this.authentication.getCurrentUser().username,
+    });
   }
 
 }

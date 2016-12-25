@@ -20,8 +20,7 @@
           <a routerLink="/messages" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
             <span class="visible-xs"><i class="fa fa-bell fa-2" aria-hidden="true"></i></span>
             <span class="hidden-xs">Messages</span>
-            <!--<span class="notification-icon"><span class="badge">{{countUnReadMessages()}}</span></span>-->
-            <span class="notification-icon"><span class="badge">0</span></span>
+            <span class="notification-icon"><span class="badge">{{unreadMessages?.length}}</span></span>
           </a>
         </li>
 

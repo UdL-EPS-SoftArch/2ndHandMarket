@@ -17,7 +17,7 @@ export class SearchAdvertisementService {
 
   // Search Advertisement
   searchAdvertisementByTitle(title: string): Observable<Advertisement[]> {
-    return this.http.get(`${environment.API}/advertisements/search/findByTitleContaining?word=${title}&sort=createdAt,desc`)
+    return this.http.get(`${environment.API}/advertisements/search/findByTitleContainingIgnoreCase?word=${title}&sort=createdAt,desc`)
       .map((res: Response) => {
         const advertisementApi = res.json()._embedded.advertisements;
         return advertisementApi

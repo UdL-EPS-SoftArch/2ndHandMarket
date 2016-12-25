@@ -14,14 +14,14 @@ export class PictureService {
   // GET /pictures
   getAllPictures(): Observable<Picture[]> {
     return this.http.get(`${environment.API}/pictures`)
-      .map((res: Response) => res.json()._embedded.pictures)
+      .map((res: Response) => res.json()._embedded.pictures.map(json => new Picture(json)))
       .catch((error: any) => Observable.throw(error.json()));
   }
 
   // GET /pictures/:id
   getPictureByUri(uri: string): Observable<Picture> {
     return this.http.get(`${environment.API}${uri}`)
-      .map((res: Response) => res.json())
+      .map((res: Response) => new Picture(res.json()))
       .catch((error: any) => Observable.throw(error.json()));
   }
 
@@ -33,7 +33,7 @@ export class PictureService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(`${environment.API}/pictures`, body, options)
-      .map((res: Response) => res.json())
+      .map((res: Response) => new Picture(res.json()))
       .catch((error: any) => Observable.throw(error.json()));
   }
 
@@ -61,7 +61,7 @@ export class PictureService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.put(`${environment.API}${uri}`, body, options)
-      .map((res: Response) => res.json())
+      .map((res: Response) => new Picture(res.json()))
       .catch((error: any) => Observable.throw(error.json()));
   }
 }

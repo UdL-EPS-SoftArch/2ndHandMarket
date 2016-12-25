@@ -13,7 +13,6 @@ import { SearchAdvertisementComponent } from './advertisement/search-advertiseme
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { MomentModule } from 'angular2-moment';
 import { ContactComponent } from './contact/contact.component';
-import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { BuyerComponent } from './buyer/buyer.component';
@@ -31,7 +30,7 @@ describe('App: Softarch1617Client', () => {
       declarations: [
         AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent,
-        PutAdvertisementComponent, SearchAdvertisementComponent,
+        SearchAdvertisementComponent,
         RegisterSellerComponent, BuyerComponent, BuyerOfferComponent,
         PersonalOffersListComponent,
         ContactComponent, MessageComponent,

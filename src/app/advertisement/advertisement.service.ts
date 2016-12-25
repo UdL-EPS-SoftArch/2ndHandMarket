@@ -29,8 +29,8 @@ export class AdvertisementService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  getAdvertisement(id: number): Observable<Advertisement> {
-    return this.http.get(`${environment.API}/advertisements/${id}`)
+  getAdvertisement(uri: string): Observable<Advertisement> {
+    return this.http.get(`${environment.API}${uri}`)
       .map((res: Response) => new Advertisement(res.json()))
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -38,10 +38,9 @@ export class AdvertisementService {
   // GET /advertisements/:id/pictures
   getAdvertisementPictures(advertisementUri: string): Observable<Picture[]> {
     return this.http.get(`${environment.API}${advertisementUri}/pictures`)
-      .map((res: Response) => {
-        const pictures = res.json()._embedded.pictures;
-        return pictures.sort((p1, p2) => p1.uri < p2.uri);
-      })
+      .map((res: Response) => res.json()._embedded.pictures
+        .map(item => new Picture(item))
+        .sort((p1, p2) => p2.id - p1.id))
       .catch((error: any) => Observable.throw(error.json()));
   }
 
@@ -59,8 +58,8 @@ export class AdvertisementService {
 
   // PUT /advertisements
   putAdvertisement(advertisement: Advertisement): Observable<Advertisement> {
-    if (!advertisement.id) {
-      throw new Error('Advertisement ID is required.');
+    if (!advertisement.uri) {
+      throw new Error('Advertisement URI is required.');
     }
 
     let body = JSON.stringify(advertisement);
@@ -68,23 +67,19 @@ export class AdvertisementService {
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.put(`${environment.API}/advertisements/${advertisement.id}`, body, options)
+    return this.http.put(`${environment.API}${advertisement.uri}`, body, options)
       .map((res: Response) => new Advertisement(res.json()))
       .catch((error: any) => Observable.throw(error.json()));
   }
 
   // DELETE /advertisements
-  deleteAdvertisement(id: number): Observable<Advertisement> {
+  deleteAdvertisement(uri: string): Observable<Advertisement> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', this.authentication.getCurrentUser().authorization);
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.delete(`${environment.API}/advertisements/${id}`, options)
+    return this.http.delete(`${environment.API}${uri}`, options)
       .map((res: Response) => res.ok)
       .catch((error: any) => Observable.throw(error.json()));
-  }
-
-  getUriId(advertisement: Advertisement): number {
-    return advertisement.uri ? Number(advertisement.uri.split('/')[1]) : null;
   }
 }

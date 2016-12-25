@@ -60,7 +60,9 @@ export class PostAdvertisementComponent implements OnInit {
       .subscribe(
         pictures => {
           this.loading = false;
-          this.picture = pictures.length > 0 && pictures[0];
+          if (pictures.length > 0) {
+            this.picture = pictures[0];
+          }
         },
         error => alert(error.errorMessage)
       );

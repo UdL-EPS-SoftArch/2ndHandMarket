@@ -19,7 +19,10 @@ export class PostAdvertisementComponent implements OnInit {
   picture: Picture = new Picture();
   errorMessage: string;
 
+  loading: boolean;
   isUpdating: boolean; // Marks advertisement as a creation / update.
+  isSubmitting: boolean = false;
+  isAddingPicture: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -33,6 +36,7 @@ export class PostAdvertisementComponent implements OnInit {
         if (!id) { return; }
 
         // Continue from an existing advertisement (update).
+        this.loading = true;
         this.isUpdating = true;
         const uri = `/advertisements/${id}`;
         this.retrieveAdvertisement(uri);
@@ -54,7 +58,10 @@ export class PostAdvertisementComponent implements OnInit {
   getAdvertisementPicture(advertisementUri: string) {
     this.advertisementService.getAdvertisementPictures(advertisementUri)
       .subscribe(
-        pictures => this.picture = pictures.length > 0 && pictures[0],
+        pictures => {
+          this.loading = false;
+          this.picture = pictures.length > 0 && pictures[0];
+        },
         error => alert(error.errorMessage)
       );
   }
@@ -63,6 +70,7 @@ export class PostAdvertisementComponent implements OnInit {
    * Send form.
    */
   sendForm() {
+    this.isSubmitting = true;
     const action = this.isUpdating
       ? this.advertisementService.putAdvertisement
       : this.advertisementService.addAdvertisement;
@@ -79,6 +87,7 @@ export class PostAdvertisementComponent implements OnInit {
           }
         },
         error => {
+          this.isSubmitting = false;
           this.errorMessage = error.errors ? <any>error.errors[0].message : <any>error.message;
           // TODO display error in each field
           alert(`Error: ${this.errorMessage}`);
@@ -93,7 +102,10 @@ export class PostAdvertisementComponent implements OnInit {
     this.picture.depicts = this.advertisement.uri;
     this.pictureService.updatePictureById(this.picture.uri, this.picture).subscribe(
       picture => this.redirectToAdvertisement(),
-      error => alert(error)
+      error => {
+        this.isSubmitting = false;
+        alert(error);
+      }
     );
   }
 
@@ -102,6 +114,7 @@ export class PostAdvertisementComponent implements OnInit {
   }
 
   addPicture(input) {
+    this.isAddingPicture = true;
     let file = input.files[0];
     let reader = new FileReader();
 
@@ -110,8 +123,14 @@ export class PostAdvertisementComponent implements OnInit {
       this.picture.content = resizeImage(event.target.result, file.type, 240, 240);
       this.pictureService.addPicture(this.picture)
         .subscribe(
-          picture => this.picture = picture,
-          error => alert(error.message));
+          picture => {
+            this.picture = picture;
+            this.isAddingPicture = false;
+          },
+          error => {
+            alert(error.message);
+            this.isAddingPicture = false;
+          });
     }, false);
 
     reader.readAsDataURL(file);

@@ -22,6 +22,8 @@ export class GetAdvertisementComponent implements OnInit {
   purchase: Purchase;
   picture: Picture;
 
+  isDeleting: boolean = false;
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private advertisementService: AdvertisementService,
@@ -74,12 +76,17 @@ export class GetAdvertisementComponent implements OnInit {
   }
 
   deleteAdvertisement(uri: string) {
+    this.isDeleting = true;
     this.advertisementService.deleteAdvertisement(uri).subscribe(
       advertisement => {
+        this.isDeleting = false;
         // Redirect to advertisements page.
         this.router.navigate(['/advertisements']);
       },
-      error => alert(`Error: ${error.message}`)
+      error => {
+        this.isDeleting = false;
+        alert(`Error: ${error.message}`);
+      }
     );
   }
 

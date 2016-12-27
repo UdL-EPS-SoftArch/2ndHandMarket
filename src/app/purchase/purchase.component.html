@@ -1,6 +1,6 @@
 <section class="purchase">
   <!-- Loading -->
-  <div class="page-box container" *ngIf="loading">Loading...</div>
+  <app-loading class="container" *ngIf="loading"></app-loading>
 
   <!-- Error -->
   <div class="page-box container" *ngIf="errorMessage">
@@ -16,7 +16,8 @@
     <h3>Confirm your order</h3>
     <span>You are about to buy "{{advertisements[0].title}}"</span>
     <strong>TOTAL: {{advertisements[0].price | currency:'USD':true}}</strong>
-    <div class="confirmation-buttons">
+    <app-loading class="container" *ngIf="isPurchasing"></app-loading>
+    <div class="confirmation-buttons" *ngIf="!isPurchasing">
       <a class="blankButton" routerLink="/advertisements/{{advertisements[0].id}}">Cancel</a>
       <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
     </div>

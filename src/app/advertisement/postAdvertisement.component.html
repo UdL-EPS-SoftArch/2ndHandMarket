@@ -1,4 +1,5 @@
-<section class="postAdvertisement container">
+<app-loading class="container" *ngIf="loading"></app-loading>
+<section class="postAdvertisement container" *ngIf="!loading">
   <header>
     <h2>{{advertisement.id ? advertisement.title : 'New Advertisement'}}</h2>
   </header>
@@ -30,9 +31,10 @@
             <input type="file" id="inputPicture" autofocus="" (change)="addPicture(file)" #file />
           </div>
           <div>
-            <div class="picture-container" *ngIf="picture" [hidden]="!picture.content">
+            <div class="picture-container" *ngIf="!isAddingPicture && picture" [hidden]="!picture.content">
               <img [src]="picture.content" />
             </div>
+            <app-loading class="container" *ngIf="isAddingPicture"></app-loading>
           </div>
         </div>
       </div>
@@ -89,9 +91,10 @@
       </div>
     </div>
     <div class="form-group">
-      <button class="highlightButton big">
+      <button class="highlightButton big" *ngIf="!isSubmitting">
         {{advertisement.id ? 'Update' : 'Publish'}}
       </button>
+      <app-loading *ngIf="isSubmitting"></app-loading>
     </div>
   </form>
 </section>

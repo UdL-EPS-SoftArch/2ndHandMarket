@@ -31,6 +31,7 @@ import { BasketProductComponent } from './basketProduct/basketProduct.component'
 import { SellerComponent } from './seller/seller.component';
 import { BasketProductService } from './basketProduct/basketProduct.service';
 import { MessageService } from './message/message.service';
+import { LoadingModule } from './loading/loading.module';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { MessageService } from './message/message.service';
     HttpModule,
     routing,
     LoginBasicModule,
-    DataTableModule
+    DataTableModule,
+    LoadingModule,
   ],
   declarations: [
     AppComponent,

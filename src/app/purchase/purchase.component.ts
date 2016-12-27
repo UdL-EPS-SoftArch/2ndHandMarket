@@ -16,6 +16,7 @@ export class PurchaseComponent implements OnInit {
   loading: boolean = true;
 
   hasPurchased: boolean = false;
+  isPurchasing: boolean = false;
   advertisements: Advertisement[];
   purchase: Purchase; // It will exist either if the product was already
                       // purchased, or the user has just completed the purchase.
@@ -59,6 +60,8 @@ export class PurchaseComponent implements OnInit {
   }
 
   submitPurchase() {
+    this.isPurchasing = true;
+
     // Create the final purchase first, based on the ngInit advertisement.
     this.purchase = new Purchase({ advertisements: this.advertisements, });
 
@@ -67,9 +70,13 @@ export class PurchaseComponent implements OnInit {
       purchase => {
         // Successful purchase $$$!
         this.purchase = purchase;
+        this.isPurchasing = false;
         this.hasPurchased = true;
       },
-      error => this.errorMessage = error.message
+      error => {
+        this.isPurchasing = false;
+        this.errorMessage = error.message;
+      }
     );
   }
 }

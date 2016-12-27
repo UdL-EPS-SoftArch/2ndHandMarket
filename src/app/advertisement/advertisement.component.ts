@@ -13,7 +13,7 @@ import { SearchAdvertisementService } from './search-advertisement/searchAdverti
 })
 export class AdvertisementComponent implements OnInit {
 
-  advertisements: Advertisement[] = [];
+  advertisements: Advertisement[];
   advertisementPictures: {} = {};
   errorMessage: string;
 

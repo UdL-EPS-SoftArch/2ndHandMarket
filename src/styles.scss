@@ -291,6 +291,14 @@ a.no-decorate {
   }
 }
 
+.h2Button.loadingButton {
+  border: 0;
+  font-size: 7px;
+  background-color: transparent;
+  display: inline-block;
+  text-align: left;
+}
+
 a.buy {
   @extend .highlightButton;
 

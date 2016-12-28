@@ -39,13 +39,13 @@
           </thead>
           <tbody *ngFor="let buyeroffer of buyeroffers">
             <tr>
-              <td>{{buyeroffer.advOffers}}</td>
-              <td>{{buyeroffer.advertisement_seller}}</td>
-              <td>{{buyeroffer.advertisement_iniPrice}}</td>
-              <td>{{buyeroffer.value}}</td>
-              <td>{{buyeroffer.date}}</td>
-              <td><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
-                <button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Update</button></td>
+              <td *ngIf="getUser()!=buyeroffer.advertisement_seller">{{buyeroffer.advertisement_title}}</td>
+              <td *ngIf="getUser()!=buyeroffer.advertisement_seller">{{buyeroffer.advertisement_seller}}</td>
+              <td *ngIf="getUser()!=buyeroffer.advertisement_seller">{{buyeroffer.advertisement_iniPrice}}</td>
+              <td *ngIf="getUser()!=buyeroffer.advertisement_seller">{{buyeroffer.value}}</td>
+              <td *ngIf="getUser()!=buyeroffer.advertisement_seller">{{buyeroffer.date}}</td>
+              <td *ngIf="getUser()!=buyeroffer.advertisement_seller"><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
+                  <button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Update</button></td>
             </tr>
           </tbody>
         </table>

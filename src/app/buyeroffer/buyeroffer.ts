@@ -2,9 +2,9 @@ import {Advertisement} from "../advertisement/advertisement";
 
 export class BuyerOffer {
   uri: string = '';
-  advOffers: string;
+  /*advOffers: string;*/
   advertisement: string;
-  buyer_id: number;
+  buyer_id: string;
   advertisement_id: number;
   advertisement_title: string;
   advertisement_seller: string;

@@ -24,7 +24,7 @@ export class ManageOffersComponent implements OnInit {
   newBuyerOffer: BuyerOffer = new BuyerOffer();
   newPurchase: Purchase = new Purchase();
   advertisements: Advertisement[] = [];
-  hasPurchased: boolean = false;
+  //hasPurchased: boolean = false;
 
   constructor(private buyerofferService: BuyerOfferService,
               private advertisementService: AdvertisementService,
@@ -52,13 +52,13 @@ export class ManageOffersComponent implements OnInit {
 
   submitOfferAndPurchase(offer : BuyerOffer, advert : Advertisement){
     advert.price = offer.value;
-    advert.owner = this.getCurrentUser();
+    advert.owner = String(offer.buyer_id);
     this.advertisements = [advert];
     this.newPurchase = new Purchase({ advertisements : this.advertisements, });
     this.purchase.addPurchase(this.newPurchase).subscribe(
       purchase => {
         this.newPurchase = purchase;
-        this.hasPurchased = true;
+        //this.hasPurchased = true;
       },
       error => this.errorMessage = error.message
     );

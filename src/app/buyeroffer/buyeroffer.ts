@@ -7,6 +7,7 @@ export class BuyerOffer {
   advertisement_iniPrice: number;
   value: number;
   date: Date;
+  accepted: boolean = false;
 
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);

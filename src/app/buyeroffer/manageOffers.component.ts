@@ -24,7 +24,9 @@ export class ManageOffersComponent implements OnInit {
   newBuyerOffer: BuyerOffer = new BuyerOffer();
   newPurchase: Purchase = new Purchase();
   advertisements: Advertisement[] = [];
+  tempAdvert: Advertisement = new Advertisement();
   //hasPurchased: boolean = false;
+  newAdvert : Advertisement[] = [];
 
   constructor(private buyerofferService: BuyerOfferService,
               private advertisementService: AdvertisementService,
@@ -51,17 +53,28 @@ export class ManageOffersComponent implements OnInit {
   }
 
   submitOfferAndPurchase(offer : BuyerOffer, advert : Advertisement){
-    advert.price = offer.value;
-    advert.owner = String(offer.buyer_id);
-    this.advertisements = [advert];
-    this.newPurchase = new Purchase({ advertisements : this.advertisements, });
+    this.rejectTheRestOfTheOffers(offer, advert);
+    this.tempAdvert = new Advertisement(advert);
+    offer.accepted = true;
+    this.tempAdvert.owner = String(offer.buyer_id);
+    this.tempAdvert.price = offer.value;
+    console.log(this.tempAdvert.owner + " " + this.tempAdvert.price);
+    this.newAdvert = [this.tempAdvert];
+    this.newPurchase = new Purchase({ newAdvert : this.newAdvert, });
     this.purchase.addPurchase(this.newPurchase).subscribe(
       purchase => {
         this.newPurchase = purchase;
-        //this.hasPurchased = true;
       },
       error => this.errorMessage = error.message
     );
+  }
+
+  rejectTheRestOfTheOffers(offer : BuyerOffer, advert : Advertisement){
+    for (let o of this.buyeroffers){
+      if(o.advertisement_title == advert.title && o.uri != offer.uri){
+        this.deleteBuyerOffer(o);
+      }
+    }
   }
 
   getBuyerOffer() {

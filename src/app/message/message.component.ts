@@ -45,7 +45,7 @@ export class MessageComponent implements OnInit {
           this.messages = messages;
           this.mySentMessages = this.messageService.filterBySender(messages, username);
           this.myReceivedMessages = this.messageService.filterByDestination(messages, username);
-          this.unreadMessages = this.messageService.filterUnread(messages);
+          this.unreadMessages = this.messageService.filterUnread(messages.filter(p => p.destination == username));
         },
         error =>  this.errorMessage = <any>error.message);
   }

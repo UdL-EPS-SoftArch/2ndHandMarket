@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { BasketProduct } from './basketProduct';
 import { BasketProductService } from './basketProduct.service';
 
@@ -12,7 +14,8 @@ export class BasketProductComponent implements OnInit {
   products: BasketProduct[];
   totalPrice: number;
 
-  constructor(private basketProductService: BasketProductService) { }
+  constructor(private basketProductService: BasketProductService,
+              private router: Router) { }
 
   ngOnInit() {
     this.products = this.getProducts();
@@ -33,6 +36,11 @@ export class BasketProductComponent implements OnInit {
       total += prod.product.price;
     }
     return total;
+  }
+
+  redirectToPurchase() {
+    const productIds = this.products.map((product) => product.product.id).join(',');
+    this.router.navigate([`/advertisements/${productIds}/purchase`]);
   }
 
 }

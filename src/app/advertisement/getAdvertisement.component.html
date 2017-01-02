@@ -53,13 +53,16 @@
         <h3>Owner Info</h3>
         Published by <a href="#">{{advertisement.owner}}</a>
       </div>
-      <div class="product-details row">
-        <h3>Product details</h3>
-        <span>Brand: {{advertisement.brand}}</span>
-        <span>Color: {{advertisement.color}}</span>
-        <span>Weight: {{advertisement.weight | number: '1.1-2'}}</span>
-        <span>Tags: {{advertisement.tags}}</span>
-      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="product-details col-md-12">
+      <h3>Product details</h3>
+      <span>Brand: {{advertisement.brand}}</span>
+      <span>Color: {{advertisement.color}}</span>
+      <span>Weight: {{advertisement.weight | number: '1.1-2'}}</span>
+      <span>Tags: {{advertisement.tags}}</span>
     </div>
   </div>
 </section>

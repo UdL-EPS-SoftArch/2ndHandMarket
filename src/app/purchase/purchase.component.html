@@ -34,7 +34,7 @@
     <strong>TOTAL: {{advertisementsTotal() | currency:'USD':true}}</strong>
     <app-loading class="container" *ngIf="isPurchasing"></app-loading>
     <div class="confirmation-buttons" *ngIf="!isPurchasing">
-      <a class="blankButton" routerLink="/advertisements/{{advertisements[0].id}}">Cancel</a>
+      <a class="blankButton" routerLink="/cart">Cancel</a>
       <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
     </div>
   </div>

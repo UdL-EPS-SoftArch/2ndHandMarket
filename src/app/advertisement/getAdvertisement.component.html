@@ -8,10 +8,15 @@
       <h2 class="title">
         {{advertisement.title}}
         <a class="h2Button" *ngIf="!isDeleting" routerLink="/advertisements/{{advertisement.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-        <a class="h2Button deleteButton" *ngIf="!isDeleting" (click)="deleteAdvertisement(advertisement.uri)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        <a class="h2Button deleteButton" *ngIf="!isDeleting" (click)="toggleDeleteAdvertisementConfirm()"><i class="fa fa-trash" aria-hidden="true"></i></a>
         <app-loading class="h2Button loadingButton" *ngIf="isDeleting"></app-loading>
       </h2>
       <span class="category">{{advertisement.category}}</span>
+      <form class="delete-confirm" *ngIf="hasDeleteConfirm" (submit)="deleteAdvertisementForm(advertisement.uri)">
+        Type in the advertisement title to confirm deletion.
+        <input name="confirmation-title" type="text" placeholder="Advertisement title" [(ngModel)]="deleteConfirmText" />
+        <input type="submit" value="Delete" />
+      </form>
       <div class="product-dates">
         <span>Created at: {{advertisement.createdAt | amDateFormat:'YYYY-MM-DD HH:mm'}}</span>
         <span>Modified at: {{advertisement.modifiedAt | amDateFormat:'YYYY-MM-DD HH:mm'}}</span>

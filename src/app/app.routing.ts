@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
   { path: 'advertisements/:id/edit', component: PostAdvertisementComponent },
   {
-    path: 'advertisements/:id/purchase',
+    path: 'advertisements/:ids/purchase',
     component: PurchaseComponent,
     canActivate: [LoggedInGuard]
   },

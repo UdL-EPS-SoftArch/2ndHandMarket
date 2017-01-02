@@ -31,11 +31,10 @@
         <span class="sold">Sold</span>
       </div>
       <div class="action-buttons" *ngIf="!purchase">
-        <a routerLink="/advertisements/{{advertisement.id}}/purchase" class="highlightButton">
-          Buy
-        </a>
         <button class="highlightButton" (click)="addProduct(advertisement)">Add to Cart</button>
-        <a href="#" class="blankButton">Add to Wishlist</a>
+        or 
+        <a routerLink="/advertisements/{{advertisement.id}}/purchase">purchase now</a>
+        <a href="#" class="blankButton" style="margin-top:10px">Add to Wishlist</a>
         <div *ngIf="advertisement.negotiablePrice && getCurrentUser() != advertisement.owner">
           <app-buyeroffer [advertisement]="advertisement"></app-buyeroffer>
         </div>

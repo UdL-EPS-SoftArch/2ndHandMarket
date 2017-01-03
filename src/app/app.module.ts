@@ -13,7 +13,7 @@ import { GetAdvertisementComponent } from './advertisement/getAdvertisement.comp
 import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
-import { DateFormatPipe } from 'angular2-moment';
+import { MomentModule } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
@@ -26,7 +26,6 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { DataTableModule } from 'angular2-datatable';
-import { ComponentsHelper } from 'ng2-bootstrap';
 import { BasketProductComponent } from './basketProduct/basketProduct.component';
 import { SellerComponent } from './seller/seller.component';
 import { BasketProductService } from './basketProduct/basketProduct.service';
@@ -42,6 +41,7 @@ import { LoadingModule } from './loading/loading.module';
     Auth0Module,
     DataTableModule,
     LoadingModule,
+    MomentModule
   ],
   declarations: [
     AppComponent,
@@ -58,7 +58,6 @@ import { LoadingModule } from './loading/loading.module';
     PurchaseComponent,
     SearchAdvertisementComponent,
     ContactComponent,
-    DateFormatPipe,
     BuyerComponent,
     BuyerOfferComponent,
     PersonalOffersListComponent,
@@ -70,7 +69,7 @@ import { LoadingModule } from './loading/loading.module';
     BasketProductComponent
   ],
   providers: [
-    appRoutingProviders, Auth0Service, LoggedInGuard, ComponentsHelper, BasketProductService, MessageService
+    appRoutingProviders, Auth0Service, LoggedInGuard, BasketProductService, MessageService
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })

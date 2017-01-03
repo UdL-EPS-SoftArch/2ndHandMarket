@@ -4,8 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BuyerOffer } from './buyeroffer';
 import { BuyerOfferService } from './buyeroffer.service';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
-
+import { Auth0Service } from '../auth0/auth0.service';
 
 
 @Component({
@@ -21,7 +20,7 @@ export class UpdateOfferComponent implements OnInit {
   newBuyerOffer: BuyerOffer = new BuyerOffer();
 
   constructor(private buyerofferService: BuyerOfferService,
-              private authentication: AuthenticationBasicService) { }
+              private authentication: Auth0Service) { }
 
   ngOnInit() {
     this.getBuyerOffer();

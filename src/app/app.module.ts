@@ -68,7 +68,7 @@ import { LoadingModule } from './loading/loading.module';
     ManageOffersComponent,
     ProfileComponent,
     SellerComponent,
-    BasketProductComponent
+    BasketProductComponent,
     UpdateOfferComponent,
     ProfileComponent
   ],

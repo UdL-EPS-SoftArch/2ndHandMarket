@@ -6,7 +6,7 @@ import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Resp
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AdvertisementService } from './advertisement.service';
 import { Advertisement } from './advertisement';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 import { Picture } from './picture/picture';
 
 describe('Service: Advertisement', () => {
@@ -62,7 +62,7 @@ describe('Service: Advertisement', () => {
     TestBed.configureTestingModule({
       providers: [
         AdvertisementService,
-        AuthenticationBasicService,
+        Auth0Service,
         MockBackend,
         BaseRequestOptions,
         {

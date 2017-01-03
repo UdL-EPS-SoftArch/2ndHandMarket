@@ -9,7 +9,7 @@ import { GetAdvertisementComponent } from './advertisement/getAdvertisement.comp
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
-import { LoggedInGuard } from './login-basic/loggedin.guard';
+import { LoggedInGuard } from './auth0/loggedin.guard';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';

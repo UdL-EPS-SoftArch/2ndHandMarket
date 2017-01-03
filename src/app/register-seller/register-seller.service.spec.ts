@@ -3,13 +3,14 @@ import { TestBed, inject, async} from '@angular/core/testing';
 import { RegisterSellerService} from './register-seller.service';
 import { HttpModule, BaseRequestOptions, Http, XHRBackend} from '@angular/http';
 import { MockBackend} from '@angular/http/testing';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 beforeEach(async(() => {
   TestBed.configureTestingModule({
     providers: [
+      Http,
       RegisterSellerService,
-      AuthenticationBasicService,
+      Auth0Service,
       MockBackend,
       BaseRequestOptions,
       {

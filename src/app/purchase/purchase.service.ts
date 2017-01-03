@@ -2,7 +2,7 @@ import { Response, Http, Headers, RequestOptions } from '@angular/http';
 import { Observable} from 'rxjs';
 import { Injectable} from '@angular/core';
 
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 import { environment } from '../../environments/environment';
 import { Purchase } from './purchase';
 
@@ -10,7 +10,7 @@ import { Purchase } from './purchase';
 export class PurchaseService {
 
   constructor(private http: Http,
-              private authentication: AuthenticationBasicService) {
+              private authentication: Auth0Service) {
   }
 
   // GET /purchases/:id

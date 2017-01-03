@@ -2,7 +2,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { BasketProductService } from './basketProduct.service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Response } from '@angular/http';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 
 

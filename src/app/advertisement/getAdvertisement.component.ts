@@ -6,7 +6,7 @@ import { AdvertisementService } from './advertisement.service';
 import { Picture } from './picture/picture';
 import { Purchase } from '../purchase/purchase';
 import { PurchaseService } from '../purchase/purchase.service';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 import { BasketProductService} from '../basketProduct/basketProduct.service';
 import { BasketProduct} from '../basketProduct/basketProduct';
 
@@ -30,7 +30,7 @@ export class GetAdvertisementComponent implements OnInit {
               private router: Router,
               private advertisementService: AdvertisementService,
               private purchaseService: PurchaseService,
-              private authentication: AuthenticationBasicService,
+              private authentication: Auth0Service,
               private basketProductService: BasketProductService) {
   }
 

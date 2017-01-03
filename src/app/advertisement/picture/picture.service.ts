@@ -3,13 +3,13 @@ import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {Picture} from './picture';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {AuthenticationBasicService} from '../../login-basic/authentication-basic.service';
+import {Auth0Service} from '../../auth0/auth0.service';
 
 @Injectable()
 export class PictureService {
 
   constructor (private http: Http,
-               private authentication: AuthenticationBasicService) { }
+               private authentication: Auth0Service) { }
 
   // GET /pictures
   getAllPictures(): Observable<Picture[]> {

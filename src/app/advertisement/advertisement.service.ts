@@ -3,14 +3,14 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Advertisement } from './advertisement';
 import { environment } from '../../environments/environment';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 import { Picture } from './picture/picture';
 
 @Injectable()
 export class AdvertisementService {
 
   constructor (private http: Http,
-               private authentication: AuthenticationBasicService) {
+               private authentication: Auth0Service) {
     this.getAllAdvertisements = this.getAllAdvertisements.bind(this);
     this.getAdvertisement = this.getAdvertisement.bind(this);
     this.getAdvertisementPictures = this.getAdvertisementPictures.bind(this);

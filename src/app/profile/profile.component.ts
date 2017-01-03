@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../login-basic/user';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { User } from '../auth0/user';
+import { Auth0Service } from '../auth0/auth0.service';
 import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  providers: [ProfileService, AuthenticationBasicService],
+  providers: [ProfileService, Auth0Service],
 })
 export class ProfileComponent implements OnInit {
   isEditing: boolean = false;
@@ -17,11 +17,11 @@ export class ProfileComponent implements OnInit {
   newPasswordRepeat: string = '';
 
   constructor(private profileService: ProfileService,
-               private authenticationBasicService: AuthenticationBasicService) {
+              private authentication: Auth0Service) {
   }
 
   ngOnInit() {
-    const loggedInAs = this.authenticationBasicService.getCurrentUser().username;
+    const loggedInAs = this.authentication.getCurrentUser().username;
 
     // Retrieve the current logged in user information.
     this.profileService.getUser(loggedInAs)
@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
     // one only if its not blank.
     const newPassword = this.newPassword
       ? this.newPassword
-      : this.authenticationBasicService.getCurrentUser().password;
+      : this.authentication.getCurrentUser().password;
     this.user.password = newPassword;
 
     this.profileService.putUser(this.user)
@@ -61,10 +61,8 @@ export class ProfileComponent implements OnInit {
           this.newPassword = this.newPasswordRepeat = '';
           // Also, update the new user into the storage, so that the user
           // doesn't have to log back in again.
-          this.user.authorization = this.authenticationBasicService
-            .generateAuthorization(this.user.username, newPassword);
-          this.user.password = newPassword;
-          this.authenticationBasicService.storeCurrentUser(this.user);
+          this.user.authorization = this.authentication.getCurrentUser().authorization;
+          this.authentication.storeCurrentUser(this.user);
 
           this.toggleEdit();
         },

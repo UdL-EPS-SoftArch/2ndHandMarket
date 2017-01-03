@@ -6,7 +6,7 @@ import { BuyerOffer } from './buyeroffer';
 import { BuyerOfferService } from './buyeroffer.service';
 import { AdvertisementService } from '../advertisement/advertisement.service';
 import { Advertisement } from '../advertisement/advertisement';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class ManageOffersComponent implements OnInit {
 
   constructor(private buyerofferService: BuyerOfferService,
               private advertisementService: AdvertisementService,
-              private authentication: AuthenticationBasicService) { }
+              private authentication: Auth0Service) { }
 
   ngOnInit() {
     this.getBuyerOffer();

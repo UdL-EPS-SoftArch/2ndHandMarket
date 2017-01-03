@@ -8,7 +8,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { TestBed, async, inject } from '@angular/core/testing';
 
 import { Advertisement } from '../advertisement/advertisement';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 import { Purchase } from './purchase';
 import { PurchaseService } from './purchase.service';
 
@@ -20,7 +20,7 @@ describe('Service: Purchase', () => {
     TestBed.configureTestingModule({
       providers: [
         PurchaseService,
-        AuthenticationBasicService,
+        Auth0Service,
         MockBackend,
         BaseRequestOptions,
         {

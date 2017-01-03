@@ -17,9 +17,9 @@ import { DateFormatPipe } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
-import { LoginBasicModule } from './login-basic/login-basic.module';
-import { LoggedInGuard } from './login-basic/loggedin.guard';
-import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
+import { Auth0Module } from './auth0/auth0.module';
+import { LoggedInGuard } from './auth0/loggedin.guard';
+import { Auth0Service } from './auth0/auth0.service';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { BuyerComponent } from './buyer/buyer.component';
@@ -39,7 +39,7 @@ import { LoadingModule } from './loading/loading.module';
     FormsModule,
     HttpModule,
     routing,
-    LoginBasicModule,
+    Auth0Module,
     DataTableModule,
     LoadingModule,
   ],
@@ -70,7 +70,7 @@ import { LoadingModule } from './loading/loading.module';
     BasketProductComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService, MessageService
+    appRoutingProviders, Auth0Service, LoggedInGuard, ComponentsHelper, BasketProductService, MessageService
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })

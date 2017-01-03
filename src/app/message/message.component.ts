@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from './message';
 import { MessageService } from './message.service';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css'],
-  providers: [MessageService, AuthenticationBasicService]
+  providers: [MessageService, Auth0Service]
 })
 export class MessageComponent implements OnInit {
 
@@ -31,7 +31,7 @@ export class MessageComponent implements OnInit {
   newMessage: Message = new Message();
 
   constructor(private messageService: MessageService,
-               private authentication: AuthenticationBasicService) { }
+               private authentication: Auth0Service) { }
 
   ngOnInit() {
     this.getMessages();

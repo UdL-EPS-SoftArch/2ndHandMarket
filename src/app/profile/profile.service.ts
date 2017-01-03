@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { User } from '../login-basic/user';
+import { User } from '../auth0/user';
 import { environment } from '../../environments/environment';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 @Injectable()
 export class ProfileService {
 
   constructor(private http: Http,
-              private authentication: AuthenticationBasicService) {
+              private authentication: Auth0Service) {
   }
 
   // GET /users/<username>

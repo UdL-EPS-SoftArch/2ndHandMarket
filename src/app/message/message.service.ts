@@ -3,13 +3,13 @@ import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {Message} from './message';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
+import {Auth0Service} from '../auth0/auth0.service';
 
 @Injectable()
 export class MessageService {
 
   constructor (private http: Http,
-               private authentication: AuthenticationBasicService) { }
+               private authentication: Auth0Service) { }
 
   // GET /privateMessages
   getAllMessages(): Observable<Message[]> {

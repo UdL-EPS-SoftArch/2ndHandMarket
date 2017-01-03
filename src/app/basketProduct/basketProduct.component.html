@@ -21,8 +21,8 @@
         </div>
       </li>
     </ul>
-  <h4 *ngIf=" products.length > 0"><strong>Total price: $</strong>{{totalPrice}}</h4>
-  <button *ngIf=" products.length > 0" class="highlightButtonTest">Buy</button>
+  <h4 *ngIf="products.length > 0">Total price: <strong>{{totalPrice | currency:'USD':true }}</strong></h4>
+  <button class="highlightButtonTest" *ngIf="products.length > 0" (click)="this.redirectToPurchase()">Buy</button>
 </section>
 
 

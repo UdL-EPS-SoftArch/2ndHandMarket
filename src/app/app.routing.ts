@@ -26,13 +26,13 @@ const appRoutes: Routes = [
   { path: 'advertisements/:id', component: GetAdvertisementComponent },
   { path: 'advertisements/:id/edit', component: PostAdvertisementComponent },
   {
-    path: 'advertisements/:id/purchase',
+    path: 'advertisements/:ids/purchase',
     component: PurchaseComponent,
     canActivate: [LoggedInGuard]
   },
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
-  { path: 'basketProducts', component: BasketProductComponent},
+  { path: 'cart', component: BasketProductComponent},
   { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },

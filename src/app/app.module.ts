@@ -33,6 +33,7 @@ import { BasketProductService } from './basketProduct/basketProduct.service';
 import { MessageService } from './message/message.service';
 import { LoadingModule } from './loading/loading.module';
 import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
+import { AdvanceSearchAdvertisementComponent } from './advertisement/search-advertisement/advanceSearch-advertisement.component';
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
     FooterComponent,
     PurchaseComponent,
     SearchAdvertisementComponent,
+    AdvanceSearchAdvertisementComponent,
     ContactComponent,
     BuyerComponent,
     BuyerOfferComponent,

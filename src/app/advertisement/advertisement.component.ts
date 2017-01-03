@@ -28,6 +28,8 @@ export class AdvertisementComponent implements OnInit {
           this.getAdvertisements(this.advertisementService.getAllAdvertisements);
         } else {
           this.getAdvertisements(this.searchAdvertisementService.searchAdvertisementByTitle, queryParam.title);
+          this.getAdvertisements(this.searchAdvertisementService.searchAdvertisementByTag, queryParam.tag);
+          this.getAdvertisements(this.searchAdvertisementService.searchAdvertisementByCategory, queryParam.category);
         }
       }
     );

@@ -4,6 +4,10 @@
     <input name="searchInput" type="text" placeholder="Need something?" [(ngModel)]="searchInput" />
   </form>
 </div>
+<li>
+  <a routerLink="/search" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+    <span class="hidden-xs">Advance Search</span></a>
+</li>
 
 <a href="#nav-search-expanded" class="visible-xs icon" data-toggle="collapse">
   <i class="fa fa-search" aria-hidden="true"></i>

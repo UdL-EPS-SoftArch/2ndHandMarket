@@ -1,4 +1,7 @@
 <section class="purchase">
+  <!-- Loading -->
+  <app-loading class="container" *ngIf="loading"></app-loading>
+
   <!-- Error -->
   <div class="page-box container" *ngIf="errorMessage">
     <h3>There was an error when processing your purchase</h3>
@@ -8,28 +11,43 @@
     </div>
   </div>
 
-  <div *ngIf="!loading">
-    <!-- Confirmation -->
-    <div class="page-box container" *ngIf="!errorMessage && !hasPurchased">
-      <h3>Confirm your order</h3>
-      <span>You are about to buy "{{advertisement.title}}"</span>
-      <strong>TOTAL: {{advertisement.price | currency:'USD':true}}</strong>
-      <div class="confirmation-buttons">
-        <a class="blankButton" routerLink="/advertisements/{{advertisement.id}}">Cancel</a>
-        <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
-      </div>
+  <!-- Confirmation -->
+  <div class="page-box container" *ngIf="!loading && !errorMessage && !hasPurchased">
+    <h3>Confirm your order</h3>
+    <span>You are about to buy {{advertisements.length}} {{advertisements.length > 1 ? 'items' : 'item'}}:</span>
+    <table class="table table-hover table-products">
+      <thead>
+        <tr>
+          <td>#</td>
+          <td>Product</td>
+          <td>Seller</td>
+          <td>Price</td>
+        </tr>
+      </thead>
+      <tr *ngFor="let advertisement of advertisements">
+        <td>{{advertisement.id}}</td>
+        <td><a routerLink="/advertisements/{{advertisement.id}}">{{advertisement.title}}</a></td>
+        <td>{{advertisement.owner}}
+        <td>{{advertisement.price | currency:'USD':true}}</td>
+      </tr>
+    </table>
+    <strong>TOTAL: {{advertisementsTotal() | currency:'USD':true}}</strong>
+    <app-loading class="container" *ngIf="isPurchasing"></app-loading>
+    <div class="confirmation-buttons" *ngIf="!isPurchasing">
+      <a class="blankButton" routerLink="/cart">Cancel</a>
+      <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
     </div>
+  </div>
 
-    <!-- Success -->
-    <div class="page-box container" *ngIf="!errorMessage && hasPurchased">
-      <h3>Purchase completed!</h3>
-      <span>
-        Thank you for buying "{{advertisement.title}}".<br>
-        You can check your purchases on your user panel.
+  <!-- Success -->
+  <div class="page-box container" *ngIf="!errorMessage && hasPurchased">
+    <h3>Purchase completed!</h3>
+    <span>
+        Thank you for your purchase.<br>
+        You can check your purchases history on your user panel.
       </span>
-      <div class="center">
-        <a routerLink="/advertisements">Go back to the advertisement list</a>
-      </div>
+    <div class="center">
+      <a routerLink="/advertisements">Go back to the advertisement list</a>
     </div>
   </div>
 </section>

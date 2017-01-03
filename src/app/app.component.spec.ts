@@ -9,12 +9,10 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { FooterComponent } from './footer/footer.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { FormsModule } from '@angular/forms';
-import { SearchAdvertisementComponent
-} from './search-advertisement/search-advertisement.component';
+import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { MomentModule } from 'angular2-moment';
 import { ContactComponent } from './contact/contact.component';
-import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { BuyerComponent } from './buyer/buyer.component';
@@ -24,6 +22,9 @@ import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ComponentsHelper } from 'ng2-bootstrap';
+import { BasketProductComponent } from './basketProduct/basketProduct.component';
+import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
+import { LoadingComponent } from './loading/loading.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -31,11 +32,13 @@ describe('App: Softarch1617Client', () => {
       declarations: [
         AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent,
-        PutAdvertisementComponent, SearchAdvertisementComponent,
+        SearchAdvertisementComponent,
         RegisterSellerComponent, BuyerComponent, BuyerOfferComponent,
         PersonalOffersListComponent, UpdateOfferComponent,
         ContactComponent, MessageComponent,
-        ProfileComponent, PurchaseComponent
+        ProfileComponent, PurchaseComponent,
+        BasketProductComponent, ManageOffersComponent,
+        LoadingComponent
       ],
       imports: [
         routing, FormsModule, MomentModule

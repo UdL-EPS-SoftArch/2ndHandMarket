@@ -218,8 +218,9 @@ a.no-decorate {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
-  width: 100%;
+  width: 90%;
   height: 50px;
+  margin-left: 5%;
 
   &:link, &:hover, &:active {
     color: #fff;
@@ -288,6 +289,14 @@ a.no-decorate {
   &:hover {
     background-color: #dbe3ea;
   }
+}
+
+.h2Button.loadingButton {
+  border: 0;
+  font-size: 7px;
+  background-color: transparent;
+  display: inline-block;
+  text-align: left;
 }
 
 a.buy {

@@ -1,10 +1,8 @@
-export class Picture {
-  uri: string = '';
-  filename: string = '';
-  content: string = '';
-  depicts: string;
+import API from '../../../api';
 
-  constructor(values: Object = {}) {
-    (<any>Object).assign(this, values);
-  }
+export class Picture extends API {
+  uri: string;
+  filename: string;
+  content: string;
+  depicts: string;
 }

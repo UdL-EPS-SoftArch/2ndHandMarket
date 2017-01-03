@@ -4,7 +4,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
 import { ProfileService } from './profile.service';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 describe('Component: Advertisement', () => {
 
@@ -15,11 +15,11 @@ describe('Component: Advertisement', () => {
   });
 
   it('should create an instance', () => {
-    inject([ProfileService, AuthenticationBasicService],
-      (advertisementService, authenticationBasicService) => {
+    inject([ProfileService, Auth0Service],
+      (advertisementService, Auth0Service) => {
       let component = new ProfileComponent(
         advertisementService,
-        authenticationBasicService
+        Auth0Service
       );
       expect(component).toBeTruthy();
     });

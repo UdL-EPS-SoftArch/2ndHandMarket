@@ -6,7 +6,9 @@ import { AdvertisementService } from './advertisement.service';
 import { Picture } from './picture/picture';
 import { Purchase } from '../purchase/purchase';
 import { PurchaseService } from '../purchase/purchase.service';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
+import { BasketProductService} from '../basketProduct/basketProduct.service';
+import { BasketProduct} from '../basketProduct/basketProduct';
 
 @Component({
   selector: 'app-get-advertisement',
@@ -16,15 +18,20 @@ import { AuthenticationBasicService } from '../login-basic/authentication-basic.
 })
 export class GetAdvertisementComponent implements OnInit {
 
-  advertisement: Advertisement = new Advertisement();
+  advertisement: Advertisement;
   purchase: Purchase;
-  picture: Picture = new Picture();
+  picture: Picture;
+
+  hasDeleteConfirm: boolean = false;
+  deleteConfirmText: String = '';
+  isDeleting: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private advertisementService: AdvertisementService,
               private purchaseService: PurchaseService,
-              private authentication: AuthenticationBasicService) {
+              private authentication: Auth0Service,
+              private basketProductService: BasketProductService) {
   }
 
   /**
@@ -36,64 +43,75 @@ export class GetAdvertisementComponent implements OnInit {
     this.route.params
       .map(params => params['id'])
       .subscribe((id) => {
-        this.advertisement.id = id;
-        this.getAdvertisement();
+        const uri = `/advertisements/${id}`;
+        this.getAdvertisement(uri);
       });
   }
 
-  getAdvertisement() {
-    const id = this.advertisement.id;
-    this.advertisementService.getAdvertisement(id).subscribe(
+  getAdvertisement(uri: string) {
+    this.advertisementService.getAdvertisement(uri).subscribe(
       advertisement => {
         this.advertisement = advertisement;
 
-        // The API does not provide us the id directly, so we'll store the one
-        // we have from the URL.
-        this.advertisement.id = id;
-
-        // The advertisement picture is stored somewhere (let's query the API
-        // for it now that we have the advertisement).
-        this.getAdvertisementPicture();
-
-        // Check advertisement purchase status.
-        this.getAdvertisementPurchase();
+        // The advertisement does exist, let's query the rest.
+        this.getAdvertisementPicture(this.advertisement.uri);
+        this.getAdvertisementPurchase(this.advertisement.uri);
       },
       error => alert('Error: Failed to retrieve advertisement!')
     );
   }
 
-  getAdvertisementPicture() {
-    this.advertisementService.getAdvertisementPictures(this.advertisement.uri)
+  getAdvertisementPicture(advertisementUri: string) {
+    this.advertisementService.getAdvertisementPictures(advertisementUri)
       .subscribe(
         pictures => this.picture = pictures.length > 0 && pictures[0],
-        error => alert(error.errorMessage)
+        error => null, // Could be 404 if pictures were never created.
       );
   }
 
-  getAdvertisementPurchase() {
-    // HTML will hide Buy & Add to Wishlist buttons if the product has already
-    // been purchased.
-    this.purchaseService.getPurchaseByAdvertisement(this.advertisement)
+  getAdvertisementPurchase(advertisementUri: string) {
+    this.purchaseService.getPurchaseByAdvertisement(advertisementUri)
       .subscribe(
         purchase => this.purchase = purchase,
         error => null, // Expecting a 404 if there is no purchase.
       );
   }
 
-  deleteAdvertisement() {
-    const id = this.advertisement.id;
-    this.advertisementService.deleteAdvertisement(id).subscribe(
-      advertisement => {
-        this.advertisement = advertisement;
+  toggleDeleteAdvertisementConfirm() {
+    this.hasDeleteConfirm = !this.hasDeleteConfirm;
+  }
 
+  deleteAdvertisementForm(uri: string) {
+    const deleteConfirmText = this.deleteConfirmText.trim().toLowerCase();
+    const advertisementTitle = this.advertisement.title.trim().toLowerCase();
+    if (deleteConfirmText === advertisementTitle) {
+      this.deleteAdvertisement(uri);
+    }
+  }
+
+  deleteAdvertisement(uri: string) {
+    this.hasDeleteConfirm = false;
+    this.isDeleting = true;
+    this.advertisementService.deleteAdvertisement(uri).subscribe(
+      advertisement => {
+        this.isDeleting = false;
         // Redirect to advertisements page.
         this.router.navigate(['/advertisements']);
       },
-      error => alert(`Error: ${error.message}`)
+      error => {
+        this.isDeleting = false;
+        alert(`Error: ${error.message}`);
+      }
     );
   }
 
   getCurrentUser(): string {
     return this.authentication.getCurrentUser().username;
+  }
+
+  addProduct(advertisement): void {
+    let basketProduct: BasketProduct = new BasketProduct();
+    basketProduct.product = advertisement;
+    this.basketProductService.addProduct(basketProduct);
   }
 }

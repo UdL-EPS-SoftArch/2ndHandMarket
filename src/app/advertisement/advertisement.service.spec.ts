@@ -6,12 +6,13 @@ import { BaseRequestOptions, XHRBackend, Http, HttpModule, ResponseOptions, Resp
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AdvertisementService } from './advertisement.service';
 import { Advertisement } from './advertisement';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 import { Picture } from './picture/picture';
 
 describe('Service: Advertisement', () => {
   const firstAdvertisement = new Advertisement({
     title: 'first',
+    uri: '/advertisement/1',
     description: '',
     price: 1.0,
     negotiablePrice: false,
@@ -25,6 +26,7 @@ describe('Service: Advertisement', () => {
 
   const secondAdvertisement = new Advertisement({
     title: 'second',
+    uri: '/advertisement/2',
     description: '',
     price: 2.0,
     negotiablePrice: false,
@@ -60,7 +62,7 @@ describe('Service: Advertisement', () => {
     TestBed.configureTestingModule({
       providers: [
         AdvertisementService,
-        AuthenticationBasicService,
+        Auth0Service,
         MockBackend,
         BaseRequestOptions,
         {
@@ -80,10 +82,10 @@ describe('Service: Advertisement', () => {
       async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const apiResponse = new ResponseOptions({
           body: {
-            '_embedded': {
-              'advertisements': [
+            _embedded: {
+              advertisements: [
                 firstAdvertisement,
-                secondAdvertisement
+                secondAdvertisement,
               ]
             }
           }
@@ -107,7 +109,7 @@ describe('Service: Advertisement', () => {
     it('should return an advertisement',
       async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const apiResponse = new ResponseOptions({
-          body: firstAdvertisement
+          body: JSON.stringify(firstAdvertisement)
         });
 
         mockBackend.connections.subscribe((connection: MockConnection) => {
@@ -117,6 +119,7 @@ describe('Service: Advertisement', () => {
         service.getAdvertisement(1).subscribe((data) => {
           expect(data.title).toEqual(firstAdvertisement.title);
           expect(data.description).toEqual(firstAdvertisement.description);
+          expect(data.id).toEqual(1);
         });
       })));
   });
@@ -188,6 +191,7 @@ describe('Service: Advertisement', () => {
           expect(data.title).toEqual(firstAdvertisement.title);
           expect(data.description).toEqual(firstAdvertisement.description);
           expect(data.price).toEqual(firstAdvertisement.price);
+          expect(data.id).toEqual(1);
         });
       })));
   });
@@ -196,13 +200,13 @@ describe('Service: Advertisement', () => {
     it ('should update the advertisement',
       async(inject([ MockBackend, AdvertisementService ], (mockBackend, service) => {
         const notUpdatedAdvertisement = new Advertisement({
-          id: 1,
+          uri: '/advertisements/1',
           title: 'something',
-          price: 2
+          price: 2,
         });
         const apiResponse = new ResponseOptions({
           status: 201,
-          body: secondAdvertisement
+          body: JSON.stringify(secondAdvertisement),
         });
 
         mockBackend.connections.subscribe((connection: MockConnection) => {
@@ -213,6 +217,7 @@ describe('Service: Advertisement', () => {
           expect(data.title).toEqual(secondAdvertisement.title);
           expect(data.description).toEqual(secondAdvertisement.description);
           expect(data.price).toEqual(secondAdvertisement.price);
+          expect(data.id).toEqual(2);
         });
       })));
   });

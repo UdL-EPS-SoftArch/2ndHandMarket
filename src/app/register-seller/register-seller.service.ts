@@ -3,14 +3,13 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { RegisterSeller } from './register-seller';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 @Injectable()
 export class RegisterSellerService {
 
-
   constructor(private http: Http,
-              private authentication: AuthenticationBasicService) { }
+              private authentication: Auth0Service) { }
 
   // GET /seller
   getAllSellers(): Observable<RegisterSeller[]> {

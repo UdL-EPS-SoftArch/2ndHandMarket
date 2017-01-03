@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from './message';
 import { MessageService } from './message.service';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css'],
-  providers: [MessageService, AuthenticationBasicService]
+  providers: [MessageService, Auth0Service]
 })
 export class MessageComponent implements OnInit {
 
@@ -22,53 +22,32 @@ export class MessageComponent implements OnInit {
   mySentMessages: Message[] = [];
   myReceivedMessages: Message[] = [];
   myAllMessages: Message[] = [];
+  unreadMessages: Message[] = [];
 
   messagesUri: Message[] = [];
   messagesTitle: Message[] = [];
 
   errorMessage: string;
-  newMessage: Message;
+  newMessage: Message = new Message();
 
   constructor(private messageService: MessageService,
-               private authentication: AuthenticationBasicService) { }
+               private authentication: Auth0Service) { }
 
   ngOnInit() {
     this.getMessages();
-    this.newMessage = new Message();
-    this.newMessage.sender = this.authentication.getCurrentUser().username;
-    this.getMySent();
-    this.getMyReceived();
-    this.getAllMyMessages();
   }
 
   getMessages() {
+    const username = this.authentication.getCurrentUser().username;
     this.messageService.getAllMessages()
       .subscribe(
-        messages => this.messages = messages,
+        messages => {
+          this.messages = messages;
+          this.mySentMessages = this.messageService.filterBySender(messages, username);
+          this.myReceivedMessages = this.messageService.filterByDestination(messages, username);
+          this.unreadMessages = this.messageService.filterUnread(messages);
+        },
         error =>  this.errorMessage = <any>error.message);
-  }
-
-  getMySent () {
-    this.messageService.getAllMessages()
-      .subscribe(
-        messages => this.mySentMessages = this.messages
-          .filter(p => p.sender === this.newMessage.sender),
-        error =>  this.errorMessage = <any>error.message);
-  }
-
-  getMyReceived () {
-    this.messageService.getAllMessages()
-      .subscribe(
-        messages => this.myReceivedMessages = this.messages
-          .filter(p => p.destination ===  this.newMessage.sender),
-        error =>  this.errorMessage = <any>error.message);
-  }
-
-  getAllMyMessages() {
-    this.messageService.getAllMessages()
-      .subscribe(
-        messages => this.myAllMessages = this.mySentMessages.concat(this.myReceivedMessages),
-        error => this.errorMessage = <any>error.message);
   }
 
   getMessageByUri(uri) {
@@ -88,10 +67,19 @@ export class MessageComponent implements OnInit {
   addMessage() {
     this.messageService.addMessage(this.newMessage)
       .subscribe(
-        message  => this.messages.push(message),
+        message => {
+          this.messages.push(message);
+          this.toggleSendMessage();
+        },
         error =>  this.errorMessage = <any>error.message);
-    this.newMessage = new Message();
-    this.newMessage.sender = this.authentication.getCurrentUser().username;
+  }
+
+  // TODO
+  setAsRead(message) {
+    this.messageService.setAsRead(message)
+      .subscribe(
+        newMessage  => this.newMessage = newMessage,
+        error =>  this.errorMessage = <any>error.message);
   }
 
   removeMessage(message) {
@@ -99,6 +87,13 @@ export class MessageComponent implements OnInit {
       .subscribe(
         deleted => this.messages = this.messages.filter(p => p.uri !== message.uri),
         error =>  this.errorMessage = <any>error.message);
+  }
+
+  toggleSendMessage() {
+    this.DivSendMessage = !this.DivSendMessage;
+    this.newMessage = new Message({
+      sender: this.authentication.getCurrentUser().username,
+    });
   }
 
 }

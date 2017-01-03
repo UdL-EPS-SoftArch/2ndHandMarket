@@ -1,0 +1,24 @@
+<a href="#" id="myaccount" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+  <span class="visible-xs"><i class="fa fa-user" aria-hidden="true"></i></span>
+  <span class="hidden-xs">
+    <span *ngIf="auth0Service.isLoggedIn()">{{auth0Service.getCurrentUser().name}}</span>
+    <span *ngIf="!auth0Service.isLoggedIn()">My account</span>
+  </span>
+</a>
+
+<ul class="dropdown-menu">
+  <!-- Not logged in -->
+  <li *ngIf="!auth0Service.isLoggedIn()">
+    <a id="signin" class="no-decorate" href="#" (click)="auth0Service.login()">Sign in</a>
+  </li>
+
+  <!-- Logged in -->
+  <li *ngIf="auth0Service.isLoggedIn()">
+    <a (click)="appRouter.navigate(['/profile'])">Profile</a>
+  </li>
+  <li *ngIf="auth0Service.isLoggedIn()">
+    <a href="/buyers" >Buyer</a>
+    <a href="/sellers" >Seller</a>
+    <a href="#" (click)="auth0Service.logout()">Log out</a>
+  </li>
+</ul>

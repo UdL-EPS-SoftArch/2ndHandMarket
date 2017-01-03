@@ -51,5 +51,4 @@ export class BuyerOfferComponent implements OnInit {
         deleted => this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri),
         error =>  this.errorMessage = <any>error.message);
   }
-
 }

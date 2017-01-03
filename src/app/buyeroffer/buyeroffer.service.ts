@@ -3,13 +3,13 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { BuyerOffer } from './buyeroffer';
 import { environment } from '../../environments/environment';
-import {AuthenticationBasicService} from '../login-basic/authentication-basic.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 @Injectable()
 export class BuyerOfferService {
 
   constructor (private http: Http,
-               private authentication: AuthenticationBasicService) {}
+               private authentication: Auth0Service) {}
 
   // GET /BuyerOffers
   getAllBuyerOffers(): Observable<BuyerOffer[]> {

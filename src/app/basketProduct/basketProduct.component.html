@@ -1,0 +1,28 @@
+<section class="basketProduct" xmlns="http://www.w3.org/1999/html">
+    <header class="header">
+        <h2>Your cart</h2>
+
+    </header>
+
+    <p *ngIf=" products.length > 0">
+    <span class="message-count"><strong>{{products.length}}</strong> {{products.length == 1 ? 'product' : 'products'}}</span>
+   </p>
+
+    <p *ngIf="products.length==0">
+    <span class="message-count">No products</span>
+  </p>
+    <ul class="list-group" *ngIf="products!= null && products.length > 0">
+      <li class="list-group-item" *ngFor="let product of products">
+        <div class="basketProduct">
+          <p><strong>Name: </strong> {{product.product.title}}
+            <a><span class="glyphicon glyphicon-remove"(click)="deleteProduct(product)"> </span> </a></p>
+          <p><strong>Price:</strong> {{product.product.price}}</p>
+
+        </div>
+      </li>
+    </ul>
+  <h4 *ngIf="products.length > 0">Total price: <strong>{{totalPrice | currency:'USD':true }}</strong></h4>
+  <button class="highlightButtonTest" *ngIf="products.length > 0" (click)="this.redirectToPurchase()">Buy</button>
+</section>
+
+

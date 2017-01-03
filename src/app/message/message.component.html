@@ -2,29 +2,30 @@
   <header class="header">
     <h2></h2>
     <!-- new message -->
-    <button (click)="DivSendMessage = !DivSendMessage" class="highlightButtonMain big">Write a new message</button>
-
-       <div class="form-section" [hidden]="!DivSendMessage">
-         <h2></h2>
-         <div class="form-group">
-           <label for="sender">Sender</label>
-           <input type="text" class="form-control" id="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender"/>
-         </div>
-         <div class="form-group">
-           <label for="destination">Destination</label>
-           <input type="text" class="form-control" id="destination" placeholder="Enter Destination" [(ngModel)]="newMessage.destination"/>
-         </div>
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Enter Title"  [(ngModel)]="newMessage.title"/>
-          </div>
-          <div class="form-group">
-            <label for="body">Body</label>
-            <textarea class="form-control" id="body" placeholder="Enter Message" [(ngModel)]="newMessage.body"></textarea>
-          </div>
-          <button (click)="addMessage(); DivSendMessage = !DivSendMessage" class="highlightButtonGreen big">Send</button>
-      </div>
-
+    <button (click)="toggleSendMessage()" class="highlightButtonMain big">Write a new message</button>
+    <div id="sendMess" style="margin-left:5%;margin-right:5%;">
+       <div class="form-section" *ngIf="DivSendMessage">
+         <form (submit)="addMessage()">
+           <div class="form-group">
+             <label for="sender">Sender</label>
+             <input type="text" class="form-control" id="sender" name="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender" />
+           </div>
+           <div class="form-group">
+             <label for="destination">Destination</label>
+             <input type="text" class="form-control" id="destination" name="destination" placeholder="Enter Destination" required [(ngModel)]="newMessage.destination" />
+           </div>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required [(ngModel)]="newMessage.title" />
+            </div>
+            <div class="form-group">
+              <label for="body">Body</label>
+              <textarea class="form-control" id="body" name="body" placeholder="Enter Message" required [(ngModel)]="newMessage.body"></textarea>
+            </div>
+            <button class="highlightButtonGreen big">Send</button>
+         </form>
+        </div>
+    </div>
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>
 
@@ -80,6 +81,7 @@
     <div class="inner"><button (click)="DivAllMessage = !DivAllMessage" class="highlightButtonTest big">   ALL MESSAGES   </button></div>
   </div>-->
 
+  <div id="cont" style="margin-left:5%;">
   <button (click)=" DivAllMessage = !DivAllMessage;
   DivReceivedMessage = !DivAllMessage;
   DivSentMessage = !DivAllMessage" class="highlightButtonTest big"> ALL MESSAGES ({{myAllMessages.length}})
@@ -93,10 +95,10 @@ DivAllMessage = !DivSentMessage;" class="highlightButtonTest big">   SENT MESSAG
 DivSentMessage = !DivReceivedMessage;
 DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVED MESSAGES ({{myReceivedMessages.length}})  </button>
 
-
+  </div>
 
   <!-- Sent -->
-  <div class="form-section" [hidden]="!DivSentMessage">
+  <div class="form-section" [hidden]="!DivSentMessage" style="margin-left:5%;margin-right:5%;">
       <h3>Sent</h3>
       <p *ngIf="mySentMessages.length > 0">
         <span class="message-count"><strong>{{mySentMessages.length}}</strong> {{mySentMessages.length == 1 ? 'message' : 'messages'}}</span>
@@ -118,7 +120,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
   </div>
 
   <!-- Received -->
-  <div class="form-section" [hidden]="!DivReceivedMessage">
+  <div class="form-section" [hidden]="!DivReceivedMessage" style="margin-left:5%;margin-right:5%;">
       <h3>Received</h3>
       <p *ngIf="myReceivedMessages.length > 0">
         <span class="message-count"><strong>{{myReceivedMessages.length}}</strong> {{myReceivedMessages.length == 1 ? 'message' : 'messages'}}</span>
@@ -129,6 +131,12 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
       <ul class="list-group" *ngIf="myReceivedMessages.length > 0">
         <li class="list-group-item" *ngFor="let message of myReceivedMessages">
           <div class="messages">
+            <!--<p *ngIf="!message.isRead">
+              <button  (click)="SetAsRead(message)">Set as read</button>
+            </p>-->
+            <p *ngIf="!message.isRead">
+              <button  (click)="setAsRead(message)">Set as read</button>
+            </p>
             <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>From: {{message.sender}}</h4>
             <h4>Title: {{message.title}}</h4>
@@ -140,7 +148,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
   </div>
 
   <!-- All -->
-  <div class="form-section" [hidden]="!DivAllMessage">
+  <div class="form-section" [hidden]="!DivAllMessage" style="margin-left:5%;margin-right:5%;">
       <h3>All messages</h3>
     <p *ngIf="myAllMessages.length > 0">
       <span class="message-count"><strong>{{myAllMessages.length}}</strong> {{myAllMessages.length == 1 ? 'message' : 'messages'}}</span>

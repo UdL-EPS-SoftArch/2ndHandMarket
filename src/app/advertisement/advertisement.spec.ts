@@ -8,8 +8,7 @@ describe('Advertisement', () => {
   });
 
   it('should accept values in the constructor', () => {
-    const id = 1;
-    const uri = 'advertisement/1';
+    const uri = '/advertisement/1';
     const title = 'sample';
     const description = 'sample description';
     const owner = 'user';
@@ -22,8 +21,7 @@ describe('Advertisement', () => {
     const weight = 10.1;
 
     const advertisement = new Advertisement({
-      id,
-      uri: 'advertisement/1',
+      uri,
       title,
       description,
       owner: 'user',
@@ -39,7 +37,7 @@ describe('Advertisement', () => {
       weight,
     });
 
-    expect(advertisement.id).toEqual(id);
+    expect(advertisement.id).toEqual(1);
     expect(advertisement.uri).toEqual(uri);
     expect(advertisement.title).toEqual(title);
     expect(advertisement.description).toEqual(description);
@@ -54,7 +52,6 @@ describe('Advertisement', () => {
     expect(advertisement.brand).toEqual(brand);
     expect(advertisement.color).toEqual(color);
     expect(advertisement.weight).toEqual(weight);
-    expect(advertisement.getUriId()).toEqual(1);
 
     // Text-based tags.
     const newTags = ['rey', 'jedi'];
@@ -64,11 +61,8 @@ describe('Advertisement', () => {
   });
 
   it('should return uriId null if uri has not been set', () => {
-    const advertisement = new Advertisement({
-      id: 2,
-    });
+    const advertisement = new Advertisement();
 
-    expect(advertisement.id).toEqual(2);
-    expect(advertisement.getUriId()).toBe(null);
+    expect(advertisement.id).toBeUndefined();
   });
 });

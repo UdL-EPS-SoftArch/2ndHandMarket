@@ -1,0 +1,53 @@
+/**
+ * Created by ierathenz on 26/11/16.
+ */
+import { Component, OnInit } from '@angular/core';
+import { BuyerOffer } from './buyeroffer';
+import { BuyerOfferService } from './buyeroffer.service';
+import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
+
+
+
+@Component({
+  selector: 'app-update-offer',
+  templateUrl: './updateOffer.component.html',
+  styleUrls: ['./updateOffer.component.css'],
+  providers: [BuyerOfferService]
+})
+export class UpdateOfferComponent implements OnInit {
+
+  buyeroffers: BuyerOffer[] = [];
+  errorMessage: string;
+  newBuyerOffer: BuyerOffer = new BuyerOffer();
+
+  constructor(private buyerofferService: BuyerOfferService,
+              private authentication: AuthenticationBasicService) { }
+
+  ngOnInit() {
+    this.getBuyerOffer();
+  }
+
+  getBuyerOffer() {
+    this.buyerofferService.getAllBuyerOffers()
+      .subscribe(
+        buyeroffers => this.buyeroffers = buyeroffers,
+        error => this.errorMessage = <any>error.message
+      );
+  }
+
+  updateOffer(existingOffer: BuyerOffer, newPrice: number) {
+    let updatedOffer: BuyerOffer = existingOffer;
+    updatedOffer.value = newPrice;
+    this.buyerofferService.updateOfferById(existingOffer.uri, updatedOffer)
+      .subscribe(
+        update => this.buyeroffers = this.buyeroffers.map(buyerOffer => {
+          if (buyerOffer.uri === existingOffer.uri) { return update; }
+          return buyerOffer;
+        }),
+        error => this.errorMessage = <any>error.message);
+  }
+
+  getUser(): string {
+    return this.authentication.getCurrentUser().username;
+  }
+}

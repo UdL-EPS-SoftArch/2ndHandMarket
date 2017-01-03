@@ -25,6 +25,7 @@ import { AuthenticationBasicService } from './login-basic/authentication-basic.s
 import { OfferComponent } from './offer/offer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
+import { UpdateOfferComponent} from './buyeroffer/updateOffer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DataTableModule } from 'angular2-datatable';
@@ -60,6 +61,7 @@ import { ComponentsHelper } from 'ng2-bootstrap';
     BuyerComponent,
     BuyerOfferComponent,
     PersonalOffersListComponent,
+    UpdateOfferComponent,
     ProfileComponent
   ],
   providers: [

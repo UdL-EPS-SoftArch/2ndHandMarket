@@ -44,7 +44,7 @@
               <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.value}}</td>
               <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.date}}</td>
               <td *ngIf="getUser()==buyeroffer.buyer_id"><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
-                  <button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Update</button></td>
+                  <button class="btn btn-danger" routerLink="/updateOffer" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Update</button></td>
             </tr>
           </tbody>
         </table>

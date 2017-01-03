@@ -22,6 +22,8 @@ export class GetAdvertisementComponent implements OnInit {
   purchase: Purchase;
   picture: Picture;
 
+  hasDeleteConfirm: boolean = false;
+  deleteConfirmText: String = '';
   isDeleting: boolean = false;
 
   constructor(private route: ActivatedRoute,
@@ -75,7 +77,20 @@ export class GetAdvertisementComponent implements OnInit {
       );
   }
 
+  toggleDeleteAdvertisementConfirm() {
+    this.hasDeleteConfirm = !this.hasDeleteConfirm;
+  }
+
+  deleteAdvertisementForm(uri: string) {
+    const deleteConfirmText = this.deleteConfirmText.trim().toLowerCase();
+    const advertisementTitle = this.advertisement.title.trim().toLowerCase();
+    if (deleteConfirmText === advertisementTitle) {
+      this.deleteAdvertisement(uri);
+    }
+  }
+
   deleteAdvertisement(uri: string) {
+    this.hasDeleteConfirm = false;
     this.isDeleting = true;
     this.advertisementService.deleteAdvertisement(uri).subscribe(
       advertisement => {

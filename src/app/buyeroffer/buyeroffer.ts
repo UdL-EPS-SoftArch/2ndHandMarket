@@ -1,4 +1,4 @@
-import {Advertisement} from "../advertisement/advertisement";
+/*import {Advertisement} from "../advertisement/advertisement";*/
 
 export class BuyerOffer {
   uri: string = '';

@@ -13,14 +13,13 @@
   <div class="row">
 
     <div class="col-sm-3" >
-      <div class="list-group" >
+      <div class="list-group">
         <h3 class="list-group-item disabled text-center">
           <small class="text-muted">Offered Products</small>
         </h3>
-        <button class="column_button" onclick="">Product 1</button>
-        <button class="column_button" onclick="">Product 2</button>
-        <button class="column_button" onclick="">Product 3</button>
-        <button class="column_button" onclick="">Product 4</button>
+        <div *ngFor="let buyeroffer of buyeroffers">
+          <button class="column_button" onclick="" *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_title}}</button>
+        </div>
       </div>
     </div>
 
@@ -39,13 +38,13 @@
           </thead>
           <tbody *ngFor="let buyeroffer of buyeroffers">
             <tr>
-              <td>{{buyeroffer.advertisement_title}}</td>
-              <td>{{buyeroffer.advertisement_seller}}</td>
-              <td>{{buyeroffer.advertisement_iniPrice}}</td>
-              <td>{{buyeroffer.value}}</td>
-              <td>{{buyeroffer.date}}</td>
-              <td><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
-                <button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Update</button></td>
+              <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_title}}</td>
+              <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_seller}}</td>
+              <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_iniPrice}}</td>
+              <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.value}}</td>
+              <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.date}}</td>
+              <td *ngIf="getUser()==buyeroffer.buyer_id"><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
+                  <button class="btn btn-danger" routerLink="/updateOffer" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Update</button></td>
             </tr>
           </tbody>
         </table>

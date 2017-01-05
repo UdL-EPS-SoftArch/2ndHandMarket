@@ -22,6 +22,7 @@ import { LoggedInGuard } from './auth0/loggedin.guard';
 import { Auth0Service } from './auth0/auth0.service';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
+import { UpdateOfferComponent} from './buyeroffer/updateOffer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
@@ -66,7 +67,9 @@ import { LoadingModule } from './loading/loading.module';
     ManageOffersComponent,
     ProfileComponent,
     SellerComponent,
-    BasketProductComponent
+    BasketProductComponent,
+    UpdateOfferComponent,
+    ProfileComponent
   ],
   providers: [
     appRoutingProviders, Auth0Service, LoggedInGuard, BasketProductService, MessageService

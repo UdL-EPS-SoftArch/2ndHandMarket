@@ -12,6 +12,7 @@ import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './auth0/loggedin.guard';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
+import { UpdateOfferComponent} from './buyeroffer/updateOffer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'buyeroffers', component: BuyerOfferComponent },
   { path: 'personalOffersList', component: PersonalOffersListComponent },
+  { path: 'updateOffer', component: UpdateOfferComponent },
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },

@@ -1,0 +1,13 @@
+<section class="updateOffer">
+
+  <h3>Updating Offers</h3>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let buyeroffer of buyeroffers">
+      BuyerOffer {{buyeroffer.uri}}, value: {{buyeroffer.value}}€
+
+        <input type="number" id="updateoffer" name="updateoffer" max={{buyeroffer.value}} step="0.01" value={{buyeroffer.value}} #newPrice />&nbsp;€
+        <button (click)="updateOffer(buyeroffer, newPrice.value)">Confirm</button>
+    </li>
+  </ul>
+</section>

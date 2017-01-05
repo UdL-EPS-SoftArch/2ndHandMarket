@@ -96,7 +96,7 @@ export class MessageService {
   }
 
   filterUnread(messages: Message[]): Message[] {
-    return this.filterMessages(messages, p => !p.isRead);
+    return this.filterMessages(messages.filter(p => p.destination ===  this.authentication.getCurrentUser().username), p => !p.isRead);
   }
 
   filterBySender(messages: Message[], sender): Message[] {

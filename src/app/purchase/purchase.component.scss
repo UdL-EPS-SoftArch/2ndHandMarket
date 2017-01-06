@@ -12,3 +12,16 @@
     max-width: 200px;
   }
 }
+
+.table-products {
+  margin-top: 10px;
+
+  a {
+    display: inline-block;
+    margin: 0;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

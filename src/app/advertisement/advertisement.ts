@@ -25,4 +25,3 @@ export class Advertisement extends API {
     this.tags = input.split(',').map((tag) => tag.trim());
   }
 }
-

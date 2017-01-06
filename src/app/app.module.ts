@@ -13,24 +13,25 @@ import { GetAdvertisementComponent } from './advertisement/getAdvertisement.comp
 import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
-import { DateFormatPipe } from 'angular2-moment';
+import { MomentModule } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
-import { LoginBasicModule } from './login-basic/login-basic.module';
-import { LoggedInGuard } from './login-basic/loggedin.guard';
-import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
+import { Auth0Module } from './auth0/auth0.module';
+import { LoggedInGuard } from './auth0/loggedin.guard';
+import { Auth0Service } from './auth0/auth0.service';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
+import { UpdateOfferComponent} from './buyeroffer/updateOffer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { DataTableModule } from 'angular2-datatable';
-import { ComponentsHelper } from 'ng2-bootstrap';
 import { BasketProductComponent } from './basketProduct/basketProduct.component';
 import { SellerComponent } from './seller/seller.component';
 import { BasketProductService } from './basketProduct/basketProduct.service';
 import { MessageService } from './message/message.service';
+import { LoadingModule } from './loading/loading.module';
 
 @NgModule({
   imports: [
@@ -38,8 +39,10 @@ import { MessageService } from './message/message.service';
     FormsModule,
     HttpModule,
     routing,
-    LoginBasicModule,
-    DataTableModule
+    Auth0Module,
+    DataTableModule,
+    LoadingModule,
+    MomentModule
   ],
   declarations: [
     AppComponent,
@@ -56,7 +59,6 @@ import { MessageService } from './message/message.service';
     PurchaseComponent,
     SearchAdvertisementComponent,
     ContactComponent,
-    DateFormatPipe,
     BuyerComponent,
     BuyerOfferComponent,
     PersonalOffersListComponent,
@@ -65,10 +67,12 @@ import { MessageService } from './message/message.service';
     ManageOffersComponent,
     ProfileComponent,
     SellerComponent,
-    BasketProductComponent
+    BasketProductComponent,
+    UpdateOfferComponent,
+    ProfileComponent
   ],
   providers: [
-    appRoutingProviders, AuthenticationBasicService, LoggedInGuard, ComponentsHelper, BasketProductService, MessageService
+    appRoutingProviders, Auth0Service, LoggedInGuard, BasketProductService, MessageService
   ],
   bootstrap: [AppComponent, NavbarComponent, FooterComponent]
 })

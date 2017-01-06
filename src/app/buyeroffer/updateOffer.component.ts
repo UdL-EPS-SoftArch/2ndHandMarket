@@ -8,12 +8,12 @@ import { Auth0Service } from '../auth0/auth0.service';
 
 
 @Component({
-  selector: 'app-personal-offers-list',
-  templateUrl: './personalOffersList.component.html',
-  styleUrls: ['./personalOffersList.component.css'],
+  selector: 'app-update-offer',
+  templateUrl: './updateOffer.component.html',
+  styleUrls: ['./updateOffer.component.css'],
   providers: [BuyerOfferService]
 })
-export class PersonalOffersListComponent implements OnInit {
+export class UpdateOfferComponent implements OnInit {
 
   buyeroffers: BuyerOffer[] = [];
   errorMessage: string;
@@ -34,19 +34,16 @@ export class PersonalOffersListComponent implements OnInit {
       );
   }
 
-  addBuyerOffer() {
-    this.buyerofferService.addBuyerOffer(this.newBuyerOffer)
+  updateOffer(existingOffer: BuyerOffer, newPrice: number) {
+    let updatedOffer: BuyerOffer = existingOffer;
+    updatedOffer.value = newPrice;
+    this.buyerofferService.updateOfferById(existingOffer.uri, updatedOffer)
       .subscribe(
-        buyeroffer  => this.buyeroffers.push(buyeroffer),
-        error =>  this.errorMessage = <any>error.message);
-    this.newBuyerOffer = new BuyerOffer();
-  }
-
-  deleteBuyerOffer(buyeroffer) {
-    this.buyerofferService.deleteBuyerOfferByUri(buyeroffer.uri)
-      .subscribe(
-        deleted => this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri),
-        error =>  this.errorMessage = <any>error.message);
+        update => this.buyeroffers = this.buyeroffers.map(buyerOffer => {
+          if (buyerOffer.uri === existingOffer.uri) { return update; }
+          return buyerOffer;
+        }),
+        error => this.errorMessage = <any>error.message);
   }
 
   getUser(): string {

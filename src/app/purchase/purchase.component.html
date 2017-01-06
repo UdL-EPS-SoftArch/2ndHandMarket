@@ -1,6 +1,6 @@
 <section class="purchase">
   <!-- Loading -->
-  <div class="page-box container" *ngIf="loading">Loading...</div>
+  <app-loading class="container" *ngIf="loading"></app-loading>
 
   <!-- Error -->
   <div class="page-box container" *ngIf="errorMessage">
@@ -14,10 +14,27 @@
   <!-- Confirmation -->
   <div class="page-box container" *ngIf="!loading && !errorMessage && !hasPurchased">
     <h3>Confirm your order</h3>
-    <span>You are about to buy "{{advertisements[0].title}}"</span>
-    <strong>TOTAL: {{advertisements[0].price | currency:'USD':true}}</strong>
-    <div class="confirmation-buttons">
-      <a class="blankButton" routerLink="/advertisements/{{advertisements[0].id}}">Cancel</a>
+    <span>You are about to buy {{advertisements.length}} {{advertisements.length > 1 ? 'items' : 'item'}}:</span>
+    <table class="table table-hover table-products">
+      <thead>
+        <tr>
+          <td>#</td>
+          <td>Product</td>
+          <td>Seller</td>
+          <td>Price</td>
+        </tr>
+      </thead>
+      <tr *ngFor="let advertisement of advertisements">
+        <td>{{advertisement.id}}</td>
+        <td><a routerLink="/advertisements/{{advertisement.id}}">{{advertisement.title}}</a></td>
+        <td>{{advertisement.owner}}
+        <td>{{advertisement.price | currency:'USD':true}}</td>
+      </tr>
+    </table>
+    <strong>TOTAL: {{advertisementsTotal() | currency:'USD':true}}</strong>
+    <app-loading class="container" *ngIf="isPurchasing"></app-loading>
+    <div class="confirmation-buttons" *ngIf="!isPurchasing">
+      <a class="blankButton" routerLink="/cart">Cancel</a>
       <button class="blankButton" (click)="submitPurchase()">Complete purchase</button>
     </div>
   </div>
@@ -26,8 +43,8 @@
   <div class="page-box container" *ngIf="!errorMessage && hasPurchased">
     <h3>Purchase completed!</h3>
     <span>
-        Thank you for buying "{{advertisements[0].title}}".<br>
-        You can check your purchases on your user panel.
+        Thank you for your purchase.<br>
+        You can check your purchases history on your user panel.
       </span>
     <div class="center">
       <a routerLink="/advertisements">Go back to the advertisement list</a>

@@ -147,25 +147,7 @@
       </div>
 
       <div *ngIf="global === 3" >
-        <header class="page-title">My Offers</header><br>
-        <div class="dashboard padding">
-          <p>
-            Filter by Product:
-            <input class="form-control input" [(ngModel)]="filterQuery"/>
-          </p>
-
-              <table class="table">
-
-                  <tr class="table-commun">
-                    <th width="20%" class="text-center"> idProduct</th>
-                    <th width="20%" class="text-center"> Product Name </th>
-                    <th width="20%" class="text-center"> Price </th>
-                    <th width="20%" class="text-center"> Offer </th>
-                    <th width="20%" class="text-center"> Details </th>
-                  </tr>
-
-                </table>
-         </div>
+        <app-personal-offers-list></app-personal-offers-list>
       </div>
 
       <div *ngIf="global === 4" >

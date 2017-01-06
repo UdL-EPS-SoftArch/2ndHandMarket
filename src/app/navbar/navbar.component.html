@@ -20,16 +20,18 @@
           <a routerLink="/messages" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
             <span class="visible-xs"><i class="fa fa-bell fa-2" aria-hidden="true"></i></span>
             <span class="hidden-xs">Messages</span>
-            <span class="notification-icon"><span class="badge">{{unreadMessages?.length}}</span></span>
+            <!-- <p *ngIf="unreadMessages.length > 0">-->
+              <span class="notification-icon"><span class="badge">{{unreadMessages?.length}}</span></span>
+            <!-- </p> -->
           </a>
-        </li>
+         </li>
 
-        <li class="dropdown"><app-login-basic [appRouter]="router"></app-login-basic></li>
+        <li class="dropdown"><app-auth0 [appRouter]="router"></app-auth0></li>
 
         <li>
-          <a routerLink="/basketProducts" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/cart" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
             <span class="visible-xs"><i class="fa fa-shopping-cart fa-2" aria-hidden="true"></i></span>
-            <span class="hidden-xs">Basket <span class="notification-icon badge">{{countBasketProducts()}}</span></span>
+            <span class="hidden-xs">Cart <span class="notification-icon badge">{{countBasketProducts()}}</span></span>
           </a>
         </li>
 

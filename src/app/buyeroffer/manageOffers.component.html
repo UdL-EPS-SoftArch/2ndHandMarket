@@ -19,12 +19,14 @@
             <small class="text-muted">Your Products</small>
           </h3>
           <div *ngFor="let advertisement of advertisements">
-            <div *ngIf="advertisement.owner == getCurrentUser()">
-              <button type="button" class="btn btn-default" routerLink="/{{advertisement.uri}}">{{advertisement.title}}</button>
+            <div *ngIf="advertisement.owner == getCurrentUser().username">
+              <button type="button" class="btn btn-default" (click)="filterByAdvertisement(advertisement.uri)">{{advertisement.title}}</button>
             </div>
           </div>
-
-
+          <br/>
+          <div>
+            <button type="button" class="btn btn-warning" (click)="showAllAdvertisements()">Clear filter</button>
+          </div>
         </div>
       </div>
 
@@ -42,7 +44,7 @@
             </tr>
             </thead>
             <tbody *ngFor="let advertisement of advertisements" class="row">
-              <tr *ngIf="advertisement.owner === getCurrentUser()">
+              <tr *ngIf="advertisement.owner === getCurrentUser().username  &&  (showAll || currentFilterAdvertisement === advertisement.uri)">
                 <button type="button" class="btn btn-default" routerLink="/{{advertisement.uri}}">{{advertisement.title}}</button>
                 <td>{{advertisement.brand}}
                 <td>{{advertisement.description}}</td>
@@ -50,7 +52,7 @@
                 <td>{{advertisement.price | currency:'USD':true}}</td>
                 <td *ngIf="!advertisement.negotiablePrice">Not negotiable price!</td>
                 <td *ngIf="hasPurchased">Already sold!</td>
-                <td *ngIf="advertisement.negotiablePrice">
+                <td *ngIf="advertisement.negotiablePrice" >
                   <tbody *ngFor="let offer of buyeroffers">
                     <td *ngIf="advertisement.title === offer.advertisement_title && offer.accepted">
                       Accepted the offer from user {{offer.buyer_id}} with the value {{offer.value | currency:'USD':true}}

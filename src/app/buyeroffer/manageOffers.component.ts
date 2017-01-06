@@ -6,9 +6,10 @@ import { BuyerOffer } from './buyeroffer';
 import { BuyerOfferService } from './buyeroffer.service';
 import { AdvertisementService } from '../advertisement/advertisement.service';
 import { Advertisement } from '../advertisement/advertisement';
-import { AuthenticationBasicService } from '../login-basic/authentication-basic.service';
 import {PurchaseService} from "../purchase/purchase.service";
 import {Purchase} from "../purchase/purchase";
+import {Auth0Service} from "../auth0/auth0.service";
+import {User} from "../auth0/user";
 
 
 @Component({
@@ -27,19 +28,23 @@ export class ManageOffersComponent implements OnInit {
   tempAdvert: Advertisement = new Advertisement();
   //hasPurchased: boolean = false;
   newAdvert : Advertisement[] = [];
+  currentFilterAdvertisement : string;
+  showAll : boolean;
 
-  constructor(private buyerofferService: BuyerOfferService,
+  constructor(private buyerOfferService: BuyerOfferService,
               private advertisementService: AdvertisementService,
-              private authentication: AuthenticationBasicService,
+              private authentication: Auth0Service,
               private purchase: PurchaseService) { }
 
   ngOnInit() {
     this.getBuyerOffer();
     this.getAdvertisements();
+    this.currentFilterAdvertisement = "";
+    this.showAll = true;
   }
 
-  getCurrentUser(): string {
-    return this.authentication.getCurrentUser().username;
+  getCurrentUser(): User {
+    return this.authentication.getCurrentUser();
   }
 
   getAdvertisements() {
@@ -50,6 +55,16 @@ export class ManageOffersComponent implements OnInit {
         },
         error => this.errorMessage = <any>error.message
       );
+  }
+
+  filterByAdvertisement(uri : string){
+    this.showAll = false;
+    this.currentFilterAdvertisement = uri;
+  }
+
+  showAllAdvertisements(){
+    this.showAll = true;
+    this.currentFilterAdvertisement = "";
   }
 
   submitOfferAndPurchase(offer : BuyerOffer, advert : Advertisement){
@@ -78,7 +93,7 @@ export class ManageOffersComponent implements OnInit {
   }
 
   getBuyerOffer() {
-    this.buyerofferService.getAllBuyerOffers()
+    this.buyerOfferService.getAllBuyerOffers()
       .subscribe(
         buyeroffers => this.buyeroffers = buyeroffers,
         error => this.errorMessage = <any>error.message
@@ -87,7 +102,7 @@ export class ManageOffersComponent implements OnInit {
 
 
   deleteBuyerOffer(buyeroffer) {
-    this.buyerofferService.deleteBuyerOfferByUri(buyeroffer.uri)
+    this.buyerOfferService.deleteBuyerOfferByUri(buyeroffer.uri)
       .subscribe(
         deleted => this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri),
         error =>  this.errorMessage = <any>error.message);

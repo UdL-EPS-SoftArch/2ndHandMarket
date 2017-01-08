@@ -22,11 +22,9 @@ export class ManageOffersComponent implements OnInit {
 
   buyeroffers: BuyerOffer[] = [];
   errorMessage: string;
-  newBuyerOffer: BuyerOffer = new BuyerOffer();
   newPurchase: Purchase = new Purchase();
   advertisements: Advertisement[] = [];
   tempAdvert: Advertisement = new Advertisement();
-  //hasPurchased: boolean = false;
   newAdvert : Advertisement[] = [];
   currentFilterAdvertisement : string;
   showAll : boolean;

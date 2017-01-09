@@ -8,6 +8,7 @@ export class User {
                               // Should be changed for a token or session.
   password: string = '';
   lastname: string  = '';
+  displayName: string = '';
   email: string = '';
   birthday: string = '';
   country: string = '';

@@ -48,6 +48,7 @@ export class ProfileService {
     // a new minimal object.
     const modifiedUser = {
       // username: user.username, Cannot be changed (yet?)
+      displayName: user.displayName,
       name: user.name,
       lastname: user.lastname,
       email: user.email,

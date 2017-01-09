@@ -28,7 +28,8 @@ export class MessageComponent implements OnInit {
   messagesTitle: Message[] = [];
 
   errorMessage: string;
-  newMessage: Message = new Message();
+  newMessage: Message;
+  searchInput: string = '';
 
   constructor(private messageService: MessageService,
                private authentication: Auth0Service) { }
@@ -45,22 +46,23 @@ export class MessageComponent implements OnInit {
           this.messages = messages;
           this.mySentMessages = this.messageService.filterBySender(messages, username);
           this.myReceivedMessages = this.messageService.filterByDestination(messages, username);
-          this.unreadMessages = this.messageService.filterUnread(messages);
+          this.unreadMessages = this.messageService.filterUnread(messages.filter(p => p.destination === username));
         },
         error =>  this.errorMessage = <any>error.message);
   }
 
-  getMessageByUri(uri) {
-    this.messageService.getMessageByUri(uri)
+  getMessageByUri() {
+    this.messageService.getMessageByUri(this.searchInput)
       .subscribe(
         message => this.messagesUri = [message],
         error =>  this.errorMessage = <any>error.message);
   }
 
-  getMessageByTitle (title) {
+  getMessageByTitle () {
+
     this.messageService.getAllMessages()
       .subscribe(
-        message => this.messagesTitle = this.messages.filter(p => p.title === title),
+        message => this.messagesTitle = this.messages.filter(p => p.title === this.searchInput),
         error =>  this.errorMessage = <any>error.message);
   }
 

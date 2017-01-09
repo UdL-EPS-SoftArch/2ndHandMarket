@@ -20,9 +20,11 @@
           <a routerLink="/messages" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
             <span class="visible-xs"><i class="fa fa-bell fa-2" aria-hidden="true"></i></span>
             <span class="hidden-xs">Messages</span>
-            <span class="notification-icon"><span class="badge">{{unreadMessages?.length}}</span></span>
+            <!-- <p *ngIf="unreadMessages.length > 0">-->
+              <span class="notification-icon"><span class="badge">{{unreadMessages?.length}}</span></span>
+            <!-- </p> -->
           </a>
-        </li>
+         </li>
 
         <li class="dropdown"><app-auth0 [appRouter]="router"></app-auth0></li>
 

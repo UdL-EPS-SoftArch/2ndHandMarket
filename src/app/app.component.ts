@@ -1,5 +1,4 @@
-import { Component, ViewContainerRef } from '@angular/core';
-import { ComponentsHelper } from 'ng2-bootstrap';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,5 @@ import { ComponentsHelper } from 'ng2-bootstrap';
 })
 export class AppComponent {
 
-  constructor(componentsHelper: ComponentsHelper, viewContainerRef: ViewContainerRef) {
-    componentsHelper.setRootViewContainerRef(viewContainerRef);
-  }
+  constructor() {}
 }

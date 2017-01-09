@@ -21,7 +21,6 @@ import { UpdateOfferComponent } from './buyeroffer/updateOffer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import { ComponentsHelper } from 'ng2-bootstrap';
 import { BasketProductComponent } from './basketProduct/basketProduct.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { LoadingComponent } from './loading/loading.component';
@@ -45,8 +44,7 @@ describe('App: Softarch1617Client', () => {
       ],
       providers: [
         appRoutingProviders,
-        { provide: APP_BASE_HREF, useValue : '/' },
-        ComponentsHelper
+        { provide: APP_BASE_HREF, useValue : '/' }
       ]
     });
   });

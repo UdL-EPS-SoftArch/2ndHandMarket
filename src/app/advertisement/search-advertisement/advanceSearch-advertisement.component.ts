@@ -13,7 +13,7 @@ export class AdvanceSearchAdvertisementComponent implements OnInit {
 
   advertisements: Advertisement[] = [];
   searchTitleInput: string = '';
-  searchTagInput: string = '';
+  searchTagInput: string[] = [];
   searchCategoryInput: string = '';
 
   constructor(private router: Router) {

@@ -10,27 +10,27 @@
     <div class="form-section">
 
       <div class="form-group">
-        <label for="inputTitle" class="col-sm-2">Title</label>
+        <label for="inputTitle" class="col-sm-2">Title:</label>
         <div class="col-sm-10">
           <input type="text" id="inputTitle"  name="title" placeholder="Search Title" [(ngModel)]="searchTitleInput">
-          <button (click)="submitTitleSearch()">Search by Title</button>
+          <button class="highlightButton" (click)="submitTitleSearch()">Search by Title</button>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-sm-2">Tag</label>
+        <label class="col-sm-2">Tag:</label>
         <div class="col-sm-10">
-          <input type="text" name="tag" placeholder="Search Tag" [(ngModel)]="searchTagInput">
-          <button (click)="submitTagSearch()">Search by Tag</button>
+          <input type="text" name="tag" placeholder="Search Tag" >
+          <button class="highlightButton">Search by Tag</button>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="inputCategory" class="col-sm-2">Category</label>
+        <label for="inputCategory" class="col-sm-2">Category:</label>
         <div class="col-sm-10">
           <input type="text" id="inputCategory" name="category" placeholder="Search Category"
                  [(ngModel)]="searchCategoryInput">
-          <button (click)="submitCategorySearch()">Search by Category</button>
+          <button class="highlightButton" (click)="submitCategorySearch()">Search by Category</button>
         </div>
       </div>
 

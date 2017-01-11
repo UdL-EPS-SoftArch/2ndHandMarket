@@ -32,6 +32,7 @@ import { SellerComponent } from './seller/seller.component';
 import { BasketProductService } from './basketProduct/basketProduct.service';
 import { MessageService } from './message/message.service';
 import { LoadingModule } from './loading/loading.module';
+import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
 
 @NgModule({
   imports: [
@@ -69,7 +70,8 @@ import { LoadingModule } from './loading/loading.module';
     SellerComponent,
     BasketProductComponent,
     UpdateOfferComponent,
-    ProfileComponent
+    ProfileComponent,
+    DoesNotExistComponent,
   ],
   providers: [
     appRoutingProviders, Auth0Service, LoggedInGuard, BasketProductService, MessageService

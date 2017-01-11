@@ -34,7 +34,7 @@ const appRoutes: Routes = [
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
   { path: 'cart', component: BasketProductComponent},
-  { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
+  { path: 'search', component: SearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'buyeroffers', component: BuyerOfferComponent },

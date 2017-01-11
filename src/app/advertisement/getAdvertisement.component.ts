@@ -109,6 +109,10 @@ export class GetAdvertisementComponent implements OnInit {
     return this.authentication.getCurrentUser().username;
   }
 
+  isAdvertisementOwner(): boolean {
+    return this.getCurrentUser() === this.advertisement.owner;
+  }
+
   addProduct(advertisement): void {
     let basketProduct: BasketProduct = new BasketProduct();
     basketProduct.product = advertisement;

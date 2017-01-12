@@ -81,14 +81,53 @@
       <div *ngIf="global === 2" >
         <header class="page-title">CountOffers</header><br>
         <div class="dashboard padding">
+          <p>Filter by Product:
+            <input class="form-control input" [(ngModel)]="filterQuery"/>
+          </p><br>
 
+          <table class="table .table-striped">
+            <tr>
+              <th width="20%" class="text-center"> Product Name</th>
+              <th width="20%" class="text-center"> Date </th>
+              <th width="20%" class="text-center"> Offer price</th>
+              <th width="20%" class="text-center"> Original price </th>
+              <th width="20%" class="text-center">Buyer</th>
+              <th width="20%" class="text-center"> Accions </th>
+            </tr>
+            <tbody *ngFor="let advertisement of advertisements" class="text-center">
+            <tr *ngIf="advertisement.owner == getCurrentUser()">
+              <td>{{advertisement.title}} </td>
+              <td>{{advertisement.createdAt | date:'dd-MM-yyyy'}}</td>
+              <tbody *ngFor="let offer of buyeroffers">
+                <td *ngIf="advertisement.title === offer.advertisement_title">
+                  {{offer.value}}€
+                </td>
+              </tbody>
+              <td>{{advertisement.price}}€</td>
+              <tbody *ngFor="let offer of buyeroffers">
+              <td *ngIf="advertisement.title === offer.advertisement_title">
+                {{offer.buyer_id}}
+              </td>
+              </tbody>
+              <td>
+                <button class="btn btn-success" aria-hidden="true" (click)="deleteBuyerOffer(offer)">Acept</button>&nbsp;
+                <button class="btn btn-danger" aria-hidden="true" (click)="deleteBuyerOffer(offer)">Delete</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
       <div *ngIf="global === 3" >
         <header class="page-title">Add Coupons</header><br>
-        <div class="dashboard padding">
-
+        <div class="dashboard padding" *ngIf="coupons === 0">
+          No coupons created yet!
+          <br><br>
+          <a routerLink="coupons/new"><button class="btn btn-default">Create one</button></a>
+        </div>
+        <div class="dashboard padding" *ngIf="coupons !== 0">
+          hay
         </div>
       </div>
 

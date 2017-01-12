@@ -37,9 +37,9 @@
       </div>
       <div class="action-buttons" *ngIf="!purchase">
         <button class="highlightButton" (click)="addProduct(advertisement)">Add to Cart</button>
-        or 
+        or
         <a routerLink="/advertisements/{{advertisement.id}}/purchase">purchase now</a>
-        <a href="#" class="blankButton" style="margin-top:10px">Add to Wishlist</a>
+        <a routerLink="/users/{{getCurrentUser()}}/wishes" class="blankButton" style="margin-top:10px">Add to Wishlist</a>
         <div *ngIf="advertisement.negotiablePrice && getCurrentUser() != advertisement.owner">
           <app-buyeroffer [advertisement]="advertisement"></app-buyeroffer>
         </div>

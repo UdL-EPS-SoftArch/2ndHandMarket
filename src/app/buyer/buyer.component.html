@@ -152,19 +152,38 @@
           <p>
             Filter by Product:
             <input class="form-control input" [(ngModel)]="filterQuery"/>
-          </p>
+          </p><br>
 
-          <table class="table">
-
-            <tr class="table-commun">
-              <th width="20%" class="text-center"> idProduct</th>
+          <table class="table table-striped">
+            <tr>
               <th width="20%" class="text-center"> Product Name </th>
-              <th width="20%" class="text-center"> Price </th>
+              <th width="20%" class="text-center"> Date </th>
+              <th width="20%" class="text-center"> Price Original </th>
               <th width="20%" class="text-center"> Offer </th>
+              <th width="20%" class="text-center"> Seller</th>
               <th width="20%" class="text-center"> Details </th>
             </tr>
 
-
+            <tbody *ngFor="let advertisement of advertisements" class="text-center">
+              <tr *ngIf="advertisement.owner != getCurrentUser()">
+                <td>{{advertisement.title}} </td>
+                <td>{{advertisement.createdAt | date:'dd-MM-yyyy'}}</td>
+                <td>{{advertisement.price}}€</td>
+                <tbody *ngFor="let offer of buyeroffers">
+                  <td *ngIf="advertisement.title === offer.advertisement_title">
+                    <b>{{offer.value}}€</b>
+                  </td>
+                </tbody>
+                <tbody *ngFor="let offer of buyeroffers">
+                  <td *ngIf="advertisement.title === offer.advertisement_title">
+                    <b>{{offer.advertisement_seller}}</b>&nbsp;
+                  </td>
+                </tbody>
+                <td>
+                  <a href="#" title="More details"><button type="button" class="btn btn-default">More Details</button></a>
+                </td>
+            </tr>
+            </tbody>
           </table>
         </div>
       </div>

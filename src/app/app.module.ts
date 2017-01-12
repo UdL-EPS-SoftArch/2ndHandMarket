@@ -13,10 +13,9 @@ import { GetAdvertisementComponent } from './advertisement/getAdvertisement.comp
 import { PurchaseComponent } from './purchase/purchase.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
-import { DateFormatPipe } from 'angular2-moment';
+import { MomentModule } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
-import { PutAdvertisementComponent } from './advertisement/putAdvertisement.component';
 import { MessageComponent } from './message/message.component';
 import { Auth0Module } from './auth0/auth0.module';
 import { LoggedInGuard } from './auth0/loggedin.guard';
@@ -33,7 +32,7 @@ import { SellerComponent } from './seller/seller.component';
 import { BasketProductService } from './basketProduct/basketProduct.service';
 import { MessageService } from './message/message.service';
 import { LoadingModule } from './loading/loading.module';
-
+import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -43,6 +42,7 @@ import { LoadingModule } from './loading/loading.module';
     Auth0Module,
     DataTableModule,
     LoadingModule,
+    MomentModule
   ],
   declarations: [
     AppComponent,
@@ -68,7 +68,8 @@ import { LoadingModule } from './loading/loading.module';
     ManageOffersComponent,
     ProfileComponent,
     SellerComponent,
-    BasketProductComponent
+    BasketProductComponent,
+    DoesNotExistComponent,
   ],
   providers: [
     appRoutingProviders, Auth0Service, LoggedInGuard, ComponentsHelper, BasketProductService, MessageService

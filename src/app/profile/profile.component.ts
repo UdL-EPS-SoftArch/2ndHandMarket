@@ -15,8 +15,6 @@ export class ProfileComponent implements OnInit {
   isEditing: boolean = false;
 
   user: User = new User();
-  newPassword: string = '';
-  newPasswordRepeat: string = '';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -46,33 +44,18 @@ export class ProfileComponent implements OnInit {
   }
 
   submitEdit() {
-    // Verify that both new password and its repeated match.
-    // Note: even when not changing the password, they still have to match to an
-    // empty string.
-    if (this.newPassword !== this.newPasswordRepeat) {
-      alert('New passwords do not match');
-      return;
-    }
-    // API requires us a password. Take the newest password, that is the form
-    // one only if its not blank.
-    const newPassword = this.newPassword
-      ? this.newPassword
-      : this.authentication.getCurrentUser().password;
-    this.user.password = newPassword;
-
     this.profileService.putUser(this.user)
       .subscribe(
         user => {
           this.user = user;
 
-          // All went alright. Clear password, and turn back to the read-only mode.
-          // Other fields don't have to be cleaned-up, they are meant to feed
-          // the read status as well.
-          this.newPassword = this.newPasswordRepeat = '';
-          // Also, update the new user into the storage, so that the user
-          // doesn't have to log back in again.
-          this.user.authorization = this.authentication.getCurrentUser().authorization;
-          this.authentication.storeCurrentUser(this.user);
+          // Replace storage with the updated user.
+          if (this.authentication.getCurrentUser().uri === this.user.uri) {
+            // Notice that updating it when the user uri is different (i.e. admin updating an user),
+            // would cause their login to be replaced by the user's.
+            this.user.authorization = this.authentication.getCurrentUser().authorization;
+            this.authentication.storeCurrentUser(this.user);
+          }
 
           this.toggleEdit();
         },

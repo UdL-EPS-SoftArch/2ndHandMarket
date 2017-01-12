@@ -24,12 +24,14 @@ export class AdvertisementComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(
       (queryParam: any) => {
-        if (Object.keys(queryParam).length === 0) {
-          this.getAdvertisements(this.advertisementService.getAllAdvertisements);
-        } else {
+        if (queryParam.title) {
           this.getAdvertisements(this.searchAdvertisementService.searchAdvertisementByTitle, queryParam.title);
+        } else if (queryParam.tag) {
           this.getAdvertisements(this.searchAdvertisementService.searchAdvertisementByTag, queryParam.tag);
+        } else if (queryParam.category) {
           this.getAdvertisements(this.searchAdvertisementService.searchAdvertisementByCategory, queryParam.category);
+        } else {
+          this.getAdvertisements(this.advertisementService.getAllAdvertisements);
         }
       }
     );

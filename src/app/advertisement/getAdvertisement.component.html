@@ -5,12 +5,17 @@
       <img class="photo" *ngIf="picture" [src]="picture.content" />
     </div>
     <div class="col-md-6">
-      <h2 class="title">
-        {{advertisement.title}}
-        <a class="h2Button" *ngIf="!isDeleting" routerLink="/advertisements/{{advertisement.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-        <a class="h2Button deleteButton" *ngIf="!isDeleting" (click)="toggleDeleteAdvertisementConfirm()"><i class="fa fa-trash" aria-hidden="true"></i></a>
-        <app-loading class="h2Button loadingButton" *ngIf="isDeleting"></app-loading>
-      </h2>
+      <div class="headerButtonsContainer">
+        <h2>
+          {{advertisement.title}}
+        </h2>
+        <div class="buttons" *ngIf="isAdvertisementOwner() && !purchase">
+          <a class="iconButton" *ngIf="!isDeleting" routerLink="/advertisements/{{advertisement.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a class="iconButton" *ngIf="!isDeleting" (click)="toggleDeleteAdvertisementConfirm()"><i class="fa fa-trash" aria-hidden="true"></i></a>
+          <app-loading class="h2Button loadingButton" *ngIf="isDeleting"></app-loading>
+        </div>
+      </div>
+        
       <span class="category">{{advertisement.category}}</span>
       <form class="delete-confirm" *ngIf="hasDeleteConfirm" (submit)="deleteAdvertisementForm(advertisement.uri)">
         Type in the advertisement title to confirm deletion.

@@ -5,8 +5,8 @@ import { Advertisement } from '../advertisement';
 
 @Component({
   selector: 'app-advance-search-ad',
-  templateUrl: './advanceSearch-advertisement.component.html',
-  styleUrls: ['./advanceSearch-advertisement.component.scss']
+  templateUrl: './advanceSearchAdvertisement.component.html',
+  styleUrls: ['./advanceSearchAdvertisement.component.scss']
 })
 
 export class AdvanceSearchAdvertisementComponent implements OnInit {

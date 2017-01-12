@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-sm-2 sidebar">
     <nav>
       <ul>
-        <li class="header">{{user.displayName}}</li>
+        <li class="header">{{user.displayName || user.name}}</li>
         <li class="active">Dashboard</li>
         <li>Seller</li>
         <li>
@@ -28,21 +28,20 @@
 
       <div class="dashboard min-padding" *ngIf="!user">Loading...</div>
       <div class="dashboard min-padding" *ngIf="user">
-        <h2>
-          <span [hidden]="!user.name">
-            {{user.displayName}}
-          </span>
-          <span [hidden]="user.name">
-            {{user.name}} {{user.lastname}}
-          </span>
-          <a *ngIf="isOwner() && !isEditing" (click)="toggleEdit()">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          </a>
-          <a *ngIf="isEditing" (click)="submitEdit()">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-            Save
-          </a>
-        </h2>
+        <div class="headerButtonsContainer">
+          <h2>
+            {{user.displayName ? user.displayName : user.name + ' ' + user.lastname }}
+          </h2>
+          <div class="buttons">
+            <a class="iconButton" *ngIf="isOwner() && !isEditing" (click)="toggleEdit()">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </a>
+            <a class="iconButton" style="display: inline" *ngIf="isEditing" (click)="submitEdit()">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              Save
+            </a>
+          </div>
+        </div>
 
         <h4>General</h4>
         <div class="box">

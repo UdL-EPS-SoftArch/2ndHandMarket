@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
           this.user = user;
 
           // Replace storage with the updated user.
-          if (this.authentication.getCurrentUser().uri === this.user.uri) {
+          if (this.isOwner()) {
             // Notice that updating it when the user uri is different (i.e. admin updating an user),
             // would cause their login to be replaced by the user's.
             this.user.authorization = this.authentication.getCurrentUser().authorization;
@@ -61,6 +61,10 @@ export class ProfileComponent implements OnInit {
         },
         error => alert('Error: Failed to update user details!'),
       );
+  }
+
+  isOwner() {
+    return this.authentication.getCurrentUser().uri === this.user.uri;
   }
 
 }

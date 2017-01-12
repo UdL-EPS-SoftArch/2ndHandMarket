@@ -16,4 +16,8 @@ export class Auth0Component implements OnInit {
   constructor(public auth0Service: Auth0Service) { }
 
   ngOnInit() { }
+
+  redirectToProfile() {
+    this.appRouter.navigate([`/profile/${this.auth0Service.getCurrentUser().username}`]);
+  }
 }

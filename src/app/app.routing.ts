@@ -43,7 +43,7 @@ const appRoutes: Routes = [
   { path: 'updateOffer', component: UpdateOfferComponent },
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] },
   { path: '404', component: DoesNotExistComponent },
   { path: '**', redirectTo: '/404' },

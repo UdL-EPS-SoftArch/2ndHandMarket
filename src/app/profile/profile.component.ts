@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { User } from '../auth0/user';
 import { Auth0Service } from '../auth0/auth0.service';
 import { ProfileService } from './profile.service';
@@ -16,15 +18,23 @@ export class ProfileComponent implements OnInit {
   newPassword: string = '';
   newPasswordRepeat: string = '';
 
-  constructor(private profileService: ProfileService,
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private profileService: ProfileService,
               private authentication: Auth0Service) {
   }
 
   ngOnInit() {
-    const loggedInAs = this.authentication.getCurrentUser().username;
+    this.route.params
+      .map(params => params['id'])
+      .subscribe((id) => {
+        const uri = `/users/${id}`;
+        this.getUser(uri);
+      });
+  }
 
-    // Retrieve the current logged in user information.
-    this.profileService.getUser(loggedInAs)
+  getUser(uri) {
+    this.profileService.getUser(uri)
       .subscribe(
         user => this.user = user,
         error => alert('Error: Failed to retrieve user details!'),

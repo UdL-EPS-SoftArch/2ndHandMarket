@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.getUser(uri)
       .subscribe(
         user => this.user = user,
-        error => alert('Error: Failed to retrieve user details!'),
+        error => this.router.navigate(['/404']),
       );
   }
 

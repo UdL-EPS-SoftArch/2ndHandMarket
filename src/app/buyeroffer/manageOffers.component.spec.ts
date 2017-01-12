@@ -2,11 +2,10 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { PurchaseService } from '../purchase/purchase.service';
-import {AdvertisementService} from '../advertisement/advertisement.service';
-import {BuyerOfferService} from "./buyeroffer.service";
-//import { AuthenticationBasicService } from "../login-basic/authentication-basic.service";
+import { AdvertisementService } from '../advertisement/advertisement.service';
+import { BuyerOfferService } from './buyeroffer.service';
 import { Auth0Service } from '../auth0/auth0.service';
-import {ManageOffersComponent} from "./manageOffers.component";
+import { ManageOffersComponent } from './manageOffers.component';
 
 describe('Component: ManageOffers', () => {
 

@@ -6,10 +6,10 @@ import { BuyerOffer } from './buyeroffer';
 import { BuyerOfferService } from './buyeroffer.service';
 import { AdvertisementService } from '../advertisement/advertisement.service';
 import { Advertisement } from '../advertisement/advertisement';
-import {PurchaseService} from "../purchase/purchase.service";
-import {Purchase} from "../purchase/purchase";
-import {Auth0Service} from "../auth0/auth0.service";
-import {User} from "../auth0/user";
+import { PurchaseService } from '../purchase/purchase.service';
+import { Purchase } from '../purchase/purchase';
+import { Auth0Service } from '../auth0/auth0.service';
+import { User } from '../auth0/user';
 
 
 @Component({
@@ -25,9 +25,9 @@ export class ManageOffersComponent implements OnInit {
   newPurchase: Purchase = new Purchase();
   advertisements: Advertisement[] = [];
   tempAdvert: Advertisement = new Advertisement();
-  newAdvert : Advertisement[] = [];
-  currentFilterAdvertisement : string;
-  showAll : boolean;
+  newAdvert: Advertisement[] = [];
+  currentFilterAdvertisement: string;
+  showAll: boolean;
 
   constructor(private buyerOfferService: BuyerOfferService,
               private advertisementService: AdvertisementService,
@@ -37,7 +37,7 @@ export class ManageOffersComponent implements OnInit {
   ngOnInit() {
     this.getBuyerOffer();
     this.getAdvertisements();
-    this.currentFilterAdvertisement = "";
+    this.currentFilterAdvertisement = '';
     this.showAll = true;
   }
 
@@ -55,23 +55,23 @@ export class ManageOffersComponent implements OnInit {
       );
   }
 
-  filterByAdvertisement(uri : string){
+  filterByAdvertisement(uri: string) {
     this.showAll = false;
     this.currentFilterAdvertisement = uri;
   }
 
-  showAllAdvertisements(){
+  showAllAdvertisements() {
     this.showAll = true;
-    this.currentFilterAdvertisement = "";
+    this.currentFilterAdvertisement = '';
   }
 
-  submitOfferAndPurchase(offer : BuyerOffer, advert : Advertisement){
+  submitOfferAndPurchase(offer: BuyerOffer, advert: Advertisement) {
     this.rejectTheRestOfTheOffers(offer, advert);
     this.tempAdvert = new Advertisement(advert);
     offer.accepted = true;
     this.tempAdvert.owner = String(offer.buyer_id);
     this.tempAdvert.price = offer.value;
-    console.log(this.tempAdvert.owner + " " + this.tempAdvert.price);
+    console.log(this.tempAdvert.owner + '' + this.tempAdvert.price);
     this.newAdvert = [this.tempAdvert];
     this.newPurchase = new Purchase({ newAdvert : this.newAdvert, });
     this.purchase.addPurchase(this.newPurchase).subscribe(
@@ -82,9 +82,9 @@ export class ManageOffersComponent implements OnInit {
     );
   }
 
-  rejectTheRestOfTheOffers(offer : BuyerOffer, advert : Advertisement){
+  rejectTheRestOfTheOffers(offer: BuyerOffer, advert: Advertisement) {
     for (let o of this.buyeroffers){
-      if(o.advertisement_title == advert.title && o.uri != offer.uri){
+      if (o.advertisement_title === advert.title && o.uri !== offer.uri) {
         this.deleteBuyerOffer(o);
       }
     }

@@ -57,7 +57,7 @@ export class GetAdvertisementComponent implements OnInit {
         this.getAdvertisementPicture(this.advertisement.uri);
         this.getAdvertisementPurchase(this.advertisement.uri);
       },
-      error => alert('Error: Failed to retrieve advertisement!')
+      error => this.router.navigate(['/404']),
     );
   }
 

@@ -17,6 +17,7 @@ import { BuyerComponent } from './buyer/buyer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
+import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -43,7 +44,9 @@ const appRoutes: Routes = [
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
-  { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] }
+  { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] },
+  { path: '404', component: DoesNotExistComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 export const appRoutingProviders: any[] = [];

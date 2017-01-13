@@ -5,6 +5,7 @@ export class BasketProduct {
   uri: string = '';
   product: Advertisement;
 
+
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);
   }

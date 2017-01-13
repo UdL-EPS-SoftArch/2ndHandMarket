@@ -1,11 +1,10 @@
 import {Authority} from './authority';
 
 export class User {
-  username: string = '';
+  uri: string = '';
   name: string = '';
   authorities: Authority[] = [];
-  authorization: string = ''; // That's not secure at all.
-                              // Should be changed for a token or session.
+  authorization: string = '';
   password: string = '';
   lastname: string  = '';
   displayName: string = '';
@@ -17,4 +16,11 @@ export class User {
   constructor(values: Object = {}) {
     Object.assign(this, values);
   }
+
+  get username(): string {
+    const parts = this.uri.split('/');
+    return parts.length === 3 ? parts[2] : null;
+  }
+
+  set username(val) {}
 }

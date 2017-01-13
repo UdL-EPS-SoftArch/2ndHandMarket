@@ -14,7 +14,7 @@
 
   <!-- Logged in -->
   <li *ngIf="auth0Service.isLoggedIn()">
-    <a (click)="appRouter.navigate(['/profile'])">Profile</a>
+    <a (click)="redirectToProfile()">Profile</a>
   </li>
   <li *ngIf="auth0Service.isLoggedIn()">
     <a href="/buyers" >Buyer</a>

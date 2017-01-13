@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { User } from '../auth0/user';
 import { Auth0Service } from '../auth0/auth0.service';
 import { ProfileService } from './profile.service';
@@ -13,21 +15,27 @@ export class ProfileComponent implements OnInit {
   isEditing: boolean = false;
 
   user: User = new User();
-  newPassword: string = '';
-  newPasswordRepeat: string = '';
 
-  constructor(private profileService: ProfileService,
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private profileService: ProfileService,
               private authentication: Auth0Service) {
   }
 
   ngOnInit() {
-    const loggedInAs = this.authentication.getCurrentUser().username;
+    this.route.params
+      .map(params => params['id'])
+      .subscribe((id) => {
+        const uri = `/users/${id}`;
+        this.getUser(uri);
+      });
+  }
 
-    // Retrieve the current logged in user information.
-    this.profileService.getUser(loggedInAs)
+  getUser(uri) {
+    this.profileService.getUser(uri)
       .subscribe(
         user => this.user = user,
-        error => alert('Error: Failed to retrieve user details!'),
+        error => this.router.navigate(['/404']),
       );
   }
 
@@ -36,38 +44,27 @@ export class ProfileComponent implements OnInit {
   }
 
   submitEdit() {
-    // Verify that both new password and its repeated match.
-    // Note: even when not changing the password, they still have to match to an
-    // empty string.
-    if (this.newPassword !== this.newPasswordRepeat) {
-      alert('New passwords do not match');
-      return;
-    }
-    // API requires us a password. Take the newest password, that is the form
-    // one only if its not blank.
-    const newPassword = this.newPassword
-      ? this.newPassword
-      : this.authentication.getCurrentUser().password;
-    this.user.password = newPassword;
-
     this.profileService.putUser(this.user)
       .subscribe(
         user => {
           this.user = user;
 
-          // All went alright. Clear password, and turn back to the read-only mode.
-          // Other fields don't have to be cleaned-up, they are meant to feed
-          // the read status as well.
-          this.newPassword = this.newPasswordRepeat = '';
-          // Also, update the new user into the storage, so that the user
-          // doesn't have to log back in again.
-          this.user.authorization = this.authentication.getCurrentUser().authorization;
-          this.authentication.storeCurrentUser(this.user);
+          // Replace storage with the updated user.
+          if (this.isOwner()) {
+            // Notice that updating it when the user uri is different (i.e. admin updating an user),
+            // would cause their login to be replaced by the user's.
+            this.user.authorization = this.authentication.getCurrentUser().authorization;
+            this.authentication.storeCurrentUser(this.user);
+          }
 
           this.toggleEdit();
         },
         error => alert('Error: Failed to update user details!'),
       );
+  }
+
+  isOwner() {
+    return this.authentication.getCurrentUser().uri === this.user.uri;
   }
 
 }

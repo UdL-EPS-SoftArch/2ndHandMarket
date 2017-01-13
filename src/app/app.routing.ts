@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
+import { AdvanceSearchAdvertisementComponent } from './advertisement/search-advertisement/advanceSearchAdvertisement.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
   { path: 'cart', component: BasketProductComponent},
-  { path: 'search', component: SearchAdvertisementComponent},
+  { path: 'basketProducts', component: BasketProductComponent},
+  { path: 'search', component: AdvanceSearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'buyeroffers', component: BuyerOfferComponent },

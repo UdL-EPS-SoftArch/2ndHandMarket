@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { TestBed, inject } from '@angular/core/testing';
+import {Router, ActivatedRoute} from '@angular/router';
 
 import { PostAdvertisementComponent } from './postAdvertisement.component';
 import { AdvertisementService } from './advertisement.service';
@@ -15,9 +15,10 @@ describe('Component: PostAdvertisement', () => {
   });
 
   it ('should create an instance', () => {
-    inject([ Router, AdvertisementService, PictureService ],
-      (router, advertisementService, pictureService) => {
+    inject([ ActivatedRoute, Router, AdvertisementService, PictureService ],
+      (activatedRoute, router, advertisementService, pictureService) => {
       let component = new PostAdvertisementComponent(
+        activatedRoute,
         router,
         advertisementService,
         pictureService

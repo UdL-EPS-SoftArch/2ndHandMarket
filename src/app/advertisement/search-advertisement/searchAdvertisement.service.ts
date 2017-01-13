@@ -37,7 +37,7 @@ export class SearchAdvertisementService {
   }
 
   searchAdvertisementByCategory(category: string): Observable<Advertisement[]> {
-    return this.http.get(`${environment.API}/advertisements/search/findByCategory?category=${category}&sort=createdAt,desc`)
+    return this.http.get(`${environment.API}/advertisements/search/findByCategoryIgnoreCase?category=${category}&sort=createdAt,desc`)
       .map((res: Response) => {
         const advertisementApi = res.json()._embedded.advertisements;
         return advertisementApi

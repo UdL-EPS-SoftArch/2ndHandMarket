@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { MomentModule } from 'angular2-moment';
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
+import { AdvanceSearchAdvertisementComponent } from './advertisement/search-advertisement/advanceSearchAdvertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { Auth0Module } from './auth0/auth0.module';
@@ -59,6 +60,7 @@ import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
     FooterComponent,
     PurchaseComponent,
     SearchAdvertisementComponent,
+    AdvanceSearchAdvertisementComponent,
     ContactComponent,
     BuyerComponent,
     BuyerOfferComponent,

@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { FormsModule } from '@angular/forms';
 import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
+import { AdvanceSearchAdvertisementComponent } from './advertisement/search-advertisement/advanceSearchAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
 import { MomentModule } from 'angular2-moment';
 import { ContactComponent } from './contact/contact.component';
@@ -24,6 +25,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { BasketProductComponent } from './basketProduct/basketProduct.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -31,13 +33,14 @@ describe('App: Softarch1617Client', () => {
       declarations: [
         AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent,
-        SearchAdvertisementComponent,
+        SearchAdvertisementComponent, AdvanceSearchAdvertisementComponent,
         RegisterSellerComponent, BuyerComponent, BuyerOfferComponent,
         PersonalOffersListComponent, UpdateOfferComponent,
         ContactComponent, MessageComponent,
         ProfileComponent, PurchaseComponent,
         BasketProductComponent, ManageOffersComponent,
-        LoadingComponent
+        LoadingComponent,
+        DoesNotExistComponent,
       ],
       imports: [
         routing, FormsModule, MomentModule

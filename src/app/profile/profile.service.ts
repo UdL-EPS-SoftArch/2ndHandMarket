@@ -13,12 +13,10 @@ export class ProfileService {
   }
 
   // GET /users/<username>
-  getUser(username: string): Observable<User> {
-    return this.http.get(`${environment.API}/users/${username}`)
+  getUser(uri: string): Observable<User> {
+    return this.http.get(`${environment.API}${uri}`)
       .map((res: Response) => {
-        const user = res.json();
-        user.username = username; // API doesn't return username directly.
-        return user;
+        return new User(res.json());
       })
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -27,12 +25,7 @@ export class ProfileService {
   getUserByName(name: string): Observable<User> {
     return this.http.get(`${environment.API}/users/search/findByName?name=${name}`)
       .map((res: Response) => {
-        const user = res.json()._embedded.users[0];
-        // We got no username trace, and the API doesn't return it directly.
-        // We'll have to gather it through the JSON links.
-        // _links: { "user": { "href": "http://localhost:8080/users/user1"} }
-        user.username = user._links.href.split().slice(-1)[0];
-        return user;
+        return new User(res.json()._embedded.users[0]);
       })
       .catch((error: any) => Observable.throw(error.json()));
   }

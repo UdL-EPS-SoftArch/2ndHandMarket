@@ -1,3 +1,10 @@
 .column_button {
   width: 100%;
+  background-color:lightgrey;
+  border-radius: 12px;
+}
+
+.column_button:hover {
+  background-color: dodgerblue; /* Green */
+  color: white;
 }

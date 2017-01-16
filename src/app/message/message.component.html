@@ -4,27 +4,27 @@
     <!-- new message -->
     <button (click)="toggleSendMessage()" class="highlightButtonMain big">Write a new message</button>
     <div id="sendMess" style="margin-left:5%;margin-right:5%;">
-       <div class="form-section" *ngIf="DivSendMessage">
-         <form (submit)="addMessage()">
-           <div class="form-group">
-             <label for="sender">Sender</label>
-             <input type="text" class="form-control" id="sender" name="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender" />
-           </div>
-           <div class="form-group">
-             <label for="destination">Destination</label>
-             <input type="text" class="form-control" id="destination" name="destination" placeholder="Enter Destination" required [(ngModel)]="newMessage.destination" />
-           </div>
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required [(ngModel)]="newMessage.title" />
-            </div>
-            <div class="form-group">
-              <label for="body">Body</label>
-              <textarea class="form-control" id="body" name="body" placeholder="Enter Message" required [(ngModel)]="newMessage.body"></textarea>
-            </div>
-            <button class="highlightButtonGreen big">Send</button>
-         </form>
-        </div>
+      <div class="form-section" *ngIf="DivSendMessage">
+        <form (submit)="addMessage()">
+          <div class="form-group">
+            <label for="sender">Sender</label>
+            <input type="text" class="form-control" id="sender" name="sender" [disabled]="DivSendMessage" [(ngModel)]="newMessage.sender" />
+          </div>
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <input type="text" class="form-control" id="destination" name="destination" placeholder="Enter Destination" required [(ngModel)]="newMessage.destination" />
+          </div>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required [(ngModel)]="newMessage.title" />
+          </div>
+          <div class="form-group">
+            <label for="body">Body</label>
+            <textarea class="form-control" id="body" name="body" placeholder="Enter Message" required [(ngModel)]="newMessage.body"></textarea>
+          </div>
+          <button class="highlightButtonGreen big">Send</button>
+        </form>
+      </div>
     </div>
     <div [hidden]="!errorMessage" class="alert alert-danger">{{errorMessage}}</div>
   </header>
@@ -35,10 +35,10 @@
 
     <div class="form-group">
       <label for="sender">Find by URI</label>
-      <input type="text" class="form-control" id="byUri" [(ngModel)]="newMessage.uri"/>
+      <input type="text" class="form-control" id="byUri" [(ngModel)]="searchInput"/>
     </div>
 
-    <button (click)="getMessageByUri(newMessage.uri)">Search</button>
+    <button (click)="getMessageByUri()">Search</button>
     <ul class="list-group" *ngIf="messagesUri.length > 0">
       <li class="list-group-item" *ngFor="let message of messagesUri">
         <div class="message">
@@ -56,10 +56,10 @@
 
     <div class="form-group">
       <label for="sender">Find by Title</label>
-      <input type="text" class="form-control" id="byTitle" [(ngModel)]="newMessage.title"/>
+      <input type="text" class="form-control" id="byTitle" [(ngModel)]="searchInput"/>
     </div>
 
-    <button (click)="getMessageByTitle(newMessage.title)">Search</button>
+    <button (click)="getMessageByTitle()">Search</button>
     <ul class="list-group" *ngIf="messagesTitle.length > 0">
       <li class="list-group-item" *ngFor="let message of messagesTitle">
         <div class="message">

@@ -49,4 +49,21 @@ export class BuyerOfferService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
+  updateOfferById(uri: string, buyerOffer: BuyerOffer): Observable<BuyerOffer> {
+    let body = JSON.stringify({'value': buyerOffer.value,
+      'advertisement_id': buyerOffer.advertisement_id,
+      'advertisement_title': buyerOffer.advertisement_title,
+      'advertisement_seller': buyerOffer.advertisement_seller,
+      'advertisement_iniPrice': buyerOffer.advertisement_iniPrice});
+    let headers = new Headers({
+      Authorization: this.authentication.getCurrentUser().authorization,
+      'Content-Type': 'application/json',
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.put(`${environment.API}${uri}`, body, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
 }

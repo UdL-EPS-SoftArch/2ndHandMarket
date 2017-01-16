@@ -57,7 +57,7 @@ export class GetAdvertisementComponent implements OnInit {
         this.getAdvertisementPicture(this.advertisement.uri);
         this.getAdvertisementPurchase(this.advertisement.uri);
       },
-      error => alert('Error: Failed to retrieve advertisement!')
+      error => this.router.navigate(['/404']),
     );
   }
 
@@ -107,6 +107,10 @@ export class GetAdvertisementComponent implements OnInit {
 
   getCurrentUser(): string {
     return this.authentication.getCurrentUser().username;
+  }
+
+  isAdvertisementOwner(): boolean {
+    return this.getCurrentUser() === this.advertisement.owner;
   }
 
   addProduct(advertisement): void {

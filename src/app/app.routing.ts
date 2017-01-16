@@ -12,11 +12,14 @@ import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './auth0/loggedin.guard';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
+import { UpdateOfferComponent} from './buyeroffer/updateOffer.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { SellerComponent } from './seller/seller.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
+import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
+import { AdvanceSearchAdvertisementComponent } from './advertisement/search-advertisement/advanceSearchAdvertisement.component';
 
 const appRoutes: Routes = [
   { path: 'advertisements', component: AdvertisementComponent },
@@ -34,16 +37,20 @@ const appRoutes: Routes = [
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
   { path: 'cart', component: BasketProductComponent},
-  { path: 'searchAdvertisements', component: SearchAdvertisementComponent},
+  { path: 'basketProducts', component: BasketProductComponent},
+  { path: 'search', component: AdvanceSearchAdvertisementComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'messages', component: MessageComponent, canActivate: [LoggedInGuard] },
   { path: 'buyeroffers', component: BuyerOfferComponent },
   { path: 'personalOffersList', component: PersonalOffersListComponent },
+  { path: 'updateOffer', component: UpdateOfferComponent },
   { path: '', component: AdvertisementComponent },
-  { path: 'buyers', component: BuyerComponent, canActivate:[LoggedInGuard] },
+  { path: 'buyers', component: BuyerComponent },
   { path: 'sellers', component: SellerComponent, canActivate:[LoggedInGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [LoggedInGuard] },
-  { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] }
+  { path: 'profile/:id', component: ProfileComponent },
+  { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] },
+  { path: '404', component: DoesNotExistComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 export const appRoutingProviders: any[] = [];

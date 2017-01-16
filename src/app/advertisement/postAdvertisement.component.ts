@@ -51,7 +51,7 @@ export class PostAdvertisementComponent implements OnInit {
         // Get current picture (if any).
         this.getAdvertisementPicture(uri);
       },
-      error => alert('Error: Failed to retrieve advertisement!'),
+      error => this.router.navigate(['/404']),
     );
   }
 

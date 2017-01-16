@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BuyerOffer } from './buyeroffer';
 import { BuyerOfferService } from './buyeroffer.service';
+import { Auth0Service } from '../auth0/auth0.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class PersonalOffersListComponent implements OnInit {
   errorMessage: string;
   newBuyerOffer: BuyerOffer = new BuyerOffer();
 
-  constructor(private buyerofferService: BuyerOfferService) { }
+  constructor(private buyerofferService: BuyerOfferService,
+              private authentication: Auth0Service) { }
 
   ngOnInit() {
     this.getBuyerOffer();
@@ -47,4 +49,7 @@ export class PersonalOffersListComponent implements OnInit {
         error =>  this.errorMessage = <any>error.message);
   }
 
+  getUser(): string {
+    return this.authentication.getCurrentUser().username;
+  }
 }

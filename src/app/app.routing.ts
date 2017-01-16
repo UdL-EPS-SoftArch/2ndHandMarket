@@ -6,7 +6,6 @@ import { AdvertisementComponent } from './advertisement/advertisement.component'
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { PostAdvertisementComponent } from './advertisement/postAdvertisement.component';
 import { GetAdvertisementComponent } from './advertisement/getAdvertisement.component';
-import { SearchAdvertisementComponent } from './advertisement/search-advertisement/search-advertisement.component';
 import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { LoggedInGuard } from './auth0/loggedin.guard';
@@ -46,7 +45,7 @@ const appRoutes: Routes = [
   { path: 'updateOffer', component: UpdateOfferComponent },
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
-  { path: 'sellers', component: SellerComponent, canActivate:[LoggedInGuard] },
+  { path: 'sellers', component: SellerComponent, canActivate: [LoggedInGuard] },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] },
   { path: '404', component: DoesNotExistComponent },

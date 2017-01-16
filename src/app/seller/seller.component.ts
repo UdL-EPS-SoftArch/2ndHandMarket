@@ -44,7 +44,7 @@ export class SellerComponent implements OnInit {
     this.global = 3;
   }
 
-  getCoupons():number{
+  getCoupons(): number {
     return this.coupons;
   }
 

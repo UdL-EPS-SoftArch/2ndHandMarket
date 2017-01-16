@@ -57,7 +57,7 @@ export class BuyerComponent implements OnInit {
   }
 
   ShowCouponsGlobal(): void {
-    this.coupons = 1
+    this.coupons = 1;
   }
 
   ShowCouponsSeller(): void {

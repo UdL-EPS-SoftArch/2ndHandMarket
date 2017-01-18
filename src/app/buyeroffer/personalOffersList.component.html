@@ -1,10 +1,13 @@
 <section class="buyeroffer">
   <header>
-    <h2>Personal Offers List</h2>
+    <h2>Offer List Information</h2>
 
     <blockquote class="blockquote">
       <p class="mb-0">
-        Here, there is all historic of your offers about the product: _______
+        Here, there is all historic of your offers and all the information related to them.
+      </p>
+      <p class="mb-0">
+        In order to make any change, you've go to the Update Offer section.
       </p>
     </blockquote>
 
@@ -15,7 +18,7 @@
     <div class="col-sm-3" >
       <div class="list-group">
         <h3 class="list-group-item disabled text-center">
-          <small class="text-muted">Offered Products</small>
+          <small class="text-muted">Advertisements Offer Summary</small>
         </h3>
         <div *ngFor="let buyeroffer of buyeroffers">
           <button class="column_button" onclick="" *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_title}}</button>

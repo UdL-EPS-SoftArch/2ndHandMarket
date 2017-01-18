@@ -9,7 +9,8 @@
         <thead>
         <tr>
           <th>Advertisement Offer</th>
-          <th>Your Offer</th>
+          <th>Seller</th>
+          <th>Initial Offer</th>
           <th>New Offer</th>
         </tr>
         </thead>
@@ -17,6 +18,7 @@
         <tr>
           <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_title}}</td>
           <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_seller}}</td>
+          <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_iniPrice}}</td>
           <td *ngIf="getUser()==buyeroffer.buyer_id">
             <input type="number" id="updateoffer" name="updateoffer" max={{buyeroffer.value}} step="0.01" value={{buyeroffer.value}} #newPrice />&nbsp;€
             <button class="btn btn-success" (click)="updateOffer(buyeroffer, newPrice.value)">Update</button>

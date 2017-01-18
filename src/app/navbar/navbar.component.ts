@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BasketProductService } from '../basketProduct/basketProduct.service';
 import { MessageService } from '../message/message.service';
 import { Message } from '../message/message';
-import {Auth0Service} from "../auth0/auth0.service";
+import {Auth0Service} from '../auth0/auth0.service';
 
 @Component({
   selector: 'app-navbar',
@@ -31,8 +31,8 @@ export class NavbarComponent implements OnInit {
     return this.basketProductService.getAllProducts().length;
   }
 
-  authenticated(): boolean{
-    return  this.authentication.isLoggedIn().valueOf()
+  authenticated(): boolean {
+    return this.authentication.isLoggedIn().valueOf();
 
   }
 

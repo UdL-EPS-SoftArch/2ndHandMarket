@@ -113,12 +113,11 @@ export class GetAdvertisementComponent implements OnInit {
   }
 
   addProduct(advertisement): void {
-    if (this.authentication.isLoggedIn()){
+    if (this.authentication.isLoggedIn()) {
       let basketProduct: BasketProduct = new BasketProduct();
       basketProduct.product = advertisement;
       this.basketProductService.addProduct(basketProduct);
-    }
-    else{
+    } else {
       alert('You are not logged');
     }
   }

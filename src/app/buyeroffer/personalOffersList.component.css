@@ -8,3 +8,13 @@
   background-color: dodgerblue; /* Green */
   color: white;
 }
+
+.table_head{
+  background-color: #66c2ff;
+  border-style: double;
+}
+
+.update_table{
+  margin-left:5%;
+  margin-right:5%;
+}

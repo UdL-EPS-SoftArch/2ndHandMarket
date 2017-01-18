@@ -1,12 +1,26 @@
 <section class="updateOffer">
 
-  <h3>Updating Offers</h3>
+  <div *ngIf="edited" class="alert success">
+    <span class="closebtn">&times;</span>
+    <strong>Your offer has been updated successfully</strong>
+  </div>
+
+  <h3>Offers Management</h3>
+
+  <blockquote class="blockquote">
+    <p class="mb-0">
+      In this section you'll be able to change and update all your offers or delete them if you're not interested in the advertisement anymore.
+    </p>
+    <p class="mb-0">
+      If you want to see all information about your offers: <button class="btn btn-info" routerLink="/personalOffersList" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offer Management</button>
+    </p>
+  </blockquote>
 
 
   <div class="table">
-    <div class="table-responsive">
+    <div class="table-responsive update_table">
       <table class="table">
-        <thead>
+        <thead class="table_head">
         <tr>
           <th>Advertisement Offer</th>
           <th>Seller</th>

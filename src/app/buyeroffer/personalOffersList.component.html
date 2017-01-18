@@ -7,7 +7,7 @@
         Here, there is all historic of your offers and all the information related to them.
       </p>
       <p class="mb-0">
-        In order to make any change, you've go to the Update Offer section.
+        In order to make any change, you've to visit the next section: <button class="btn btn-info" routerLink="/updateOffer" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offer Management</button>
       </p>
     </blockquote>
 
@@ -27,16 +27,15 @@
     </div>
 
     <div class="table">
-      <div class="table-responsive">
+      <div class="table-responsive update_table">
         <table class="table">
-          <thead>
+          <thead class="table_head">
           <tr>
             <th>Advertisement</th>
             <th>Seller</th>
             <th>Initial Price</th>
             <th>My Offer</th>
             <th>Date</th>
-            <th>Management</th>
           </tr>
           </thead>
           <tbody *ngFor="let buyeroffer of buyeroffers">
@@ -46,8 +45,6 @@
               <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_iniPrice}}</td>
               <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.value}}</td>
               <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.date}}</td>
-              <td *ngIf="getUser()==buyeroffer.buyer_id"><button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
-                  <button class="btn btn-danger" routerLink="/updateOffer" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Update</button></td>
             </tr>
           </tbody>
         </table>

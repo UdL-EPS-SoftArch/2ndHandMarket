@@ -18,6 +18,7 @@ export class UpdateOfferComponent implements OnInit {
   buyeroffers: BuyerOffer[] = [];
   errorMessage: string;
   newBuyerOffer: BuyerOffer = new BuyerOffer();
+  public edited = false;
 
   constructor(private buyerofferService: BuyerOfferService,
               private authentication: Auth0Service) { }
@@ -34,7 +35,15 @@ export class UpdateOfferComponent implements OnInit {
       );
   }
 
+  deleteBuyerOffer(buyeroffer) {
+    this.buyerofferService.deleteBuyerOfferByUri(buyeroffer.uri)
+      .subscribe(
+        deleted => this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri),
+        error =>  this.errorMessage = <any>error.message);
+  }
+
   updateOffer(existingOffer: BuyerOffer, newPrice: number) {
+    this.saveTodos();
     existingOffer.value = newPrice;
     this.buyerofferService.updateOfferById(existingOffer.uri, existingOffer)
       .subscribe(
@@ -47,5 +56,13 @@ export class UpdateOfferComponent implements OnInit {
 
   getUser(): string {
     return this.authentication.getCurrentUser().username;
+  }
+
+  saveTodos(): void {
+    this.edited = true;
+    setTimeout(function() {
+      this.edited = false;
+      console.log(this.edited);
+    }.bind(this), 3000);
   }
 }

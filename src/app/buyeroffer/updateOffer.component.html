@@ -2,12 +2,30 @@
 
   <h3>Updating Offers</h3>
 
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let buyeroffer of buyeroffers">
-      BuyerOffer {{buyeroffer.uri}}, value: {{buyeroffer.value}}€
 
-        <input type="number" id="updateoffer" name="updateoffer" max={{buyeroffer.value}} step="0.01" value={{buyeroffer.value}} #newPrice />&nbsp;€
-        <button (click)="updateOffer(buyeroffer, newPrice.value)">Confirm</button>
-    </li>
-  </ul>
+  <div class="table">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Advertisement Offer</th>
+          <th>Your Offer</th>
+          <th>New Offer</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let buyeroffer of buyeroffers">
+        <tr>
+          <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_title}}</td>
+          <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_seller}}</td>
+          <td *ngIf="getUser()==buyeroffer.buyer_id">
+            <input type="number" id="updateoffer" name="updateoffer" max={{buyeroffer.value}} step="0.01" value={{buyeroffer.value}} #newPrice />&nbsp;€
+            <button class="btn btn-success" (click)="updateOffer(buyeroffer, newPrice.value)">Update</button>
+            <button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </section>

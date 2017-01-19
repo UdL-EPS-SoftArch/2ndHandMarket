@@ -72,6 +72,7 @@ export class ManageOffersComponent implements OnInit {
     this.tempAdvert.owner = String(offer.buyer_id);
     this.tempAdvert.price = offer.value;
     console.log(this.tempAdvert.owner + '' + this.tempAdvert.price);
+    console.log()
     this.newAdvert = [this.tempAdvert];
     this.newPurchase = new Purchase({ newAdvert : this.newAdvert, });
     this.purchase.addPurchase(this.newPurchase).subscribe(

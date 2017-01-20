@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import { BasketProductService } from '../basketProduct/basketProduct.service';
 import { MessageService } from '../message/message.service';
 import { Message } from '../message/message';
+import {Auth0Service} from '../auth0/auth0.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  providers: [Auth0Service]
 })
 export class NavbarComponent implements OnInit {
 
@@ -17,7 +19,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(public router: Router,
               public basketProductService: BasketProductService,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private authentication: Auth0Service) {
   }
 
   ngOnInit() {
@@ -26,6 +29,11 @@ export class NavbarComponent implements OnInit {
 
   countBasketProducts(): number {
     return this.basketProductService.getAllProducts().length;
+  }
+
+  authenticated(): boolean {
+    return this.authentication.isLoggedIn().valueOf();
+
   }
 
   getUnreadMessages() {

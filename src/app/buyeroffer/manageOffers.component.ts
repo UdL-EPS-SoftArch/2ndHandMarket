@@ -28,6 +28,7 @@ export class ManageOffersComponent implements OnInit {
   newAdvert: Advertisement[] = [];
   currentFilterAdvertisement: string;
   showAll: boolean;
+  invert: boolean;
 
   constructor(private buyerOfferService: BuyerOfferService,
               private advertisementService: AdvertisementService,
@@ -39,6 +40,7 @@ export class ManageOffersComponent implements OnInit {
     this.getAdvertisements();
     this.currentFilterAdvertisement = '';
     this.showAll = true;
+    this.invert = false;
   }
 
   getCurrentUser(): User {
@@ -65,6 +67,29 @@ export class ManageOffersComponent implements OnInit {
     this.currentFilterAdvertisement = '';
   }
 
+  sortBy(param : string){
+    this.advertisements.sort((some, other) => {
+      if(!this.invert){
+        if (some.price > other.price) {
+          return 1;
+        }
+        if (some.price < other.price) {
+          return -1;
+        }
+      }
+      else{
+        if (some.price < other.price) {
+          return 1;
+        }
+        if (some.price > other.price) {
+          return -1;
+        }
+      }
+      return 0;
+    });
+    this.invert = !this.invert;
+  }
+
   submitOfferAndPurchase(offer: BuyerOffer, advert: Advertisement) {
     this.rejectTheRestOfTheOffers(offer, advert);
     this.tempAdvert = new Advertisement(advert);
@@ -72,7 +97,6 @@ export class ManageOffersComponent implements OnInit {
     this.tempAdvert.owner = String(offer.buyer_id);
     this.tempAdvert.price = offer.value;
     console.log(this.tempAdvert.owner + '' + this.tempAdvert.price);
-    console.log()
     this.newAdvert = [this.tempAdvert];
     this.newPurchase = new Purchase({ newAdvert : this.newAdvert, });
     this.purchase.addPurchase(this.newPurchase).subscribe(

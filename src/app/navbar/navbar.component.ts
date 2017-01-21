@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
   }
 
   countBasketProducts(): number {
-    return this.basketProductService.getAllProducts().length;
+    return this.basketProductService.getProducts().length;
   }
 
 

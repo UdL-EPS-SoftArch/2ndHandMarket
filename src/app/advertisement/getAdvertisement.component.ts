@@ -113,8 +113,6 @@ export class GetAdvertisementComponent implements OnInit {
   }
 
   addProduct(advertisement): void {
-      let basketProduct: BasketProduct = new BasketProduct();
-      basketProduct.product = advertisement;
-      this.basketProductService.addProduct(basketProduct);
+    this.basketProductService.addProduct(new BasketProduct({ advertisement }));
   }
 }

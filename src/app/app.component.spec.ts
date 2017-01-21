@@ -26,6 +26,7 @@ import { BasketProductComponent } from './basketProduct/basketProduct.component'
 import { ManageOffersComponent } from './buyeroffer/manageOffers.component';
 import { LoadingComponent } from './loading/loading.component';
 import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
+import { SellerComponent } from './seller/seller.component';
 
 describe('App: Softarch1617Client', () => {
   beforeEach(() => {
@@ -39,7 +40,7 @@ describe('App: Softarch1617Client', () => {
         ContactComponent, MessageComponent,
         ProfileComponent, PurchaseComponent,
         BasketProductComponent, ManageOffersComponent,
-        LoadingComponent,
+        LoadingComponent, SellerComponent,
         DoesNotExistComponent,
       ],
       imports: [

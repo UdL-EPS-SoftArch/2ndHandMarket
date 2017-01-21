@@ -14,7 +14,7 @@ export class BasketProductService {
   constructor(private authentication: Auth0Service) { }
 
   getAllProducts(): BasketProduct[] {
-    return JSON.parse(localStorage.getItem('products'));
+    return JSON.parse(localStorage.getItem('products')) || [];
   }
   getProducts(): BasketProduct[] {
     return this.products;

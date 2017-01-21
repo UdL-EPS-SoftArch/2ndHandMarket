@@ -25,9 +25,11 @@ export class BasketProductComponent implements OnInit {
   getProducts(): BasketProduct[] {
     return this.basketProductService.getAllProducts();
   }
+
   deleteProduct(product) {
     this.basketProductService.removeProduct(product);
     this.totalPrice = this.getTotalPrice();
+    window.location.reload();
   }
 
   getTotalPrice(): number {

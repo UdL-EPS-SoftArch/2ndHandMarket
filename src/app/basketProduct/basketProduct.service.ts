@@ -11,16 +11,21 @@ export class BasketProductService {
   products: BasketProduct[] = [];
   productsId: number[] = [];
 
-  constructor() { }
+  constructor(private authentication: Auth0Service) { }
 
   getAllProducts(): BasketProduct[] {
+    return JSON.parse(localStorage.getItem('products'));
+  }
+  getProducts(): BasketProduct[] {
     return this.products;
   }
-
   addProduct(product: BasketProduct): void {
+
     if (this.productsId.indexOf(product.product.id) === -1) {
       this.products.push(product);
       this.productsId.push(product.product.id);
+      localStorage.setItem('products', JSON.stringify(this.products));
+      localStorage.setItem('productsId', JSON.stringify(this.productsId));
     } else {
       alert('This product is already in your cart');
     }
@@ -29,6 +34,8 @@ export class BasketProductService {
   removeProduct(product): void {
     let i = this.products.indexOf(product);
     this.products.splice(i, 1);
+    localStorage.setItem('products', JSON.stringify(this.products));
     this.productsId.splice(i, 1);
+    localStorage.setItem('productsId', JSON.stringify(this.productsId));
   }
 }

@@ -46,7 +46,7 @@
           <h4>Sender: {{message.sender}}</h4>
           <h4>To: {{message.destination}}</h4>
           <h4>Title: {{message.title}}</h4>
-          <h4>Message: {{message.body}}</h4>
+          <div class="multi_lines_text"><h4>{{message.body}}</h4></div>
         </div>
       </li>
     </ul>
@@ -67,7 +67,7 @@
           <h4>Sender: {{message.sender}}</h4>
           <h4>To: {{message.destination}}</h4>
           <h4>Title: {{message.title}}</h4>
-          <h4>Message: {{message.body}}</h4>
+          <div class="multi_lines_text"><h4>{{message.body}}</h4></div>
         </div>
       </li>
     </ul>
@@ -80,6 +80,10 @@
     <div class="inner"><button (click)="DivReceivedMessage = !DivReceivedMessage" class="highlightButtonTest big">   RECEIVED MESSAGES   </button></div>
     <div class="inner"><button (click)="DivAllMessage = !DivAllMessage" class="highlightButtonTest big">   ALL MESSAGES   </button></div>
   </div>-->
+
+  <style>
+    .multi_lines_text { white-space: pre-line; }
+  </style>
 
   <div id="cont" style="margin-left:5%;">
   <button (click)=" DivAllMessage = !DivAllMessage;
@@ -112,7 +116,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
             <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>To: {{message.destination}}</h4>
             <h4>Title: {{message.title}}</h4>
-            <h4>Message: {{message.body}}</h4>
+            <div class="multi_lines_text"><h4>{{message.body}}</h4></div>
             <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
           </div>
         </li>
@@ -140,12 +144,13 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
             <!--<h4>Uri: {{message.uri}}</h4>-->
             <h4>From: {{message.sender}}</h4>
             <h4>Title: {{message.title}}</h4>
-            <h4>Message: {{message.body}}</h4>
+            <div class="multi_lines_text">{{message.body}}</div>
             <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
           </div>
         </li>
       </ul>
   </div>
+
 
   <!-- All -->
   <div class="form-section" [hidden]="!DivAllMessage" style="margin-left:5%;margin-right:5%;">
@@ -163,7 +168,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
             <h4>Sender: {{message.sender}}</h4>
             <h4>To: {{message.destination}}</h4>
             <h4>Title: {{message.title}}</h4>
-            <h4>Message: {{message.body}}</h4>
+            <div class="multi_lines_text"><h4>{{message.body}}</h4></div>
             <button class="highlightButtonDelete big" (click)="removeMessage(message)">Delete</button>
           </div>
         </li>

@@ -1,9 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, inject } from '@angular/core/testing';
+import { Http} from '@angular/http';
+import { Router } from '@angular/router';
+
 import { BasketProductComponent } from './basketProduct.component';
 import { BasketProductService } from './basketProduct.service';
-import { Http} from '@angular/http';
 
 beforeEach(() => {
   TestBed.configureTestingModule({
@@ -12,8 +14,8 @@ beforeEach(() => {
 });
 
 describe('Component: BasketProduct', () => {
-  inject([BasketProductService], (basketProductService) => {
-    let component = new BasketProductComponent(basketProductService);
+  inject([BasketProductService, Router], (basketProductService, router) => {
+    let component = new BasketProductComponent(basketProductService, router);
     expect(component).toBeTruthy();
   });
 });

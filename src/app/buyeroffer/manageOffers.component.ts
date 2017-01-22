@@ -30,6 +30,7 @@ export class ManageOffersComponent implements OnInit {
   currentOrderParam : string;
   showAll: boolean;
   invert: boolean;
+  isSortable: boolean;
 
   constructor(private buyerOfferService: BuyerOfferService,
               private advertisementService: AdvertisementService,
@@ -43,7 +44,9 @@ export class ManageOffersComponent implements OnInit {
     this.currentOrderParam = '';
     this.showAll = true;
     this.invert = false;
+    this.isSortable = true;
     this.sortBy('title');
+
   }
 
   getCurrentUser(): User {
@@ -63,40 +66,46 @@ export class ManageOffersComponent implements OnInit {
   filterByAdvertisement(uri: string) {
     this.showAll = false;
     this.currentFilterAdvertisement = uri;
+    this.currentOrderParam = '';
+    this.isSortable = false;
   }
 
   showAllAdvertisements() {
     this.showAll = true;
     this.currentFilterAdvertisement = '';
+    this.invert = true;
+    this.isSortable = true;
+    this.sortBy('title');
   }
 
   sortBy(param : string){
-    if(this.currentOrderParam == param){
-      this.invert = !this.invert;
-    }else{
-      this.invert == true;
-      this.currentOrderParam = param;
+    if(this.isSortable){
+      if(this.currentOrderParam == param){
+        this.invert = !this.invert;
+      }else{
+        this.invert = false;
+        this.currentOrderParam = param;
+      }
+      this.advertisements.sort((some, other) => {
+        if(!this.invert){
+          if (some[param] > other[param] ) {
+            return 1;
+          }
+          if (some[param]  < other[param] ) {
+            return -1;
+          }
+        }
+        else{
+          if (some[param]  < other[param] ) {
+            return 1;
+          }
+          if (some[param]  > other[param] ) {
+            return -1;
+          }
+        }
+        return 0;
+      });
     }
-    this.advertisements.sort((some, other) => {
-      if(!this.invert){
-        if (some[param] > other[param] ) {
-          return 1;
-        }
-        if (some[param]  < other[param] ) {
-          return -1;
-        }
-      }
-      else{
-        if (some[param]  < other[param] ) {
-          return 1;
-        }
-        if (some[param]  > other[param] ) {
-          return -1;
-        }
-      }
-      return 0;
-    });
-
   }
 
   submitOfferAndPurchase(offer: BuyerOffer, advert: Advertisement) {

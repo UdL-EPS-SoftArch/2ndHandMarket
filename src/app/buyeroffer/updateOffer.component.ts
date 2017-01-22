@@ -40,9 +40,12 @@ export class UpdateOfferComponent implements OnInit {
       );
   }
 
-  toggleDeleteAdvertisementConfirm(buyeroffer) {
-    this.hasDeleteConfirm = !this.hasDeleteConfirm;
-    /*this.buyeroffer = this.buyeroffer;*/
+  toggleDeleteAdvertisementConfirm() {
+    this.hasDeleteConfirm = true;
+    setTimeout(function() {
+      this.hasDeleteConfirm = false;
+      console.log(this.edited);
+    }.bind(this), 3000);
   }
 
   deleteBuyerOfferConfirm(buyeroffer) {
@@ -56,17 +59,14 @@ export class UpdateOfferComponent implements OnInit {
   }
 
   deleteBuyerOffer(buyeroffer) {
-    this.hasDeleteConfirm = false;
-    this.isDeleting = true;
+    this.toggleDeleteAdvertisementConfirm();
 
     this.buyerofferService.deleteBuyerOfferByUri(buyeroffer.uri)
       .subscribe(
         deleted => {
-          this.isDeleting = false;
           this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri);
         },
         error => {
-          this.isDeleting = false;
           this.errorMessage = <any>error.message;
         }
       );
@@ -96,4 +96,6 @@ export class UpdateOfferComponent implements OnInit {
       console.log(this.edited);
     }.bind(this), 3000);
   }
+
+
 }

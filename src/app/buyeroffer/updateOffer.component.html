@@ -16,6 +16,11 @@
     </p>
   </blockquote>
 
+  <form class="delete-confirm" (submit)="deleteBuyerOffer(buyeroffer)">
+    Type in the advertisement title to confirm deletion.
+    <input name="confirmation-title" type="text" placeholder="Advertisement title" [(ngModel)]="deleteConfirmText" />
+    <input type="submit" value="Delete" />
+  </form>
 
   <div class="table">
     <div class="table-responsive update_table">

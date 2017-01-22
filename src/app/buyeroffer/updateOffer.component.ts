@@ -18,7 +18,10 @@ export class UpdateOfferComponent implements OnInit {
   buyeroffers: BuyerOffer[] = [];
   errorMessage: string;
   newBuyerOffer: BuyerOffer = new BuyerOffer();
+  buyeroffer: BuyerOffer = new BuyerOffer();
   public edited = false;
+  deleteConfirm: boolean = false;
+  deleteConfirmText: String = '';
 
   constructor(private buyerofferService: BuyerOfferService,
               private authentication: Auth0Service) { }
@@ -35,7 +38,19 @@ export class UpdateOfferComponent implements OnInit {
       );
   }
 
+  deleteBuyerOfferConfirm(buyeroffer) {
+    const deleteConfirmText = this.deleteConfirmText.trim().toLowerCase();
+    const advertisementTitle = this.buyeroffer.advertisement_title.trim().toLowerCase();
+
+    if (deleteConfirmText === advertisementTitle) {
+      this.deleteBuyerOffer(buyeroffer);
+    }
+  }
+
   deleteBuyerOffer(buyeroffer) {
+    const deleteConfirm = this.deleteConfirmText.trim().toLowerCase();
+    const advertisementTitle = this.buyeroffer.advertisement_title.trim().toLowerCase();
+
     this.buyerofferService.deleteBuyerOfferByUri(buyeroffer.uri)
       .subscribe(
         deleted => this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri),

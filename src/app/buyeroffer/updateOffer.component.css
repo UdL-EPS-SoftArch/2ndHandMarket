@@ -34,3 +34,11 @@
 .alert.success {
   background-color: #4CAF50;
 }
+
+.delete-confirm {
+  border-radius: 3px;
+  background-color: #880315;
+  color: #ffffff;
+  padding: 15px;
+
+}

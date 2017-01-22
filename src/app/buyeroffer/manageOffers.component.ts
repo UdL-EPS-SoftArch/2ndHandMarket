@@ -27,6 +27,7 @@ export class ManageOffersComponent implements OnInit {
   tempAdvert: Advertisement = new Advertisement();
   newAdvert: Advertisement[] = [];
   currentFilterAdvertisement: string;
+  currentOrderParam : string;
   showAll: boolean;
   invert: boolean;
 
@@ -39,6 +40,7 @@ export class ManageOffersComponent implements OnInit {
     this.getBuyerOffer();
     this.getAdvertisements();
     this.currentFilterAdvertisement = '';
+    this.currentOrderParam = '';
     this.showAll = true;
     this.invert = false;
   }
@@ -68,20 +70,27 @@ export class ManageOffersComponent implements OnInit {
   }
 
   sortBy(param : string){
+    if(this.currentOrderParam == param){
+      this.invert == false;
+
+    }else{
+      this.currentOrderParam = param;
+    }
+
     this.advertisements.sort((some, other) => {
       if(!this.invert){
-        if (some.price > other.price) {
+        if (some[param] > other[param] ) {
           return 1;
         }
-        if (some.price < other.price) {
+        if (some[param]  < other[param] ) {
           return -1;
         }
       }
       else{
-        if (some.price < other.price) {
+        if (some[param]  < other[param] ) {
           return 1;
         }
-        if (some.price > other.price) {
+        if (some[param]  > other[param] ) {
           return -1;
         }
       }

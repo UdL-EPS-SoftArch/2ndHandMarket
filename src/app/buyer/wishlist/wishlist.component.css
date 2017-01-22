@@ -1,0 +1,13 @@
+.wishlist {
+  height: 100%;
+  background-color: #f2f1ef;
+  padding-top: 20px;
+}
+
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
+}

@@ -20,8 +20,10 @@ export class UpdateOfferComponent implements OnInit {
   newBuyerOffer: BuyerOffer = new BuyerOffer();
   buyeroffer: BuyerOffer = new BuyerOffer();
   public edited = false;
-  deleteConfirm: boolean = false;
+
+  hasDeleteConfirm: boolean = false;
   deleteConfirmText: String = '';
+  isDeleting: boolean = false;
 
   constructor(private buyerofferService: BuyerOfferService,
               private authentication: Auth0Service) { }
@@ -38,23 +40,36 @@ export class UpdateOfferComponent implements OnInit {
       );
   }
 
+  toggleDeleteAdvertisementConfirm(buyeroffer) {
+    this.hasDeleteConfirm = !this.hasDeleteConfirm;
+    /*this.buyeroffer = this.buyeroffer;*/
+  }
+
   deleteBuyerOfferConfirm(buyeroffer) {
-    const deleteConfirmText = this.deleteConfirmText.trim().toLowerCase();
+    /*const deleteConfirmText = this.deleteConfirmText.trim().toLowerCase();
     const advertisementTitle = this.buyeroffer.advertisement_title.trim().toLowerCase();
 
     if (deleteConfirmText === advertisementTitle) {
       this.deleteBuyerOffer(buyeroffer);
-    }
+    }*/
+    this.deleteBuyerOffer(buyeroffer);
   }
 
   deleteBuyerOffer(buyeroffer) {
-    const deleteConfirm = this.deleteConfirmText.trim().toLowerCase();
-    const advertisementTitle = this.buyeroffer.advertisement_title.trim().toLowerCase();
+    this.hasDeleteConfirm = false;
+    this.isDeleting = true;
 
     this.buyerofferService.deleteBuyerOfferByUri(buyeroffer.uri)
       .subscribe(
-        deleted => this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri),
-        error =>  this.errorMessage = <any>error.message);
+        deleted => {
+          this.isDeleting = false;
+          this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri);
+        },
+        error => {
+          this.isDeleting = false;
+          this.errorMessage = <any>error.message;
+        }
+      );
   }
 
   updateOffer(existingOffer: BuyerOffer, newPrice: number) {
@@ -67,6 +82,7 @@ export class UpdateOfferComponent implements OnInit {
           return buyerOffer;
         }),
         error => this.errorMessage = <any>error.message);
+
   }
 
   getUser(): string {

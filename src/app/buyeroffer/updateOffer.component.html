@@ -16,10 +16,15 @@
     </p>
   </blockquote>
 
-  <form class="delete-confirm" (submit)="deleteBuyerOffer(buyeroffer)">
-    Type in the advertisement title to confirm deletion.
+  <form class="delete-confirm" *ngIf="hasDeleteConfirm" (submit)="deleteBuyerOffer(buyeroffer)">
+    <font style="color:white">¿Are you sure you want to delete your Offer?</font>
+    <!--
     <input name="confirmation-title" type="text" placeholder="Advertisement title" [(ngModel)]="deleteConfirmText" />
-    <input type="submit" value="Delete" />
+    -->
+    <select name="OfferSelector">
+      <option *ngFor="let buyeroffer of buyeroffers" value="{{buyeroffer.uri}}">{{buyeroffer.advertisement_title}} => {{buyeroffer.value}}</option>
+    </select>
+    <input type="submit" value="Delete">
   </form>
 
   <div class="table">
@@ -41,7 +46,7 @@
           <td *ngIf="getUser()==buyeroffer.buyer_id">
             <input type="number" id="updateoffer" name="updateoffer" max={{buyeroffer.value}} step="0.01" value={{buyeroffer.value}} #newPrice />&nbsp;€
             <button class="btn btn-success" (click)="updateOffer(buyeroffer, newPrice.value)">Update</button>
-            <button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
+            <button class="btn btn-danger" (click)="toggleDeleteAdvertisementConfirm()">Delete</button>
           </td>
         </tr>
         </tbody>

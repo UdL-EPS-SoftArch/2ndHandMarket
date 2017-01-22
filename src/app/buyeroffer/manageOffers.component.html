@@ -35,13 +35,61 @@
           <table class="table">
             <thead>
             <tr>
-              <th><button type="button" class="btn btn-sort" (click)="sortBy('title')">Product</button></th>
-              <th><button type="button" class="btn btn-sort" (click)="sortBy('brand')">Brand</button></th>
-              <th><button type="button" class="btn btn-sort" (click)="sortBy('description')">Description</button></th>
-              <th><button type="button" class="btn btn-sort" (click)="sortBy('modifiedAt')">Date</button></th>
-              <th><button type="button" class="btn btn-sort" (click)="sortBy('price')">Initial Prince</button></th>
-              <th>Offers</th>
-            </tr>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('title')">
+                Product
+                <span [hidden]="currentOrderParam!='title'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='title'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+                </button>
+              </th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('brand')">
+                Brand
+                <span [hidden]="currentOrderParam!='brand'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='brand'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('description')">
+                Description
+                <span [hidden]="currentOrderParam!='description'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='description'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('modifiedAt')">
+                Date
+                <span [hidden]="currentOrderParam!='modifiedAt'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='modifiedAt'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('price')">
+                Initial Prince
+                <span [hidden]="currentOrderParam!='price'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='price'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('negotiablePrice')">
+                Offers
+                <span [hidden]="currentOrderParam!='negotiablePrice'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='negotiablePrice'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
             </thead>
             <tbody *ngFor="let advertisement of advertisements" class="row">
               <tr *ngIf="advertisement.owner === getCurrentUser().username  &&  (showAll || currentFilterAdvertisement === advertisement.uri)">

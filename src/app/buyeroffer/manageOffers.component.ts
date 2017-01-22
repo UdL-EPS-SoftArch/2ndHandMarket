@@ -43,6 +43,7 @@ export class ManageOffersComponent implements OnInit {
     this.currentOrderParam = '';
     this.showAll = true;
     this.invert = false;
+    this.sortBy('title');
   }
 
   getCurrentUser(): User {
@@ -71,12 +72,11 @@ export class ManageOffersComponent implements OnInit {
 
   sortBy(param : string){
     if(this.currentOrderParam == param){
-      this.invert == false;
-
+      this.invert = !this.invert;
     }else{
+      this.invert == true;
       this.currentOrderParam = param;
     }
-
     this.advertisements.sort((some, other) => {
       if(!this.invert){
         if (some[param] > other[param] ) {
@@ -96,7 +96,7 @@ export class ManageOffersComponent implements OnInit {
       }
       return 0;
     });
-    this.invert = !this.invert;
+
   }
 
   submitOfferAndPurchase(offer: BuyerOffer, advert: Advertisement) {

@@ -28,13 +28,9 @@ export class NavbarComponent implements OnInit {
   }
 
   countBasketProducts(): number {
-    return this.basketProductService.getAllProducts().length;
+    return this.basketProductService.getProducts().length;
   }
 
-  authenticated(): boolean {
-    return this.authentication.isLoggedIn().valueOf();
-
-  }
 
   getUnreadMessages() {
     this.messageService.getAllMessages()

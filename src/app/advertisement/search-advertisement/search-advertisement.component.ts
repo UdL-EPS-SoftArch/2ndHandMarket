@@ -18,6 +18,7 @@ export class SearchAdvertisementComponent implements OnInit {
 
   MAX_MATCHING_ADVERTISEMENTS = 5;
   matchingAdvertisements: Advertisement[] = [] ;
+  isQuerying: boolean;
 
   constructor(private router: Router, private searchAdvertisement: SearchAdvertisementService) {
   }
@@ -25,14 +26,21 @@ export class SearchAdvertisementComponent implements OnInit {
   ngOnInit() {}
 
   inputChange() {
-    if (this.searchInput.length < 1) {
+    if (this.isQuerying || this.searchInput.length < 1) {
       return;
     }
 
+    this.isQuerying = true;
     this.searchAdvertisement.searchAdvertisementByTitle(this.searchInput)
       .subscribe(
-        advertisements => { this.matchingAdvertisements = advertisements.slice(0, this.MAX_MATCHING_ADVERTISEMENTS); },
-        error => console.error('Error retrieving advertisements'),
+        advertisements => {
+          this.isQuerying = false;
+          this.matchingAdvertisements = advertisements.slice(0, this.MAX_MATCHING_ADVERTISEMENTS);
+        },
+        error => {
+          this.isQuerying = false;
+          console.error('Error retrieving advertisements');
+        },
       );
   }
 

@@ -4,12 +4,14 @@ import { PurchaseService } from './purchase.service';
 import { AdvertisementService } from '../advertisement/advertisement.service';
 import { Advertisement } from '../advertisement/advertisement';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ProfileService } from '../profile/profile.service';
+import UsersCache from '../profile/usersCache';
 
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
   styleUrls: ['./purchase.component.scss'],
-  providers: [AdvertisementService, PurchaseService],
+  providers: [AdvertisementService, PurchaseService, ProfileService],
 })
 export class PurchaseComponent implements OnInit {
   errorMessage: string;
@@ -21,9 +23,12 @@ export class PurchaseComponent implements OnInit {
   purchase: Purchase; // It will exist either if the product was already
                       // purchased, or the user has just completed the purchase.
 
+  users = UsersCache.entries();
+
   constructor(private route: ActivatedRoute,
                private advertisementService: AdvertisementService,
-               private purchaseService: PurchaseService) {}
+               private purchaseService: PurchaseService,
+               private profileService: ProfileService) {}
 
   ngOnInit() {
     this.route.params
@@ -42,6 +47,7 @@ export class PurchaseComponent implements OnInit {
         this.advertisements.push(advertisement);
 
         this.loadPurchase(advertisement);
+        this.profileService.getUser(`/users/${advertisement.owner}`).subscribe();
       },
       error => this.errorMessage = 'The advertisement does not exist.',
     );

@@ -3,16 +3,21 @@
     <span class="fa fa-search icon"></span>
     <input name="searchInput" type="text" placeholder="Need something?" [(ngModel)]="searchInput" />
   </form>
-</div>
-<li>
-  <a routerLink="/search" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
-    <span class="hidden-xs">Advanced Search</span></a>
-</li>
 
+  <div class="search-more">
+    <ul>
+      <li>History 1</li>
+    </ul>
+    <a routerLink="/search" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+      Advanced search
+    </a>
+  </div>
+</div>
+
+<!-- mobile search -->
 <a href="#nav-search-expanded" class="visible-xs icon" data-toggle="collapse">
   <i class="fa fa-search" aria-hidden="true"></i>
 </a>
-
 
 <div id="nav-search-expanded" class="search-expanded collapse">
   <form class="inline"  (submit)="submitSearch()">

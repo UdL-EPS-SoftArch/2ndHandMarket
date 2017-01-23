@@ -31,6 +31,42 @@ $highlightColor: #1A99AA;
   }
 }
 
+.search-more {
+  position: relative;
+  margin-top: -15px;
+  background-color: #fcfcfc;
+  border: 1px solid $highlightColor;
+  border-top-style: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px 15px;
+  color: #555;
+  line-height: 25px;
+  text-transform: initial;
+  z-index: 1;
+
+  a {
+    cursor: pointer;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    text-align: left;
+    transition: background-color 0.2s, padding 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+    }
+  }
+}
+
 .search-expanded {
   form{
     position: relative;

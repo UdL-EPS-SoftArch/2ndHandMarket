@@ -1,14 +1,15 @@
-<div class="nav-search-container">
+<div class="dark-bg" *ngIf="isDropdownVisible" (click)="isDropdownVisible=false"></div>
+<div id="search-advertisement" class="nav-search-container">
   <form class="hidden-xs inline" (submit)="submitSearch()">
     <span class="fa fa-search icon"></span>
-    <input name="searchInput" type="text" placeholder="Need something?" [(ngModel)]="searchInput" />
+    <input name="searchInput" type="text" placeholder="Need something?" [ngClass]="{'active': isDropdownVisible}" [(ngModel)]="searchInput" (click)="isDropdownVisible=true" />
   </form>
 
-  <div class="search-more">
+  <div class="search-more" *ngIf="isDropdownVisible">
     <ul>
       <li>History 1</li>
     </ul>
-    <a routerLink="/search" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/search" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }" (click)="isDropdownVisible=false">
       Advanced search
     </a>
   </div>

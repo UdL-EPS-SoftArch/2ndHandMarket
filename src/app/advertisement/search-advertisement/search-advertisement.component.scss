@@ -1,5 +1,10 @@
 $highlightColor: #1A99AA;
 
+@keyframes borderHighlight {
+  from { border: 1px solid #ccc; }
+  to { border: 1px solid $highlightColor; }
+}
+
 .nav-search-container {
   form {
     position: relative;
@@ -17,9 +22,12 @@ $highlightColor: #1A99AA;
     transition: border 0.2s ease;
 
     &:focus {
-      border: 1px solid $highlightColor;
       outline: none;
     }
+  }
+
+  input[type=text].active {
+    border: 1px solid $highlightColor;
   }
 
   .icon {
@@ -31,8 +39,18 @@ $highlightColor: #1A99AA;
   }
 }
 
-.search-more {
+#search-advertisement {
   position: relative;
+  z-index: 10;
+
+  input[type=text] {
+    background-color: #fcfcfc;
+    animation: borderFadeIn 0.2s;
+  }
+}
+
+.search-more {
+  position:relative;
   margin-top: -15px;
   background-color: #fcfcfc;
   border: 1px solid $highlightColor;
@@ -43,7 +61,6 @@ $highlightColor: #1A99AA;
   color: #555;
   line-height: 25px;
   text-transform: initial;
-  z-index: 1;
 
   a {
     cursor: pointer;

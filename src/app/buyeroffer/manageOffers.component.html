@@ -101,6 +101,7 @@
                 <td *ngIf="!advertisement.negotiablePrice">Not negotiable price!</td>
                 <td *ngIf="hasPurchased">Already sold!</td>
                 <td *ngIf="advertisement.negotiablePrice" >
+                  <button type="button" class="glyphicon glyphicon-chevron-up"(click)="sortOffers()"></button>&nbsp;
                   <tbody *ngFor="let offer of buyeroffers">
                     <td *ngIf="advertisement.title === offer.advertisement_title && offer.accepted">
                       Accepted the offer from user {{offer.buyer_id}} with the value {{offer.value | currency:'USD':true}}

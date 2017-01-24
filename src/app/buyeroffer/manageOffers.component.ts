@@ -40,13 +40,25 @@ export class ManageOffersComponent implements OnInit {
   ngOnInit() {
     this.getBuyerOffer();
     this.getAdvertisements();
+
     this.currentFilterAdvertisement = '';
     this.currentOrderParam = '';
     this.showAll = true;
     this.invert = false;
     this.isSortable = true;
     this.sortBy('title');
+    console.log("printing " + this.buyeroffers.length);
+  }
 
+  ngAfterContentInit() {
+    // Component content has been initialized
+  }
+
+  printOffers(){
+    console.log("printing " + this.buyeroffers.length);
+    for(let off of this.buyeroffers){
+      console.log(off.uri + " " + off.value);
+    }
   }
 
   getCurrentUser(): User {
@@ -91,21 +103,36 @@ export class ManageOffersComponent implements OnInit {
           if (some[param] > other[param] ) {
             return 1;
           }
-          if (some[param]  < other[param] ) {
+          if (some[param] < other[param] ) {
             return -1;
           }
         }
         else{
-          if (some[param]  < other[param] ) {
+          if (some[param] < other[param] ) {
             return 1;
           }
-          if (some[param]  > other[param] ) {
+          if (some[param] > other[param] ) {
             return -1;
           }
         }
         return 0;
       });
     }
+    console.log("printing " + this.buyeroffers.length);
+  }
+
+  sortOffers(){
+    console.log("sorting");
+    this.buyeroffers.sort((some, other) => {
+      if (some.value < other.value ) {
+        return 1;
+      }
+      if (some.value > other.value ) {
+        return -1;
+      }
+      return 0;
+    });
+    this.printOffers();
   }
 
   submitOfferAndPurchase(offer: BuyerOffer, advert: Advertisement) {

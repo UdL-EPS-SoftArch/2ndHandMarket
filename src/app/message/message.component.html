@@ -1,6 +1,7 @@
 <section class="message">
   <header class="header">
     <h2></h2>
+
     <!-- new message -->
     <button (click)="toggleSendMessage()" class="highlightButtonMain big">Write a new message</button>
     <div id="sendMess" style="margin-left:5%;margin-right:5%;">
@@ -73,14 +74,6 @@
     </ul>
   </div>
 
-
-  <!-- Buttons row
-  <div id="outer">
-    <div class="inner"><button (click)="DivSentMessage = !DivSentMessage" class="highlightButtonTest big">   SENT MESSAGES   </button></div>
-    <div class="inner"><button (click)="DivReceivedMessage = !DivReceivedMessage" class="highlightButtonTest big">   RECEIVED MESSAGES   </button></div>
-    <div class="inner"><button (click)="DivAllMessage = !DivAllMessage" class="highlightButtonTest big">   ALL MESSAGES   </button></div>
-  </div>-->
-
   <style>
     .multi_lines_text { white-space: pre-line; }
   </style>
@@ -113,7 +106,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
       <ul class="list-group" *ngIf="mySentMessages.length > 0">
         <li class="list-group-item" *ngFor="let message of mySentMessages">
           <div class="messages">
-            <!--<h4>Uri: {{message.uri}}</h4>-->
+
             <h4>To: {{message.destination}}</h4>
             <h4>Title: {{message.title}}</h4>
             <div class="multi_lines_text"><h4>{{message.body}}</h4></div>
@@ -135,13 +128,11 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
       <ul class="list-group" *ngIf="myReceivedMessages.length > 0">
         <li class="list-group-item" *ngFor="let message of myReceivedMessages">
           <div class="messages">
-            <!--<p *ngIf="!message.isRead">
-              <button  (click)="SetAsRead(message)">Set as read</button>
-            </p>-->
+
             <p *ngIf="!message.isRead">
               <button  (click)="setAsRead(message)">Set as read</button>
             </p>
-            <!--<h4>Uri: {{message.uri}}</h4>-->
+
             <h4>From: {{message.sender}}</h4>
             <h4>Title: {{message.title}}</h4>
             <div class="multi_lines_text">{{message.body}}</div>
@@ -164,7 +155,7 @@ DivAllMessage = !DivReceivedMessage;" class="highlightButtonTest big">   RECEIVE
     <ul class="list-group" *ngIf="myAllMessages.length > 0">
       <li class="list-group-item" *ngFor="let message of myAllMessages">
           <div class="message">
-            <!--<h4>Uri: {{message.uri}}</h4>-->
+
             <h4>Sender: {{message.sender}}</h4>
             <h4>To: {{message.destination}}</h4>
             <h4>Title: {{message.title}}</h4>

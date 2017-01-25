@@ -33,7 +33,6 @@ export class GetAdvertisementComponent implements OnInit {
               private authentication: Auth0Service,
               private basketProductService: BasketProductService) {
   }
-
   /**
    * On Startup:
    * - Save current advertisement id on the advertisement object.
@@ -114,8 +113,6 @@ export class GetAdvertisementComponent implements OnInit {
   }
 
   addProduct(advertisement): void {
-    let basketProduct: BasketProduct = new BasketProduct();
-    basketProduct.product = advertisement;
-    this.basketProductService.addProduct(basketProduct);
+    this.basketProductService.addProduct(new BasketProduct({ advertisement }));
   }
 }

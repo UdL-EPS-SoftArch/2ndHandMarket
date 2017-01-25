@@ -1,7 +1,6 @@
 import API from '../../api';
 
 export class Advertisement extends API {
-  uri: string;
   title: string;
   description: string;
   owner: string;

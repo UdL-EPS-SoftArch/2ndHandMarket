@@ -1,4 +1,11 @@
-.offerWarning {
+.offer-input {
   font-size:20px;
+  size:3px;
+}
+
+.offer-warning {
+  font-size:20px;
+  size:3px;
+  margin-top:2px;
   color:red;
 }

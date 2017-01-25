@@ -1,10 +1,5 @@
 <section class="updateOffer">
 
-  <div *ngIf="edited" class="alert success">
-    <span class="closebtn">&times;</span>
-    <strong>Your offer has been updated successfully</strong>
-  </div>
-
   <h3>Offers Management</h3>
 
   <blockquote class="blockquote">
@@ -26,6 +21,11 @@
     </select>
     <input type="submit">
     -->
+  </div>
+
+  <div class="update-confirm" *ngIf="edited">
+    <span class="closebtn">&times;</span>
+    <font style="color:white"><strong>Your offer has been updated successfully</strong></font>
   </div>
 
   <div class="table">

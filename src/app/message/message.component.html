@@ -31,7 +31,7 @@
   </header>
 
   <button (click)="DivFindMessage = !DivFindMessage" class="highlightButtonMain big">Find a message</button>
-  <div class="form-section" [hidden]="!DivFindMessage">
+  <div class="form-section" [hidden]="!DivFindMessage" style="margin-left:5%;margin-right:5%;">
     <h2>Get message by URI</h2>
 
     <div class="form-group">
@@ -39,7 +39,7 @@
       <input type="text" class="form-control" id="byUri" [(ngModel)]="searchInput"/>
     </div>
 
-    <button (click)="getMessageByUri()">Search</button>
+    <button class="highlightButtonFind big" (click)="getMessageByUri()">Search</button>
     <ul class="list-group" *ngIf="messagesUri.length > 0">
       <li class="list-group-item" *ngFor="let message of messagesUri">
         <div class="message">
@@ -52,7 +52,6 @@
       </li>
     </ul>
 
-
     <h2>Get message by Title</h2>
 
     <div class="form-group">
@@ -60,7 +59,7 @@
       <input type="text" class="form-control" id="byTitle" [(ngModel)]="searchInput"/>
     </div>
 
-    <button (click)="getMessageByTitle()">Search</button>
+    <button class="highlightButtonFind big" (click)="getMessageByTitle()">Search</button>
     <ul class="list-group" *ngIf="messagesTitle.length > 0">
       <li class="list-group-item" *ngFor="let message of messagesTitle">
         <div class="message">

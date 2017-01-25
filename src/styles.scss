@@ -11,6 +11,9 @@ $pageComponentsMargin: 20px;
 $messageColor: #fde500;
 $highlightActiveMessageColor: #e7d200;
 
+$FindColor: #ffbf26;
+$highlightActiveFindColor: #e7ae25;
+
 @mixin perfectBackground {
   background: no-repeat center center;
   -webkit-background-size: cover;
@@ -232,6 +235,37 @@ a.no-decorate {
 }
 
 .highlightButtonMain.big {
+  margin-top: 3px;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
+.highlightButtonFind {
+  @extend a.no-decorate;
+
+  border: 0;
+  border-radius: 4px;
+  background-color: $FindColor;
+  box-shadow:none;
+  color: #fff;
+  display: inline-block;
+  padding: 7px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 20%;
+  height: 50px;
+
+  &:link, &:hover, &:active {
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: $highlightActiveFindColor;
+  }
+}
+
+.highlightButtonFind.big {
   margin-top: 3px;
   margin-right: 10px;
   margin-bottom: 3px;

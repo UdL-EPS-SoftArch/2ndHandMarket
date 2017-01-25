@@ -5,6 +5,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { AdvertisementComponent } from './advertisement.component';
 import { AdvertisementService } from './advertisement.service';
 import { SearchAdvertisementService } from './search-advertisement/searchAdvertisement.service';
+import { ProfileService } from '../profile/profile.service';
 import { ActivatedRoute } from '@angular/router';
 
 describe('Component: Advertisement', () => {
@@ -17,16 +18,18 @@ describe('Component: Advertisement', () => {
 
   it('should create an instance', () => {
     inject([
-      ActivatedRoute,
-      AdvertisementService,
-      SearchAdvertisementService
+        ActivatedRoute,
+        AdvertisementService,
+        SearchAdvertisementService,
+        ProfileService,
       ],
       (
         activatedRoute,
         advertisementService,
-        searchAdvertisementService
+        searchAdvertisementService,
+        profileService,
       ) => {
-      let component = new AdvertisementComponent(activatedRoute, advertisementService, searchAdvertisementService);
+      let component = new AdvertisementComponent(activatedRoute, advertisementService, searchAdvertisementService, profileService);
       expect(component).toBeTruthy();
     });
 

@@ -27,7 +27,7 @@
       <tr *ngFor="let advertisement of advertisements">
         <td>{{advertisement.id}}</td>
         <td><a routerLink="/advertisements/{{advertisement.id}}">{{advertisement.title}}</a></td>
-        <td><a routerLink="/profile/{{advertisement.owner}}">{{advertisement.owner}}</a></td>
+        <td><a routerLink="/profile/{{advertisement.owner}}">{{users['/users/' + advertisement.owner]?.displayName || '...'}}</a></td>
         <td>{{advertisement.price | currency:'USD':true}}</td>
       </tr>
     </table>

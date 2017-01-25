@@ -9,11 +9,11 @@ describe('Message', () => {
   });
 
   it('should accept values in the constructor', () => {
-    const uri = "/privateMessages/5";
-    const title = "TestMessage";
-    const body = "TestBody";
-    const destination = "TestDestination";
-    const sender = "TestSender";
+    const uri = '/privateMessages/5';
+    const title = 'TestMessage';
+    const body = 'TestBody';
+    const destination = 'TestDestination';
+    const sender = 'TestSender';
     const isRead = true;
 
     let _message = new Message({

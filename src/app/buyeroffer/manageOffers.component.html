@@ -89,7 +89,17 @@
                 <span [hidden]="currentOrderParam!='negotiablePrice'||invert">
                   <span class="glyphicon glyphicon-chevron-down"></span>
                 </span>
-              </button></th>
+              </button>
+              <button type="button" class="btn-arrow" (click)="sortOffers()">
+                <span [hidden]="invertOfferPrice">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="!invertOfferPrice">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button>
+              </th>
+            </tr>
             </thead>
             <tbody *ngFor="let advertisement of advertisements" class="row">
               <tr *ngIf="advertisement.owner === getCurrentUser().username  &&  (showAll || currentFilterAdvertisement === advertisement.uri)">
@@ -100,17 +110,20 @@
                 <td>{{advertisement.price | currency:'USD':true}}</td>
                 <td *ngIf="!advertisement.negotiablePrice">Not negotiable price!</td>
                 <td *ngIf="hasPurchased">Already sold!</td>
-                <td *ngIf="advertisement.negotiablePrice" >
-                  <button type="button" class="glyphicon glyphicon-chevron-up"(click)="sortOffers()"></button>&nbsp;
+                <td *ngIf="advertisement.negotiablePrice">
                   <tbody *ngFor="let offer of buyeroffers">
-                    <td *ngIf="advertisement.title === offer.advertisement_title && offer.accepted">
+                    <span *ngIf="advertisement.title === offer.advertisement_title && offer.accepted">
                       Accepted the offer from user {{offer.buyer_id}} with the value {{offer.value | currency:'USD':true}}
-                    </td>
-                    <td *ngIf="advertisement.title === offer.advertisement_title && !offer.accepted">
-                      <b>{{offer.value | currency:'USD':true}}</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
-                      <button type="button" class="btn btn-success" (click)="submitOfferAndPurchase(offer, advertisement)">Accept</button>&nbsp;
-                      <button type="button" class="btn btn-danger" (click)="deleteBuyerOffer(offer)">Reject</button>&nbsp;
-                    </td>
+                    </span>
+                    <span *ngIf="advertisement.title === offer.advertisement_title && !offer.accepted">
+                      <p>
+                        <b class="frame">{{offer.value | currency:'USD':true}}</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
+                      </p>
+                      <p>
+                        <button type="button" class="btn btn-success" (click)="submitOfferAndPurchase(offer, advertisement)">Accept</button>&nbsp;
+                        <button type="button" class="btn btn-danger" (click)="deleteBuyerOffer(offer)">Reject</button>&nbsp;
+                      </p>
+                    </span>
                   </tbody>
                 </td>
               </tr>

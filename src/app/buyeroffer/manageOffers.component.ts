@@ -31,6 +31,8 @@ export class ManageOffersComponent implements OnInit {
   showAll: boolean;
   invert: boolean;
   isSortable: boolean;
+  invertOfferPrice: boolean;
+
 
   constructor(private buyerOfferService: BuyerOfferService,
               private advertisementService: AdvertisementService,
@@ -46,6 +48,7 @@ export class ManageOffersComponent implements OnInit {
     this.showAll = true;
     this.invert = false;
     this.isSortable = true;
+    this.invertOfferPrice = false;
     this.sortBy('title');
     console.log("printing " + this.buyeroffers.length);
   }
@@ -124,15 +127,26 @@ export class ManageOffersComponent implements OnInit {
   sortOffers(){
     console.log("sorting");
     this.buyeroffers.sort((some, other) => {
-      if (some.value < other.value ) {
-        return 1;
+      if(this.invertOfferPrice) {
+        if (some.value < other.value) {
+          return 1;
+        }
+        if (some.value > other.value) {
+          return -1;
+        }
       }
-      if (some.value > other.value ) {
-        return -1;
+      else {
+
+        if (some.value > other.value) {
+          return 1;
+        }
+        if (some.value < other.value) {
+          return -1;
+        }
       }
       return 0;
     });
-    this.printOffers();
+    this.invertOfferPrice = !this.invertOfferPrice;
   }
 
   submitOfferAndPurchase(offer: BuyerOffer, advert: Advertisement) {

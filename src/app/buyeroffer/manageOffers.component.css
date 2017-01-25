@@ -9,3 +9,25 @@
 .btn-sort{
   width: 70%;
 }
+
+.btn-arrow{
+  width: 10%;
+  height: 100%;
+  border: none;
+  font-size: 100%;
+  border-radius: 10%;
+}
+
+.btn-success{
+  width: 45%;
+}
+
+.btn-danger{
+  width: 45%;
+}
+
+.frame
+{
+  border-style : solid;
+  border-color : #287EC7;
+}

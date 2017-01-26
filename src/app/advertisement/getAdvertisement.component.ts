@@ -27,7 +27,7 @@ export class GetAdvertisementComponent implements OnInit {
   hasDeleteConfirm: boolean = false;
   deleteConfirmText: String = '';
   isDeleting: boolean = false;
-
+  likes: number = 0;
   users = UsersCache.entries();
 
   constructor(private route: ActivatedRoute,
@@ -120,5 +120,9 @@ export class GetAdvertisementComponent implements OnInit {
 
   addProduct(advertisement): void {
     this.basketProductService.addProduct(new BasketProduct({ advertisement }));
+  }
+
+  updateCount() {
+    this.likes += 1;
   }
 }

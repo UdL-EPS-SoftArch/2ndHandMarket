@@ -4,10 +4,22 @@
   padding-top: 20px;
 }
 
-.right{
-  float: right;
+
+.box-options{
+  width: 550px;
+  margin: 50px auto;
+  height: 70px;
+
 }
 
-.left{
-  float: left;
+.fa-check-circle{
+  color: #5CB85C;
+}
+
+.btn-warning{
+  font-weight: bold;
+}
+
+.btn-default{
+  font-weight: bold;
 }

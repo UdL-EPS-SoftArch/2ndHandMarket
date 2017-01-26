@@ -34,6 +34,11 @@ const appRoutes: Routes = [
     component: PurchaseComponent,
     canActivate: [LoggedInGuard]
   },
+  {
+    path: 'advertisements/:ids/wishers',
+    component: WishListComponent,
+    canActivate: [LoggedInGuard]
+  },
   { path: 'about', component: IntroComponent },
   { path: 'register-sellers', component: RegisterSellerComponent},
   { path: 'cart', component: BasketProductComponent},
@@ -46,11 +51,7 @@ const appRoutes: Routes = [
   { path: 'updateOffer', component: UpdateOfferComponent },
   { path: '', component: AdvertisementComponent },
   { path: 'buyers', component: BuyerComponent },
-  {
-    path: 'users/:user/wishes',
-    component: WishListComponent,
-    canActivate: [LoggedInGuard]
-  },
+
   { path: 'sellers', component: SellerComponent, canActivate: [LoggedInGuard] },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] },

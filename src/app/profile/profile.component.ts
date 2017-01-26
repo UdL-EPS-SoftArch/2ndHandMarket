@@ -12,7 +12,7 @@ import { ProfileService } from './profile.service';
   providers: [ProfileService, Auth0Service],
 })
 export class ProfileComponent implements OnInit {
-  isEditing: boolean = false;
+  isEditing = false;
 
   user: User = new User();
 

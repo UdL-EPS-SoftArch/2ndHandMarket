@@ -1,7 +1,7 @@
 /*import {Advertisement} from "../advertisement/advertisement";*/
 
 export class BuyerOffer {
-  uri: string = '';
+  uri = '';
   advertisement: string;
   buyer_id: string;
   advertisement_id: number;
@@ -10,7 +10,7 @@ export class BuyerOffer {
   advertisement_iniPrice: number;
   value: number;
   date: Date;
-  accepted: boolean = false;
+  accepted = false;
 
   constructor(values: Object = {}) {
     (<any>Object).assign(this, values);

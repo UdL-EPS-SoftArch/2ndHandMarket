@@ -21,9 +21,9 @@ export class UpdateOfferComponent implements OnInit {
   buyeroffer: BuyerOffer = new BuyerOffer();
 
   public edited = false;
-  hasDeleteConfirm: boolean = false;
-  /*deleteConfirmText: String = '';
-  isDeleting: boolean = false;*/
+  hasDeleteConfirm = false;
+  /*deleteConfirmText = '';
+  isDeleting = false;*/
 
   constructor(private buyerofferService: BuyerOfferService,
               private authentication: Auth0Service) { }

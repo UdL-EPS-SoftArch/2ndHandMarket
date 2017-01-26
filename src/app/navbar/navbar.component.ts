@@ -13,7 +13,7 @@ import {Auth0Service} from '../auth0/auth0.service';
 })
 export class NavbarComponent implements OnInit {
 
-  appTitle: string = 'Second Hand Market';
+  appTitle = 'Second Hand Market';
 
   unreadMessages: Message[];
 

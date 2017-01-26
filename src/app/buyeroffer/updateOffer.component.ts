@@ -94,8 +94,6 @@ export class UpdateOfferComponent implements OnInit {
     setTimeout(function() {
       this.edited = false;
       console.log(this.edited);
-    }.bind(this), 3000);
+    }.bind(this), 2000);
   }
-
-
 }

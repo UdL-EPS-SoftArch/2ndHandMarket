@@ -15,6 +15,9 @@ export class BuyerOfferComponent implements OnInit {
   errorMessage: string;
   newBuyerOffer: BuyerOffer = new BuyerOffer();
 
+  public offered = false;
+  public offer_done = true;
+
   @Input('advertisement') advertisement;
 
   constructor(private buyerofferService: BuyerOfferService) { }
@@ -32,6 +35,7 @@ export class BuyerOfferComponent implements OnInit {
   }
 
   addBuyerOffer() {
+    this.creationConfirm();
     this.newBuyerOffer.advertisement_id = this.advertisement.id;
     this.newBuyerOffer.advertisement_title = this.advertisement.title;
     this.newBuyerOffer.advertisement_seller = this.advertisement.owner;
@@ -48,5 +52,14 @@ export class BuyerOfferComponent implements OnInit {
       .subscribe(
         deleted => this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri),
         error =>  this.errorMessage = <any>error.message);
+  }
+
+  creationConfirm(): void {
+    this.offered = true;
+    this.offer_done =false;
+    setTimeout(function() {
+      this.edited = false;
+      console.log(this.edited);
+    }.bind(this), 3000);
   }
 }

@@ -24,9 +24,9 @@ export class GetAdvertisementComponent implements OnInit {
   purchase: Purchase;
   picture: Picture;
 
-  hasDeleteConfirm: boolean = false;
-  deleteConfirmText: String = '';
-  isDeleting: boolean = false;
+  hasDeleteConfirm = false;
+  deleteConfirmText = '';
+  isDeleting = false;
 
   users = UsersCache.entries();
 

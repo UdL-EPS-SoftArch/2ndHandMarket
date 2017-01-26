@@ -1,0 +1,110 @@
+.update_table{
+  margin-left:5%;
+  margin-right:5%;
+}
+
+.table_head{
+  background-color: #66c2ff;
+  border-style: double;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+.alert.success {
+  background-color: #4CAF50;
+}
+
+.delete-confirm {
+  border-radius: 3px;
+  background-color: #728814;
+  padding: 15px;
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-bottom: 7px;
+}
+
+.delete-confirm input {
+  color: #000000;
+  border: 0;
+  border-radius: 2px;
+  display: block;
+  padding: 5px 7px;
+}
+
+.delete-confirm selector {
+  color: #000000;
+  border: 0;
+  border-radius: 2px;
+  display: block;
+  padding: 5px 7px;
+}
+
+.delete-confirm button[type="submit"] {
+  color: #000000;
+  border-radius: 0;
+  margin-top: 15px;
+  border-bottom: 1px solid transparent;
+  text-transform: uppercase;
+}
+
+.delete-confirm button[type="submit"]:hover {
+   border-bottom: 1px solid #fff;
+ }
+
+.update-confirm {
+  border-radius: 3px;
+  background-color: #2b8820;
+  padding: 15px;
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-bottom: 7px;
+}
+
+.update-confirm input {
+  color: #000000;
+  border: 0;
+  border-radius: 2px;
+  display: block;
+  padding: 5px 7px;
+}
+
+.update-confirm selector {
+  color: #000000;
+  border: 0;
+  border-radius: 2px;
+  display: block;
+  padding: 5px 7px;
+}
+
+.update-confirm button[type="submit"] {
+  color: #000000;
+  border-radius: 0;
+  margin-top: 15px;
+  border-bottom: 1px solid transparent;
+  text-transform: uppercase;
+}
+
+.delete-confirm button[type="submit"]:hover {
+  border-bottom: 1px solid #fff;
+}

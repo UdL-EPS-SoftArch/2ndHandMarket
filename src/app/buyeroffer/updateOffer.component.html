@@ -1,13 +1,58 @@
 <section class="updateOffer">
 
-  <h3>Updating Offers</h3>
+  <h2>Offers Management</h2>
 
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let buyeroffer of buyeroffers">
-      BuyerOffer {{buyeroffer.uri}}, value: {{buyeroffer.value}}€
+  <blockquote class="blockquote">
+    <p class="mb-0">
+      In this section you'll be able to change and update all your offers or delete them if you're not interested in the advertisement anymore.
+    </p>
+    <p class="mb-0">
+      If you want to see all information about your offers: <button class="btn btn-info" routerLink="/personalOffersList" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offer Management</button>
+    </p>
+  </blockquote>
 
-        <input type="number" id="updateoffer" name="updateoffer" max={{buyeroffer.value}} step="0.01" value={{buyeroffer.value}} #newPrice />&nbsp;€
-        <button (click)="updateOffer(buyeroffer, newPrice.value)">Confirm</button>
-    </li>
-  </ul>
+  <div class="delete-confirm" *ngIf="hasDeleteConfirm">
+    {{buyeroffer.advertisement_title}}
+    <font style="color:white">Your Offer have been deleted correctly</font>
+    <!--
+    <input name="confirmation-title" type="text" placeholder="Advertisement title" [(ngModel)]="deleteConfirmText" />
+    <select name="OfferSelector">
+      <option *ngFor="let buyeroffer of buyeroffers" value="{{buyeroffer.uri}}">{{buyeroffer.advertisement_title}} => {{buyeroffer.value}}</option>
+    </select>
+    <input type="submit">
+    -->
+  </div>
+
+  <div class="update-confirm" *ngIf="edited">
+    <span class="closebtn">&times;</span>
+    <font style="color:white"><strong>Your offer has been updated successfully</strong></font>
+  </div>
+
+  <div class="table">
+    <div class="table-responsive update_table">
+      <table class="table">
+        <thead class="table_head">
+        <tr>
+          <th>Advertisement Offer</th>
+          <th>Seller</th>
+          <th>Initial Offer</th>
+          <th>New Offer</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let buyeroffer of buyeroffers">
+        <tr>
+          <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_title}}</td>
+          <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_seller}}</td>
+          <td *ngIf="getUser()==buyeroffer.buyer_id">{{buyeroffer.advertisement_iniPrice}}</td>
+          <td *ngIf="getUser()==buyeroffer.buyer_id">
+            <input type="number" id="updateoffer" name="updateoffer" max={{buyeroffer.value}} step="0.01" value={{buyeroffer.value}} #newPrice />&nbsp;€
+            <button class="btn btn-success" (click)="updateOffer(buyeroffer, newPrice.value)">Update</button>
+            <button class="btn btn-danger" (click)="deleteBuyerOffer(buyeroffer)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </section>

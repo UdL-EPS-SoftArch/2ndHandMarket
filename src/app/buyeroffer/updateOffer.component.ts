@@ -21,7 +21,6 @@ export class UpdateOfferComponent implements OnInit {
   buyeroffer: BuyerOffer = new BuyerOffer();
 
   public edited = false;
-
   hasDeleteConfirm: boolean = false;
   /*deleteConfirmText: String = '';
   isDeleting: boolean = false;*/

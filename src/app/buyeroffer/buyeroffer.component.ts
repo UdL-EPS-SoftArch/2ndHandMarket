@@ -56,7 +56,7 @@ export class BuyerOfferComponent implements OnInit {
 
   creationConfirm(): void {
     this.offered = true;
-    this.offer_done =false;
+    this.offer_done = false;
     setTimeout(function() {
       this.edited = false;
       console.log(this.edited);

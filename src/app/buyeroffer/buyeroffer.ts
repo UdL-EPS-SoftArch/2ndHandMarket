@@ -2,7 +2,6 @@
 
 export class BuyerOffer {
   uri: string = '';
-  /*advOffers: string;*/
   advertisement: string;
   buyer_id: string;
   advertisement_id: number;

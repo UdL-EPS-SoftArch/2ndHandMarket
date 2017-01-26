@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser(uri) {
-    this.profileService.getUser(uri)
+    this.profileService.getUser(uri, false)
       .subscribe(
         user => this.user = user,
         error => this.router.navigate(['/404']),

@@ -1,5 +1,10 @@
 $highlightColor: #1A99AA;
 
+@keyframes borderHighlight {
+  from { border: 1px solid #ccc; }
+  to { border: 1px solid $highlightColor; }
+}
+
 .nav-search-container {
   form {
     position: relative;
@@ -17,9 +22,12 @@ $highlightColor: #1A99AA;
     transition: border 0.2s ease;
 
     &:focus {
-      border: 1px solid $highlightColor;
       outline: none;
     }
+  }
+
+  input[type=text].active {
+    border: 1px solid $highlightColor;
   }
 
   .icon {
@@ -28,6 +36,51 @@ $highlightColor: #1A99AA;
     right: 15px;
     pointer-events: none;
 
+  }
+}
+
+#search-advertisement {
+  position: relative;
+  z-index: 10;
+
+  input[type=text] {
+    background-color: #fcfcfc;
+    animation: borderFadeIn 0.2s;
+  }
+}
+
+.search-more {
+  position:relative;
+  margin-top: -15px;
+  background-color: #fcfcfc;
+  border: 1px solid $highlightColor;
+  border-top-style: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px 15px;
+  color: #555;
+  line-height: 25px;
+  text-transform: initial;
+
+  a {
+    cursor: pointer;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    text-align: left;
+    transition: background-color 0.2s, padding 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+    }
   }
 }
 

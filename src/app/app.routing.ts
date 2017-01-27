@@ -47,7 +47,7 @@ const appRoutes: Routes = [
   { path: 'buyers', component: BuyerComponent },
   { path: 'sellers', component: SellerComponent, canActivate: [LoggedInGuard] },
   { path: 'profile/:id', component: ProfileComponent },
-  { path: 'profile/manageoffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] },
+  { path: 'manageOffers', component: ManageOffersComponent, canActivate: [LoggedInGuard] },
   { path: '404', component: DoesNotExistComponent },
   { path: '**', redirectTo: '/404' },
 ];

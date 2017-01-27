@@ -27,7 +27,7 @@ export class ManageOffersComponent implements OnInit {
   tempAdvert: Advertisement = new Advertisement();
   newAdvert: Advertisement[] = [];
   currentFilterAdvertisement: string;
-  currentOrderParam : string;
+  currentOrderParam: string;
   showAll: boolean;
   invert: boolean;
   isSortable: boolean;
@@ -50,17 +50,13 @@ export class ManageOffersComponent implements OnInit {
     this.isSortable = true;
     this.invertOfferPrice = false;
     this.sortBy('title');
-    console.log("printing " + this.buyeroffers.length);
+    console.log('printing ' + this.buyeroffers.length);
   }
 
-  ngAfterContentInit() {
-    // Component content has been initialized
-  }
-
-  printOffers(){
-    console.log("printing " + this.buyeroffers.length);
-    for(let off of this.buyeroffers){
-      console.log(off.uri + " " + off.value);
+  printOffers() {
+    console.log('printing ' + this.buyeroffers.length);
+    for (let off of this.buyeroffers) {
+      console.log(off.uri + '' + off.value);
     }
   }
 
@@ -93,24 +89,23 @@ export class ManageOffersComponent implements OnInit {
     this.sortBy('title');
   }
 
-  sortBy(param : string){
-    if(this.isSortable){
-      if(this.currentOrderParam == param){
+  sortBy(param: string) {
+    if (this.isSortable) {
+      if (this.currentOrderParam === param) {
         this.invert = !this.invert;
-      }else{
+      } else {
         this.invert = false;
         this.currentOrderParam = param;
       }
       this.advertisements.sort((some, other) => {
-        if(!this.invert){
+        if (!this.invert) {
           if (some[param] > other[param] ) {
             return 1;
           }
           if (some[param] < other[param] ) {
             return -1;
           }
-        }
-        else{
+        } else {
           if (some[param] < other[param] ) {
             return 1;
           }
@@ -121,22 +116,20 @@ export class ManageOffersComponent implements OnInit {
         return 0;
       });
     }
-    console.log("printing " + this.buyeroffers.length);
+    console.log('printing ' + this.buyeroffers.length);
   }
 
-  sortOffers(){
-    console.log("sorting");
+  sortOffers() {
+    console.log('sorting');
     this.buyeroffers.sort((some, other) => {
-      if(this.invertOfferPrice) {
+      if (this.invertOfferPrice) {
         if (some.value < other.value) {
           return 1;
         }
         if (some.value > other.value) {
           return -1;
         }
-      }
-      else {
-
+      } else {
         if (some.value > other.value) {
           return 1;
         }

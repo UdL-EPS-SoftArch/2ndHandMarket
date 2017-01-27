@@ -1,34 +1,30 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
-import {BasketProduct} from './basketProduct';
-import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
-import {Auth0Service} from '../auth0/auth0.service';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+
+import { BasketProduct } from './basketProduct';
+import { Advertisement } from '../advertisement/advertisement';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class BasketProductService {
 
-  products: BasketProduct[] = [];
-  productsId: number[] = [];
-
-  constructor() { }
-
-  getAllProducts(): BasketProduct[] {
-    return this.products;
+  getProducts(): Array<BasketProduct> {
+    return (JSON.parse(localStorage.getItem('basket')) || [])
+      .map((product) => new BasketProduct({ advertisement: new Advertisement(product.advertisement) }));
   }
 
-  addProduct(product: BasketProduct): void {
-    if (this.productsId.indexOf(product.product.id) === -1) {
-      this.products.push(product);
-      this.productsId.push(product.product.id);
-    } else {
+  addProduct(newProduct: BasketProduct) {
+    const basketProducts = this.getProducts();
+    if (basketProducts.some((product) => product.advertisement.uri === newProduct.advertisement.uri)) {
       alert('This product is already in your cart');
+      return;
     }
+    localStorage.setItem('basket', JSON.stringify(basketProducts.concat(newProduct)));
   }
 
-  removeProduct(product): void {
-    let i = this.products.indexOf(product);
-    this.products.splice(i, 1);
-    this.productsId.splice(i, 1);
+  removeProduct(removeProduct: BasketProduct) {
+    const removedProduct = this.getProducts().filter((product) => product.advertisement.uri !== removeProduct.advertisement.uri);
+    localStorage.setItem('basket', JSON.stringify(removedProduct));
   }
 }

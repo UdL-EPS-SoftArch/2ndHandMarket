@@ -12,7 +12,7 @@ let Auth0Lock = require('auth0-lock').default;
 export class Auth0Service {
   // Configure Auth0
   lock = new Auth0Lock('DJ560FbKB04XCcouTfpzVChcNJhHxw3P', 'softarch-1617.eu.auth0.com', {});
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(private http: Http) {
     // Add callback for the Lock `authenticated` event

@@ -25,7 +25,7 @@
           </a>
         </div>
         <div class="info">
-          By <a routerLink="/profile/{{advertisement.owner}}">{{advertisement.owner}}</a> on {{advertisement.createdAt | date}}
+          By <a routerLink="/profile/{{advertisement.owner}}">{{users['/users/' + advertisement.owner]?.displayName || '...'}}</a> on {{advertisement.createdAt | date}}
         </div>
         <div class="info-special">
           <a [routerLink]="[advertisement.uri]" class="buy">{{advertisement.price | currency:'USD':true}}</a>

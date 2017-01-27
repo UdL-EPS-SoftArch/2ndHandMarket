@@ -21,8 +21,8 @@ export class PostAdvertisementComponent implements OnInit {
 
   loading: boolean;
   isUpdating: boolean; // Marks advertisement as a creation / update.
-  isSubmitting: boolean = false;
-  isAddingPicture: boolean = false;
+  isSubmitting = false;
+  isAddingPicture = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

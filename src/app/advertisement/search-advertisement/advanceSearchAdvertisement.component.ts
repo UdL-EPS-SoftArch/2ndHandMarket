@@ -12,9 +12,9 @@ import { Advertisement } from '../advertisement';
 export class AdvanceSearchAdvertisementComponent implements OnInit {
 
   advertisements: Advertisement[] = [];
-  searchTitleInput: string = '';
+  searchTitleInput = '';
   searchTagInput: string[] = [];
-  searchCategoryInput: string = '';
+  searchCategoryInput = '';
 
   constructor(private router: Router) {
   }

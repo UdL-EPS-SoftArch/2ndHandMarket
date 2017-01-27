@@ -2,24 +2,28 @@ import { Component, OnInit } from '@angular/core';
 
 import { Advertisement } from './advertisement';
 import { AdvertisementService } from './advertisement.service';
+import { ProfileService } from '../profile/profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { SearchAdvertisementService } from './search-advertisement/searchAdvertisement.service';
+import UsersCache from '../profile/usersCache';
 
 @Component({
   selector: 'app-advertisement',
   templateUrl: './advertisement.component.html',
   styleUrls: ['./advertisement.component.scss'],
-  providers: [AdvertisementService, SearchAdvertisementService]
+  providers: [AdvertisementService, SearchAdvertisementService, ProfileService]
 })
 export class AdvertisementComponent implements OnInit {
 
   advertisements: Advertisement[];
   advertisementPictures: {} = {};
   errorMessage: string;
+  users = UsersCache.entries();
 
   constructor(private route: ActivatedRoute,
               private advertisementService: AdvertisementService,
-              private searchAdvertisementService: SearchAdvertisementService) { }
+              private searchAdvertisementService: SearchAdvertisementService,
+              private profileService: ProfileService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(
@@ -44,6 +48,7 @@ export class AdvertisementComponent implements OnInit {
           this.advertisements = advertisements;
           this.advertisements.map((advertisement) => {
             this.getAdvertisementPicture(advertisement);
+            this.profileService.getUser(`/users/${advertisement.owner}`).subscribe();
           });
         },
         error => this.errorMessage = <any>error.message

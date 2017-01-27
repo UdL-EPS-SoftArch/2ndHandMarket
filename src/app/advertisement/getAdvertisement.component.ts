@@ -7,14 +7,16 @@ import { Picture } from './picture/picture';
 import { Purchase } from '../purchase/purchase';
 import { PurchaseService } from '../purchase/purchase.service';
 import { Auth0Service } from '../auth0/auth0.service';
-import { BasketProductService} from '../basketProduct/basketProduct.service';
-import { BasketProduct} from '../basketProduct/basketProduct';
+import { BasketProductService } from '../basketProduct/basketProduct.service';
+import { BasketProduct } from '../basketProduct/basketProduct';
+import { ProfileService } from '../profile/profile.service';
+import UsersCache from '../profile/usersCache';
 
 @Component({
   selector: 'app-get-advertisement',
   templateUrl: './getAdvertisement.component.html',
   styleUrls: ['./getAdvertisement.component.scss'],
-  providers: [AdvertisementService, PurchaseService]
+  providers: [AdvertisementService, PurchaseService, ProfileService]
 })
 export class GetAdvertisementComponent implements OnInit {
 
@@ -22,18 +24,20 @@ export class GetAdvertisementComponent implements OnInit {
   purchase: Purchase;
   picture: Picture;
 
-  hasDeleteConfirm: boolean = false;
-  deleteConfirmText: String = '';
-  isDeleting: boolean = false;
+  hasDeleteConfirm = false;
+  deleteConfirmText = '';
+  isDeleting = false;
+
+  users = UsersCache.entries();
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private advertisementService: AdvertisementService,
               private purchaseService: PurchaseService,
               private authentication: Auth0Service,
-              private basketProductService: BasketProductService) {
+              private basketProductService: BasketProductService,
+              private profileService: ProfileService) {
   }
-
   /**
    * On Startup:
    * - Save current advertisement id on the advertisement object.
@@ -56,6 +60,7 @@ export class GetAdvertisementComponent implements OnInit {
         // The advertisement does exist, let's query the rest.
         this.getAdvertisementPicture(this.advertisement.uri);
         this.getAdvertisementPurchase(this.advertisement.uri);
+        this.profileService.getUser(`/users/${advertisement.owner}`).subscribe();
       },
       error => this.router.navigate(['/404']),
     );
@@ -114,8 +119,6 @@ export class GetAdvertisementComponent implements OnInit {
   }
 
   addProduct(advertisement): void {
-    let basketProduct: BasketProduct = new BasketProduct();
-    basketProduct.product = advertisement;
-    this.basketProductService.addProduct(basketProduct);
+    this.basketProductService.addProduct(new BasketProduct({ advertisement }));
   }
 }

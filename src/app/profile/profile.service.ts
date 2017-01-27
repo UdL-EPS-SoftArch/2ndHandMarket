@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../auth0/user';
 import { environment } from '../../environments/environment';
 import { Auth0Service } from '../auth0/auth0.service';
+import UsersCache from './usersCache';
 
 @Injectable()
 export class ProfileService {
@@ -13,10 +14,17 @@ export class ProfileService {
   }
 
   // GET /users/<username>
-  getUser(uri: string): Observable<User> {
+  getUser(uri: string, useCache = true): Observable<User> {
+    if (useCache && uri in UsersCache.entries()) {
+      return Observable.of(UsersCache.entries()[uri]);
+    }
+
     return this.http.get(`${environment.API}${uri}`)
-      .map((res: Response) => {
-        return new User(res.json());
+      .map((res: Response) => res.json())
+      .map((userResult: User) => {
+        const user = new User(userResult);
+        UsersCache.add(user);
+        return new User(user);
       })
       .catch((error: any) => Observable.throw(error.json()));
   }

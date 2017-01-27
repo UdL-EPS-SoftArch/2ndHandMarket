@@ -12,12 +12,12 @@ import { Auth0Service } from '../auth0/auth0.service';
 })
 export class SellerComponent implements OnInit {
 
-  filterQuery: string = '';
+  filterQuery = '';
   global: number;
   advertisements: Advertisement[] = [];
   buyeroffers: BuyerOffer[] = [];
   errorMessage: string;
-  coupons: number = 0;
+  coupons = 0;
 
   constructor(private buyerofferService: BuyerOfferService,
               private advertisementService: AdvertisementService,

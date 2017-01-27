@@ -12,7 +12,7 @@ import { ProfileService } from './profile.service';
   providers: [ProfileService, Auth0Service],
 })
 export class ProfileComponent implements OnInit {
-  isEditing: boolean = false;
+  isEditing = false;
 
   user: User = new User();
 
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser(uri) {
-    this.profileService.getUser(uri)
+    this.profileService.getUser(uri, false)
       .subscribe(
         user => this.user = user,
         error => this.router.navigate(['/404']),

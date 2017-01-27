@@ -11,7 +11,7 @@ export class Auth0Component implements OnInit {
 
   @Input('appRouter') appRouter;
   @ViewChild('username') username;
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(public auth0Service: Auth0Service) { }
 

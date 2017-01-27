@@ -17,6 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 import { MessageComponent } from './message/message.component';
 import { RegisterSellerComponent } from './register-seller/register-seller.component';
 import { BuyerComponent } from './buyer/buyer.component';
+import { WishListComponent } from './buyer/wishlist/wishlist.component';
 import { PersonalOffersListComponent } from './buyeroffer/personalOffersList.component';
 import { UpdateOfferComponent } from './buyeroffer/updateOffer.component';
 import { BuyerOfferComponent } from './buyeroffer/buyeroffer.component';
@@ -35,7 +36,7 @@ describe('App: Softarch1617Client', () => {
         AppComponent, IntroComponent, FooterComponent, AdvertisementComponent,
         PostAdvertisementComponent, GetAdvertisementComponent,
         SearchAdvertisementComponent, AdvanceSearchAdvertisementComponent,
-        RegisterSellerComponent, BuyerComponent, BuyerOfferComponent,
+        RegisterSellerComponent, BuyerComponent, BuyerOfferComponent, WishListComponent,
         PersonalOffersListComponent, UpdateOfferComponent,
         ContactComponent, MessageComponent,
         ProfileComponent, PurchaseComponent,

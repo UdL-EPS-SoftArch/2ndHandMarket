@@ -34,6 +34,7 @@ import { BasketProductService } from './basketProduct/basketProduct.service';
 import { MessageService } from './message/message.service';
 import { LoadingModule } from './loading/loading.module';
 import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
+import { WishListComponent } from './buyer/wishlist/wishlist.component';
 
 @NgModule({
   imports: [
@@ -74,6 +75,7 @@ import { DoesNotExistComponent } from './does-not-exist/doesNotExist.component';
     UpdateOfferComponent,
     ProfileComponent,
     DoesNotExistComponent,
+    WishListComponent,
   ],
   providers: [
     appRoutingProviders, Auth0Service, LoggedInGuard, BasketProductService, MessageService

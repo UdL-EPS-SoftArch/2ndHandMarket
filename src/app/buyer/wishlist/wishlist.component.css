@@ -1,0 +1,25 @@
+.wishlist {
+  height: 100%;
+  background-color: #f2f1ef;
+  padding-top: 20px;
+}
+
+
+.box-options{
+  width: 550px;
+  margin: 50px auto;
+  height: 70px;
+
+}
+
+.fa-check-circle{
+  color: #5CB85C;
+}
+
+.btn-warning{
+  font-weight: bold;
+}
+
+.btn-default{
+  font-weight: bold;
+}

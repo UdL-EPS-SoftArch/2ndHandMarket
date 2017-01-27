@@ -1,8 +1,8 @@
 export class RegisterSeller {
-  uri: string = '';
-  name: string = '';
-  mail: string = '';
-  password: string = '';
+  uri = '';
+  name = '';
+  mail = '';
+  password = '';
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

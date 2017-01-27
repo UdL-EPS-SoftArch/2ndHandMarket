@@ -46,6 +46,7 @@ describe('Service: Purchase', () => {
       brand: '',
       color: '',
       weight: 0.0,
+      wishers : [advertisement],
     });
 
     purchase = new Purchase({

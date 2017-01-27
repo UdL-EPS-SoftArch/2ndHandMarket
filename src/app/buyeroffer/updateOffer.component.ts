@@ -18,6 +18,12 @@ export class UpdateOfferComponent implements OnInit {
   buyeroffers: BuyerOffer[] = [];
   errorMessage: string;
   newBuyerOffer: BuyerOffer = new BuyerOffer();
+  buyeroffer: BuyerOffer = new BuyerOffer();
+
+  public edited = false;
+  hasDeleteConfirm = false;
+  /*deleteConfirmText = '';
+  isDeleting = false;*/
 
   constructor(private buyerofferService: BuyerOfferService,
               private authentication: Auth0Service) { }
@@ -34,13 +40,41 @@ export class UpdateOfferComponent implements OnInit {
       );
   }
 
+  toggleDeleteAdvertisementConfirm() {
+    this.hasDeleteConfirm = true;
+    setTimeout(function() {
+      this.hasDeleteConfirm = false;
+      console.log(this.edited);
+    }.bind(this), 3000);
+  }
+
+  /*deleteBuyerOfferConfirm(buyeroffer) {
+    const deleteConfirmText = this.deleteConfirmText.trim().toLowerCase();
+    const advertisementTitle = this.buyeroffer.advertisement_title.trim().toLowerCase();
+
+    if (deleteConfirmText === advertisementTitle) {
+      this.deleteBuyerOffer(buyeroffer);
+    }
+    this.deleteBuyerOffer(buyeroffer);
+  }*/
+
+  deleteBuyerOffer(buyeroffer) {
+    this.toggleDeleteAdvertisementConfirm();
+
+    this.buyerofferService.deleteBuyerOfferByUri(buyeroffer.uri)
+      .subscribe(
+        deleted => {
+          this.buyeroffers = this.buyeroffers.filter(p => p.uri !== buyeroffer.uri);
+        },
+        error => {
+          this.errorMessage = <any>error.message;
+        }
+      );
+  }
+
   updateOffer(existingOffer: BuyerOffer, newPrice: number) {
-    /*let updatedOffer: BuyerOffer = existingOffer;*/
+    this.saveTodos();
     existingOffer.value = newPrice;
-    /*updatedOffer.advertisement_id = existingOffer.advertisement_id;
-    updatedOffer.advertisement_title = existingOffer.advertisement_title;
-    updatedOffer.advertisement_seller = existingOffer.advertisement_seller;
-    updatedOffer.advertisement_iniPrice = existingOffer.advertisement_iniPrice;*/
     this.buyerofferService.updateOfferById(existingOffer.uri, existingOffer)
       .subscribe(
         update => this.buyeroffers = this.buyeroffers.map(buyerOffer => {
@@ -48,9 +82,18 @@ export class UpdateOfferComponent implements OnInit {
           return buyerOffer;
         }),
         error => this.errorMessage = <any>error.message);
+
   }
 
   getUser(): string {
     return this.authentication.getCurrentUser().username;
+  }
+
+  saveTodos(): void {
+    this.edited = true;
+    setTimeout(function() {
+      this.edited = false;
+      console.log(this.edited);
+    }.bind(this), 2000);
   }
 }

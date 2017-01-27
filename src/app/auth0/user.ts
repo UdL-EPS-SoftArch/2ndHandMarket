@@ -1,16 +1,16 @@
 import {Authority} from './authority';
 
 export class User {
-  uri: string = '';
-  name: string = '';
+  uri = '';
+  name = '';
   authorities: Authority[] = [];
-  authorization: string = '';
-  password: string = '';
-  lastname: string  = '';
-  displayName: string = '';
-  email: string = '';
-  birthday: string = '';
-  country: string = '';
+  authorization = '';
+  password = '';
+  lastname = '';
+  displayName = '';
+  email = '';
+  birthday = '';
+  country = '';
   enabled: boolean;
 
   constructor(values: Object = {}) {

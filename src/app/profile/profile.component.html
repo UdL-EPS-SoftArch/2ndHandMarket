@@ -7,14 +7,15 @@
         <li>Seller</li>
         <li>
           <ul>
-            <li ><button class="btn btn-info" routerLink="/profile/manageoffers">Manage offers</button></li>
+            <li ><button class="btn btn-info" routerLink="/manageOffers" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Manage offers</button></li>
             <li>Purchases</li>
           </ul>
         </li>
         <li>Buyer</li>
         <li>
           <ul>
-            <button class="btn btn-info" routerLink="/personalOffersList" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Personal Offers</button>
+            <li><button class="btn btn-info" routerLink="/personalOffersList" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offer List</button></li>
+            <li><button class="btn btn-info" routerLink="/updateOffer" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Offer Management</button></li>
           </ul>
         </li>
       </ul>

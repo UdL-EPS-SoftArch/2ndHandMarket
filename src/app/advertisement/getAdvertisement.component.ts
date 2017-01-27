@@ -24,10 +24,11 @@ export class GetAdvertisementComponent implements OnInit {
   purchase: Purchase;
   picture: Picture;
 
-  hasDeleteConfirm: boolean = false;
-  deleteConfirmText: String = '';
-  isDeleting: boolean = false;
-  likes: number = 0;
+  hasDeleteConfirm = false;
+  deleteConfirmText = '';
+  isDeleting = false;
+  likes = 0;
+
   users = UsersCache.entries();
 
   constructor(private route: ActivatedRoute,

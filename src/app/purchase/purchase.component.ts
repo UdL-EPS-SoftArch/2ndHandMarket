@@ -15,10 +15,10 @@ import UsersCache from '../profile/usersCache';
 })
 export class PurchaseComponent implements OnInit {
   errorMessage: string;
-  loading: boolean = true;
+  loading = true;
 
-  hasPurchased: boolean = false;
-  isPurchasing: boolean = false;
+  hasPurchased = false;
+  isPurchasing = false;
   advertisements: Advertisement[] = [];
   purchase: Purchase; // It will exist either if the product was already
                       // purchased, or the user has just completed the purchase.

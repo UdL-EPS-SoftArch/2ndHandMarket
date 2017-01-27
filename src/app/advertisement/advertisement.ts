@@ -14,6 +14,7 @@ export class Advertisement extends API {
   brand: string;
   color: string;
   weight: number;
+  wishers: Advertisement[];
 
   // Tags as string 'first, second, third'.
   get tagsStr(): string {

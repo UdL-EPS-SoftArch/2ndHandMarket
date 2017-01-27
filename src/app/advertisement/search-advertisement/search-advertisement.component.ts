@@ -14,7 +14,7 @@ import { SearchAdvertisementService } from './searchAdvertisement.service';
 export class SearchAdvertisementComponent implements OnInit {
 
   isDropdownVisible: boolean;
-  searchInput: string = '';
+  searchInput = '';
 
   MAX_MATCHING_ADVERTISEMENTS = 5;
   matchingAdvertisements: Advertisement[] = [] ;

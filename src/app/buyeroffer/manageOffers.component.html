@@ -6,7 +6,7 @@
 
       <blockquote class="blockquote">
         <p class="mb-0">
-          Here you can access to the offers done by other users to you products:
+          Here you can access to the offers done by other users to you products
         </p>
       </blockquote>
 
@@ -35,12 +35,70 @@
           <table class="table">
             <thead>
             <tr>
-              <th>Product</th>
-              <th>Brand</th>
-              <th>Description</th>
-              <th>Date</th>
-              <th>Initial Price</th>
-              <th>Offers</th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('title')">
+                Product
+                <span [hidden]="currentOrderParam!='title'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='title'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+                </button>
+              </th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('brand')">
+                Brand
+                <span [hidden]="currentOrderParam!='brand'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='brand'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('description')">
+                Description
+                <span [hidden]="currentOrderParam!='description'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='description'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('modifiedAt')">
+                Date
+                <span [hidden]="currentOrderParam!='modifiedAt'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='modifiedAt'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('price')">
+                Initial Prince
+                <span [hidden]="currentOrderParam!='price'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='price'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button></th>
+              <th><button type="button" class="btn btn-sort" (click)="sortBy('negotiablePrice')">
+                Offers
+                <span [hidden]="currentOrderParam!='negotiablePrice'||!invert">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="currentOrderParam!='negotiablePrice'||invert">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button>
+              <button type="button" class="btn-arrow" (click)="sortOffers()">
+                <span [hidden]="invertOfferPrice">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </span>
+                <span [hidden]="!invertOfferPrice">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </span>
+              </button>
+              </th>
             </tr>
             </thead>
             <tbody *ngFor="let advertisement of advertisements" class="row">
@@ -52,16 +110,20 @@
                 <td>{{advertisement.price | currency:'USD':true}}</td>
                 <td *ngIf="!advertisement.negotiablePrice">Not negotiable price!</td>
                 <td *ngIf="hasPurchased">Already sold!</td>
-                <td *ngIf="advertisement.negotiablePrice" >
+                <td *ngIf="advertisement.negotiablePrice">
                   <tbody *ngFor="let offer of buyeroffers">
-                    <td *ngIf="advertisement.title === offer.advertisement_title && offer.accepted">
+                    <span *ngIf="advertisement.title === offer.advertisement_title && offer.accepted">
                       Accepted the offer from user {{offer.buyer_id}} with the value {{offer.value | currency:'USD':true}}
-                    </td>
-                    <td *ngIf="advertisement.title === offer.advertisement_title && !offer.accepted">
-                      <b>{{offer.value | currency:'USD':true}}</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
-                      <button type="button" class="btn btn-success" (click)="submitOfferAndPurchase(offer, advertisement)">Accept</button>&nbsp;
-                      <button type="button" class="btn btn-danger" (click)="deleteBuyerOffer(offer)">Reject</button>&nbsp;
-                    </td>
+                    </span>
+                    <span *ngIf="advertisement.title === offer.advertisement_title && !offer.accepted">
+                      <p>
+                        <b class="frame">{{offer.value | currency:'USD':true}}</b> by user <b>{{offer.buyer_id}}</b>&nbsp;
+                      </p>
+                      <p>
+                        <button type="button" class="btn btn-success" (click)="submitOfferAndPurchase(offer, advertisement)">Accept</button>&nbsp;
+                        <button type="button" class="btn btn-danger" (click)="deleteBuyerOffer(offer)">Reject</button>&nbsp;
+                      </p>
+                    </span>
                   </tbody>
                 </td>
               </tr>

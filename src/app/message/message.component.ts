@@ -29,7 +29,7 @@ export class MessageComponent implements OnInit {
 
   errorMessage: string;
   newMessage: Message;
-  searchInput: string = '';
+  searchInput = '';
 
   constructor(private messageService: MessageService,
                private authentication: Auth0Service) { }

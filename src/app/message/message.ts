@@ -1,9 +1,9 @@
 export class Message {
-  uri: string = '';
-  title: string = '';
-  body: string = '';
-  destination: string = '';
-  sender: string = '';
+  uri = '';
+  title = '';
+  body = '';
+  destination = '';
+  sender = '';
   isRead: boolean;
 
   constructor(values: Object = {}) {

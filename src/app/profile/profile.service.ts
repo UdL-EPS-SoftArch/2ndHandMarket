@@ -14,7 +14,7 @@ export class ProfileService {
   }
 
   // GET /users/<username>
-  getUser(uri: string, useCache: Boolean = true): Observable<User> {
+  getUser(uri: string, useCache = true): Observable<User> {
     if (useCache && uri in UsersCache.entries()) {
       return Observable.of(UsersCache.entries()[uri]);
     }

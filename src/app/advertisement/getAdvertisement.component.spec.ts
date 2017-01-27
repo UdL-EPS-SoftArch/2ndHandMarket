@@ -9,16 +9,17 @@ import { PurchaseService } from '../purchase/purchase.service';
 import { Auth0Service } from '../auth0/auth0.service';
 import { BasketProductService } from '../basketProduct/basketProduct.service';
 import { ProfileService } from '../profile/profile.service';
+import { WishlistService } from '../buyer/wishlist/wishlist.service';
 
 describe('Component: GetAdvertisement', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ ActivatedRoute, Router, AdvertisementService, PurchaseService, BasketProductService ]
+      providers: [ ActivatedRoute, Router, AdvertisementService, PurchaseService, BasketProductService, WishlistService ]
     });
   });
 
   it ('should create an instance', () => {
-    inject([ ActivatedRoute, Router, AdvertisementService, PurchaseService, Auth0Service, BasketProductService, ProfileService ],
+    inject([ActivatedRoute, Router, AdvertisementService, PurchaseService, Auth0Service, BasketProductService, ProfileService],
            (activatedRoute, router, advertisementService, purchaseService, auth0Service, basketProductService, profileService) => {
       let component = new GetAdvertisementComponent(
         activatedRoute,

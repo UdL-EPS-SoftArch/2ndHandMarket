@@ -25,6 +25,8 @@
       <div class="product-dates">
         <span>Created at: {{advertisement.createdAt | amDateFormat:'YYYY-MM-DD HH:mm'}}</span>
         <span>Modified at: {{advertisement.modifiedAt | amDateFormat:'YYYY-MM-DD HH:mm'}}</span>
+        <button class="like-button" (click)="updateCount()">Likes </button>
+        {{likes }}
       </div>
       <div class="price">{{advertisement.price | currency:'USD':true }}</div>
       <div class="price-details row">

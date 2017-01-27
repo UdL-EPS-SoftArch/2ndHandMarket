@@ -27,6 +27,7 @@ export class GetAdvertisementComponent implements OnInit {
   hasDeleteConfirm = false;
   deleteConfirmText = '';
   isDeleting = false;
+  likes = 0;
 
   users = UsersCache.entries();
 
@@ -120,5 +121,9 @@ export class GetAdvertisementComponent implements OnInit {
 
   addProduct(advertisement): void {
     this.basketProductService.addProduct(new BasketProduct({ advertisement }));
+  }
+
+  updateCount() {
+    this.likes += 1;
   }
 }
